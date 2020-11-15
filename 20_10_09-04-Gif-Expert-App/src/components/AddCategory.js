@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types';
 
-export const AddCategory = ({setcategories}) => {
+export const AddCategory = ({setCategories}) => {
 
     const [inputValue, setInputValue] = useState('') /** Estas son las dos funciones que tiene el inputvalue  */
 
@@ -13,7 +13,7 @@ export const AddCategory = ({setcategories}) => {
         e.preventDefault(); /** Esto evita el refresh de la pagina */
 
         if(inputValue.trim().length > 2){
-            setcategories(cats => [inputValue, ...cats,]);
+            setCategories(cats => [inputValue, ...cats,]);
             setInputValue('');
         }
     }
@@ -33,5 +33,5 @@ export const AddCategory = ({setcategories}) => {
 }
 
 AddCategory.prototype = { /** Para que utilicen nuestro componente con el pequeño candado con los argumentos que estoy esperando  */
-    setcategories: PropTypes.func.isRequired
+    setCategories: PropTypes.func.isRequired
 }
