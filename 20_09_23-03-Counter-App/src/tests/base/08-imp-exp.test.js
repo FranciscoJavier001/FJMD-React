@@ -1,5 +1,5 @@
-const { getHeroeById, getHeroeByOwner } = require("../../base/08-imp-exp");
-const { default: heroes } = require("../../data/heroes");
+const { getHeroeById, getHeroeByOwner } = require("../../../base/08-imp-exp");
+const { default: heroes } = require("../../../data/heroes");
 
 describe('Pruebas en funciones de Heroes', () => { //** Se describe la prueba */
     test('debe de retornar un heroe por id ', () => { //** Solo vamos a hacer que se conecte y ver que reciba cada id que se le manda */

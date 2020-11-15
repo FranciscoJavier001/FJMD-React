@@ -1,7 +1,7 @@
 //** Estas deben de ser tareas asyncronas, osea que sean secuencia por secuencia */
 
-const { getHeroeByIdAsync } = require("../../base/09-promesas");
-const { default: heroes } = require("../../data/heroes");
+const { getHeroeByIdAsync } = require("../../../base/09-promesas");
+const { default: heroes } = require("../../../data/heroes");
 
 describe('Pruebas con promesas', () => {
     test('getHeroeByIdAsync debe de retornar un Heroe Async ', (done) => {

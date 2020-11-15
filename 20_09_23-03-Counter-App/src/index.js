@@ -1,17 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+// import PrimeraApp from './PrimeraApp';
+import CounterApp from './CounterApp';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+import './index.css'
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const divRoot = document.querySelector('#divRoot'); //** Devuelve el primer elemeto del documento, que coincida con el grupo de selectores */
+
+// ReactDOM.render(<PrimeraApp saludo="Hola, Soy Francisco"/>, divRoot); //** Al dejarla con el /> queda claro que es un functional component y este es el prop*/
+ReactDOM.render(<CounterApp value={10} />, divRoot); //** Lo renderizamos, ponemos el nombre del Functionl component, asignamos el valor y luego lo mosramos con el divRoot */
