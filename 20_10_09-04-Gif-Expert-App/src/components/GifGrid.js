@@ -2,10 +2,9 @@ import React  from 'react'
 import { useFetchGifs } from '../hooks/useFetchGifs'
 import { GifGridItem } from './GifGridItem';
 
+export const GifGrid = ({ category }) => { //** Aqui lo exportamos para que lo pueda utilizar GifExpertApp, el argumento es category */
 
-export const GifGrid = ({ category }) => {
-
-    const {data:images, loading} = useFetchGifs(category);
+    const {data:images, loading} = useFetchGifs(category); //** Es la peticion http para traer las imagenes que corresponden a la categoria */
 
     return (
         <>

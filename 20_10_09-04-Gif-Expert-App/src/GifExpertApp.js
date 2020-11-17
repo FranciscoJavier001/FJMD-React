@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { AddCategory } from './components/AddCategory'
-import { GifGrid } from './components/GifGrid'
+import { GifGrid } from './components/GifGrid' //** Es para agregar el category, desde el GifGrid */
 
 export const GifExpertApp = () => {
 
@@ -24,7 +24,8 @@ export const GifExpertApp = () => {
             <ol>
                 {
                     categories.map(category => ( /** El Map barre el arreglo que ahora se llama category, porque esto es una funcion de flecha que ya inicializamos y podemos mandar llamar cuando necesitemos con el return */
-                        <GifGrid 
+                        // GifGrid es el componente que hace la peticion "http" al servidor, para que regrese un objeto definido como category en el GifGrid, que esta evaluando desde el GifGrid, y este necesita el key
+                        <GifGrid  
                         key={category}
                         category={category}
                         />
