@@ -1,12 +1,15 @@
-*{
+/* La fuente de la App */
+*{ 
   font-family: Helvetica, Arial, sans-serif;
 }
 
+/* Vamos a dejar el CSS Semicentrado */
 body{
   padding: 60px;
 }
 
-input{
+/* Los input de donde escribimos */
+input{ 
   color: gray;
   font-size: 1.2rem;
   width: 100%;
