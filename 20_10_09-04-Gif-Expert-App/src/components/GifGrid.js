@@ -4,7 +4,7 @@ import { GifGridItem } from './GifGridItem';
 
 export const GifGrid = ({ category }) => { //** Aqui lo exportamos para que lo pueda utilizar GifExpertApp, el argumento es category */
 
-    const {data:images, loading} = useFetchGifs(category); //** Es la peticion http para traer las imagenes que corresponden a la categoria */
+    const {data:images, loading} = useFetchGifs(category); //** Es la peticion http para traer las imagenes que corresponden a la categoria, con los : se renombra en la desestructuracion */
 
     return (
         // Cuando haya que regresar 2 objetos usa el fragment

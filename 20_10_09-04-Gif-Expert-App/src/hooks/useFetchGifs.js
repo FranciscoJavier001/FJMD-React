@@ -1,10 +1,11 @@
+//** use = Es un Hook, y no es mas que una funcion  */
 import { useEffect, useState } from "react"
 import {getGifs} from '../helpers/getGifs'
 
-export const useFetchGifs = (category) => {
-    const [state, setState] = useState({
-        data: [],
-        loading: true
+export const useFetchGifs = (category) => { //** Esta va a ser la peticion automatica cuando se carge porque cambie la categoria */
+    const [state, setState] = useState({ //** El useState le dice a los componentes que algo cambio y deben renderizarse */
+        data: [], //** Este es su estado inicial */
+        loading: true //** Este es su estado inicial */
     });
 
     //** Esto retorna una promesa por lo cual se pone un then, para tener las imgs y la funcion de fecha y llamamos al setImagenes  */
@@ -19,5 +20,5 @@ export const useFetchGifs = (category) => {
             })
     }, [category]) //** Aqui es un arreglo de dependencias, y solo se va a disparar una unica vez, y se la categoria cambia, entonces solo va a ejecutar otra vez este useEffect */
 
-    return state; //{data:[], loading: true};
+    return state; //{data:[], loading: true}; //** El state es el estado del useState, y cuando cambia es lo que me retorna */
 }
