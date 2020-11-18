@@ -13,6 +13,7 @@ export const AddCategory = ({setCategories}) => { //** Agregamos el AddCategory 
         e.preventDefault(); /** Esto evita el refresh de la pagina */
 
         if(inputValue.trim().length > 0){ //** Solo si el arreglo es mayor de 2 que empieze a buscar */
+            //** Asi le hizimos para que la primera saliera arriba */
             setCategories(cats => [inputValue, ...cats,]); //** El primer callback es el estado anterior y luego regresa un nuevo estado con todos los nuevos arreglos, se llama a esta instruccion para tener acceso al arreglo, porque se esta pasando como argumento */
             setInputValue('');
         }
