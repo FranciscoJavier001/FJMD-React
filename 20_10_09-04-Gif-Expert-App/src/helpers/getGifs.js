@@ -9,7 +9,9 @@ export const getGifs = async (category) => {
             title: img.title,
             url: img.images?.downsized_medium.url
         }
-    })
+    });
+    // console.log(gifs); //** Bien, aqui se ponia para ver que arreglo esta regresando, aqui se inicializaron para que se mandara la respuesta */
 
     return gifs;
+    
 }

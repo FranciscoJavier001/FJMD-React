@@ -15,12 +15,14 @@ input{
   width: 100%;
 }
 
+/* Esta es para cada una de las tarjetas */
 .card-grid{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
 
+/* Este es donde se queda guardada nuestra busqueda y los gifs */
 .card{
   align-content: center;
   border: 1px solid blue;
@@ -30,6 +32,7 @@ input{
   overflow: hidden;
 }
 
+/* Esto es la anotacion del texto de cada tarjeta */
 .card p {
   padding: 5px;
   text-align: center;

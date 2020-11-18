@@ -7,9 +7,12 @@ export const GifGrid = ({ category }) => { //** Aqui lo exportamos para que lo p
     const {data:images, loading} = useFetchGifs(category); //** Es la peticion http para traer las imagenes que corresponden a la categoria */
 
     return (
+        // Cuando haya que regresar 2 objetos usa el fragment
         <>
+            {/* Este h3 son donde se quedan guardadanas nuestras busquedas */}
             <h3 className="card animate__animated animate__fadeIn">{category}</h3>
 
+            {/* Esta es cuando se estan cargando */}
             {loading && <p className="card animate__animated flash">Loading</p>}
 
             <div className="card-grid">
