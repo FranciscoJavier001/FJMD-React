@@ -1,3 +1,5 @@
+//** Cuando hacemos el build debemos de levantar el servidor ahora con http-server -o, recuerda que antes debes instalar un servidor que levante la app eso se hace con el comando sudo npm install --global http-server */
+
 import React, { useState } from 'react'
 import { AddCategory } from './components/AddCategory'
 import { GifGrid } from './components/GifGrid' //** Es para agregar el category, desde el GifGrid */
