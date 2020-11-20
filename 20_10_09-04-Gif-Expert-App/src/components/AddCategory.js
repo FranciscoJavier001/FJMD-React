@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types';
 
-export const AddCategory = ({setCategories}) => { //** Agregamos el AddCategory pero va directamente al setCategories y va a volver a renderizar, y se recibe props */
+export const AddCategory = ({setCategories}) => { //** Agregamos el AddCategory pero va directamente al setCategories y va a volver a renderizar, y se recibe props; setCategories es un componente que recibe una funcion como argumento */
 
     const [inputValue, setInputValue] = useState('') /** Estas son las dos funciones que tiene el inputvalue (donde escribimos) y abajo ya quedo declarado  */
 
@@ -15,7 +15,7 @@ export const AddCategory = ({setCategories}) => { //** Agregamos el AddCategory 
         if(inputValue.trim().length > 0){ //** Solo si el arreglo es mayor de 2 que empieze a buscar */
             //** Asi le hizimos para que la primera saliera arriba */
             setCategories(cats => [inputValue, ...cats,]); //** El primer callback es el estado anterior y luego regresa un nuevo estado con todos los nuevos arreglos, se llama a esta instruccion para tener acceso al arreglo, porque se esta pasando como argumento */
-            setInputValue('');
+            setInputValue(''); //** Esto nos limpia la caja de texto */
         }
     }
 
@@ -32,6 +32,6 @@ export const AddCategory = ({setCategories}) => { //** Agregamos el AddCategory 
     )
 }
 
-AddCategory.prototype = { /** Para que utilicen nuestro componente con el pequeño candado con los argumentos que estoy esperando, esta es la peticion de los proptypes  */
+AddCategory.propTypes = { /** Para que utilicen nuestro componente con el pequeño candado con los argumentos que estoy esperando, esta es la peticion de los proptypes  */
     setCategories: PropTypes.func.isRequired
 }
