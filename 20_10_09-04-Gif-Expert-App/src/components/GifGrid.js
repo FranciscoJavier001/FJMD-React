@@ -22,7 +22,7 @@ export const GifGrid = ({ category }) => { //** Aqui lo exportamos para que lo p
                     images.map(img => ( //** Asi hago un return de objetos */
                         <GifGridItem //** Aqui se va a mostrar */
                             key={img.id} //** Este es el return ue se me hizo, de id y de img */
-                            {...img} //** Operador spred de img  */
+                            {...img} //** Operador spred de img */
                         />
                     ))
                 }

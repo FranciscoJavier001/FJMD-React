@@ -1,4 +1,5 @@
 import React from 'react' //** Importamos React para las pruebas */
+import '@testing-library/jest-dom' //** Para evitar errores de escritura */
 import {shallow} from 'enzyme'  //** Importamos Shallow desde enzyme */
 import { GifGrid } from '../../components/GifGrid' //** Importamos el componente al cual le vamos a hacr la prueba */
 import { useFetchGifs } from '../../hooks/useFetchGifs';
@@ -29,7 +30,12 @@ describe('Pruebas en el <GifGrid/>', () => {
             id: 'ABC',
             title: 'CualquierCosa',
             url: 'https://localhost/cualquier/cosa.jpg'
-        }]
+        },
+    {
+            id: '123',
+            title: 'CualquierCosa',
+            url: 'https://localhost/cualquier/cosa.jpg'
+    }]
 
         useFetchGifs.mockReturnValue({ 
             data: gifs, //** La data van a ser los gifs */
@@ -39,5 +45,7 @@ describe('Pruebas en el <GifGrid/>', () => {
         const wrapper = shallow(<GifGrid category={category}/>) //** Renderizamos el mismo componente, porque no lo pusimos arriba */
 
         expect(wrapper).toMatchSnapshot(); //** Es para crear el snapshot */
+        expect(wrapper.find('p').exists()).toBe(false) //** Si el parrado eiste, yo esperaria que fuera false */
+        expect(wrapper.find('GifGridItem').length).toBe(gifs.length)//** Asi seleccionamos un elemento en el GifGrid.test.js.snap, el length para saber cuantos gifs tengo */
     })
 })
