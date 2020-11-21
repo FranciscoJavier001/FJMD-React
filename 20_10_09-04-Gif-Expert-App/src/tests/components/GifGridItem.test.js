@@ -2,7 +2,7 @@ import React from 'react'
 import {shallow} from 'enzyme' //** Este se importa de enzyme */
 import { GifGridItem } from '../../components/GifGridItem'
 
-describe('Pruebas en <GifGridItem />', () => { //** Al componente que le vamos a hacer la prueba */
+describe('Pruebas en <GifGridItem/>', () => { //** Al componente que le vamos a hacer la prueba */
     
     const title = "Un titulo"; //** Como ahora le pusimos que isRequired estos son los argumentos que va a agarrar */
     const url = 'http://localhost/algo.jpg'; //** Como ahora le pusimos que isRequired estos son los argumentos que va a agarrar */

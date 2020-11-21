@@ -1,4 +1,6 @@
 import React  from 'react'
+import PropTypes from 'prop-types'; //** Recuerda impt para importar los PropTypes */
+
 import { useFetchGifs } from '../hooks/useFetchGifs'
 import { GifGridItem } from './GifGridItem';
 
@@ -27,4 +29,8 @@ export const GifGrid = ({ category }) => { //** Aqui lo exportamos para que lo p
             </div>
         </>
     )
+}
+
+GifGrid.propTypes = { //** Aqui para ver si usan los componentes como yo espro , esto lo vamos a igual a un objeto y dentro los props, que espera por los argumentos de la category, que le ponemos de que es requerida */
+    category: PropTypes.string.isRequired
 }
