@@ -33,5 +33,30 @@ describe('Pruebas en <AddCategory />', () => {
 
         expect(setCategories).not.toHaveBeenCalled() //** Es para ver si no se ha lamado, porque el formulario va vacio */
     })
+
+    test('Debe de llamar el setCategories y limpiar la caja de texto', () => {
+        /**
+         * 1. Simular el inputChange
+         * 2. Simular el submit del formulario
+         * 3. setCategries se debe de haber llamado
+         * 4. El valor del input debe de estar ''
+         */
+        
+        // * 1. Simular el inputChange
+         const value = 'Hola Mundo' //** Este valor lo usamos para las pruebas */
+
+         wrapper.find('input').simulate('change', {target: {value}}) //** Primero vamos a buscar el input, luego vamos a simular el change mandandole el argumento de event 'e' que seria target, dentro de otras llaves el value, es un objeto dentro de otro objeto, con esto cambia el input y se establece el valor de hola mundo, que manda al setState y todas las cosas */
+
+         // * 2. Simular el submit del formulario
+         wrapper.find('form').simulate('submit', {preventDefault(){}}) //** Esperamos en el form el submit, por eso primero ponemos donde vamos a trabajar, luego lo que vamos a hacer, aqui estamos esperando la funcion de preventDefault  */
+     
+         // * 3. setCategries se debe de haber llamado
+         expect(setCategories).toHaveBeenCalled()
+        //  expect(setCategories).toHaveBeenCalledTimes(2) //** Aqui esperamos que se llamara 2 veces, pero solo se llamo 1 */
+        //  expect(setCategories).toHaveBeenCalledWith(expect.any(Function)) //** Esperamos que se haya lamado con una funcion, desde el AddCategory en el IF de la linea 19 */
+
+         // * 4. El valor del input debe de estar ''
+         expect(wrapper.find('input').prop('value')).toBe('') //** Voy a trabajar en el input, poniendo que el valor va vacio */
+    })
     
 })

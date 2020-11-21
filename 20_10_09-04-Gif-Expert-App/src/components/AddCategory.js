@@ -12,7 +12,7 @@ export const AddCategory = ({setCategories}) => { //** Agregamos el AddCategory 
 
     const handleSubmit = (e) => { /** Aqui hacemos la peticion para que salga en el DOM, y que se vea reflejado cuando damos enter  */
         e.preventDefault(); /** Esto evita el refresh de la pagina */
-        console.log('handleSubmit', inputValue);
+        // console.log('handleSubmit', inputValue);
 
         if(inputValue.trim().length > 0){ //** Solo si el arreglo es mayor de 2 que empieze a buscar */
             //** Asi le hizimos para que la primera saliera arriba */
@@ -28,7 +28,7 @@ export const AddCategory = ({setCategories}) => { //** Agregamos el AddCategory 
         <form onSubmit={handleSubmit}>
             <p>{inputValue}</p>
             <input 
-                type="text"
+                type="text" //** el type, value y onChange son los props */
                 value={inputValue}
                 onChange={handleInputChange} /** Aqui le doy el valor para cambiarlo */
                 />

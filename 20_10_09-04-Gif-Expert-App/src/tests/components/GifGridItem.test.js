@@ -15,7 +15,7 @@ describe('Pruebas en <GifGridItem />', () => { //** Al componente que le vamos a
         expect(wrapper).toMatchSnapshot(); //** Aqui vemos si el Snapchot es lo que el queria */
     })
 
-    test('Debe de tener un parrado con el title', () => { //** Asi se hacen las pruebas */
+    test('Debe de tener un parrafo con el title', () => { //** Asi se hacen las pruebas */
 
         const p = wrapper.find('p'); //** Aqui se obtiene la referencia al parrafo, es decir, con la instruccion se busca el parrafo */
         expect(p.text().trim()).toBe(title); //** Esperamos que el contenido del parrafo, trim(por si acaso hay un espacio en blanco) y el toBe (tiene que ser el titulo) y el titulo es lo que esta abajo de cada imagen */
