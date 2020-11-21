@@ -4,14 +4,14 @@ import React, { useState } from 'react'
 import { AddCategory } from './components/AddCategory'
 import { GifGrid } from './components/GifGrid' //** Es para agregar el category, desde el GifGrid */
 
-export const GifExpertApp = () => {
+export const GifExpertApp = ({defaultCategories = []}) => { //** Esperamos que mande algo, pero va a ser un arreglo vacio */
 
     // La quite para probar que este limpia y funcione
     // const [categories, setCategories] = useState(['Death Note']) //** Se crea una constante donde vamos a agregar cosas, recuerda este es un hook, setCategories es la instruccion para agregar categorias */
 
     //setCategories(cats => [...cats, 'HunterXHunter']); /** El UseState me dio la habilidad de hacerlo directamente con el setCategories */
 
-    const [categories, setCategories] = useState([''])
+    const [categories, setCategories] = useState(defaultCategories) //** Aqui viene vacio la busqueda y no muestra nada */
 
     /** Para crear nuevos componentes en React debemos de crear una carpeta en "src" llamada components y ponerle un nombre descriptivo como "AddCategory" y escribimos rafc y ahi escribimos lo que tengamos que escribir y se muestra en el dom, luego agrego el componente  */
 
