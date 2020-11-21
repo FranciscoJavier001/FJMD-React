@@ -7,10 +7,12 @@ export const AddCategory = ({setCategories}) => { //** Agregamos el AddCategory 
 
     const handleInputChange = (e) => { 
         setInputValue(e.target.value) /** Esto me permite cambiar el texto */
+        // console.log('handleInputChange llamado');
     }
 
     const handleSubmit = (e) => { /** Aqui hacemos la peticion para que salga en el DOM, y que se vea reflejado cuando damos enter  */
         e.preventDefault(); /** Esto evita el refresh de la pagina */
+        console.log('handleSubmit', inputValue);
 
         if(inputValue.trim().length > 0){ //** Solo si el arreglo es mayor de 2 que empieze a buscar */
             //** Asi le hizimos para que la primera saliera arriba */
@@ -22,7 +24,9 @@ export const AddCategory = ({setCategories}) => { //** Agregamos el AddCategory 
     return ( /** Aqui directamente ya estamos en el DOM */
         // El Form agrupa todo lo demas, por eso no hace falta el fragment
         //** Aqui le decimo que va a responder a handleSubmit, osea cuando de enter */
-        <form onSubmit={handleSubmit}>  
+        // Pongo este parrafo para asegurarme del cambio del inputValue
+        <form onSubmit={handleSubmit}>
+            <p>{inputValue}</p>
             <input 
                 type="text"
                 value={inputValue}
