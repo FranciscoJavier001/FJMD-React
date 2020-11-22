@@ -17,7 +17,7 @@ export const useCounter = ( initialState = 10 ) => {
         setState( state - 1 );
     }
 
-    return {
+    return { //** Mandamos la referencia a las funciones */
         state, //** Esta definido en CounterWithCustomHook y aqui */
         increment,
         decrement,
