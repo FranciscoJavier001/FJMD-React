@@ -24,8 +24,6 @@ export const SimpleForm = () => {
         // console.log('email cambió');
     }, [email] );
 
-
-
     const handleInputChange = ({ target }) => { //** Se que el target ya esta desestructurado de 'e', es el evento que se dispara cuando hay algun cambio en name */
 
         setFormState({
@@ -33,7 +31,7 @@ export const SimpleForm = () => {
             [ target.name ]: target.value //** Quiero que recibas el valor de name, y lo asignes ahora a target.value */
         });
         // console.log(target.name); //** No se que onda, aqui nomas sale name */
-        console.log(target.value); //** Estas son las teclas que se precionan en cada momento */
+        // console.log(target.value); //** Estas son las teclas que se precionan en cada momento */
 
     }
 
@@ -68,6 +66,7 @@ export const SimpleForm = () => {
                 />
             </div>
 
+            {/* Si el name existe vamos a mostrar este Message */}
             { (name === '123') && <Message /> }
 
         </>
