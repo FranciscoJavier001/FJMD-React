@@ -2,8 +2,7 @@ import React, { useEffect } from 'react';
 import { useForm } from '../../hooks/useForm';
 import './effects.css';
 
-export const FormWithCustomHook = () => {
-
+export const FormWithCustomHook = () => { //** Nombre del FunctionalComponent */
 
     const [ formValues, handleInputChange ] = useForm({
         name: '',
@@ -11,20 +10,19 @@ export const FormWithCustomHook = () => {
         password: ''
     });
 
-    const { name, email, password } = formValues;
+    const { name, email, password } = formValues; //** Desestructuramos las propiedades del formValues */
 
-    useEffect( () => {
+    useEffect( () => { //** Este efecto va a estar escuchando cuando email cambio */
         console.log('email cambió')
     }, [ email ]);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e) => { //** Es una funcion que evita que se recarge el navegador */
         e.preventDefault();
-
         console.log( formValues );
     }
 
-
-    return (
+    return ( //** Aqui estan los formularios de nombre, mail y password */
+        // On submit quiere decir que cuando le den click al boton dispare handleSubmit
         <form onSubmit={ handleSubmit }>
             <h1>FormWithCustomHook</h1>
             <hr />
@@ -40,7 +38,6 @@ export const FormWithCustomHook = () => {
                     onChange={ handleInputChange }
                 />
             </div>
-
 
             <div className="form-group">
                 <input 
@@ -65,7 +62,7 @@ export const FormWithCustomHook = () => {
                 />
             </div>
 
-
+            {/* Aqui esta el boton */}
             <button type="submit" className="btn btn-primary">
                 Guardar
             </button>

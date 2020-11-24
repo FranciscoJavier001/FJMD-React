@@ -5,22 +5,22 @@ import './effects.css';
 
 export const SimpleForm = () => {
 
-    const [formState, setFormState] = useState({ //** Voy a extraer las funciones desde aqui */
+    const [formState, setFormState] = useState({ //** El estado es un objeto que recibe el nombre y el mail */
         name: '',
         email: ''
     });
 
     const { name, email } = formState; //** Aqui desestructuramos las propiedades del formState, que tienen ambas variables declaradas arriba */
 
-    useEffect( () => { //** Es un Hook que nos permite activar un efecto secundario, cuando algo suceda en nuestros componentes, aqui le estamos diciendo.. dispara esto cuando tengas algun cambio */
+    useEffect( () => { //** Es un Hook que nos permite activar un efecto secundario, cuando algo suceda en nuestros componentes, aqui le estamos diciendo.. dispara esto cuando tengas algun cambio, este se carga al inicio */
         // console.log('hey!');
     }, [] ); //** Le pasamos en el segundo parametro en donde queremos que se utilize */
 
-    useEffect( () => { //** Estar ESCUCHANDO LOS CAMBIOS, (es un area de oportunidad) */
+    useEffect( () => { //** Estar ESCUCHANDO LOS CAMBIOS, (es un area de oportunidad), este escucha los cambios en el formState */
         // console.log('formState cambió');
     }, [formState] );
 
-    useEffect( () => {
+    useEffect( () => { //** Este se activa cuando cmbia el email */
         // console.log('email cambió');
     }, [email] );
 
