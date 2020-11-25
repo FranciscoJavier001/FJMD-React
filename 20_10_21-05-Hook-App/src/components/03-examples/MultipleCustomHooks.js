@@ -7,16 +7,14 @@ import '../02-useEffect/effects.css';
 export const MultipleCustomHooks = () => {
 
     const { counter, increment } =  useCounter(1);
-    const { loading, data } = useFetch( `https://www.breakingbadapi.com/api/quotes/${ counter }` );
+    const { loading, data } = useFetch(`https://www.breakingbadapi.com/api/quotes/${counter}`); //** Aqui se va a hacer la peticion, y regresa un state, pero desestructuramos el estate y solo me queda el loading y la data */
     
     const { author, quote } = !!data && data[0];
-
 
     return (
         <div>
             <h1>BreakingBad Quotes</h1>
             <hr />
-
 
             {
                 loading 
@@ -34,7 +32,6 @@ export const MultipleCustomHooks = () => {
                         </blockquote>
                     )
             }
-
 
             <button 
                 className="btn btn-primary"
