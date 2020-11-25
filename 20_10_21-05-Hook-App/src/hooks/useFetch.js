@@ -5,7 +5,7 @@ export const useFetch = ( url ) => { //** Aqui pedimos el url, y cuando lo recib
     const isMounted = useRef(true);
     const [state, setState] = useState({data: null, loading: true, error: null}); //** Este es el estado del state */
 
-    useEffect( () => { //**  */
+    useEffect( () => {
         return () => {
             isMounted.current = false;
         }
@@ -14,7 +14,7 @@ export const useFetch = ( url ) => { //** Aqui pedimos el url, y cuando lo recib
 
     useEffect( () => { //** Cuando cambie algo */
 
-        setState({ data: null, loading: true, error: null });
+        setState({ data: null, loading: true, error: null }); //** Apenas hagas la peticion y mandame este estado */
 
         fetch( url ) //** Madamos el url */
             .then( resp => resp.json() ) //** Responde con una promesa y vamos a extraer el json (que se convierte en un string) */
