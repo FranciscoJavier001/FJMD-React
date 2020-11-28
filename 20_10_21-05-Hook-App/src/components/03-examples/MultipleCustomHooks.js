@@ -6,7 +6,7 @@ import '../02-useEffect/effects.css';
 
 export const MultipleCustomHooks = () => {
 
-    const { counter, increment } =  useCounter(1); //** Esto me regresa el counter, pero solo me interesa el increment */
+    const { counter, increment } =  useCounter(1); //** Esto me regresa el counter con todas las variales almacenadas en el, pero viene indluido el increment en una funcion donde solo me interesa el increment y estos estan definidos en useCounter en la funcion useCounter en que viene */
     const { loading, data } = useFetch(`https://www.breakingbadapi.com/api/quotes/${counter}`); //** Aqui se va a hacer la peticion, y regresa un state, pero desestructuramos el state y solo me queda el loading y la data */
     
     const { author, quote } = !!data && data[0]; //** author y quotes viene del objeto directamente y esto va a ser igual que si viene la data como true, entonces extrae la data en la posicion 0 */

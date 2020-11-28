@@ -1,3 +1,4 @@
+// Nos dice... Mira, voy a darle estas funciones y atributos a mi objeto de aqui... primero, es useRef que sea true, 
 import { useState, useEffect, useRef } from 'react';
 
 export const useFetch = ( url ) => { //** Aqui pedimos el url, y cuando lo recibimos que haga algo */
@@ -5,7 +6,7 @@ export const useFetch = ( url ) => { //** Aqui pedimos el url, y cuando lo recib
     const isMounted = useRef(true); //** El componente esta montado, porque efectivamente esta en true, y se esta renderizando la primera vez , que mantenga la referencia, para saber si el hook  */
     const [state, setState] = useState({data: null, loading: true, error: null}); //** Este es el estado del state, y con una peticion asincrona cambiamos el estado */
 
-    useEffect( () => { //** Solo hazlo cuando se carge por primera vez, es un seguro al programa (1), pero cuando se desmonte, osea que haga el return el efecto se desmonte , entonces quiero cambiar el valor de ese isMountea.current = falso, hasta que lo vuelvan a llamar */
+    useEffect( () => { //** Solo hazlo cuando se carge por primera vez, es un seguro al programa (1), pero cuando se desmonte, osea que haga el return el efecto se desmonte, entonces quiero cambiar el valor de ese isMountea.current = falso, hasta que lo vuelvan a llamar */
         return () => {
             isMounted.current = false;
         }
@@ -29,14 +30,13 @@ export const useFetch = ( url ) => { //** Aqui pedimos el url, y cuando lo recib
                     });
                 }
             })
-            .catch( () => {
+            .catch( () => { //** Aqui cargamos cuando no se pueda cargar */
                 setState({
                     loading: false,
                     data: null,
                     error: 'No se pudo cargar la info'
                 })
             })
-
     },[url])
 
     return state; //** Retornamos el state y esta regresando solo el objeto, y ahora solo esta regresando el state */
