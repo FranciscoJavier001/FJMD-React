@@ -17,7 +17,7 @@ export const CallbackHook = () => {
     
     useEffect( () => { //** El efecto tiene una dependencia y esta dependencia es la funcion, por eso es recomendable usar el useCallback porque de esta manera, esta funcion no esta cambiando, pero si no lo hicieramos con el useCallback esta funcion se dispararia cada vez que se renderize o se vuelva a construir esta funcion */
         // ???
-    }, [increment] )
+    }, [increment] ) //** Entre corchetes esta la dependencia, para que sepa React que no ha cambiado y no se vuelva a renderizar o construir la funcion */
 
 
     return (
