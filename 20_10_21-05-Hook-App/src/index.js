@@ -12,12 +12,12 @@ import ReactDOM from 'react-dom';
 // import { Memorize } from './components/06-memos/Memorize';
 // import { MemoHook } from './components/06-memos/MemoHook';
 // import { CallbackHook } from './components/06-memos/CallbackHook';
-import { Padre } from './components/07-tarea-memo/Padre';
-// import { TodoApp } from './components/08-useReducer/TodoApp';
+// import { Padre } from './components/07-tarea-memo/Padre';
+import { TodoApp } from './components/08-useReducer/TodoApp';
 // import { MainApp } from './components/09-useContext/MainApp';
 
 ReactDOM.render( //** Esto ya viene en el Index, solo le cambio el nombre con el cual voy a trabajar */
-    <Padre/>,
+    <TodoApp/>,
   document.getElementById('root')
 );
 
