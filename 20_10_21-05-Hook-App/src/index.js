@@ -20,5 +20,3 @@ ReactDOM.render( //** Esto ya viene en el Index, solo le cambio el nombre con el
     <TodoApp/>,
   document.getElementById('root')
 );
-
-
