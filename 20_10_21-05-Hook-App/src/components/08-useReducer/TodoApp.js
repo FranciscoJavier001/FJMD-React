@@ -35,7 +35,7 @@ export const TodoApp = () => {
     }
 
     const handleToggle = ( todoId ) =>{ //** Recibe el todoId que es donde quiero hacer el cambio y ponerle la linea*/
-        dispatch({
+        dispatch({ //** El dispatch se puede mandar a componentes hijos tambien */
             type: 'toggle',
             payload: todoId
         });
