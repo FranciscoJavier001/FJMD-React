@@ -1,3 +1,4 @@
+//** Cuando sea un estado simple y no haya mucho que cambiar podemos utilizar el useState, y si es grande usamos un reducer */
 //******************************/ dispatch signific envio
 // Imporaciones que se pueden mandar llamar desde aqui
 
