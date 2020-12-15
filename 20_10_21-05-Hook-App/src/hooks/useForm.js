@@ -5,7 +5,7 @@ export const useForm = ( initialState = {} ) => { /** useForm que recibe un obje
     
     const [values, setValues] = useState(initialState);
 
-    const reset = () => {
+    const reset = () => { //** Con esto borramos los formularios, es decir el input donde se escribe texto */
         setValues( initialState );
     }
 

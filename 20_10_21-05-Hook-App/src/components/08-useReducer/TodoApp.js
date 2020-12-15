@@ -10,8 +10,8 @@ import { TodoAdd } from './TodoAdd';
 import './styles.css';
 
 //** Funcion de flecha que no recibe parametros, pero si las instrucciones que vienen despues, que establece el nuevo estado de los todos en el todoReducer */
-const init = () => {
-    return JSON.parse(localStorage.getItem('todos')) || []; //** Analiza un objeto, y lo transforma en el estado actual, se puso arriba porque es una funcion que se usa en el useEffect (que esta quiere decir "haz el cambio"), que ya se definio abajo y si esta null no regresa nada (pero creo que eso es mas para evitar conflictos), el JSON.parse nos devuelve lo wue tiene dentro el arreglo, por so pusimos que en caso de or nos devuelva el arreglo vacio */
+const init = () => { //** Con esto regresamos la info que existe en el localStorage, es decir, abajo lo declaramos para que ahi se metieran y aqui los guardamos */
+    return JSON.parse(localStorage.getItem('todos')) || []; //** Analiza un objeto, y lo transforma en el estado actual, se puso arriba porque es una funcion que se usa en el useEffect (que esta quiere decir "haz el cambio"), que ya se definio abajo y si esta null no regresa nada (pero creo que eso es mas para evitar conflictos), el JSON.parse nos devuelve lo wue tiene dentro el arreglo, por so pusimos que en caso de or nos devuelva el arreglo vacio , no lo vas a creer, el parse me regresa lo que existe en la lista*/
 }
 
 // Esto se importa desde todoReducer, estas son las acciones que viene en el Case
@@ -21,7 +21,7 @@ export const TodoApp = () => {
 
     // Va a disparar un callback (que es una funcion que recibe como argumento otra funcion y la ejecuta), si los todos cambian eso significa que vamos a volver a ejecutar la funcion del localStorage y eso es lo que hace el useEffect 
     useEffect( ()=> {
-        localStorage.setItem('todos', JSON.stringify( todos ) ); /** Este va a guadar en el LocalStorage cualquier cambio que pase en los todos de la constante de abajo, y el JSON.stringyfy los convierte en strings */ 
+        localStorage.setItem('todos', JSON.stringify( todos ) ); /** Este va a guadar en el LocalStorage cualquier cambio que pase en los todos de la constante de abajo, y el JSON.stringyfy los convierte en strings, localStorage solo guarda strings */ 
     }, [todos]); //** Como los todos cambiaron, entonces se actualizan y vuelve a iniciar la instruccion */
 
     
