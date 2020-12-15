@@ -55,7 +55,7 @@ export const TodoApp = () => {
             <h1>TodoApp ( { todos.length } ) </h1>  {/* Aqui es el length que esta en el titulo que cabia segun los todos que tenga inscritos */}
             <hr /> {/* Linea */}
 
-            {/* Estas con las clases de bootstrap */}
+            {/* Estas con las clases de bootstrap, recuerda el row es para hacer dicision de renglones y el col es para la division de la pantalla */}
             <div className="row"> 
                 <div className="col-7">
 
