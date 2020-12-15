@@ -31,7 +31,7 @@ export const TodoApp = () => {
             type: 'delete', 
             payload: todoId 
         }
-        dispatch( action ); /** Aqui mandamos la nueva accion que se hizo arriba pero ya guardada y lanzada pero ahora como el init nuevo! */
+        dispatch( action ); /** Aqui mandamos la nueva accion que se hizo arriba pero ya guardada y lanzada pero ahora como el init nuevo!, recuerda que esta la ponemos afuera para que se haga el disparo de la accion de lo que hagamos */
     }
 
     const handleToggle = ( todoId ) =>{ //** Recibe el todoId que es donde quiero hacer el cambio y ponerle la linea*/
@@ -43,7 +43,7 @@ export const TodoApp = () => {
 //******************************/
 // crear nueva funcion que se llame handleAddTodo que sea una funcion de flecha que va a recibir un nuevo todo que deberia ser un objeto 
     const handleAddTodo = ( newTodo ) => { 
-        dispatch({ //** Este es el objeto que crea el action  */
+        dispatch({ //** Este es el objeto que crea el action, osea es el disparo de lo nuevo */
             type: 'add',
             payload: newTodo
         });
