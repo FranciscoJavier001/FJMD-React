@@ -23,7 +23,8 @@ export const todoReducer = ( state = [], action ) => {
                     : todo //** si son diferentes solamente voy a retornar el todo */
             );
         
-                    case 'toggle-old': //** map barre cada uno de los elementos del arreglo que seria el state y debe de retornar un valor, lo que sea que retorne la funcion o el callback de aqui adentro sera el nuevo valor que va atener cada uno de los elementos de ese state  */
+            //** Hace lo mismo que el de arriba, que solo se llama toggle */
+            case 'toggle-old': //** map barre cada uno de los elementos del arreglo que seria el state y debe de retornar un valor, lo que sea que retorne la funcion o el callback de aqui adentro sera el nuevo valor que va atener cada uno de los elementos de ese state  */
             return state.map( todo => {//** aqui voy a tener un todo  */
 
                 if ( todo.id === action.payload ) { //** action.payload va a venir el id del mismo - si el todo.id es exactamente igual al accion.payload significa que hay que cambiar este elemento  */
