@@ -19,7 +19,7 @@ export const TodoApp = () => {
 
     const [ todos, dispatch ] = useReducer(todoReducer, [], init); //** El useReducer, maneja el todoReducer que aqui lo importamos, maneja un arreglo con el state actual, y que tiene como estado inicial el init, y los todos que son las acciones actuales y el dispatch, que son las acciones hacia mi reducer /*
 
-    // Va a disparar un callback (que es una funcion que recibe como argumento otra funcion y la ejecuta), si los todos cambian eso significa que vamos a volver a ejecutar la funcion del localStorage y eso es lo que hace el useEffect 
+    // Va a disparar un callback (que es una funcion que recibe como argumento otra funcion y la ejecuta), si los todos cambian eso significa que vamos a volver a ejecutar la funcion del localStorage y eso es lo que hace el useEffect, useEffect actualiza los cambios y los muestra en el DOM
     useEffect( ()=> {
         localStorage.setItem('todos', JSON.stringify( todos ) ); /** Este va a guadar en el LocalStorage cualquier cambio que pase en los todos de la constante de abajo, y el JSON.stringyfy los convierte en strings, localStorage solo guarda strings */ 
     }, [todos]); //** Como los todos cambiaron, entonces se actualizan y vuelve a iniciar la instruccion */

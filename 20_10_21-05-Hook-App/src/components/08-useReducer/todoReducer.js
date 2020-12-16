@@ -1,4 +1,5 @@
 //** Aqui creamos la funcion todoReducer, que la van a importar en el TodoApp */
+//** Aqui ponemos como queremos que interactue con el DOM */
 
 //** todoReducer tiene una funcion que recibe parametros, el state es el arreglo actual y el action sigue las instrucciones que viene a continuacion en el todoApp */
 export const todoReducer = ( state = [], action ) => { 
@@ -11,7 +12,7 @@ export const todoReducer = ( state = [], action ) => {
 
         case 'delete': //** En caso de que el usuario en el TodoApp *///** Este el de borrar, y vamos a hacer un filter que va a regresar un nuevo arreglo del state que cumplan una condicion */
 
-            return state.filter( todo => todo.id !== action.payload ); // 123123123 //** Esto nos dice que el Todo sea diferente al todo.id que quiero borrar, que sea diferente al action.payload (este es donde se guardan las cosas que se van a cambiar porque este cambio el estado a uno nuevo con el payload), mira hay te va mejor la sentencia - En cas*/
+            return state.filter( todo => todo.id !== action.payload ); // 123123123 //** Esto nos dice que el Todo sea diferente al todo.id que quiero borrar, que sea diferente al action.payload (este es donde se guardan las cosas que se van a cambiar porque este cambio el estado a uno nuevo con el payload), mira hay te va mejor la sentencia - En caso*/
 
             //** es mas sensillo hacer una funcion que tenga un return implicito con un operador ternario, recuerden que el ternario tiene que regresar dos valores que es lo que se necesita uno que seria la modificacion y el otro en caso de que sea igual y no quiera hacer nada. */
 
