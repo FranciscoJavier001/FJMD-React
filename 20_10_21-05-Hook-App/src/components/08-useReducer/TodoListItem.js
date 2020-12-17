@@ -3,7 +3,7 @@ import React from 'react';
 // Estas son las propTypes que tiene que recibir
 export const TodoListItem = ({ todo, index, handleDelete, handleToggle }) => { 
 
-    return (
+    return ( //** No ocupo ningun fragment <> porque solamente estoy regresando un elemento */
         <li
             key={ todo.id } //** Aqui creamos el key que va a ser el todo.id, que importamos en el TodoList */
             className="list-group-item" //** Clase de bootstrap que hace una lista de grupal */
