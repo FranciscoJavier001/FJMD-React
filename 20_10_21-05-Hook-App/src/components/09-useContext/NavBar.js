@@ -6,18 +6,21 @@ export const NavBar = () => {
     return (
         // Este es etiqueta HTML dstinada para hacer la navegacion
         <nav>
+
         <ul>
         { /* Aqui esta la lista */ } { /* Etiqueta HTML para una lista */ }
         
         <li>
-        <link to = "./"> Home </link>
+        <Link to = "./"> Home </Link>
         </li>
         
         <li>
-        <link to = "./About"> About </link>
+        <Link to = "./about"> About </Link>
         </li>
         
-        <li> Login </li> 
+        <li>
+        <Link to = "./login"> Login </Link>
+        </li> 
 
         </ul> 
         </nav>

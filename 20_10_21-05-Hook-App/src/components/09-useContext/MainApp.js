@@ -1,12 +1,15 @@
 //** Los Routers son SPA */
 
 import React from 'react'
+import { AppRouter } from './AppRouter'
+import { UserContext } from './UserContext'
 
 export const MainApp = () => {
     return (
-        <div>
-        <h1>MainApp</h1>
-        <hr />
-        </div>
+        <UserContext>
+            
+            <AppRouter />
+
+        </UserContext>
     )
 }
