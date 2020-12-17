@@ -20,7 +20,6 @@ export const AboutScreen = () => { //** Este lo eportamos al MainApp.js */
                 { JSON.stringify( user, null, 3 ) }
             </pre>
 
-
             <button 
                 className="btn btn-warning"
                 onClick={ handleClick }

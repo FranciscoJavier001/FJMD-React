@@ -13,9 +13,9 @@ export const LoginScreen = () => {
             <hr />
             <button 
                 className="btn btn-primary"
-                onClick={ ()=> setUser({
+                onClick={ ()=> setUser({ //** Esta Funcion llama al setUser */
                     id: 123,
-                    name: 'Fernando'
+                    name: 'Francisco'
                 })}
             >
                 Login

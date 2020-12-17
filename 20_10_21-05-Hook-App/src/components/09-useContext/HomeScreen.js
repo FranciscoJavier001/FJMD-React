@@ -5,9 +5,9 @@ import { UserContext } from './UserContext';
 
 export const HomeScreen = () => {
 
-    const { user } = useContext(UserContext);
+    const {user} = useContext(UserContext); //** El segundo es la instancia donde se va a buscar */
 
-    // console.log( user );
+    console.log( user );
 
     return (
         <div>
