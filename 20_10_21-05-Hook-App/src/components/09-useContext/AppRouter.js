@@ -22,6 +22,7 @@ export const AppRouter = () => { //** Exportamos AppRouter a MainApp.js */
             {/* El Div lo ponemos porque este va manejar toda la info que va a tener el Router (rutas) */}
             <div>
                 
+                {/* Esta es la barra de navegacion, que la definimos en el NavBar, asi es como se declaran los componentes que se van a renderizar, por eso esta la ponemos arriba */}
                 <NavBar />
 
                 <div className="container">
@@ -33,6 +34,7 @@ export const AppRouter = () => { //** Exportamos AppRouter a MainApp.js */
                         <Route exact path="/about" component={ AboutScreen } />
                         <Route exact path="/login" component={ LoginScreen } />
                         
+                        {/* Asi delclaramos que si no encuentra ninguno, se valla directamente al HomeScreen */}
                         <Redirect to="/" />
 
                     </Switch>
