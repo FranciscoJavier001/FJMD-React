@@ -17,6 +17,6 @@ import ReactDOM from 'react-dom';
 import { MainApp } from './components/09-useContext/MainApp';
 
 ReactDOM.render( //** Esto ya viene en el Index, solo le cambio el nombre con el cual voy a trabajar */
-    <MainApp />,
+    <MainApp/>,
   document.getElementById('root')
 );
