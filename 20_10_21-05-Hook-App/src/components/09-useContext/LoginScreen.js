@@ -5,12 +5,17 @@ import { UserContext } from './UserContext';
 
 export const LoginScreen = () => {
 
-    const { setUser } = useContext( UserContext );
+    const { user, setUser } = useContext( UserContext );
 
     return (
         <div>
             <h1>LoginScreen</h1>
             <hr />
+
+            <pre>
+                { JSON.stringify( user, null, 3 ) }
+            </pre>
+
             <button 
                 className="btn btn-primary"
                 onClick={ ()=> setUser({ //** Esta Funcion llama al setUser */

@@ -3,7 +3,7 @@
 import React, { useContext } from 'react'
 import { UserContext } from './UserContext'
 
-export const AboutScreen = () => { //** Este lo eportamos al MainApp.js */
+export const LogoutScreen = () => { //** Este lo eportamos al MainApp.js */
 
     const { user, setUser } = useContext( UserContext );
 
@@ -13,7 +13,7 @@ export const AboutScreen = () => { //** Este lo eportamos al MainApp.js */
 
     return (
         <div>
-            <h1>AboutScreen</h1>
+            <h1>Logout</h1>
             <hr />
 
             <pre>

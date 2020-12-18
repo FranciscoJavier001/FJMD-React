@@ -15,8 +15,8 @@ export const NavBar = () => {
             <div className="navbar-nav">
               {/* NavLink me permite poner clases, como el active que me permite que se ponga en color blanco donde estoy */}
               <NavLink exact activeClassName="active" to="/" className="nav-item nav-link">Home</NavLink> 
-              <NavLink exact activeClassName="active" to="/about" className="nav-item nav-link">About</NavLink>
               <NavLink exact activeClassName="active" to="/login" className="nav-item nav-link">Login</NavLink>
+              <NavLink exact activeClassName="active" to="/logout" className="nav-item nav-link">Logout</NavLink>
             </div>
           </div>
       </nav>

@@ -12,7 +12,7 @@ import {
 
 import { NavBar } from './NavBar';
 
-import { AboutScreen } from './AboutScreen';
+import { LogoutScreen } from './LogoutScreen';
 import { LoginScreen } from './LoginScreen';
 import { HomeScreen } from './HomeScreen';
 
@@ -25,14 +25,15 @@ export const AppRouter = () => { //** Exportamos AppRouter a MainApp.js */
                 {/* Esta es la barra de navegacion, que la definimos en el NavBar, asi es como se declaran los componentes que se van a renderizar, por eso esta la ponemos arriba */}
                 <NavBar />
 
+                {/* Esto va a estar en el container, para verlo mas bonito */}
                 <div className="container">
                     {/* El Switch va a renderizar el componente selecciondo del path, por eso el navBar aparece arriba */}
                     <Switch>
                         {/* Ruta a la cual va a entrar y el que va a renderizar se pone en el component, adentro vemos que es lo que va a renderizar, osea dentro del componente, recuerda, hay que ponerle que sea exact */}
                         <Route exact path="/" component={ HomeScreen } />
                         
-                        <Route exact path="/about" component={ AboutScreen } />
                         <Route exact path="/login" component={ LoginScreen } />
+                        <Route exact path="/logout" component={ LogoutScreen } />
                         
                         {/* Asi delclaramos que si no encuentra ninguno, se valla directamente al HomeScreen */}
                         <Redirect to="/" />
