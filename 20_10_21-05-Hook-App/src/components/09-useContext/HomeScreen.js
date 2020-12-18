@@ -5,9 +5,9 @@ import { UserContext } from './UserContext';
 
 export const HomeScreen = () => {
 
-    const {user} = useContext(UserContext); //** El segundo es la instancia donde se va a buscar */
+    const {user} = useContext(UserContext); //** El segundo es la instancia donde se va a buscar, y el user ya lo desestructuramos directamente desde el useState que tiene dentro el valor de user */
 
-    console.log( user );
+    // console.log( user );
 
     return (
         <div>
