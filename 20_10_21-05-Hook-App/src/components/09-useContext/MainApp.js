@@ -9,13 +9,14 @@ export const MainApp = () => {
 
     const [user, setUser] = useState({});
 
-    return (
+    return ( 
         <UserContext.Provider value={{
             user,
             setUser
         }}>
 
-            <AppRouter />
+            {/* Entiendo, esto es para ver lo que vamos a renderizar desde el AppRouter y por default es el HomeScreen */}
+            <AppRouter /> 
 
         </UserContext.Provider>
     )

@@ -4,7 +4,7 @@
 
 import React from 'react';
 import {
-    BrowserRouter as Router,
+    BrowserRouter as Router, //** Asi le cambiamos el nombre, con el "as" */
     Switch,
     Route,
     Redirect,
@@ -19,6 +19,7 @@ import { HomeScreen } from './HomeScreen';
 export const AppRouter = () => { //** Exportamos AppRouter a MainApp.js */
     return (
         <Router>
+            {/* El Div lo ponemos porque este va manejar toda la info que va a tener el Router (rutas) */}
             <div>
                 
                 <NavBar />
@@ -26,7 +27,7 @@ export const AppRouter = () => { //** Exportamos AppRouter a MainApp.js */
                 <div className="container">
                     {/* El Switch va a renderizar el componente selecciondo del path, por eso el navBar aparece arriba */}
                     <Switch>
-                        {/* Ruta a la cual va a entrar y el que va a renderizar se pone en el component*/}
+                        {/* Ruta a la cual va a entrar y el que va a renderizar se pone en el component, adentro vemos que es lo que va a renderizar, osea dentro del componente, recuerda, hay que ponerle que sea exact */}
                         <Route exact path="/" component={ HomeScreen } />
                         
                         <Route exact path="/about" component={ AboutScreen } />
