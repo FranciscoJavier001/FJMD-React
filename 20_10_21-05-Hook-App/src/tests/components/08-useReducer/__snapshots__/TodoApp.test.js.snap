@@ -7,7 +7,9 @@ exports[`Pruebas en <TodoApp /> debe de mostrarse correctamente 1`] = `
     0
      ) 
   </h1>
+    
   <hr />
+   
   <div
     className="row"
   >

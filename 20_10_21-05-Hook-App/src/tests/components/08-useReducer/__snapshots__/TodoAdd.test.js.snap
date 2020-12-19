@@ -3,7 +3,7 @@
 exports[`Pruebas en <TodoAdd /> debe de mostrarse correctamente 1`] = `
 <Fragment>
   <h4>
-    Agregar TODO
+    Agregar Tarea
   </h4>
   <hr />
   <form
@@ -14,7 +14,7 @@ exports[`Pruebas en <TodoAdd /> debe de mostrarse correctamente 1`] = `
       className="form-control"
       name="description"
       onChange={[Function]}
-      placeholder="Aprender ..."
+      placeholder="Ingresa alguna Actividad ..."
       type="text"
       value=""
     />

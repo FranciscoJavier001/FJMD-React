@@ -8,8 +8,8 @@ exports[`Pruebas en <HomeScreen /> debe de mostrarse correctamente 1`] = `
   <hr />
   <pre>
     {
-   "name": "Fernando",
-   "email": "fernando@gmail.com"
+   "name": "Francisco",
+   "email": "francisco@gmail.com"
 }
   </pre>
 </div>

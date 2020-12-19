@@ -27,7 +27,7 @@ describe('Pruebas en <LoginScreen />', () => {
 
         expect( setUser ).toHaveBeenCalledWith({
             id: 123,
-            name: 'Fernando'
+            name: 'Francisco'
         })
         
     });

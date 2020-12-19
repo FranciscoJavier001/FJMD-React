@@ -8,7 +8,7 @@ describe('Pruebas en <AppRouter />', () => {
     
     const user = {
         id: 1,
-        name: 'Fernando'
+        name: 'Francisco'
     }
 
     const wrapper = mount( 
