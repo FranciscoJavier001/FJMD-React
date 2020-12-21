@@ -25,7 +25,7 @@ describe('Pruebas en useCounter', () => {
 
     })
     
-    test('debe de incrementar el counter en 1', () => {
+    test('debe de incrementar el counter en 1', () => { //** Pruebas en las funciones */
         
         const { result } = renderHook( () => useCounter(100) );
         const { increment } = result.current;
