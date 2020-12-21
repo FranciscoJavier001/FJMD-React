@@ -17,7 +17,7 @@ describe('Pruebas en useCounter', () => {
 
     })
 
-    test('debe de tener el counter en 100', () => {
+    test('debe de tener el counter en 100', () => { //** Iniciamos el contador */
         
         const { result } = renderHook( () =>  useCounter(100) );
 
