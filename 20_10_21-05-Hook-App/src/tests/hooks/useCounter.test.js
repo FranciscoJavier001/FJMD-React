@@ -40,7 +40,7 @@ describe('Pruebas en useCounter', () => {
 
     })
 
-    test('debe de decrementar el counter en 1', () => {
+    test('debe de decrementar el counter en 1', () => { //** Prueba Decremento */
         
         const { result } = renderHook( () => useCounter(100) );
         const { decrement } = result.current;
