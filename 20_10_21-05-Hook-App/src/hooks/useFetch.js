@@ -31,7 +31,7 @@ export const useFetch = ( url ) => { //** Aqui pedimos el url, y cuando lo recib
                 }
             })
             .catch( () => { //** Aqui cargamos cuando no se pueda cargar */
-                setState({
+                setState({ //** Con este error vamos a crear el mismo objeto con los parametros iguales alos de arriba, pero que me avise el error con un comentario */
                     loading: false,
                     data: null,
                     error: 'No se pudo cargar la info'
