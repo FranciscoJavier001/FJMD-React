@@ -4,7 +4,6 @@
 //** todoReducer tiene una funcion que recibe parametros, el state es el arreglo actual y el action sigue las instrucciones que viene a continuacion en el todoApp */
 export const todoReducer = ( state = [], action ) => { 
 
-
     // Crear las acciones y mandarselas al reducer, el reducer las ejecuta, me regresa un nuevo estado y como estoy trabajando en base a mi useReducer este se va a encargar de redibujar lo que hay que redibujar 
     switch ( action.type ) { /** Wey, esto ya es el boton, con toda la logica para que agrege una nueva tarea */
         case 'add':
