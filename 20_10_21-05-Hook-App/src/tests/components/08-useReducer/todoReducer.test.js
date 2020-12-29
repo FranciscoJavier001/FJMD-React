@@ -27,36 +27,29 @@ describe('Pruebas en todoReducer', () => { //** Descripcion e importamos el todo
         expect( state ).toEqual( [...demoTodos, newTodo ] ); //** Regresamos el nuevo state y debe ser igual a los todos que son 2 y agregamos el nuevo */
     });
 
-    test('debe de borrar un TODO', () => {
+    test('debe de borrar un TODO', () => { //** Para borrar, mandamos el id del Todo */
         // action.payload = ID del TODO
-        const action = {
+        const action = { //** El action va a ser igual a un objeto el cual tiene el type que va a mandar que va a ser el delete y el payload solo es el id del todo que quiero borrar */
             type: 'delete',
             payload: 1
         }
 
-        const state = todoReducer( demoTodos, action );
+        const state = todoReducer( demoTodos, action ); //** Creamoe el state que va a ser igual al todoReducer, donde mandamos el demoTodos y mandamos la action */
 
-        expect( state.length ).toBe( 1 );
-        expect( state ).toEqual( [ demoTodos[1] ] );
-
-
+        expect( state.length ).toBe( 1 ); //** Ahora esperamos que el state ahora solo sea 1, el tamaño del arreglo */
+        expect( state ).toEqual( [ demoTodos[1] ] ); //** El arreglo va a ser igual a demoTodos y que solo quede el 1, recuerda para objetos el toEqual */
     });
 
-    test('debe de hacer el TOGGLE del TODO', () => {
+    test('debe de hacer el TOGGLE del TODO', () => { //** Cambiar el valor booleano de este a completado */
         
-        const action = {
+        const action = { //** El action debe ser el toggle, para hacer la señalizacion de que ya lo hicimos y cambia su valor booleano a completado */
             type: 'toggle',
             payload: 1
         }
 
-        const state = todoReducer( demoTodos, action );
+        const state = todoReducer( demoTodos, action ); //** Recuerda, este es el arreglo de los 2 elementos que hicimos para las pruebas */
 
-        expect( state[0].done ).toBe( true );
-        expect( state[1] ).toEqual( demoTodos[1]  );
-        
+        expect( state[0].done ).toBe( true ); //** El primer elemento.done ahora este en true porque ya esta completado */
+        expect( state[1] ).toEqual( demoTodos[1]  ); //** Que el segundo elemento sea igual asi como este, para asegurarme que el segundo no cambio, el segundo elemento es igual y no se ha cambiado */
     });
-    
-    
-
-
 })
