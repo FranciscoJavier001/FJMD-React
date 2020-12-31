@@ -16,7 +16,7 @@ export const todoReducer = ( state = [], action ) => {
             //** es mas sensillo hacer una funcion que tenga un return implicito con un operador ternario, recuerden que el ternario tiene que regresar dos valores que es lo que se necesita uno que seria la modificacion y el otro en caso de que sea igual y no quiera hacer nada. */
 
         case 'toggle':
-            return state.map( todo => //** map barre cada uno de los elementos del arreglo que seria el state y debe de retornar un valor, lo que sea que retorne la funcion o el callback de aqui dentro sera el nuevo valor que va a tener cada uno de los elementos de ese state - aqio vo a tener un todo*/
+            return state.map( todo => //** map barre cada uno de los elementos del arreglo qu,me seria el state y debe de retornar un valor, lo que sea que retorne la funcion o el callback de aqui dentro sera el nuevo valor que va a tener cada uno de los elementos de ese state - aqio vo a tener un todo*/
                 ( todo.id === action.payload ) //** action.payload va a venir el id del mismo - si el todo.id es exactamente igual al accion.payload significa que hay que cambiar este elemento  */
                     ? { ...todo, done: !todo.done } //** el operador spreed, que me regresa el arreglo como esta actualmente pero el cambio se viene hasta abajo y lo unico que me interesa cambiar es el todo.done la propiedad done va a tener el valor del todo.done pero quiero hacer la negacion para que sean diferentes */
                     : todo //** si son diferentes solamente voy a retornar el todo */
