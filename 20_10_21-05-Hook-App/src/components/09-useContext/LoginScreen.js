@@ -3,7 +3,7 @@
 import React, { useContext } from 'react';
 import { UserContext } from './UserContext';
 
-export const LoginScreen = () => {
+export const LoginScreen = () => { //** Para las pruebas siempre hay que confirmar que no reciba ningun argumento */
 
     const { user, setUser } = useContext( UserContext );
 
