@@ -65,3 +65,69 @@ exports[`Pruebas en <AppRouter /> debe de mostrarse correctamente 1`] = `
   </div>
 </div>
 `;
+
+exports[`Pruebas en <AppRouter/> debe de mostrarse correctamente 1`] = `
+<div>
+  <nav
+    className="navbar navbar-expand-lg navbar-dark bg-dark"
+  >
+    <a
+      className="navbar-brand"
+      href="/"
+      onClick={[Function]}
+    >
+      useContext
+    </a>
+    <div
+      className="collapse navbar-collapse"
+      id="navbarNavAltMarkup"
+    >
+      <div
+        className="navbar-nav"
+      >
+        <a
+          aria-current="page"
+          className="nav-item nav-link active"
+          href="/"
+          onClick={[Function]}
+          style={Object {}}
+        >
+          Home
+        </a>
+        <a
+          aria-current={null}
+          className="nav-item nav-link"
+          href="/login"
+          onClick={[Function]}
+        >
+          Login
+        </a>
+        <a
+          aria-current={null}
+          className="nav-item nav-link"
+          href="/logout"
+          onClick={[Function]}
+        >
+          Logout
+        </a>
+      </div>
+    </div>
+  </nav>
+  <div
+    className="container"
+  >
+    <div>
+      <h1>
+        HomeScreen
+      </h1>
+      <hr />
+      <pre>
+        {
+   "id": 1,
+   "name": "Francisco"
+}
+      </pre>
+    </div>
+  </div>
+</div>
+`;
