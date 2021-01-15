@@ -8,4 +8,3 @@ export const HeroesApp = () => {
         </div>
     )
 }
-iusguycagyugh
