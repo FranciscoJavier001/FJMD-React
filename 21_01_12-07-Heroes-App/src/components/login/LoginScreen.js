@@ -17,7 +17,7 @@ export const LoginScreen = ({ history }) => { //** Vamos a usar la desestructura
                 className="btn btn-primary"
                 onClick={ handleLogin } //** Este metodo hay que declararlo arriba, para que no nos de ninguna falla */
             >
-                Login
+                Login de usuario
             </button>
         </div>
     )
