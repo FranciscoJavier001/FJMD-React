@@ -2,7 +2,7 @@
 import React from 'react'
 import { getHeroesByPublisher } from '../../selectors/getHeroesByPublisher'
 
-export const HeroList = ( publisher ) => { //** Vamos a recibir el publisher en la funcion de flecha, este lo recibimos de data/heroes.js y publisher es quien publica la historieta, puede ser dc o marvel */
+export const HeroList = ({publisher}) => { //** Vamos a recibir el publisher en la funcion de flecha, este lo recibimos de data/heroes.js y publisher es quien publica la historieta, puede ser dc o marvel */
 
     //** Aqui utilizamos nuestro selector y como no pensamos en mutarlo podemos crear la contante heroes y que sea getHeroesByPublisher y mandamos el publisher y ya tengo la data */
 
