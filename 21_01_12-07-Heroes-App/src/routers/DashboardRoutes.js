@@ -12,7 +12,8 @@ export const DashboardRoutes = () => {
         <>
             <Navbar />
 
-            <div>
+            {/* El container es una division de un contenedor */}
+            <div className="container mt-2"> 
                 <Switch>
                     {/* Aqui tenemos cual queremos renderizar segun la condicion y si no tiene pues nos manda al redirect */}
                     {/* Ahora vamos a definir las rutas en el DashboardRoutes */}
