@@ -12,7 +12,8 @@ export const HeroList = ({ publisher }) => { //** Vamos a recibir el publisher e
     return (
         //** Voy a barrer cada uno de los elementos y mostrarlos en pantalla a ver si funciona, voy a cambiar esto por un div, para barrer los heroes.map y parentesis para retornar un objeto y luego voy a colocar un HeroCard y el key eria igual al heroe.id y dentro del li voy a colocar solo el nombre del heroe.superheroe */
         // Esto lo vamos a poner ahora como un div y le vamos a poner una clase de bootstrap
-        <div className="card">
+        //** No quiere detectar las columnas de bootstrap, hay que analizar que pasa */
+        <div className="card-columns"> 
             {
                 heroes.map( hero => (
                     <HeroCard key={ hero.id }
