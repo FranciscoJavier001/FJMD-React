@@ -24,18 +24,21 @@ export const HeroCard = ({
           <div className="card-body">
             <h5 className="card-title"> {superhero}</h5>
             <p className="card-text">{alter_ego}</p>
-            {alter_ego !== characters && ( //** Solamente si el alter_ego es diferente al caracter entonces que si se renderize eso */
-              <p className="card-text">{characters}</p>
-            )}
+            { ( alter_ego !== characters ) && //** Solamente si el alter_ego es diferente al caracter entonces que si se renderize eso */
+              <p className="card-text">{ characters }</p>
+            }
             <p className="card-text">
               <small className="text-muted"> {first_appearance} </small>
             </p>
+            
             <Link to={ `./hero/${ id }`}>
                 Mas...
             </Link>
+
           </div>
+
         </div>
       </div>
     </div>
-  );
-};
+  )
+}

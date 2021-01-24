@@ -20,7 +20,7 @@ export const DashboardRoutes = () => {
                     {/* En esta ruta el componente que voy a mostrar va a ser el MarvelScreen */}
                     <Route exact path="/marvel" component={ MarvelScreen } />
                     {/* Este componente va a recibir algo por el url y asi se especifica */}
-                    <Route exact path="/heroe/:heroeId" component={ HeroScreen } />
+                    <Route exact path="/hero/:heroeId" component={ HeroScreen } />
                     {/* Este es el de DC y no recibe ningun argumento */}
                     <Route exact path="/dc" component={ DcScreen } />
 
@@ -28,6 +28,7 @@ export const DashboardRoutes = () => {
                     <Redirect to="/marvel" />
                 </Switch>
             </div>
+
         </>
     )
 }
