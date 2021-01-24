@@ -25,5 +25,3 @@ export const HeroList = ({ publisher }) => { //** Vamos a recibir el publisher e
         </div>
     )
 }
-
-//** Excelente dia, descartamos compromisos */
