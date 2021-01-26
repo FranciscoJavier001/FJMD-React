@@ -2,7 +2,7 @@ import React from 'react'
 import { useParams, Redirect } from 'react-router-dom'
 import { getHeroById } from '../../selectors/getHeroById';
 
-export const HeroScreen = () => {
+export const HeroScreen = ({ history }) => {
 
     //** Si quiero extraer el HeroScreen hay un customHook que se llama useParams, este hook va a extraer los parametros que vallan por el url y los vamos a obtener como params, si necesitamos el heroeId pues vamos a desestructurar el heroeId */
     const { heroeId } = useParams();
@@ -13,6 +13,17 @@ export const HeroScreen = () => {
     //** Si el heroe no existe voy a mandar el Redirect que viene de react-router-dom y lo redirecciono a la pagina de marvel*/
     if ( !hero ) {
         return <Redirect to="/" />
+    }
+
+    //** Asi creamos funcionabilidades de los botones */
+    const handleReturn = () => { //** No se recibe ningun argumento y este va a ser la funcion del boton */
+
+        //** Asi revisamos el length para hacer una validacion*/
+        if ( history.length <=2 ) {
+            history.push('/');
+        } else {
+            history.goBack();
+        }
     }
     
     //** Voy a desestructuras las propiedades del heroe y las voy a extraer en el hero */
@@ -25,8 +36,35 @@ export const HeroScreen = () => {
     } = hero;
 
     return (
-        <div>
-            <h1>HeroScreen</h1>
+        //** Cuando le ponemos en mostrar mas, nos pone la imagen del superheroe en una nueva pagina */
+        <div className="row mt-5">
+            <div className="col-4">
+                <img
+                    src={ `../assets/heroes/${ heroeId }.jpg` }
+                    alt={ superhero } //** Lo que se muestra en caso que no se pueda mostrar la imagen */
+                    className="img-thumbnail"
+                    />
+            </div>
+
+            <div className="col-8">
+                <h3>{ superhero }</h3>
+                <ul className="list-group list-group-flush">
+                    <li className="list-group-item"> <b> Alter Ego: </b> { alter_ego } </li>
+                    <li className="list-group-item"> <b> Publisher: </b> { publisher } </li>
+                    <li className="list-group-item"> <b> First Appearance: </b> { first_appearance } </li>
+                </ul>
+
+                <h5> Characters </h5>
+                <p> { characters } </p>
+
+                <button 
+                className="btn btn-outline-info"
+                onClick={handleReturn}
+                >
+                    Return
+                </button>
+
+            </div>
         </div>
     )
 }
