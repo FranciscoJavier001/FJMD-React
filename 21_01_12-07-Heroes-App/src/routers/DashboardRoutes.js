@@ -6,6 +6,7 @@ import { Redirect, Route, Switch } from 'react-router-dom'
 import { MarvelScreen } from '../components/marvel/MarvelScreen'
 import { HeroScreen } from '../components/heroes/HeroScreen'
 import { DcScreen } from '../components/dc/DcScreen'
+import { SearchScreen } from '../components/search/SearchScreen'
 
 export const DashboardRoutes = () => {
     return (
@@ -23,6 +24,9 @@ export const DashboardRoutes = () => {
                     <Route exact path="/hero/:heroeId" component={ HeroScreen } />
                     {/* Este es el de DC y no recibe ningun argumento */}
                     <Route exact path="/dc" component={ DcScreen } />
+                    {/* Esta es la ruta de busquedas */}
+                    <Route exact path="/search" component={ SearchScreen } />
+
 
                     {/* Si no viene nada, entonces va a redirecionar automaticamente a marvel */}
                     <Redirect to="/marvel" />
