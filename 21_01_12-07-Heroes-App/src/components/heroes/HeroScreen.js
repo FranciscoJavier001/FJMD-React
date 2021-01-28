@@ -11,7 +11,6 @@ export const HeroScreen = ({ history }) => {
     //** Aqui tambien voy a utilizar el useMemo para que no haya cambios, si no hay cambios en el componente */
     const hero = useMemo(() => getHeroById( heroeId ), [ heroeId ]); //** Lo primero es la funcion que vamos a llamar y lo segundo es lo que se va a disparar cada vez que el heroeId sea diferente, y quite esta linea de abajo que es lo mismo, pero aqui con el useMemo "const hero = getHeroById( heroeId );" */
     
-    
     //** Si el heroe no existe voy a mandar el Redirect que viene de react-router-dom y lo redirecciono a la pagina de marvel*/
     if ( !hero ) {
         return <Redirect to="/" />
@@ -44,11 +43,11 @@ export const HeroScreen = ({ history }) => {
                 <img
                     src={ `../assets/heroes/${ heroeId }.jpg` }
                     alt={ superhero } //** Lo que se muestra en caso que no se pueda mostrar la imagen */
-                    className="img-thumbnail"
+                    className="img-thumbnail animate__animated animate__fadeInLeft"
                     />
             </div>
 
-            <div className="col-8">
+            <div className="col-8 animate__animated animate__fadeIn">
                 <h3>{ superhero }</h3>
                 <ul className="list-group list-group-flush">
                     <li className="list-group-item"> <b> Alter Ego: </b> { alter_ego } </li>
