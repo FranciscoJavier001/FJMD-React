@@ -15,14 +15,15 @@ export const SearchScreen = ({ history }) => { //** Hisory va a estar adentro de
     // console.log(queryString.parse( location.search )); //** Este lo voy a desestructurar por solo lo que ne interesa */
     //** Asi queda */
     const { q = '' } = queryString.parse( location.search ); //** Solamente me interesa el "q" del query */
-    console.log(q);
+    // console.log(q); //** Esto era para ver el query en la consola */
 
-    const heroesFiltered = heroes;
     const [ formValues, handleInputChange ] = useForm({
         searchText: q //** Voy a pasar la "q" como un string vacio y se lo voy a establecer al valor inicial del formulario */
     });
-
+    
     const { searchText } = formValues; //** Vamos a usar la desestructiracion del searchText */
+    
+    const heroesFiltered = heroes; //** Aqui ya tengo la informacion necesaria para procesarlo, lo del query */
 
     const handleSearch = (e) => { //** Tengo que recibir el evento */
         e.preventDefault(); //** Porque es en el formulario, y este sirve para que no se recarge */
