@@ -1,11 +1,11 @@
 //** Este lo hacemos un FC */
-import React from 'react';
+import React, { useMemo } from 'react';
 import queryString from 'query-string'; //** Aqui voy a buscar el queryString */
 
-import { heroes } from '../../data/heroes';
 import { HeroCard } from '../heroes/HeroCard';
 import { useForm } from '../../hooks/useForm';
 import { useLocation } from 'react-router-dom';
+import { getHeroesByName } from '../../selectors/getHeroesByName';
 
 export const SearchScreen = ({ history }) => { //** Hisory va a estar adentro de un push */
 
@@ -23,7 +23,8 @@ export const SearchScreen = ({ history }) => { //** Hisory va a estar adentro de
     
     const { searchText } = formValues; //** Vamos a usar la desestructiracion del searchText */
     
-    const heroesFiltered = heroes; //** Aqui ya tengo la informacion necesaria para procesarlo, lo del query */
+    const heroesFiltered = useMemo(() => getHeroesByName( q ), [q]) //** Usamos el useMemo para memorizar lo que tengamos en la pagina */
+    // const heroesFiltered = getHeroesByName( searchText ); //** Aqui ya tengo la informacion necesaria para procesarlo, lo del query, antes estaba los heroes, pero ahora vamos a cambialo por el filtro de "getHeroesByName" y mando el searchText, vamos a optimizarla con la que tenemos arriba, esto fue lo que mando en function "getHeroesByName( searchText )" y la dependencia que vamos a mandar va a ser el query "[q]", y actualizamos con los q en la function para que se dispare cuando el query cambie */
 
     const handleSearch = (e) => { //** Tengo que recibir el evento */
         e.preventDefault(); //** Porque es en el formulario, y este sirve para que no se recarge */
@@ -65,6 +66,25 @@ export const SearchScreen = ({ history }) => { //** Hisory va a estar adentro de
                 <div className="col-7">
                     <h4> Result </h4>
                     <hr />
+
+                    {/* Aqui vamos a poner que si es un string vacio la persona no ha buscado nada */}
+                    {
+                        (q === '') 
+                        && 
+                        <div className="alert alert-info">
+                            Search a Hero
+                        </div>
+                    }
+
+                    {/* Ahora pongo si el query es diferente a un string vacio y el espacio de los heroes filtrados es igual a 0 entonces voy a poner que no hay ningun heroe con la info del query que estamos buscando, asi ya tenemos controlada la excepcion */}
+                    {
+                        (q !== '') 
+                        && 
+                        <div className="alert alert-danger">
+                            There is no a hero with "{ q }"
+                        </div>
+                    }
+
                     {
                         heroesFiltered.map(hero => (
                             <HeroCard 
