@@ -15,16 +15,18 @@ export const HeroList = ({ publisher }) => { //** Vamos a recibir el publisher e
         // Esto lo vamos a poner ahora como un div y le vamos a poner una clase de bootstrap
         //** No quiere detectar las columnas de bootstrap, hay que analizar que pasa */
         //** Esto ultimo que le puse es una clase de animate.css, donde copie el cdn en el index y ya solo use lo que queria de estilo */
-        <div className="card-columns animate__animated animate__fadeIn"> 
-            {
-                heroes.map( hero => (
-                    <HeroCard
-                    key={ hero.id }
+        <div className="container">
+            <div className="card-columns animate__animated animate__fadeIn"> 
+             {
+                    heroes.map( hero => (
+                        <HeroCard
+                        key={ hero.id }
                         /* Como no se mostraba la informacion voy a mandar el operador spred para mostrar los datos, para extraer cada una de las propiedades del heroe  */
                         { ...hero }
                         />
-                ))
-            }
+                     ))
+                    }
+            </div>
         </div>
     )
 }
