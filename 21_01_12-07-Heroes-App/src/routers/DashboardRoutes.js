@@ -8,9 +8,13 @@ import { HeroScreen } from '../components/heroes/HeroScreen'
 import { DcScreen } from '../components/dc/DcScreen'
 import { SearchScreen } from '../components/search/SearchScreen'
 
-export const DashboardRoutes = () => {
+export const DashboardRoutes = () => { //** Vamos a imprimir las props, para ver la ruta, entonces aqui extraemos el history  */
+
+    // console.log(props);
+    
     return (
         <>
+        {/* El Navbar es un simple componente que esta ahi, no tiene acceso a las props o en este caso al history, porque no es una ruta, es simplemente un componente que es utilizado dentro de una ruta, por consecuencia aqui no tengo acceso al history, entonces el history que lo extraimos arriba se lo vamos a mandar al Navbar */}
             <Navbar />
 
             {/* El container es una division de un contenedor */}
