@@ -14,6 +14,9 @@ export const LoginScreen = ({ history }) => { //** Vamos a usar la desestructura
         //** Tarea.. Del ontext extraer el dispatch y ese dispatch tiene que mandar un action que tenga el tipo del case types.login y case types logout, el objeto que vamos a mandar en el payload de la accion va a ser algo sencillo como name: 'Francisco', es todo lo que necesito en el dispatch, esto deberia de establecerselo al reducer para ver en components en los hooks el logged en true y lo que colocamos en el name, y se va a mantener porque vamos a tomar todo lo que venga en el payload de la accion y tambien la propiedad logged que ya se autentifico */
 
         //** 2. Ahora voy a disparar esa accion, voy a ser el dispatch de un objeto que tiene un type y el types viene de types.login y luego viene el payload: { (y va a ser un objeto que tiene el name y mi nombre)}, y abajo pongo el replace de la ruta (pero ya tengo mi login en un nivel alto de la app) */
+        
+        //** Cambiamos el lugar donde estaba el replace */
+        history.replace('/'); //** Este me hace que cuando le pongo el login, en automatico me meta a la aplicacion */
         dispatch({
             type: types.login,
             payload: {
@@ -21,7 +24,6 @@ export const LoginScreen = ({ history }) => { //** Vamos a usar la desestructura
             }
         });
 
-        history.replace('/'); //** Este me hace que cuando le pongo el login, en automatico me meta a la aplicacion */
     }
 
     return (

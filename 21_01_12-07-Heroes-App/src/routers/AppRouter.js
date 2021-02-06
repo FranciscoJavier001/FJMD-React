@@ -39,5 +39,3 @@ export const AppRouter = () => { //** Esto es un FuntionalComponent comun y corr
     </Router>
     )
 }
-
-// Actualizacion MacOS X
