@@ -81,7 +81,7 @@ export const SearchScreen = ({ history }) => { //** Hisory va a estar adentro de
                         (q !== '') 
                         && 
                         <div className="alert alert-danger">
-                            There is no a hero with "{ q }"
+                            There is not a hero with "{ q }"
                         </div>
                     }
 

@@ -16,7 +16,7 @@ export const LoginScreen = ({ history }) => { //** Vamos a usar la desestructura
         //** 2. Ahora voy a disparar esa accion, voy a ser el dispatch de un objeto que tiene un type y el types viene de types.login y luego viene el payload: { (y va a ser un objeto que tiene el name y mi nombre)}, y abajo pongo el replace de la ruta (pero ya tengo mi login en un nivel alto de la app) */
         
         //** Cambiamos el lugar donde estaba el replace */
-        history.replace('/'); //** Este me hace que cuando le pongo el login, en automatico me meta a la aplicacion */
+        // history.replace('/'); //** Este me hace que cuando le pongo el login, en automatico me meta a la aplicacion */
         dispatch({
             type: types.login,
             payload: {
@@ -24,6 +24,7 @@ export const LoginScreen = ({ history }) => { //** Vamos a usar la desestructura
             }
         });
 
+        history.replace('/'); //** Este me hace que cuando le pongo el login, en automatico me meta a la aplicacion */
     }
 
     return (
