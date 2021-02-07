@@ -78,7 +78,7 @@ export const SearchScreen = ({ history }) => { //** Hisory va a estar adentro de
 
                     {/* Ahora pongo si el query es diferente a un string vacio y el espacio de los heroes filtrados es igual a 0 entonces voy a poner que no hay ningun heroe con la info del query que estamos buscando, asi ya tenemos controlada la excepcion */}
                     {
-                        (q !== '') 
+                        (q !== '' && heroesFiltered.length === 0) //** Aqui tenia una falla, que solo mostraba como si no se hibiera encontrado el Heroe, pero era porque faltaba otra variable condicional */
                         && 
                         <div className="alert alert-danger">
                             There is not a hero with "{ q }"
