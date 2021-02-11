@@ -10,8 +10,9 @@ export const HeroCard = ({
   characters,
 }) => {
   return (
-    // El Style lo puedo definir como un objeto para especifiar el el CSS que queramos pero no le podemos poner guines - porque eso va en contra de las propiedades de los objetos
+    // El Style lo puedo definir como un objeto para especifiar el el CSS que queramos pero no le podemos poner guiones - porque eso va en contra de las propiedades de los objetos
     <div className="card ms-3" style={{ maxWidth: 540 }}>
+      {/* no-gutters es para que ocupen todo el largo de la tarjeta */}
       <div className="row no-gutters">
         <div className="col-md-4">
           <img
@@ -22,7 +23,7 @@ export const HeroCard = ({
         </div>
         <div className="col-md-8">
           <div className="card-body">
-            <h5 className="card-title"> {superhero}</h5>
+            <h5 className="card-title">{superhero}</h5>
             <p className="card-text">{alter_ego}</p>
             { ( alter_ego !== characters ) && //** Solamente si el alter_ego es diferente al caracter entonces que si se renderize eso */
               <p className="card-text">{ characters }</p>

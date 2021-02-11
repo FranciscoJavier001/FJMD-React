@@ -21,7 +21,8 @@ export const heroes = [
         'publisher':'DC Comics', 
         'alter_ego':'Jay Garrick',
         'first_appearance':'Flash Comics #1',
-        'characters':'Jay Garrick, Barry Allen, Wally West, Bart Allen'
+        'characters':'Jay Garrick'
+        // 'characters':'Jay Garrick, Barry Allen, Wally West, Bart Allen'
     },
     {
         'id': 'dc-green',
@@ -29,7 +30,8 @@ export const heroes = [
         'publisher':'DC Comics', 
         'alter_ego':'Alan Scott',
         'first_appearance':'All-American Comics #16',
-        'characters':'Alan Scott, Hal Jordan, Guy Gardner, John Stewart, Kyle Raynor, Jade, Sinestro, Simon Baz'
+        'characters':'Alan Scott'
+        // 'characters':'Alan Scott, Hal Jordan, Guy Gardner, John Stewart, Kyle Raynor, Jade, Sinestro, Simon Baz'
     },
     {
         'id': 'dc-arrow',
@@ -53,7 +55,8 @@ export const heroes = [
         'publisher':'DC Comics', 
         'alter_ego':'J\'onn J\'onzz',
         'first_appearance':'Detective Comics #225',
-        'characters':'Martian Manhunter'
+        'characters':'J\'onn J\'onzz'
+        // 'characters':'Martian Manhunter'
     },
     {
         'id': 'dc-robin',
@@ -69,7 +72,8 @@ export const heroes = [
         'publisher':'DC Comics', 
         'alter_ego':'Dan Garret',
         'first_appearance':'Mystery Men Comics #1',
-        'characters':'Dan Garret, Ted Kord, Jaime Reyes'
+        'characters':'Dan Garret'
+        // 'characters':'Dan Garret, Ted Kord, Jaime Reyes'
     },
     {
         'id': 'dc-black',
@@ -77,7 +81,8 @@ export const heroes = [
         'publisher':'DC Comics', 
         'alter_ego':'Dinah Drake',
         'first_appearance':'Flash Comics #86',
-        'characters':'Dinah Drake, Dinah Lance'
+        'characters':'Dinah Drake'
+        // 'characters':'Dinah Drake, Dinah Lance'
     },
     {
         'id': 'marvel-spider',
