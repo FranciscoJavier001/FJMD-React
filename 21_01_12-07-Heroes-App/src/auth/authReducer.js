@@ -25,5 +25,4 @@ export const authReducer = ( state = {}, action ) => { //** Esta funcion recibe 
         default: //** El default va a ser el state asi como se encuentre */
             return state;
     }
-
 }
