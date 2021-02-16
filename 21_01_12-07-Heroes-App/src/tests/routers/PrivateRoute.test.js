@@ -12,6 +12,8 @@ describe('Pruebas en <PrivateRoute />', () => {
         }
     }
 
+    Storage.prototype.setItem = jest.fn();
+
     test('Debe de mostrar el componente si esta autenticado y guardar localStorage', () => {
         
         //** Quiero probar un componente */
@@ -29,6 +31,6 @@ describe('Pruebas en <PrivateRoute />', () => {
         console.log( wrapper.html() );
         //** Esta prueba fallo, porque como esta la prueba, en el HighOtderComponent, no podemos usar el shallow, porque este solo va a renderizar el componente, en este caso el HighOrderComponent, pero no va a renderizar lo de adentro, pero el shallow no me va a funcionar como por ejemplo con el HOC del MemoryRouter, pero para esto voy a utilizar el mount */
         expect( wrapper.find('span').exists() ).toBe(true); //** Aqui me interesa ver el span exista y que este el valor en true */
-
-    })  
+        expect( localStorage.setItem ).toHaveBeenCalledWith('lastPath', '/marvel') //** Recordemos que ahora es una funcion jest, no debo mandarlo vacio, porque me va a dar un error, y debe haber sido llamado con el lastPath y el otro debe ser el pathname (que seria /marvel) */
+    })
 })
