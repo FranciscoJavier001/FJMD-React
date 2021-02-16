@@ -26,7 +26,7 @@ describe('Pruebas en <PrivateRoute />', () => {
             </MemoryRouter>
         );
         
-        // console.log( wrapper.html() );
+        console.log( wrapper.html() );
         //** Esta prueba fallo, porque como esta la prueba, en el HighOtderComponent, no podemos usar el shallow, porque este solo va a renderizar el componente, en este caso el HighOrderComponent, pero no va a renderizar lo de adentro, pero el shallow no me va a funcionar como por ejemplo con el HOC del MemoryRouter, pero para esto voy a utilizar el mount */
         expect( wrapper.find('span').exists() ).toBe(true); //** Aqui me interesa ver el span exista y que este el valor en true */
 
