@@ -52,3 +52,5 @@ describe('Pruebas en <PrivateRoute />', () => {
         expect( localStorage.setItem ).toHaveBeenCalledWith('lastPath', '/marvel') //** Recordemos que ahora es una funcion jest, no debo mandarlo vacio, porque me va a dar un error, y debe haber sido llamado con el lastPath y el otro debe ser el pathname (que seria /marvel) */
     })
 })
+
+//** Actualizamos la version de Enzyme, la documentacion la encontramos en github */
