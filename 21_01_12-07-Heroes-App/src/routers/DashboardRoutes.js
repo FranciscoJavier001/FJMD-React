@@ -36,7 +36,6 @@ export const DashboardRoutes = () => { //** Vamos a imprimir las props, para ver
                     <Redirect to="/marvel" />
                 </Switch>
             </div>
-
         </>
     )
 }
