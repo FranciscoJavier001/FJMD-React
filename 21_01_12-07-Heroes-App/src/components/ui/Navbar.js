@@ -21,6 +21,8 @@ export const Navbar = () => { //** Esta es la que estaba en la linea 6, pero aho
         //** Con esto hacemos que primero navege, despues purge, atencion el as seguientes lineas */
         //** Llamamos el history.replace, para que ya no mantenga esta pagina (es decir para que cambie la navegcion y que se lanze al login), entonces el NavBar ya esta recibiendo el history y por consecuencia aqui ya puedo poner el replace para que funcione */
 
+        // console.log('Click!'); //** Este se va a hacer cuando se de un click, osea en la prueba si se simula el click de esa funcion */
+
         history.replace('/login');
 
         dispatch({
