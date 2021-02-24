@@ -10,7 +10,7 @@ export const HeroScreen = ({ history }) => {
     //** Ahora voy a sacar toda la informacion del hero y lo voy a sacar con el getHeroeById que esta en nuestros selectores y mandamos el heroe.Id*/
     //** Aqui tambien voy a utilizar el useMemo para que no haya cambios, si no hay cambios en el componente */
     const hero = useMemo(() => getHeroById( heroeId ), [ heroeId ]); //** Lo primero es la funcion que vamos a llamar y lo segundo es lo que se va a disparar cada vez que el heroeId sea diferente, y quite esta linea de abajo que es lo mismo, pero aqui con el useMemo "const hero = getHeroById( heroeId );" */
-    console.log('Hero: ' , hero, 'HeroId: ' , heroeId,);
+    // console.log('Hero: ' , hero, 'HeroId: ' , heroeId,); //** Lo removi para que no estuiera muy cargada de console.log las pruebas */
     
     //** Si el heroe no existe voy a mandar el Redirect que viene de react-router-dom y lo redirecciono a la pagina de marvel*/
     if ( !hero ) {
@@ -20,7 +20,7 @@ export const HeroScreen = ({ history }) => {
     //** Asi creamos funcionabilidades de los botones */
     const handleReturn = () => { //** No se recibe ningun argumento y este va a ser la funcion del boton */
 
-        //** Asi revisamos el length para hacer una validacion*/
+        //** Asi revisamos el length para hacer una validacion, por lo que entiendo, el push solo me regresa un escalon, pero solo funciona si es maor a 2 el historial y si es menor, entonces directamente me lleva al inicio */
         if ( history.length <=2 ) {
             history.push('/');
         } else {
