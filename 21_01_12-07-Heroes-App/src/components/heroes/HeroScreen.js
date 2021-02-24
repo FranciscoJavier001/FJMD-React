@@ -20,7 +20,8 @@ export const HeroScreen = ({ history }) => {
     //** Asi creamos funcionabilidades de los botones */
     const handleReturn = () => { //** No se recibe ningun argumento y este va a ser la funcion del boton */
 
-        //** Asi revisamos el length para hacer una validacion, por lo que entiendo, el push solo me regresa un escalon, pero solo funciona si es maor a 2 el historial y si es menor, entonces directamente me lleva al inicio */
+        //** Asi revisamos el length para hacer una validacion, por lo que entiendo, el push solo me regresa un escalon, pero solo funciona si es mayor a 2 el historial y si es menor, entonces directamente me lleva al inicio, wey en las herramientas de desarrollo estan estas son desde el push, goback, goforward y demas */
+        //** Si el history.length es menor o igual a 2 entonces quiero regresarme a la pagina principal de la aplicacion que seria el history.push y quiero que navege a la pagina de marvel, en caso contrario solo que navege atras */
         if ( history.length <=2 ) {
             history.push('/');
         } else {
