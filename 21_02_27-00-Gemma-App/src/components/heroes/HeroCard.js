@@ -7,7 +7,6 @@ export const HeroCard = ({
   superhero,
   alter_ego,
   first_appearance,
-  characters,
 }) => {
   return (
     // El Style lo puedo definir como un objeto para especifiar el el CSS que queramos pero no le podemos poner guiones - porque eso va en contra de las propiedades de los objetos
@@ -16,7 +15,7 @@ export const HeroCard = ({
       <div className="row no-gutters">
         <div className="col-md-4">
           <img
-            src={`./assets/heroes/${id}.jpg`}
+            src={`./assets/heroes/${id}.jpeg`} //** Muy importante.. esto lo utilizo para hacer el llamado a la imagen */
             className="card-img"
             alt={superhero}
           />
@@ -25,9 +24,6 @@ export const HeroCard = ({
           <div className="card-body">
             <h5 className="card-title">{superhero}</h5>
             <p className="card-text">{alter_ego}</p>
-            { ( alter_ego !== characters ) && //** Solamente si el alter_ego es diferente al caracter entonces que si se renderize eso */
-              <p className="card-text">{ characters }</p>
-            }
             <p className="card-text">
               <small className="text-muted"> {first_appearance} </small>
             </p>

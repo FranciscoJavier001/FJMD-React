@@ -32,11 +32,10 @@ export const HeroScreen = ({ history }) => {
     //** Voy a desestructuras las propiedades del heroe y las voy a extraer en el hero */
     const { 
         superhero,
-        publisher,
         alter_ego,
         first_appearance,
         characters,
-        description,
+        tiempo,
     } = hero;
 
     return (
@@ -44,7 +43,7 @@ export const HeroScreen = ({ history }) => {
         <div className="row mt-5">
             <div className="col-4">
                 <img
-                    src={ `../assets/heroes/${ heroeId }.jpg` }
+                    src={ `../assets/heroes/${ heroeId }.jpeg` }
                     alt={ superhero } //** Lo que se muestra en caso que no se pueda mostrar la imagen */
                     className="img-thumbnail animate__animated animate__fadeInLeft"
                     />
@@ -55,7 +54,7 @@ export const HeroScreen = ({ history }) => {
                 <h3>{ superhero }</h3>
                 <ul className="list-group list-group-flush">
                     <li className="list-group-item"> <b> Producto: </b> { alter_ego } </li>
-                    <li className="list-group-item"> <b> Tiempo: </b> { publisher } </li>
+                    <li className="list-group-item"> <b> Tiempo: </b> { tiempo } </li>
                     <li className="list-group-item"> <b> Precio: </b> { first_appearance } </li>
                     <li className="list-group-item"><h5> Descripcion: </h5> { characters }</li>
                 </ul>
@@ -75,11 +74,11 @@ export const HeroScreen = ({ history }) => {
                     Reserva
                 </button>
 
-                <button
+                {/* <button
                 className="btn btn-danger btn-group-justified mr-2 disabled "
                 >
                     Agotado
-                </button>
+                </button> */}
             </div>
         </div>
     )

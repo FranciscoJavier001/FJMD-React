@@ -7,7 +7,7 @@ export const MarvelScreen = () => {
             <h1>Servicios</h1>
             <hr />
             
-            <HeroList publisher="Marvel Comics" />
+            <HeroList publisher="servicio"  />
         </div>
     )
 }

@@ -4,7 +4,7 @@ export const getHeroesByPublisher = ( publisher ) => { //** Aqui exportamos la f
 
     //** Aqui hacemos un arreglo en caso que la persona mande un publisher que no exista, para esto voy a hacer un arreglo */
 
-    const validPublishers = ['DC Comics', 'Marvel Comics']; //** Cualquier cosa que no esta dentro de este arreglo va a lanzar un error */
+    const validPublishers = ['DC Comics', 'Marvel Comics', 'servicio',]; //** Cualquier cosa que no esta dentro de este arreglo va a lanzar un error */
 
     //** Para esto voy a barrer un arreglo con lo que debe estar incluido en el publisher */
     if ( !validPublishers.includes( publisher )) { 
