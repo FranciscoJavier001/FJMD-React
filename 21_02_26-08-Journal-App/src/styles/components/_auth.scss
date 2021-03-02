@@ -17,3 +17,7 @@
     padding: 20px; //Esto es lo que se expande laa caja hacia afuera, es de color blanco
     width: 250px; //Esto es el ancho de la caja blanca
 }
+
+.auth__title {
+    color: darken($color: $primary, $amount: 20); //** Cambio el color del Login */
+}
