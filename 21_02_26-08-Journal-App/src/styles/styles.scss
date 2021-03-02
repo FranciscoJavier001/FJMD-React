@@ -3,3 +3,8 @@
 // Asi importamos en SASSS
 @import './base/settings';
 @import './base/base';
+
+// Components
+// Aqui voy a crear los estilos confome vamos avanzando, si son botones voy a crear algo de botones, etc, etc
+// AuthLogin & AuthRegister van a tener estilos en comun
+@import './components/auth';

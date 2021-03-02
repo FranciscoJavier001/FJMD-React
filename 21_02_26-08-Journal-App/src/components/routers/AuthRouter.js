@@ -8,22 +8,26 @@ import { RegisterScreen } from '../auth/RegisterScreen'
 
 export const AuthRouter = () => {
     return (
-        <div>
-            <Switch>
-                <Route
-                    exact
-                    path="/auth/login"
-                    component={ LoginScreen }
-                />
+        //** Osea que esa clase la va a buscar en el auth__main, ambos ya sea el login, como el register se encuentran dentro de la clase auth__main */
+        <div className="auth__main">
+            {/* Otro div para crear una caja blanca */}
+            <div className="auth__box-container">
+                <Switch>
+                    <Route
+                        exact
+                        path="/auth/login"
+                        component={ LoginScreen }
+                    />
 
-                <Route
-                    exact
-                    path="/auth/register"
-                    component={ RegisterScreen }
-                />
+                    <Route
+                        exact
+                        path="/auth/register"
+                        component={ RegisterScreen }
+                    />
 
-                <Redirect to="/auth/login" />
-            </Switch>
+                    <Redirect to="/auth/login" />
+                </Switch>
+            </div>
         </div>
     )
 }

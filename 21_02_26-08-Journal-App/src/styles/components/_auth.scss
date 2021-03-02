@@ -1,0 +1,19 @@
+
+// Esta clase es la que creamos en el div del AuthRouter.js
+.auth__main {
+    align-items: center; //Quiero centrar todos los items
+    background-color: $primary; //El background ya lo tenemos, porque en el styles.scss ya teniamos importado este archivo que nos ayuda a hacer lo que necesitamos
+    display: flex; //Es para tener una caja centrada, osea esto permite ponerlo donde quiera
+    justify-content: center; //Esto la pone en el centro, cuando estamos viendo el 100% de la pagina
+    margin: 0px; //Margin es todo el contexto de la pagina
+    height: 100vh; //Esto es la altura y esta del 100 de la altura
+    width: 100vw;
+}
+
+.auth__box-container {
+    background-color: white; //Esto es la caja del Login, osea donde esta escrito
+    box-shadow: 0px 3px $dark-grey; //El primero es el sombreado que se va hacia el lado derecho, el segundo es lo que va hacia abajo
+    border-radius: 2px; //Para hacer un pequeño borde redondeado en las esquinas
+    padding: 20px; //Esto es lo que se expande laa caja hacia afuera, es de color blanco
+    width: 250px; //Esto es el ancho de la caja blanca
+}
