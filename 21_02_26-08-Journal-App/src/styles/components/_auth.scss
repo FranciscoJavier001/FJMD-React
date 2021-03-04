@@ -20,4 +20,5 @@
 
 .auth__title {
     color: darken($color: $primary, $amount: 20); //** Cambio el color del Login */
+    margin-bottom: 20px; //** Esto es lo que esta abajo del login, es decir los inputs */
 }
