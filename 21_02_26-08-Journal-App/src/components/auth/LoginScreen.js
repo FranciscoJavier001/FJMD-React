@@ -11,12 +11,15 @@ export const LoginScreen = () => {
                     type="text"
                     placeholder="email"
                     name="email"
+                    className="auth__input"
+                    autoComplete="off" //** Para que no me este dando sugerencias ni nada al escribir */
                 />
 
                 <input //** Este crea el segundo */
                     type="password"
                     placeholder="password"
                     name="password"
+                    className="auth__input"
                 />
 
                 <button
@@ -26,7 +29,7 @@ export const LoginScreen = () => {
                 </button>
 
                 <hr />
-                <div>
+                <div className="auth__social-network">
                     <p>Login with Social Networks</p>
                     <div 
                         className="google-btn"

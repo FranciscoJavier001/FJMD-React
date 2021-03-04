@@ -22,3 +22,20 @@
     color: darken($color: $primary, $amount: 20); //** Cambio el color del Login */
     margin-bottom: 20px; //** Esto es lo que esta abajo del login, es decir los inputs */
 }
+
+.auth__input {
+    color: $dark-grey; //** Cambio el color cuando la gente comienza a escribir */
+    border: 0px; //** Desaparecimos los bordes de las cajas de los inputs */
+    border-bottom: 1px solid $light-grey; //** Pusimos una linea debajo de cada input */
+    font-size: 16px; //** Cambiamos el tamaño de las letras en la caja de texto y el input se vio afectado en su tamaño */
+    margin-bottom: 10px; //** Hicimos una separacion entre los inputs hacia abajo */
+    height: 20px; //** Se modifico la altura de los inputs */
+    width: 100%; //** Se hcieron del ancho de la caja donde estan contenidos */
+
+    transition: border-bottom .3s ease; //** Es el tiempo que va a demorar la transicion con la animacion ease */
+
+    &:focus { //** Esto le dice a SASS que va a ser dentro de esta misma clase, pero en el focus, es decir cuando tenemos seleccionado el input */
+        border-bottom: 1px solid $primary; //** Que salga la linea abajo, pero color como morada */
+        outline: none; //** Que no te marque cual esta seleccionado, que solo veas en donde se escribe */
+    }
+}
