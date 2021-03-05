@@ -1,0 +1,41 @@
+
+// Esta clase es la que creamos en el div del AuthRouter.js
+.auth__main {
+    align-items: center; //Quiero centrar todos los items
+    background-color: $primary; //El background ya lo tenemos, porque en el styles.scss ya teniamos importado este archivo que nos ayuda a hacer lo que necesitamos
+    display: flex; //Es para tener una caja centrada, osea esto permite ponerlo donde quiera
+    justify-content: center; //Esto la pone en el centro, cuando estamos viendo el 100% de la pagina
+    margin: 0px; //Margin es todo el contexto de la pagina
+    height: 100vh; //Esto es la altura y esta del 100 de la altura
+    width: 100vw;
+}
+
+.auth__box-container {
+    background-color: white; //Esto es la caja del Login, osea donde esta escrito
+    box-shadow: 0px 3px $dark-grey; //El primero es el sombreado que se va hacia el lado derecho, el segundo es lo que va hacia abajo
+    border-radius: 2px; //Para hacer un pequeño borde redondeado en las esquinas
+    padding: 20px; //Esto es lo que se expande laa caja hacia afuera, es de color blanco
+    width: 250px; //Esto es el ancho de la caja blanca
+}
+
+.auth__title {
+    color: darken($color: $primary, $amount: 20); //** Cambio el color del Login */
+    margin-bottom: 20px; //** Esto es lo que esta abajo del login, es decir los inputs */
+}
+
+.auth__input {
+    color: $dark-grey; //** Cambio el color cuando la gente comienza a escribir */
+    border: 0px; //** Desaparecimos los bordes de las cajas de los inputs */
+    border-bottom: 1px solid $light-grey; //** Pusimos una linea debajo de cada input */
+    font-size: 16px; //** Cambiamos el tamaño de las letras en la caja de texto y el input se vio afectado en su tamaño */
+    margin-bottom: 10px; //** Hicimos una separacion entre los inputs hacia abajo */
+    height: 20px; //** Se modifico la altura de los inputs */
+    width: 100%; //** Se hcieron del ancho de la caja donde estan contenidos */
+
+    transition: border-bottom .3s ease; //** Es el tiempo que va a demorar la transicion con la animacion ease */
+
+    &:focus { //** Esto le dice a SASS que va a ser dentro de esta misma clase, pero en el focus, es decir cuando tenemos seleccionado el input */
+        border-bottom: 1px solid $primary; //** Que salga la linea abajo, pero color como morada */
+        outline: none; //** Que no te marque cual esta seleccionado, que solo veas en donde se escribe */
+    }
+}
