@@ -9,7 +9,7 @@ export const LoginScreen = () => {
             <form> {/* Este es la caja de un formulario que va a estar abajo del login */}
                 <input //** Este crea el primero */
                     type="text"
-                    placeholder="email"
+                    placeholder="E-Mail"
                     name="email"
                     className="auth__input"
                     autoComplete="off" //** Para que no me este dando sugerencias ni nada al escribir */
@@ -17,18 +17,18 @@ export const LoginScreen = () => {
 
                 <input //** Este crea el segundo */
                     type="password"
-                    placeholder="password"
+                    placeholder="Password"
                     name="password"
                     className="auth__input"
                 />
 
                 <button
                     type="submit" //** Que pueda darle click */
+                    className="btn btn-primary btn-block"
                 >
                     Login
                 </button>
 
-                <hr />
                 <div className="auth__social-network">
                     <p>Login with Social Networks</p>
                     <div 
@@ -38,15 +38,17 @@ export const LoginScreen = () => {
                             <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="google button" />
                         </div>
                         <p className="btn-text">
-                            <b>Login with google</b>
+                            <b>Login with Google</b>
                         </p>
                     </div>
                 </div>
 
+                <div className="link-style"> {/* Asi creamos una clase para implementarla en el SCSS */}
                 <Link to="/auth/register" /* Este lo importamos desde react-router-dom con el link */
                 >
-                    Create new Account
+                    Create New Account
                 </Link>
+                </div>
 
             </form>
         </>

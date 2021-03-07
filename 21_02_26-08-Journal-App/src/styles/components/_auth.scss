@@ -7,7 +7,7 @@
     justify-content: center; //Esto la pone en el centro, cuando estamos viendo el 100% de la pagina
     margin: 0px; //Margin es todo el contexto de la pagina
     height: 100vh; //Esto es la altura y esta del 100 de la altura
-    width: 100vw;
+    width: 100vw; //** Esta es la anchura y esta del 100 de la vista, es la pantalla de fondo */
 }
 
 .auth__box-container {
@@ -21,6 +21,7 @@
 .auth__title {
     color: darken($color: $primary, $amount: 20); //** Cambio el color del Login */
     margin-bottom: 20px; //** Esto es lo que esta abajo del login, es decir los inputs */
+    text-align: center; //** Asi alinie el titulo del login al centro */
 }
 
 .auth__input {
@@ -31,6 +32,7 @@
     margin-bottom: 10px; //** Hicimos una separacion entre los inputs hacia abajo */
     height: 20px; //** Se modifico la altura de los inputs */
     width: 100%; //** Se hcieron del ancho de la caja donde estan contenidos */
+    text-align: center; //** Asi alinie el PlaceHolder al centro */
 
     transition: border-bottom .3s ease; //** Es el tiempo que va a demorar la transicion con la animacion ease */
 
@@ -38,10 +40,28 @@
         border-bottom: 1px solid $primary; //** Que salga la linea abajo, pero color como morada */
         outline: none; //** Que no te marque cual esta seleccionado, que solo veas en donde se escribe */
     }
+}
 
-    .auth__social-network {
-        align-items: center; //** Asi alineamos los items en el centro, pero para hacerlo debemos de poner bajo el display: flex */
-        display: flex;
-        justify-content: center;
-    }
+ .auth__social-network {
+    align-items: center; //** Asi alineamos los items en el centro, pero para hacerlo debemos de poner bajo el display: flex */
+    display: flex; //** Esto hace mas chico la imagen de Google */
+    justify-content: center; //** El contenido esta hacia el centro */
+    flex-direction: column; //** Acomoda todo en Columnas, osea no deja que nada se quede en ningun lado, sino todo hacia abajo */
+    padding-top: 20px; //** Hace un espacio hacia arriba de donde dice Login with Social Networks */
+    padding-bottom: 20px; //** Hace un espacio abajo de donde dice Login with Google */
+    width: 100%; //** Esto es lo que mide lo de Social Network en el marco */
+}
+
+.auth__alert-error {
+    background-color: red;
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.link-style {
+    text-align: center; //** Asi alinie el Create new Accounr al centro */
 }
