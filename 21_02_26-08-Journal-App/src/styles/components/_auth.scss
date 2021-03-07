@@ -38,4 +38,10 @@
         border-bottom: 1px solid $primary; //** Que salga la linea abajo, pero color como morada */
         outline: none; //** Que no te marque cual esta seleccionado, que solo veas en donde se escribe */
     }
+
+    .auth__social-network {
+        align-items: center; //** Asi alineamos los items en el centro, pero para hacerlo debemos de poner bajo el display: flex */
+        display: flex;
+        justify-content: center;
+    }
 }
