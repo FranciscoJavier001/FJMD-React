@@ -63,5 +63,8 @@
 }
 
 .link-style {
-    text-align: center; //** Asi alinie el Create new Accounr al centro */
+    font-size: 14px;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
 }
