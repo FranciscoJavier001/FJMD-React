@@ -43,17 +43,19 @@ export const LoginScreen = () => {
                     </div>
                 </div>
 
-                <div className="link-style"> {/* Asi creamos una clase para implementarla en el SCSS */}
-                <Link to="/auth/register" /* Este lo importamos desde react-router-dom con el link */
+                {/* <div> Asi creamos una clase para implementarla en el SCSS */}
+                <Link
+                    to="/auth/register" /* Este lo importamos desde react-router-dom con el link */
+                    className="link"
                 >
                     Create New Account 
                 </Link>
                 
-                <Link to="/auth/forgot" /* Este lo importamos desde react-router-dom con el link */
-                >
-                     Forgot your Password
-                </Link>
-                </div>
+                {/* <Link to="/auth/forgot" /* Este lo importamos desde react-router-dom con el link */
+                // >
+                     /* Forgot your Password */
+                /* </Link> */}
+                {/* </div> */}
 
             </form>
         </>
