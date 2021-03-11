@@ -2,3 +2,14 @@
 .journal__main-content {
     display: flex;
 }
+
+.journal__sidebar { //** Esto es la barra lateral hacia la izquierda */
+    background-color: $dark-grey; //** Para que el fondo quede oscuro */
+    color: white; //** Para que la letra quede blanca */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 450px;
+}
