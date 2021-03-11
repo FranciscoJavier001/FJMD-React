@@ -13,3 +13,28 @@
     padding-right: 10px;
     width: 450px;
 }
+
+.journal__sidebar-navbar {
+    display: flex; //** Con Display Flex tenemos la libertad de poner las cosas donde deban de estar */
+    justify-content: space-around; //** Con esto se queda en los bordes */
+}
+
+.journal__sidebar-navbar h3 {
+    font-weight: lighter; //** ESto es el nombre, asi lo hicimos mas delgado */
+}
+
+.journal__new-entry { //** Esto es lo que dice New Entry */
+    align-items: center; //** Asi alineamos la new entry al centro, de arriba hacia abajo */
+    cursor: pointer; //** Para que salga la manita */
+    display: flex; //** Para que todo se peda mover */
+    flex-direction: column; //** Para que cada cosa este una abajo de la otra */
+    justify-content: center; //** Para que todo se quede en el centro */
+    margin-top: 30px; //** Asi lo hicimos mas para abajo */
+    width: 100%; //** Para que trabaje en toda la anchura */
+
+    transition: color .3s ease;
+
+    &:hover {
+        color: darken($color: white, $amount: 20); //** Cambia el icono a un gris */
+    }
+}
