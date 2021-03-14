@@ -7,8 +7,14 @@
     font-size: 12px; //** Le cambiamos el tamaño a la letra */
     padding: 7px 10px 7px 10px; //** El Primero es hacia arriba, el segundo es (no se), el tercero es hacia abajo, el cuarto es hacia la derecha */
 
+    transition: color .3s ease;
+
     &:focus { //** Que cuando tenga el focus no salga como un foco verde */
         outline: none; //** Si le doy click no aparece el borde espantoso */
+    }
+
+    &:hover {
+        color: darken($color: white, $amount: 10);
     }
 }
 
