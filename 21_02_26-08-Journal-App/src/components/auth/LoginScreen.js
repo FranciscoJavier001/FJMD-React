@@ -1,18 +1,37 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useForm } from '../../hooks/useForm'
 
 export const LoginScreen = () => {
+
+    //** Esto lo voy a implementar desde el useForm de la carpeta Hooks para manejo de formularios */
+    const [ formValues, handleInputChange, reset ] = useForm({ //** Esto regresa un arreglo con [] y el objeto que va a ser mi formulario es el siguiente, en [] vamos a desestructurar un objeto que va a ser el formValues y handleInputChanges, los voy a extraer para tenerlos facilmente a la mano */
+        email: 'frank@email.com', //** Lo voy a dejar inicializado */
+        password: '123456789'
+    })
+
+    const { email, password } = formValues //** Estos valores los voy a desestructructurar con {} y de ahi voy a sacar el email y el password */
+
+    //** Asi voy a manejar el submit del formulario */
+    const handleLogin = (e) => { //** Esta va a ser una funcion de fleca que no va a recibir nada, despues de poner el form con el submit, le puse que voy a recibir el evento */
+        e.preventDefault() //** Para evitar la propagacion del formulario */
+        console.log(email, password);
+    }
+
     return (
         <>
             <h3 className="auth__title">Login</h3>  {/* Es lo que esta escrito en la caja blanca definida en el auth__box-container que contiene a los 2 */}
 
-            <form> {/* Este es la caja de un formulario que va a estar abajo del login */}
+            {/* Cuando alguien toque el boton del submit */}
+            <form onSubmit={ handleLogin }> {/* Este es la caja de un formulario que va a estar abajo del login */}
                 <input //** Este crea el primero */
                     type="text"
                     placeholder="E-Mail"
                     name="email"
                     className="auth__input"
                     autoComplete="off" //** Para que no me este dando sugerencias ni nada al escribir */
+                    value={ email }//** Ya desestructurados se los voy a colocar a los respectivos inputs */
+                    onChange={ handleInputChange }
                 />
 
                 <input //** Este crea el segundo */
@@ -20,6 +39,8 @@ export const LoginScreen = () => {
                     placeholder="Password"
                     name="password"
                     className="auth__input"
+                    value={ password }//** Ya desestructurados se los voy a colocar a los respectivos inputs */
+                    onChange={ handleInputChange }
                 />
 
                 <button
@@ -56,7 +77,6 @@ export const LoginScreen = () => {
                      /* Forgot your Password */
                 /* </Link> */}
                 {/* </div> */}
-
             </form>
         </>
     )
