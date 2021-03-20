@@ -15,7 +15,7 @@ export const LoginScreen = () => {
     //** Asi voy a manejar el submit del formulario */
     const handleLogin = (e) => { //** Esta va a ser una funcion de fleca que no va a recibir nada, despues de poner el form con el submit, le puse que voy a recibir el evento */
         e.preventDefault() //** Para evitar la propagacion del formulario */
-        console.log(email, password);
+        // console.log(email, password);
     }
 
     return (
