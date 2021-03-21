@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { login } from '../../actions/auth'
+import { startLoginEmailPassword } from '../../actions/auth'
 import { useForm } from '../../hooks/useForm'
 
 export const LoginScreen = () => {
@@ -21,7 +21,7 @@ export const LoginScreen = () => {
     const handleLogin = (e) => { //** Esta va a ser una funcion de fleca que no va a recibir nada, despues de poner el form con el submit, le puse que voy a recibir el evento */
         e.preventDefault() //** Para evitar la propagacion del formulario */
         // console.log(email, password);
-        dispatch( login(123456, 'Pedro') ) //** La accion que voy a llamar va a ser el login , y recibe el uid y el displayName*/
+        dispatch( startLoginEmailPassword(email, password) ) //** La accion que voy a llamar va a ser el login , y recibe el uid y el displayName*/
     }
 
     return (
