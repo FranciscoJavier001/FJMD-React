@@ -13,7 +13,7 @@ export const authReducer = ( state = {}, action ) => { //** Esta es una funcion 
         case types.login: //** Debo de asegurarme que lo importe y este va a hacer una accion en el login que va a ser */
             return {
                 uid: action.payload.uid, //** Esto viene de firebase */
-                name: action.pyload.displayName //** Asi voy a recibir el nombre */
+                name: action.payload.displayName //** Asi voy a recibir el nombre */
             }
 
         case types.logout: //** Este lo va a restablecer a un objeto vacio */

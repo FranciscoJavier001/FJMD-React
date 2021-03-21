@@ -1,8 +1,13 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { login } from '../../actions/auth'
 import { useForm } from '../../hooks/useForm'
 
 export const LoginScreen = () => {
+
+    //** Para hacer un dispatch react ya me dio el hook llamado useDisplatch */
+    const dispatch = useDispatch() //** Este le da acceso al dispatch, osea sirve para disparar acciones */
 
     //** Esto lo voy a implementar desde el useForm de la carpeta Hooks para manejo de formularios */
     const [ formValues, handleInputChange, reset ] = useForm({ //** Esto regresa un arreglo con [] y el objeto que va a ser mi formulario es el siguiente, en [] vamos a desestructurar un objeto que va a ser el formValues y handleInputChanges, los voy a extraer para tenerlos facilmente a la mano */
@@ -16,6 +21,7 @@ export const LoginScreen = () => {
     const handleLogin = (e) => { //** Esta va a ser una funcion de fleca que no va a recibir nada, despues de poner el form con el submit, le puse que voy a recibir el evento */
         e.preventDefault() //** Para evitar la propagacion del formulario */
         // console.log(email, password);
+        dispatch( login(123456, 'Pedro') ) //** La accion que voy a llamar va a ser el login , y recibe el uid y el displayName*/
     }
 
     return (
