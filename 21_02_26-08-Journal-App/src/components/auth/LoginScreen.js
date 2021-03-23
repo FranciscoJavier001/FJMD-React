@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { startLoginEmailPassword } from '../../actions/auth'
+import { startGoogleLogin, startLoginEmailPassword } from '../../actions/auth'
 import { useForm } from '../../hooks/useForm'
 
 export const LoginScreen = () => {
@@ -22,6 +22,11 @@ export const LoginScreen = () => {
         e.preventDefault() //** Para evitar la propagacion del formulario */
         // console.log(email, password);
         dispatch( startLoginEmailPassword(email, password) ) //** La accion que voy a llamar va a ser el login , y recibe el uid y el displayName*/
+    }
+
+    //** Hagamos otro componente para darle funciones al boton */
+    const handleGoogleLogin = () => { //** No recibe ningun argumento y solo va a hacer el dispatch de esa accion */
+        dispatch( startGoogleLogin() ) //** Este metodo se va a llamr cuando alguien toque el boton de google-btn */
     }
 
     return (
@@ -60,6 +65,7 @@ export const LoginScreen = () => {
                     <p>Login with Social Networks</p>
                     <div 
                         className="google-btn"
+                        onClick={ handleGoogleLogin } //** Asi se llama la accion que haga cuando le damos click */
                         >
                         <div className="google-icon-wrapper">
                             <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="google button" />
