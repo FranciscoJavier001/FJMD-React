@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import validator from 'validator'
+
 import { useForm } from '../../hooks/useForm'
 
 export const RegisterScreen = () => {
@@ -17,10 +19,23 @@ export const RegisterScreen = () => {
     const handleRegister = (e) => {
         e.preventDefault()
         
+        if( isFormValid() ) { //** Hago el llamado a la funcion, que solo se regresa si es true */
+            console.log('Formulario correcto');
+        }
     }
 
     const isFormValid = () => {
-        
+        if ( name.trim().length === 0 ) { //** Esto es si la persona tiene un nombre vacio que salga el mensaje de error*/
+            console.log('Nombre es Requerido');
+            return false;
+        } else if ( !validator.isEmail( email ) ) { //** Si esto no es un email, quiero que hagas esto */
+            console.log('Email no valido');
+            return false;
+        } else if ( password !== password2 || password.length < 5 ) {//** Si los password son diferentes o el password tiene menos de 6 digitos */
+            console.log('Password por lo menos de 6 digitos y tiene que coincidir ambos');
+            return false;
+        }
+            return true;
     }
 
     return (
@@ -28,6 +43,11 @@ export const RegisterScreen = () => {
         <h3 className="auth__title">Register</h3>  {/* Es lo que esta escrito en la caja blanca definida en el auth__box-container que contiene a los 2 */}
 
         <form onSubmit={ handleRegister }> {/* Este es la caja de un formulario que va a estar abajo del login */}
+
+            <div className="auth__alert-error"> {/* Que esto salga cuando hay un error en el formulario */}
+                Hola Mundo
+            </div>
+
             <input //** Este crea otro donde la gente puede escribir */
                 type="text"
                 placeholder="Name"
@@ -84,6 +104,3 @@ export const RegisterScreen = () => {
     </>
     )
 }
-
-
-// Baño
