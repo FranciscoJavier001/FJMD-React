@@ -45,7 +45,7 @@ export const RegisterScreen = () => {
         <form onSubmit={ handleRegister }> {/* Este es la caja de un formulario que va a estar abajo del login */}
 
             <div className="auth__alert-error"> {/* Que esto salga cuando hay un error en el formulario */}
-                Hola Mundo
+                ...{/* Aqui poner un mensaje de error */}
             </div>
 
             <input //** Este crea otro donde la gente puede escribir */
