@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import validator from 'validator'
 
 import { useForm } from '../../hooks/useForm'
-import { setError } from '../../actions/ui'
+import { removeError, setError } from '../../actions/ui'
 
 export const RegisterScreen = () => {
     
@@ -30,16 +30,16 @@ export const RegisterScreen = () => {
 
     const isFormValid = () => {
         if ( name.trim().length === 0 ) { //** Esto es si la persona tiene un nombre vacio que salga el mensaje de error*/
-            dispatch( setError ) //** Lo importamos de los typos */
-            console.log('Nombre es Requerido');
+            dispatch( setError('Nombre es Requerido') ) //** Lo importamos de los typos */
             return false;
         } else if ( !validator.isEmail( email ) ) { //** Si esto no es un email, quiero que hagas esto */
-            console.log('Email no valido');
+            dispatch( setError('Email no valido') )
             return false;
         } else if ( password !== password2 || password.length < 5 ) {//** Si los password son diferentes o el password tiene menos de 6 digitos */
-            console.log('Password por lo menos de 6 digitos y tiene que coincidir ambos');
+            dispatch( setError('Password por lo menos de 6 digitos y tiene que coincidir ambos') )
             return false;
         }
+        dispatch( removeError() ) //** El caso opuesto de cuando hay error */
             return true;
     }
 
