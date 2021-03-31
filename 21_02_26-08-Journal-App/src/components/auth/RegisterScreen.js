@@ -1,10 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import validator from 'validator'
 
 import { useForm } from '../../hooks/useForm'
+import { setError } from '../../actions/ui'
 
 export const RegisterScreen = () => {
+    
+    const dispatch = useDispatch() //** Usamos el dispatch para disparar la accion que queramos */
 
     const [ formValues, handleInputChange ] = useForm({ //** Aqui usamos el useForm para el formulario */
         name: 'Andrea', //** Voy a mandar un objeto, para hacer el registro de usuario */
@@ -26,6 +30,7 @@ export const RegisterScreen = () => {
 
     const isFormValid = () => {
         if ( name.trim().length === 0 ) { //** Esto es si la persona tiene un nombre vacio que salga el mensaje de error*/
+            dispatch( setError ) //** Lo importamos de los typos */
             console.log('Nombre es Requerido');
             return false;
         } else if ( !validator.isEmail( email ) ) { //** Si esto no es un email, quiero que hagas esto */
@@ -40,7 +45,7 @@ export const RegisterScreen = () => {
 
     return (
         <>
-        <h3 className="auth__title">Register</h3>  {/* Es lo que esta escrito en la caja blanca definida en el auth__box-container que contiene a los 2 */}
+        <h3 className="auth__title">Registrase</h3>  {/* Es lo que esta escrito en la caja blanca definida en el auth__box-container que contiene a los 2 */}
 
         <form onSubmit={ handleRegister }> {/* Este es la caja de un formulario que va a estar abajo del login */}
 
@@ -90,14 +95,14 @@ export const RegisterScreen = () => {
                 type="submit" //** Que pueda darle click */
                 className="btn btn-primary btn-block mb-5"
             >
-                Register
+                Registrarse
             </button>
 
             <Link
                 to="/auth/login" /* Este lo importamos desde react-router-dom con el link */
                 className="link"
             >
-                Already Register?
+                Iniciar Sesion
             </Link>
 
         </form>
