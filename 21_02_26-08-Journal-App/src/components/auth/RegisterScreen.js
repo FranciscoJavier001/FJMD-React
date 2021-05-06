@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import validator from 'validator'
 
 import { useForm } from '../../hooks/useForm'
@@ -9,6 +9,8 @@ import { removeError, setError } from '../../actions/ui'
 export const RegisterScreen = () => {
     
     const dispatch = useDispatch() //** Usamos el dispatch para disparar la accion que queramos */
+    const { msgError } = useSelector( state => state.ui) //** Este es un Hook y recibe un callback, en el que tengo el state y me va a regresar el state, y lo desestructire para solamente ver el mensaje de error */
+
 
     const [ formValues, handleInputChange ] = useForm({ //** Aqui usamos el useForm para el formulario */
         name: 'Andrea', //** Voy a mandar un objeto, para hacer el registro de usuario */
@@ -49,9 +51,14 @@ export const RegisterScreen = () => {
 
         <form onSubmit={ handleRegister }> {/* Este es la caja de un formulario que va a estar abajo del login */}
 
-            <div className="auth__alert-error"> {/* Que esto salga cuando hay un error en el formulario */}
-                ...{/* Aqui poner un mensaje de error */}
-            </div>
+            {
+                msgError && //** Que solo se muestre si es diferente a null */
+                ( //** Esto es el bloque de la condicion */
+                    <div className="auth__alert-error"> {/* Que esto salga cuando hay un error en el formulario */}
+                        { msgError }
+                    </div>
+                )
+            }
 
             <input //** Este crea otro donde la gente puede escribir */
                 type="text"
