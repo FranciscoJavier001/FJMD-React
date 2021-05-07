@@ -5,6 +5,7 @@ import validator from 'validator'
 
 import { useForm } from '../../hooks/useForm'
 import { removeError, setError } from '../../actions/ui'
+import { startRegisterWithEmailPasswordName } from '../../actions/auth'
 
 export const RegisterScreen = () => {
     
@@ -26,7 +27,7 @@ export const RegisterScreen = () => {
         e.preventDefault()
         
         if( isFormValid() ) { //** Hago el llamado a la funcion, que solo se regresa si es true */
-            console.log('Formulario correcto');
+            dispatch( startRegisterWithEmailPasswordName(email, password, name) ) //** Vamos a hacer el dispatch de la accion startRegisterWithEmailPasswordName, recuerda tenemos que importarlo y vamos a mandar todo lo que definimos  */
         }
     }
 

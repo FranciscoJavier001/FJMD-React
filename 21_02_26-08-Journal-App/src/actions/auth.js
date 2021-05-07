@@ -12,11 +12,27 @@ export const startLoginEmailPassword = (email, password) => { //** Esta funcion 
     }
 }
 
+export const startRegisterWithEmailPasswordName = ( email, password, name ) => { //** Esta es una tarea asincrona, asi que voy a tener un callback */
+    return ( dispatch ) => { //** Cuando tenga el usuario grabado en firebase voy a hacer el dispatch */
+        firebase.auth().createUserWithEmailAndPassword( email, password ) //** Aqui mandamos los parametros de email y password */
+        .then( async ({ user }) => { //** Esta va a ser una promesa */
+
+            await user.updateProfile({ displayName: name }) //** que me de el name que estoy recibiendo como argumento de mi funcion y esto me regresa una promesa */
+
+            dispatch( //** Esto es para llamar de nuevo el dispatch */
+                login( user.uid, user.displayName)
+            )
+        })
+        .catch( e => { //** Esto es para atrapar el error y mostrarlo */
+            console.log(e);
+        })
+    }
+}
+
 export const startGoogleLogin = () => { //** Una funcion de fleca que no recibe nada, pero es una tarea sincrona voy a poner el return y el callback me va a proveer el dispatch, por lo cual cuando tenga la informacion lo voy a llamar */
     return ( dispatch ) => {
     firebase.auth().signInWithPopup( googleAuthProvider ) //** Esto va a retormarme una promesa */
         .then( ({ user }) => { //** Aqui voy a usar la desestructuracion para extraer el user */
-            
             dispatch( //** Que cuando esto se responda voy a hacer el dispatch de la accion que ya tengo definido abajo con el login, donde voy a poder el id que viene del user.uid, y el displayName que viene del user.displayName */
                 login( user.uid, user.displayName)
             )
