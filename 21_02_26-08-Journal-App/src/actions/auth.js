@@ -1,20 +1,25 @@
 //** Estas son acciones que vamos a definir */
 import { firebase, googleAuthProvider } from '../firebase/firebase-config'
 import { types } from '../types/types'
+import { finishLoading, startLoading } from './ui'
 
 //** Esto es una tarea asincrona, osea que se va a ejecutar todo el proceso, luego se va a encontrar con el dispatch que ejecuta la accion del login que es la que se va a aplicar directamente en el store (la fuente unica de la verdad), que modifica el state y nos regresa todo lo que estamos esperando  */
 export const startLoginEmailPassword = (email, password) => { //** Esta funcion va a recibir el email y el password */
     return (dispatch) => { //** Esta funcion va a regresar un callback, osea una funcion a disparar */
         //** Hay que llamar a otro dispatch cuando ya se ejecute todo, cuando ya tenga la data */
 
+        dispatch( startLoading() ) //** Aqui comienza la accion cuando empieza la carga en el boton para bloquearlo */
+
         firebase.auth().signInWithEmailAndPassword( email, password )
         .then( ({ user }) => {
-            dispatch(
-                login( user.uid, user.displayName )
-            )
+            dispatch(login( user.uid, user.displayName ))
+
+            dispatch( finishLoading() ) //** Cuando termina de cargarlo */
+
         })
         .catch( e => {
             console.log(e);
+            dispatch( finishLoading() )
         })
     }
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { startGoogleLogin, startLoginEmailPassword } from '../../actions/auth'
 import { useForm } from '../../hooks/useForm'
@@ -8,6 +8,7 @@ export const LoginScreen = () => {
 
     //** Para hacer un dispatch react ya me dio el hook llamado useDisplatch */
     const dispatch = useDispatch() //** Este le da acceso al dispatch, osea sirve para disparar acciones */
+    const { loading } = useSelector( state => state.ui ) //** Este state nos va a regresar el state, en los types este va a ser true o false, pero solo voy a ocupar el loading, asi que voy a hacer la desestructuracion del state y solo voy a sacar el loading */
 
     //** Esto lo voy a implementar desde el useForm de la carpeta Hooks para manejo de formularios */
     const [ formValues, handleInputChange, reset ] = useForm({ //** Esto regresa un arreglo con [] y el objeto que va a ser mi formulario es el siguiente, en [] vamos a desestructurar un objeto que va a ser el formValues y handleInputChanges, los voy a extraer para tenerlos facilmente a la mano */
@@ -57,6 +58,7 @@ export const LoginScreen = () => {
                 <button
                     type="submit" //** Que pueda darle click */
                     className="btn btn-primary btn-block"
+                    disabled={ loading }
                 >
                     Login
                 </button>
