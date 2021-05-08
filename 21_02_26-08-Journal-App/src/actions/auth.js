@@ -6,9 +6,16 @@ import { types } from '../types/types'
 export const startLoginEmailPassword = (email, password) => { //** Esta funcion va a recibir el email y el password */
     return (dispatch) => { //** Esta funcion va a regresar un callback, osea una funcion a disparar */
         //** Hay que llamar a otro dispatch cuando ya se ejecute todo, cuando ya tenga la data */
-        setTimeout(() => {
-            dispatch( login( 123, 'Pedro')) //** Aqui voy a hacer un dispatch del login, con el usuario */
-        }, 3500);
+
+        firebase.auth().signInWithEmailAndPassword( email, password )
+        .then( ({ user }) => {
+            dispatch(
+                login( user.uid, user.displayName )
+            )
+        })
+        .catch( e => {
+            console.log(e);
+        })
     }
 }
 
