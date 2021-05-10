@@ -8,10 +8,10 @@ import {
     Redirect
 } from "react-router-dom"
 
-import { firebase } from '../../firebase/firebase-config'
+import { firebase } from '../firebase/firebase-config'
 
 import { AuthRouter } from './AuthRouter'
-import { JournalScreen } from '../journal/JournalScreen'
+import { JournalScreen } from '../components/journal/JournalScreen'
 
 export const AppRouter = () => {
 
