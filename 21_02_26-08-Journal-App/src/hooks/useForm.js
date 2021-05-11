@@ -5,9 +5,9 @@ export const useForm = ( initialState = {} ) => { /** useForm que recibe un obje
     
     const [values, setValues] = useState(initialState);
 
-    const reset = () => { //** Con esto borramos los formularios, es decir el input donde se escribe texto */
-        setValues( initialState );
-    }
+    // const reset = () => { //** Con esto borramos los formularios, es decir el input donde se escribe texto */
+    //     setValues( initialState );
+    // }
 
     const handleInputChange = ({ target }) => { /** El handleInputChange me va a permitir para poderlo leer rapidamente, del event voy a extraer el target */
 
@@ -17,5 +17,5 @@ export const useForm = ( initialState = {} ) => { /** useForm que recibe un obje
         });
     }
 
-    return [ values, handleInputChange, reset ]; /** Lo regresa como un arreglo, el primer valor es el estado del formulario y el segundo es el handleInputChange para cambiar los valores del formulario */
+    return [ values, handleInputChange ]; /** Lo regresa como un arreglo, el primer valor es el estado del formulario y el segundo es el handleInputChange para cambiar los valores del formulario */
 }

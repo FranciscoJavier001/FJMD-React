@@ -1,6 +1,6 @@
 //** Atencion, mira estas son las rutas del AppRouter, como lo vemos no son tan complicadas, solo se necesita entender los parametros principales de hacia donde va la aplicacion */
 
-import React, { useContext, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import {
     BrowserRouter as Router,
     Switch,
@@ -21,6 +21,7 @@ export const AppRouter = () => {
         firebase.auth().onAuthStateChanged( (user) => {
 
             console.log(user);
+            
         })
     }, [])
 

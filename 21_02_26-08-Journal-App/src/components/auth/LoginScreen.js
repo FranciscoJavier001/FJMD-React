@@ -11,7 +11,7 @@ export const LoginScreen = () => {
     const { loading } = useSelector( state => state.ui ) //** Este state nos va a regresar el state, en los types este va a ser true o false, pero solo voy a ocupar el loading, asi que voy a hacer la desestructuracion del state y solo voy a sacar el loading */
 
     //** Esto lo voy a implementar desde el useForm de la carpeta Hooks para manejo de formularios */
-    const [ formValues, handleInputChange, reset ] = useForm({ //** Esto regresa un arreglo con [] y el objeto que va a ser mi formulario es el siguiente, en [] vamos a desestructurar un objeto que va a ser el formValues y handleInputChanges, los voy a extraer para tenerlos facilmente a la mano */
+    const [ formValues, handleInputChange ] = useForm({ //** Esto regresa un arreglo con [] y el objeto que va a ser mi formulario es el siguiente, en [] vamos a desestructurar un objeto que va a ser el formValues y handleInputChanges, los voy a extraer para tenerlos facilmente a la mano */
         email: 'frank@email.com', //** Lo voy a dejar inicializado */
         password: '123456789'
     })
