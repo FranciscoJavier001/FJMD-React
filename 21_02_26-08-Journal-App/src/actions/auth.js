@@ -59,3 +59,17 @@ export const login = (uid, displayName) => ({ //** Esta es la accion que voy a l
         displayName
     }
 })
+
+//** Esta va a ser una funcion asyncrona */
+export const startLogout = () => { //** Porque tiene que ser asyncrona a pesar de que no recibe ningun argumento, porque debo disparar una accion de firebase que regrese una promesa */
+    return async( dispatch ) => { //** Aqui voy a tener el retorno del dispatch, voy a poner esta funcion como un async y abajo voy a ponerlo como un await esperando que se ejecute */
+        await firebase.auth().signOut() //** Aqui si se ejecuta el then susedio el logOut correcto */
+
+        dispatch( logout() ) //** Si se ejecuta voy a hacer el logout, que lo pusimos abajo, pero que definimos en los tipos */
+    }
+}
+
+//** Esta accion borra el uid y el displayName del store */
+export const logout = () => ({
+    type: types.logout//** Esto va a hacer el return como un objeto */
+})

@@ -1,7 +1,19 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+
 import { JournalEntries } from './JournalEntries'
+import { startLogout } from '../../actions/auth'
 
 export const Sidebar = () => {
+
+    //** Voy a empezar creando el eventListener (osea ponte listo si escuchas un cambio) */
+
+    //** Hay que hacer un dispatch de la accion cuando se toque el boton */
+    const dispatch = useDispatch()
+    const handleLogout = () => { //** Una funcion de flecha que no recibe ningun argumento, de igual manera voy a asignar el evento al boton */
+        dispatch( startLogout() ) //** Ya hice el dispatch del logout */
+    }
+
     return (
         <aside className="journal__sidebar"> {/* El aside indica que esto esta en un costado y le asignamos una clase para ponerla con scss */}
             
@@ -11,7 +23,9 @@ export const Sidebar = () => {
                     <span> Francisco</span>
                 </h3>
 
-                <button className="btn">
+                <button
+                    className="btn"
+                    onClick={ handleLogout }> {/* Le asigno una accion a este boton */}
                     Logout
                 </button>
             </div>
