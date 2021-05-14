@@ -1,4 +1,6 @@
 //** Estas son acciones que vamos a definir */
+import Swal from 'sweetalert2' //** Sweetalert2 es una libreria de alertas */
+
 import { firebase, googleAuthProvider } from '../firebase/firebase-config'
 import { types } from '../types/types'
 import { finishLoading, startLoading } from './ui'
@@ -17,8 +19,9 @@ export const startLoginEmailPassword = (email, password) => { //** Esta funcion 
             dispatch( finishLoading() ) //** Cuando termina de cargarlo */
 
         })
-        .catch( e => {
+        .catch( e => { //** Esto es para poner los mensajes de error, de cualquier manera aqui los agarramos */
             console.log(e);
+            Swal.fire('Error', e.message, 'error') //** Esto es del sweetalert */
             dispatch( finishLoading() )
         })
     }
@@ -37,6 +40,7 @@ export const startRegisterWithEmailPasswordName = ( email, password, name ) => {
         })
         .catch( e => { //** Esto es para atrapar el error y mostrarlo */
             console.log(e);
+            Swal.fire('Error', e.message, 'error') //** Esto es del sweetalert */
         })
     }
 }
