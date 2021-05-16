@@ -1,5 +1,5 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { JournalEntries } from './JournalEntries'
 import { startLogout } from '../../actions/auth'
@@ -10,6 +10,9 @@ export const Sidebar = () => {
 
     //** Hay que hacer un dispatch de la accion cuando se toque el boton */
     const dispatch = useDispatch()
+    //** Para poner el nombre del usuario logeado usaremos el useSelector */
+    const { name } = useSelector(state => state.auth) //** Es lo que venga en el auth, y lo que me interesa es el displayName */
+
     const handleLogout = () => { //** Una funcion de flecha que no recibe ningun argumento, de igual manera voy a asignar el evento al boton */
         dispatch( startLogout() ) //** Ya hice el dispatch del logout */
     }
@@ -20,7 +23,8 @@ export const Sidebar = () => {
             <div className="journal__sidebar-navbar">
                 <h3 className="mt-5"> {/* Hicimos una separacion hacia abajo para que no se viera tan arriba */}
                     <i className="far fa-moon"></i>
-                    <span> Francisco</span>
+                    <span> { name } </span>
+
                 </h3>
 
                 <button

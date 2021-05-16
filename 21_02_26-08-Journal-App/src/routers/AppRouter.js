@@ -45,7 +45,7 @@ export const AppRouter = () => {
 
     if ( checking ){
         return ( //** Si esta en true voy a hacer el return de un nuevo objeto */
-            <h1>Espere...</h1>
+            <h1>Wait...</h1>
         )
     }
 
