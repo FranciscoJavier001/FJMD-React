@@ -17,6 +17,10 @@ export const Sidebar = () => {
         dispatch( startLogout() ) //** Ya hice el dispatch del logout */
     }
 
+    const handleAddNew = () => { //** Esta es una funcion de flecha que no recibe nada y va a hacer el dispatch de una accion que voy a definir en los types que estan dentro de src */
+
+    }
+
     return (
         <aside className="journal__sidebar"> {/* El aside indica que esto esta en un costado y le asignamos una clase para ponerla con scss */}
             
@@ -34,7 +38,8 @@ export const Sidebar = () => {
                 </button>
             </div>
 
-            <div className="journal__new-entry">
+            <div className="journal__new-entry"
+            onClick={ handleAddNew }> {/* Le doy funcionalidad del click, y como no esta implementado lo defino arriba */}  
                 <i className="far fa-calendar-plus fa-5x"></i> {/* Con esto creo un calendario, es de font awesome */}
                 <p className="mt-5"> {/* Para hacer una separacion del New Entry hacia arriba */}
                     New Entry

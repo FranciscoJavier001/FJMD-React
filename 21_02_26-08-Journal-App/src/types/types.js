@@ -10,5 +10,9 @@ export const types = {
     uiRemoveError: '[UI] Remove Error',
 
     uiStartLoading: '[UI] Start loading',
-    uiFinishLoading: '[UI] Finish loading'
+    uiFinishLoading: '[UI] Finish loading',
+
+    notesAddNew: '[Notes] New note', //** Entre el cuadrado voy a indicar cual es el reducer al cual reacciona esta accion, primero le ponemos quien es el responsable de la accion y en este caso es el notes */
+    notesActive: '[Notes] New note', //** Me va a indicar cual es la nota activa */
+    notesLoad: '[Notes] New note', //** Esta va a ser para cargar todas las notas  */
 }

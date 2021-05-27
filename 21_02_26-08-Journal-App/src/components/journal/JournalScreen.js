@@ -1,5 +1,5 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux' //** Para poder ejecutar algo del store usamos el useSelector */
 import { NoteScreen } from '../notes/NoteScreen'
 import { Sidebar } from './Sidebar' //** Para importarlo cree este componente en la carpeta de Journal y luego lo hice un rafc y luego solo lo importe aqui */
 import { NothingSelected } from './NothingSelected'
@@ -16,8 +16,8 @@ export const JournalScreen = () => {
             <main> {/* Este sera nuestro contenido principal */}
             {
                 (active !== null) //** Aqui voy a mostrar un componente, si la nota tiene algo, voy a usar un ternario y si tengo algo seleccionado voy a regresar el notesScreen, que hay voy a mostrar la informacion de la nota y si no tenemos nada, vamos a seleccionar el nothingSelected */
-                ? ( <NoteScreen /> ) //** Dice que no va a recibir ningun argumento */
-                : <NothingSelected /> 
+                ? ( <NoteScreen /> ) 
+                : <NothingSelected /> //** Dice que no va a recibir ningun argumento */
             }
             </main>
         </div>
