@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { JournalEntries } from './JournalEntries'
 import { startLogout } from '../../actions/auth'
+import { startNewNote } from '../../actions/notes'
 
 export const Sidebar = () => {
 
@@ -18,7 +19,7 @@ export const Sidebar = () => {
     }
 
     const handleAddNew = () => { //** Esta es una funcion de flecha que no recibe nada y va a hacer el dispatch de una accion que voy a definir en los types que estan dentro de src */
-
+        dispatch( startNewNote() ) //** Parentesis porque no recibe ningun argumento y guardo los cambios */
     }
 
     return (
