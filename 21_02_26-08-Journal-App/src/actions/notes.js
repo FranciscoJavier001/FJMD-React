@@ -33,3 +33,9 @@ export const activeNote = ( id, note ) => ({ //** Este va a recibir el id y la n
         ...note
     }
 })
+
+//** Como voy a guardar las notas en el store voy a guardar esto, con esto estoy creando siempre un nuevo arreglo */
+export const setNotes = ( notes ) => ({ //** Aqui voy a recibir las notas */
+    type: types.notesLoad, //** el type que va a tener esto , va a ser de notesLoad y el paylod va a ser todas las notas que este recibiendo como argumento */
+    payload: [ notes ]
+})

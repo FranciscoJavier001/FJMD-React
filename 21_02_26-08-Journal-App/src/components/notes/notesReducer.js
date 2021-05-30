@@ -23,6 +23,13 @@ export const notesReducer = ( state = initialState, action ) => { //** Recuerda 
                 }
             }
 
+            //** Voy a editar el reducer para saber que hacer cuando recibamos una tarea o una accion de este tipo */
+            case types.notesLoad: //** Y que es lo que voy a hacer, voy a retornar un nuevo estado con el operador spred del state y las notas van a ser igual al action.payload, pero esto es un arreglo asi que voy a exparsirlo con el operador spred */
+            return {
+                ...state,
+                notes: [ ...action.payload ]
+            }
+
         default:
             return state; //** Solamente voy a hacer el return del state */
     }
