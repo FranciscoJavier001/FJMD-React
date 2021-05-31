@@ -1,4 +1,5 @@
 import { db } from "../firebase/firebase-config";
+import { loadNotes } from "../helpers/loadNotes";
 import { types } from '../types/types'
 
 //** Voy a exportar un nuevo componente */
@@ -33,6 +34,16 @@ export const activeNote = ( id, note ) => ({ //** Este va a recibir el id y la n
         ...note
     }
 })
+
+//** Voy a crear una nueva accion para */
+export const startLoadingNotes = ( uid ) => { //** Funcion que recibe el uid del usuario */
+    return async( dispatch ) => { //** Esta accion va disparar otra accion que va a ser asyncrona, que recibe el dispatch */
+         //** Aqui voy a disparar el loadNotes, esta funcion va a regresar las notas y esta funcion va a hacer el dispatch de la accion y voy necesitar almacenar esto en el store */
+         const notes = await loadNotes( uid )
+         //** Como no estoy viendo las notas voy a asegurarme de haberlo llamado con el dispatch, voy a llamar el setNotes y luego voy a llamar a las notas y asi quedan almacenadas en el store */
+         dispatch( setNotes( notes ) )
+    }
+}
 
 //** Como voy a guardar las notas en el store voy a guardar esto, con esto estoy creando siempre un nuevo arreglo */
 export const setNotes = ( notes ) => ({ //** Aqui voy a recibir las notas */

@@ -16,8 +16,7 @@ import { PublicRoute } from './PublicRoute'
 
 import { JournalScreen } from '../components/journal/JournalScreen'
 import { login } from '../actions/auth'
-import { loadNotes } from '../helpers/loadNotes'
-import { setNotes } from '../actions/notes'
+import { startLoadingNotes } from '../actions/notes'
 
 export const AppRouter = () => {
 
@@ -36,10 +35,8 @@ export const AppRouter = () => {
                 dispatch( login( user.uid, user.displayName ) ) //** Ahora puedo hacer el dispatch de cualquier accion que se me venga en gana, ahora voy a hacer el dispatch mandando como argumento el user.uid y el user.displayName, de aqui puedo extraer todo lo que necesite */
                 setIsLoggedIn( true ) //** Esto quiere decir qe esta loggeado de manera correcta */
 
-                //** Aqui voy a disparar el loadNotes y mando el uid del usuario que lo tengo en user.uid arriba definido, y esta funcion va a regresar las notas y esta funcion va a hacer el dispatch de la accion y voy  necesitar almacenar esto en el store */
-                const notes = await loadNotes( user.uid )
-                //** Como no estoy viendo las notas voy a asegurarme de haberlo llamado con el dispatch, voy a llamar el setNotes y luego voy a llamar a las notas y asi quedan almacenadas en el store */
-                dispatch( setNotes( notes ) )
+                //** Como no estoy viendo las notas voy a asegurarme de haberlo llamado con el dispatch, voy a llamar el setNotes y luego voy a llamar al user.uid y asi quedan almacenadas en el store */
+                dispatch( startLoadingNotes( user.uid ) )
             } else {
                 setIsLoggedIn( false ) //** Pues en caso contrario pues no esta loggeado */
             }
