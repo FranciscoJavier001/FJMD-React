@@ -1,16 +1,23 @@
+//** Recuerda, el store es la fuente unica de la verdad */
+
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { JournalEntry } from './JournalEntry'
 
 export const JournalEntries = () => {
 
-    const entries = [1,2,3,4,5] //** Esta la vamos a jalar de una base de datos que aun no se crea */
+    const { notes } = useSelector( state => state.notes )
+    console.log(notes);
 
     return (
         <div className="journal__entries">
             
             {
-                entries.map( value => ( /* Voy a barrer los entries, para ver cuantas tengo, asi es como se verifica la info de la base de datos */ 
-                    <JournalEntry key={ value } /> //** Aqui va el objeto que voy a retornar */
+                notes.map( note => ( /* Voy a barrer los entries/notes, para ver cuantas tengo, asi es como se verifica la info de la base de datos */ 
+                    <JournalEntry //** Aqui va el objeto que voy a retornar */
+                        key={ note.id } //** Este va a ser el note.id, que lo vamos a tener desde firebase */
+                        { ...note } //** Voy a extraer las propiedades que tenga la note */
+                    />
                     ))
                 }
         </div>
