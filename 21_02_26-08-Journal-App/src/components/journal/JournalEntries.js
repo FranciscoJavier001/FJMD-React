@@ -4,10 +4,9 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { JournalEntry } from './JournalEntry'
 
-export const JournalEntries = () => {
+export const JournalEntries = () => { 
 
-    const { notes } = useSelector( state => state.notes )
-    console.log(notes);
+    const { notes } = useSelector( state => state.notes ) //** Por aqui ya o voy a mandar info prque todo esta en el store/fuente unica de la verdd */
 
     return (
         <div className="journal__entries">
