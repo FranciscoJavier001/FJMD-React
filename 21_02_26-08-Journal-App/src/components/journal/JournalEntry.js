@@ -29,7 +29,7 @@ export const JournalEntry = ({ id, date, title, body, url }) => { //** Aqui voy 
             </div>
 
             <div className="journal__entry-date-box">
-                <span>{ noteDate.format('dddd') }</span>
+                <span>{ noteDate.format('dddd') }</span> {/* Esto es una instancia */}
                 <h4>{ noteDate.format('Do') }</h4>
             </div>
 
