@@ -30,6 +30,17 @@ export const notesReducer = ( state = initialState, action ) => { //** Recuerda 
                 notes: [ ...action.payload ]
             }
 
+            //** Debo de implementar lo que va a hacer la accion de refreshNote */
+            case types.notesUpdated:
+                return {
+                    ...state, //** Siempre hacer el spred en los types del estado anterior para la modificacion o cualquier cosa */
+                    notes: state.notes.map( //** Ahora voy a tomar las notas que haya con el state y el map regresa un nuevo arreglo y voy a mutar la nota utilizando un operador ternario, voy a evaluar si la nota es igual al action.payload.id, que sea el id que estoy mandando de notes, si son iguales significa que es la nota que necesito actualizar entonces si el id es el mismo voy a retornar el action.payload.note, que el note es el note del payload de notes, caso contrario significa que no hay ninguna modificacion y pongo la note asi como esta */
+                        note => note.id === action.payload.id
+                        ? action.payload.note
+                        : note
+                    )
+                }
+
         default:
             return state; //** Solamente voy a hacer el return del state */
     }

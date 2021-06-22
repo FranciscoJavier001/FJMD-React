@@ -1,3 +1,5 @@
+import Swal from 'sweetalert2'
+
 import { db } from "../firebase/firebase-config";
 import { loadNotes } from "../helpers/loadNotes";
 import { types } from '../types/types'
@@ -6,8 +8,8 @@ import { types } from '../types/types'
 export const startNewNote = () => { //** Esta es una tarea asyncrona, asi que voy a poner el return con un callback que va a ocupar el dispatch, y lo voy a llamar en el dispatch del Sidebar.js en el handleAddNew */
     return async( dispatch, getState ) => { //** Aqui voy a poner el segundo argumento, despues del dispatch que vamos a llamar getState (pero ese segundo argumento es una funcion para obtener el state similar al useSelector) */
         //** Para grabar en Firestore voy a oupar otras cosas como el ID del usuario */
-        const uid = getState().auth.uid //** Este es todo el State */
-        console.log( uid );
+        const { uid } = getState().auth //** Este es todo el State */
+        // console.log( uid );
 
         //** Ahora voy a crear la nueva nota que quiero guardar */
         const newNote = {
@@ -31,7 +33,7 @@ export const activeNote = ( id, note ) => ({ //** Este va a recibir el id y la n
     type: types.notesActive,
     payload: {
         id,
-        ...note
+        ...note //** Que cuando utilizamos un operador spred, se va a colocar todo lo demas que haya */
     }
 })
 
@@ -48,5 +50,40 @@ export const startLoadingNotes = ( uid ) => { //** Funcion que recibe el uid del
 //** Como voy a guardar las notas en el store voy a guardar esto, con esto estoy creando siempre un nuevo arreglo */
 export const setNotes = ( notes ) => ({ //** Aqui voy a recibir las notas */
     type: types.notesLoad, //** el type que va a tener esto , va a ser de notesLoad y el paylod va a ser todas las notas que este recibiendo como argumento */
-    payload: [ notes ]
+    payload: notes
+})
+
+export const startSaveNote = ( note ) => { //** Debe recibir la nota */
+    return async ( dispatch, getState  ) => { //** Como esta es una tarea asincrona (promesa), debo trabajar con el middlewherethoung y crearme un nuevo callback que se va a disparar y me va a disponer del dispatch y tambien el getState-lo voy a utilizar porque necesito el getState del usuario */
+
+        const { uid } = getState().auth //** Este es todo el State */
+
+        //** Cuabdo quiero guardar, manda undefine y eso me da un error, esta es la solucion */
+        if ( !note.url ) { //** Si no viene el url, entonces voy a borrar el url */
+            delete note.url
+        }
+
+        //** Voy a crearme una constante que se llame noteToFirestore que es lo que quiero grabar y voy a utilizar el operador spred para separar toda la nota, y con la propiedad delete voy a eliminar el id */
+        const noteToFirestore = { ...note }
+        delete noteToFirestore.id
+
+        //** El await nos dice, espera a que la base de datos nos mande el path(ruta) completa a donde esta la base de datos a actualizar */
+        await db.doc(`${ uid }/journal/notes/${ note.id }`).update( noteToFirestore ) //** Asi hacemos la grabacion */
+
+        //** Necesito hacer el dispatch del refreshNote que defini abajo */
+        dispatch( refreshNote( note.id, noteToFirestore ))
+        Swal.fire('Saved', note.title, 'success') //** Esto es de SweetAlerts */
+    }
+}
+
+//** Voy a crear una nueva funcion que actualize unicamente del store, pero debe ser sincrona porque toda la informacion la tengo local y no ocupo retornar otra cosa */
+export const refreshNote = (id, note) => ({ //** Esta si va a necesitar el id de la nota y la nota, como voy a retornar un objeto pongo los parentesis antes de terminar */
+    type: types.notesUpdated,
+    payload: {
+        id, 
+        note: {
+            id,
+            ...note
+        }
+    }
 })
