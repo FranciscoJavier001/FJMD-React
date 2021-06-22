@@ -1,13 +1,27 @@
 import React from 'react'
 import moment from 'moment'
+import { useDispatch } from 'react-redux'
+import { activeNote } from '../../actions/notes'
 
 export const JournalEntry = ({ id, date, title, body, url }) => { //** Aqui voy a recibir el id, el date, title, body, url */
 
     const noteDate = moment( date ) //** Esto es para mostrar la fecha exacta */
+    //** Esto lo hago para activar la nota */
+    const dispatch = useDispatch()
+
+    const handleEntryClick = () => { //** Y este click lo voy a manejar en en cualquier parte del JournalEntry abajo del return */
+        //** Aqui voy a hacer el dispatch de la acion, que esta en notes y ees la llamada activeNote */
+        dispatch(
+            activeNote( id, { //** Esta pide el id, que ya lo tengo arriba y el segundo argumento va a ser todas las notas del objeto */
+                date, title, body, url
+            })
+        )
+    }
 
     return (
-        <div className="journal__entry pointer">
-            
+        <div className="journal__entry pointer"
+            onClick={ handleEntryClick } /* Aqui voy a manjejar el evento */
+        >
             { //** Solo se va a mostrar si el url existe */
                 url &&
                 <div 
