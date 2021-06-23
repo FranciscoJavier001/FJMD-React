@@ -4,6 +4,8 @@ import { db } from "../firebase/firebase-config";
 import { loadNotes } from "../helpers/loadNotes";
 import { types } from '../types/types'
 
+// react-journal
+
 //** Voy a exportar un nuevo componente */
 export const startNewNote = () => { //** Esta es una tarea asyncrona, asi que voy a poner el return con un callback que va a ocupar el dispatch, y lo voy a llamar en el dispatch del Sidebar.js en el handleAddNew */
     return async( dispatch, getState ) => { //** Aqui voy a poner el segundo argumento, despues del dispatch que vamos a llamar getState (pero ese segundo argumento es una funcion para obtener el state similar al useSelector) */
