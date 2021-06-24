@@ -1,6 +1,7 @@
 import Swal from 'sweetalert2'
 
 import { db } from "../firebase/firebase-config";
+import { fileUpload } from '../helpers/fileUpload';
 import { loadNotes } from "../helpers/loadNotes";
 import { types } from '../types/types'
 
@@ -89,3 +90,13 @@ export const refreshNote = (id, note) => ({ //** Esta si va a necesitar el id de
         }
     }
 })
+
+//** Esta va a ser una accion en caso que si suba un archivo y va a ser una tarea asincrona */
+export const startUploading = ( file ) => { //** Si voy a necesitar un archivo */
+    return async ( dispatch, getState ) => { //** Osea que va a ser un thong, porque si nos va a regresar algo, osea que tendriamos acceso al dispatch que lo vamos a utilizar para actualizar la nota actual y tambien voy a utilizar el getState para saber la nota actual */
+        const { active:activeNote } = getState().notes //** Hacemos una referencia a la nota activa que va a ser igual al getState que nos va a dar el acceso a las notas para ver si estan activas, despues lo reducimos y le pusimos el nombre de activeNote */
+        //** Voy a crearme un helper que me ayude con la subida del archivo que se va a llamar fileUpload.js */
+        const fileUrl = await fileUpload( file ) //** Voy a hacer una const fileUrl del await, pero a esta funcion le ponemos un async-en-el-return del fileUpload de nuestros helpers y que pida el file que ya lo tengo */
+        console.log(fileUrl);
+    }
+}
