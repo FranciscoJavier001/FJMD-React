@@ -71,7 +71,7 @@ export const startSaveNote = ( note ) => { //** Debe recibir la nota */
         delete noteToFirestore.id
 
         //** El await nos dice, espera a que la base de datos nos mande el path(ruta) completa a donde esta la base de datos a actualizar */
-        await db.doc(`${ uid }/journal/notes/${ note.id }`).update( noteToFirestore ) //** Asi hacemos la grabacion */
+        await db.doc(`${ uid }/journal/notes/${ note.id }`).update( noteToFirestore ) //** Asi hacemos la grabacion, mejor dicho actualizamos el url */
 
         //** Necesito hacer el dispatch del refreshNote que defini abajo */
         dispatch( refreshNote( note.id, noteToFirestore ))
@@ -95,8 +95,20 @@ export const refreshNote = (id, note) => ({ //** Esta si va a necesitar el id de
 export const startUploading = ( file ) => { //** Si voy a necesitar un archivo */
     return async ( dispatch, getState ) => { //** Osea que va a ser un thong, porque si nos va a regresar algo, osea que tendriamos acceso al dispatch que lo vamos a utilizar para actualizar la nota actual y tambien voy a utilizar el getState para saber la nota actual */
         const { active:activeNote } = getState().notes //** Hacemos una referencia a la nota activa que va a ser igual al getState que nos va a dar el acceso a las notas para ver si estan activas, despues lo reducimos y le pusimos el nombre de activeNote */
+
+        Swal.fire({
+            title: 'Uploading...',
+            text: 'Please wait...',
+            allowOutsideClick: false,
+            onBeforeOpen: () => {
+                Swal.showLoading()
+            }
+        })
+
         //** Voy a crearme un helper que me ayude con la subida del archivo que se va a llamar fileUpload.js */
         const fileUrl = await fileUpload( file ) //** Voy a hacer una const fileUrl del await, pero a esta funcion le ponemos un async-en-el-return del fileUpload de nuestros helpers y que pida el file que ya lo tengo */
-        console.log(fileUrl);
+        activeNote.url = fileUrl //** Pero debo de actualizar el url */
+        
+        dispatch( startSaveNote( activeNote ) ) //** Pero aqui neesito mandar la nota activa */
     }
 }

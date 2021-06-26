@@ -72,7 +72,7 @@ export const NoteScreen = () => {
                     && (
                         <div className="notes__image">
                             <img
-                            src="https://image.freepik.com/foto-gratis/silueta-mujer-joven-meditando-practicando-yoga-playa-al-atardecer_35708-291.jpg"
+                            src={ note.url }
                             alt="imagen"
                             />
                         </div>
