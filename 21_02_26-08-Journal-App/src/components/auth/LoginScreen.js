@@ -35,7 +35,11 @@ export const LoginScreen = () => {
             <h3 className="auth__title">Login</h3>  {/* Es lo que esta escrito en la caja blanca definida en el auth__box-container que contiene a los 2 */}
 
             {/* Cuando alguien toque el boton del submit */}
-            <form onSubmit={ handleLogin }> {/* Este es la caja de un formulario que va a estar abajo del login */}
+            <form
+                onSubmit={ handleLogin }
+                className="animate__animated animate__fadeIn animate__faster"
+            > {/* Este es la caja de un formulario que va a estar abajo del login */}
+
                 <input //** Este crea el primero */
                     type="text"
                     placeholder="E-Mail"

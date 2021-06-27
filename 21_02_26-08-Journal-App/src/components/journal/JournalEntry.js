@@ -19,7 +19,7 @@ export const JournalEntry = ({ id, date, title, body, url }) => { //** Aqui voy 
     }
 
     return (
-        <div className="journal__entry pointer"
+        <div className="journal__entry pointer animate__animated animate__fadeIn animate__faster"
             onClick={ handleEntryClick } /* Aqui voy a manjejar el evento */
         >
             { //** Solo se va a mostrar si el url existe */

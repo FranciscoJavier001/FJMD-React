@@ -9,7 +9,9 @@ export const JournalScreen = () => {
     //** Osea si tenemos una nota activa, vamos a extraer algo del store o del state y voy a utilizar el useSelector */
     const { active } = useSelector(state => state.notes) //** En lo primero voy a extraer del notes el active, y lo extraigo del state */
     return (
-        <div className="journal__main-content">
+        <div 
+            className="journal__main-content animate__animated animate__fadeIn animate__faster"
+        >
             
             <Sidebar /> {/* Aun no existe este componente */}
 

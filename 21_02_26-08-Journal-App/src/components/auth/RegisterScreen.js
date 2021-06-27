@@ -48,9 +48,12 @@ export const RegisterScreen = () => {
 
     return (
         <>
-        <h3 className="auth__title">Registrase</h3>  {/* Es lo que esta escrito en la caja blanca definida en el auth__box-container que contiene a los 2 */}
+        <h3 className="auth__title">Register</h3>  {/* Es lo que esta escrito en la caja blanca definida en el auth__box-container que contiene a los 2 */}
 
-        <form onSubmit={ handleRegister }> {/* Este es la caja de un formulario que va a estar abajo del login */}
+        <form 
+            onSubmit={ handleRegister }
+            className="animate__animated animate__fadeIn animate__faster"
+        > {/* Este es la caja de un formulario que va a estar abajo del login */}
 
             {
                 msgError && //** Que solo se muestre si es diferente a null */
@@ -103,14 +106,14 @@ export const RegisterScreen = () => {
                 type="submit" //** Que pueda darle click */
                 className="btn btn-primary btn-block mb-5"
             >
-                Registrarse
+                Register
             </button>
 
             <Link
                 to="/auth/login" /* Este lo importamos desde react-router-dom con el link */
                 className="link"
             >
-                Iniciar Sesion
+                Already Register?
             </Link>
 
         </form>
