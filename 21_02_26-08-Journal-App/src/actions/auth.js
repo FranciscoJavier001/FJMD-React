@@ -3,6 +3,7 @@ import Swal from 'sweetalert2' //** Sweetalert2 es una libreria de alertas */
 
 import { firebase, googleAuthProvider } from '../firebase/firebase-config'
 import { types } from '../types/types'
+import { noteLogout } from './notes'
 import { finishLoading, startLoading } from './ui'
 
 //** Esto es una tarea asincrona, osea que se va a ejecutar todo el proceso, luego se va a encontrar con el dispatch que ejecuta la accion del login que es la que se va a aplicar directamente en el store (la fuente unica de la verdad), que modifica el state y nos regresa todo lo que estamos esperando  */
@@ -70,6 +71,7 @@ export const startLogout = () => { //** Porque tiene que ser asyncrona a pesar d
         await firebase.auth().signOut() //** Aqui si se ejecuta el then susedio el logOut correcto */
 
         dispatch( logout() ) //** Si se ejecuta voy a hacer el logout, que lo pusimos abajo, pero que definimos en los tipos */
+        dispatch( noteLogout() ) //** Este lo pegamos de las notes, y no recibe ningun argumento */
     }
 }
 

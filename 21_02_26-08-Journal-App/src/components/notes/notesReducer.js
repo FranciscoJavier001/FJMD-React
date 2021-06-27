@@ -23,6 +23,12 @@ export const notesReducer = ( state = initialState, action ) => { //** Recuerda 
                 }
             }
 
+        case types.notesAddNew:
+            return {
+                ...state,
+                notes: [ action.payload, ...state.notes ]
+            }
+
             //** Voy a editar el reducer para saber que hacer cuando recibamos una tarea o una accion de este tipo */
             case types.notesLoad: //** Y que es lo que voy a hacer, voy a retornar un nuevo estado con el operador spred del state y las notas van a ser igual al action.payload, pero esto es un arreglo asi que voy a exparsirlo con el operador spred */
             return {
@@ -46,6 +52,13 @@ export const notesReducer = ( state = initialState, action ) => { //** Recuerda 
                         ...state, //** Esparzamos el state para no perder el estado anterior */
                         active: null,
                         notes: state.notes.filter( note => note.id !== action.payload ) //** Esto quiere decir que debe regresar todas, menos la que yo seleccione */
+                    }
+
+                case types.notesLogoutCleaning:
+                    return {
+                        ...state, //** Voy a hacer el clon del State */
+                        active: null, //** La nota activa va a ser igual a null */
+                        notes: [] //** Va a ser igual a un arreglo vacio */
                     }
 
         default:

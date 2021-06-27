@@ -26,6 +26,7 @@ export const startNewNote = () => { //** Esta es una tarea asyncrona, asi que vo
 
         //** Aqui voy a mandar llamar la accion que defini abajo */
         dispatch( activeNote( doc.id, newNote ) ) //** Esta pide el id de la nota y este lo tengo en el doc.id, y luego viene la nota que seria el newNote que lo acabo de crear */
+        dispatch( addNewNote( doc.id, newNote ) ) //** Voy a crear un nuevo dispatch */
     }
 }
 
@@ -37,6 +38,13 @@ export const activeNote = ( id, note ) => ({ //** Este va a recibir el id y la n
     payload: {
         id,
         ...note //** Que cuando utilizamos un operador spred, se va a colocar todo lo demas que haya */
+    }
+})
+
+export const addNewNote = ( id, note ) => ({ //** Es para mostrar las notas siempre, voy a recibir el id y la note, los parentesis los puse porque no van a ser asyncronos */
+    type: types.notesAddNew,
+    payload: {
+        id, ...note
     }
 })
 
@@ -128,4 +136,8 @@ export const startDeleting = ( id ) => { //** Voy a necesitar por lo menos el id
 export const deleteNote = (id) => ({ //** Esto es sincrono y recibe el id de la nota que quiero borrar */
     type: types.notesDelete, /* Esto unicamente voy a regresar el objeto */
     payload: id //** El payload va a ser el id de la nota a borrar */
+})
+
+export const noteLogout = () => ({
+    type: types.notesLogoutCleaning
 })
