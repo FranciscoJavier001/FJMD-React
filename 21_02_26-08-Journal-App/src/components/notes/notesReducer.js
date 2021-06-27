@@ -41,6 +41,13 @@ export const notesReducer = ( state = initialState, action ) => { //** Recuerda 
                     )
                 }
 
+                case types.notesDelete:
+                    return {
+                        ...state, //** Esparzamos el state para no perder el estado anterior */
+                        active: null,
+                        notes: state.notes.filter( note => note.id !== action.payload ) //** Esto quiere decir que debe regresar todas, menos la que yo seleccione */
+                    }
+
         default:
             return state; //** Solamente voy a hacer el return del state */
     }

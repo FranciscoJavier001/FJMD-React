@@ -110,5 +110,22 @@ export const startUploading = ( file ) => { //** Si voy a necesitar un archivo *
         activeNote.url = fileUrl //** Pero debo de actualizar el url */
         
         dispatch( startSaveNote( activeNote ) ) //** Pero aqui neesito mandar la nota activa */
+
+        Swal.close()
     }
 }
+
+export const startDeleting = ( id ) => { //** Voy a necesitar por lo menos el id de lo que voy a borrar */
+    return async ( dispatch, getState ) => { //** Como es una tarea asincrona con el return y thong voy a tener el dispatch y tambien voy a ocupar el state para tener el url al cual necesito borrar, y como va a ser una promesa me gusta aqui poner el async */
+
+        const uid = getState().auth.uid //** Voy a crearme el uid de la persona  */
+        await db.doc(`${ uid }/journal/notes/${ id }`).delete() //** En donde exporto esta funcion voy a tener el id */
+
+        dispatch( deleteNote(id) ) //** Aqui necesito crear una funcion que modifique el store, luego despues de crear la funcion llamamos al dispatch con la funcion que recibe el id */
+    }
+}
+
+export const deleteNote = (id) => ({ //** Esto es sincrono y recibe el id de la nota que quiero borrar */
+    type: types.notesDelete, /* Esto unicamente voy a regresar el objeto */
+    payload: id //** El payload va a ser el id de la nota a borrar */
+})

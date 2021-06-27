@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { activeNote } from '../../actions/notes'
+import { activeNote, startDeleting } from '../../actions/notes'
 import { useForm } from '../../hooks/useForm'
 import { NotesAppBar } from './NotesAppBar'
 
@@ -15,7 +15,7 @@ export const NoteScreen = () => {
     //** Aqui voy a utilizar el useForm y este hook funciona haciendo la desestructuracion de lo que me va a regresar el useForm me regresa mis formValues y tambien el handleInputChange y el useForm recie los campos que debe tener los campos del formulario y le puedo mandar la note que tengo arriba eso haria que yo tenga la informacion en el formValues y de ahi ya la puedo extraer, tambien de squi extraigo el reset */
     const [ formValues, handleInputChange, reset] = useForm( note )
     //** Ahora voy a extraer el body y el title que viene en el formValues */
-    const{  body, title } = formValues; //** Voy a tomar el body y el title y lo voy a poner en sus respectivas cajas */
+    const{  body, title, id } = formValues; //** Voy a tomar el body y el title y lo voy a poner en sus respectivas cajas */
 
     //** Ahora voy a condicionar solo si el estado de la nota y solo si el estado es diferente */
     //** Para esto voy a crear un activeId que lo voy a almacenar en el useRef que es un hook de react, que me permite almacenar una variable mutable que no va a redibujar todo el componente si cambia y a donde va a apuntar va a ser al note.id */
@@ -39,6 +39,10 @@ export const NoteScreen = () => {
 
     //** Ahora voy a extraer el body y el title que viene en el formValues */
     // console.log(formValues);
+
+    const handleDelete = () => {
+        dispatch( startDeleting(id) ) //** Esta tarea va a iniciar la tarea asincrona de borrar, la funcion necesita el id de la nota  */
+    }
 
     return (
         <div className="notes__main-content">
@@ -83,6 +87,7 @@ export const NoteScreen = () => {
             
                 <button
                     className="btn btn-danger"
+                    onClick={ handleDelete }
                 >
                     Delete
                 </button>
