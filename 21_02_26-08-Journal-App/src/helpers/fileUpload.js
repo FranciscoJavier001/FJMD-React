@@ -22,7 +22,7 @@ export const fileUpload = async ( file ) => {
             const cloudResp = await resp.json() //** Si se hizo correcto voy a ponerle cloudResp va a ser igual al await de la resp.json */
             return cloudResp.secure_url //** En este punto significa que nos regreso una respuesta del secureUrl */
         } else { //** Y en caso contrario pues que nos rerorne un error */
-            throw await resp.json() //** Pongo un throw await de la resp.json */
+            return null //** Que me regrese un null */
         }
     } catch (err) {
         throw err //** Asi vemos si algo salio mal */
