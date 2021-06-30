@@ -19,7 +19,7 @@ describe('Pruebas en fileUpload', () => {
         const file = new File([], 'foto.google')
         const url = await fileUpload( file )
 
-        expect( typeof url ).toBe( null )
+        expect( url ).toBe( null )
     })
     
 })
