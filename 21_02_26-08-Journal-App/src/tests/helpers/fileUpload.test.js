@@ -11,7 +11,7 @@ describe('Pruebas en fileUpload', () => {
 
     test('debe de cargar un archivo y retornar el URL', async() => { //** Aqui puedo hacer el async, y le digo que aguante hasta que llame al done */
         
-        const resp = await fetch('https://res.cloudinary.com/softtek/image/upload/v1599620851/pqrzsjdgscv69z9gt4eh.jpg') //** fetch me regresa una promesa y el await es como aguantala y copiamos el url de la imagen */
+        const resp = await fetch('https://sites.google.com/a/netcmmi.com/share/_/rsrc/1473734124982/img/png/s/star-e01.png') //** fetch me regresa una promesa y el await es como aguantala y copiamos el url de la imagen */
         const blob = await resp.blob()
 
         const file = new File([blob], 'foto.google')
