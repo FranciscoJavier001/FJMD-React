@@ -9,6 +9,7 @@ cloudinary.config({ //** Esto es de la documentacion de Cloudinary */
 
 describe('Pruebas en fileUpload', () => {
 
+    //** Si borra el archivo, pero me da falla al subirlo porque checa que ya no esta */
     test('debe de cargar un archivo y retornar el URL', async() => { //** Aqui puedo hacer el async, y le digo que aguante hasta que llame al done */
         
         const resp = await fetch('https://sites.google.com/a/netcmmi.com/share/_/rsrc/1473734124982/img/png/s/star-e01.png') //** fetch me regresa una promesa y el await es como aguantala y copiamos el url de la imagen */
