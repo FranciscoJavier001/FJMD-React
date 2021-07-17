@@ -18,7 +18,7 @@ describe('Pruebas en el authReducer', () => {
 
         const state = authReducer( initState, action ) //** Recibe dos parametros */
 
-        console.log( state );
+        // console.log( state );
 
         expect( state ).toEqual({
             uid: 'abc',
@@ -39,7 +39,7 @@ describe('Pruebas en el authReducer', () => {
 
         const state = authReducer( initState, action ) //** Recibe dos parametros */
 
-        console.log( state );
+        // console.log( state );
 
         expect( state ).toEqual({}) //** Me debe retornar el arreglo vacio */
     })
@@ -57,7 +57,7 @@ describe('Pruebas en el authReducer', () => {
 
         const state = authReducer( initState, action ) //** Recibe dos parametros */
 
-        console.log( state );
+        // console.log( state );
 
         expect( state ).toEqual( initState ) //** Debe regresarme el estado inicial */
     })
