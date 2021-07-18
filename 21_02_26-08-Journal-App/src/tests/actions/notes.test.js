@@ -98,5 +98,7 @@ describe('Pruebas con las acciones de notes', () => {
 
         expect( docRef.data().title ).toBe( note.title )
     })
+
+    //** Hay que seguir haciendo los test de notes */
     
 })
