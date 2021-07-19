@@ -99,6 +99,10 @@ describe('Pruebas con las acciones de notes', () => {
         expect( docRef.data().title ).toBe( note.title )
     })
 
-    //** Hay que seguir haciendo los test de notes */
+    test('startUploading debe de actualizar el url del entry', () => {
+        
+        const file = new file([], 'foto.jpg') //** Este es un archivo vacio */
+    })
+    
     
 })
