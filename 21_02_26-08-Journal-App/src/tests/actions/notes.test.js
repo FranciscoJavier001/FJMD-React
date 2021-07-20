@@ -104,5 +104,4 @@ describe('Pruebas con las acciones de notes', () => {
         const file = new file([], 'foto.jpg') //** Este es un archivo vacio */
     })
     
-    
 })
