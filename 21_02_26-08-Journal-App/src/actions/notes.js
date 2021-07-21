@@ -21,12 +21,17 @@ export const startNewNote = () => { //** Esta es una tarea asyncrona, asi que vo
             date: new Date().getTime() //** Este me va a dar el tiempo exacto cuando la nota fue creada, es un objeto de JS, y lo voy a mandar a un path de Firestore para guardarlo */
         }
 
-        //** Para hacer lo del getTime, debo de conseguir la referencia a la base de datos, esta ya la tengo en firebase & firebase-config.js */
-        const doc = await db.collection(`${ uid }/journal/notes`).add( newNote ) //** Voy a hacer la referencia al documento y esto viene de db que lo explique arriba, esto lo voy a poner en la coleccion donde quiero guardar esto, voy a ocupar el uid del usuario , luego el journal que va a ser donde lo estoy guardando, luego notes, porque quiero que ahi este y ahi ya puedo hacer el .add y ahi mando el newNote, el add regresa una promesa que retorna el document.reference y como esto es una promesa en el return del startNewNote lo voy a convertir a async y aqui hacer el await, osea espera que se haga la insercion y el doc va a dar referencia al documento */
-
-        //** Aqui voy a mandar llamar la accion que defini abajo */
-        dispatch( activeNote( doc.id, newNote ) ) //** Esta pide el id de la nota y este lo tengo en el doc.id, y luego viene la nota que seria el newNote que lo acabo de crear */
-        dispatch( addNewNote( doc.id, newNote ) ) //** Voy a crear un nuevo dispatch */
+        try {
+            //** Para hacer lo del getTime, debo de conseguir la referencia a la base de datos, esta ya la tengo en firebase & firebase-config.js */
+            const doc = await db.collection(`${ uid }/journal/notes`).add( newNote ) //** Voy a hacer la referencia al documento y esto viene de db que lo explique arriba, esto lo voy a poner en la coleccion donde quiero guardar esto, voy a ocupar el uid del usuario , luego el journal que va a ser donde lo estoy guardando, luego notes, porque quiero que ahi este y ahi ya puedo hacer el .add y ahi mando el newNote, el add regresa una promesa que retorna el document.reference y como esto es una promesa en el return del startNewNote lo voy a convertir a async y aqui hacer el await, osea espera que se haga la insercion y el doc va a dar referencia al documento */
+    
+            //** Aqui voy a mandar llamar la accion que defini abajo */
+            dispatch( activeNote( doc.id, newNote ) ) //** Esta pide el id de la nota y este lo tengo en el doc.id, y luego viene la nota que seria el newNote que lo acabo de crear */
+            dispatch( addNewNote( doc.id, newNote ) ) //** Voy a crear un nuevo dispatch */
+            
+        } catch (error) {
+            console.log(error);
+        }
     }
 }
 

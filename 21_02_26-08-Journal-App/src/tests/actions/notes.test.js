@@ -4,9 +4,26 @@
 
 import configureStore from 'redux-mock-store' //ES6 modules
 import thunk from 'redux-thunk'
-import { startLoadingNotes, startNewNote, startSaveNote } from '../../actions/notes'
+import { startLoadingNotes, startNewNote, startSaveNote, startUploading } from '../../actions/notes'
 import { db } from '../../firebase/firebase-config'
+import { fileUpload } from '../../helpers/fileUpload'
 import { types } from '../../types/types'
+
+// jest.mock('../../helpers/fileUpload', () => ({ //** Estoes un objeto, asi que por eso lo pongo entre parentesis */
+//     fileUpload: jest.fn( () => { //** Cuando se mande llamar quiero que mre regrese esto */
+//         return 'https://hola-mundo.com/cosa.jpg'
+//     })
+// }))
+
+jest.mock('../../helpers/fileUpload', () => { //** Estoes un objeto, asi que por eso lo pongo entre parentesis */
+    return {
+        fileUpload: () => {
+            return Promise.resolve(
+                'https://hola-mundo.com/cosa.jpg'
+            )
+        }
+    }
+})
 
 const middlewares = [thunk] //** thunk es el middleware */
 const mockStore = configureStore(middlewares)
@@ -14,6 +31,13 @@ const mockStore = configureStore(middlewares)
 const initState = { //** Este contiene el estado del store en este momento, dentro voy a tener el auth, y dentro del objeto el uid */
     auth: {
         uid: 'TESTING'
+    },
+    notes : {
+        active: {
+            id: 'R5HB60XwmTSJWe6Qro9h',
+            title: ' Hola',
+            body: 'Mundo'
+        }
     }
 }
 
@@ -99,9 +123,13 @@ describe('Pruebas con las acciones de notes', () => {
         expect( docRef.data().title ).toBe( note.title )
     })
 
-    test('startUploading debe de actualizar el url del entry', () => {
+    test('startUploading debe de actualizar el url del entry', async() => { //** Para hacer el dispatch voy a trabajar esto como una promesa, por el store que esta arriba */
         
-        const file = new file([], 'foto.jpg') //** Este es un archivo vacio */
+        const file = []; //** Este es un archivo vacio */
+        await store.dispatch( startUploading( file )) //** Debo de poner el nombre de la accion que voy a llamar y aqui le voy a mandar el file */
+
+        const docRef = await db.doc('/TESTING/journal/notes/R5HB60XwmTSJWe6Qro9h').get() //** Con get obtengo la referencia al documento */
+        expect( docRef.data().url ).toBe('https://hola-mundo.com/cosa.jpg') //** Asi extraemos la data porque es una funcion */
     })
     
 })
