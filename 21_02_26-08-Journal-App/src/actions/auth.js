@@ -77,5 +77,5 @@ export const startLogout = () => { //** Porque tiene que ser asyncrona a pesar d
 
 //** Esta accion borra el uid y el displayName del store */
 export const logout = () => ({
-    type: types.logout//** Esto va a hacer el return como un objeto */
+    type: types.logout //** Esto va a hacer el return como un objeto */
 })
