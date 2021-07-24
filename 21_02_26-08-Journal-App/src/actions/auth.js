@@ -13,17 +13,16 @@ export const startLoginEmailPassword = (email, password) => { //** Esta funcion 
 
         dispatch( startLoading() ) //** Aqui comienza la accion cuando empieza la carga en el boton para bloquearlo */
 
-        firebase.auth().signInWithEmailAndPassword( email, password )
+        return firebase.auth().signInWithEmailAndPassword( email, password ) //** Puse un return para hacer los test */
         .then( ({ user }) => {
             dispatch(login( user.uid, user.displayName ))
 
             dispatch( finishLoading() ) //** Cuando termina de cargarlo */
-
         })
         .catch( e => { //** Esto es para poner los mensajes de error, de cualquier manera aqui los agarramos */
             console.log(e);
-            Swal.fire('Error', e.message, 'error') //** Esto es del sweetalert */
             dispatch( finishLoading() )
+            Swal.fire('Error', e.message, 'error') //** Esto es del sweetalert */
         })
     }
 }

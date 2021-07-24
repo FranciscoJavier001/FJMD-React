@@ -4,6 +4,7 @@
 
 import configureStore from 'redux-mock-store' //ES6 modules
 import thunk from 'redux-thunk'
+
 import { startLoadingNotes, startNewNote, startSaveNote, startUploading } from '../../actions/notes'
 import { db } from '../../firebase/firebase-config'
 import { fileUpload } from '../../helpers/fileUpload'
