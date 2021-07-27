@@ -9,11 +9,12 @@ import thunk from 'redux-thunk'
 import '@testing-library/jest-dom'
 
 import { LoginScreen } from "../../../components/auth/LoginScreen"
-import { startGoogleLogin } from '../../../actions/auth'
+import { startGoogleLogin, startLoginEmailPassword } from '../../../actions/auth'
 
 //** Voy a aplicar un mock a la funcion para saber si se llamo o no, y en esta funcion de flecha voy a regresar un objeto y dentro voy a tener el startGoogleLogin */
 jest.mock('../../../actions/auth', () => ({
-    startGoogleLogin: jest.fn() //** Que esto no es mas que un jest.fn() */
+    startGoogleLogin: jest.fn(), //** Que esto no es mas que un jest.fn() */
+    startLoginEmailPassword: jest.fn() //** Que esto no es mas que un jest.fn() */
 }))
 
 
@@ -63,5 +64,15 @@ describe('Pruebas en LoginScreen />', () => {
         expect( startGoogleLogin ).toHaveBeenCalled()
     })
     
+    //** Para esta prueba que era un test, primer debimos crearnos un jest.fn */
+    test('debe de disparar el startLogin con los respectivos argumentos', () => {
+
+        //** Luego debi disparar la accion con el wrapper.find, con el form, con la prop (propiedad) onSubmit  */
+        wrapper.find('form').prop('onSubmit')( //** Y le mando el preventDefault */
+            { preventDefault(){} } //** En la prueba le pongo un console.log osea en el archivo original para ver si se llamo */
+        )
+        
+        expect( startLoginEmailPassword ).toHaveBeenCalledWith('frank@email.com', '123456789')
+    })
     
 })
