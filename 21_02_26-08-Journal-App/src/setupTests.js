@@ -10,6 +10,9 @@ expect.addSnapshotSerializer(createSerializer({mode: 'deep'}));
 // const noScroll = () => {}; 
 // Object.defineProperty( window, 'scrollTo', { value: noScroll, writable: true } );
 
+//** Tal vez ocupe alguna vez este */
+//** const PlaywrightEnvironment = require('jest-playwright-preset/lib/PlaywrightEnvironment').getPlaywrightEnv('jsdom')   (Enter)   module.exports = PlaywrightEnvironment */
+
 // jest.config.js
 module.exports = {
     preset: 'jest-playwright-jsdom',

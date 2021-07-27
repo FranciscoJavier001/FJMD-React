@@ -10,21 +10,21 @@ import { db } from '../../firebase/firebase-config'
 import { fileUpload } from '../../helpers/fileUpload'
 import { types } from '../../types/types'
 
-// jest.mock('../../helpers/fileUpload', () => ({ //** Estoes un objeto, asi que por eso lo pongo entre parentesis */
-//     fileUpload: jest.fn( () => { //** Cuando se mande llamar quiero que mre regrese esto */
-//         return 'https://hola-mundo.com/cosa.jpg'
-//     })
-// }))
+jest.mock('../../helpers/fileUpload', () => ({ //** Estoes un objeto, asi que por eso lo pongo entre parentesis */
+    fileUpload: jest.fn( () => { //** Cuando se mande llamar quiero que mre regrese esto */
+        return 'https://hola-mundo.com/cosa.jpg'
+    })
+}))
 
-jest.mock('../../helpers/fileUpload', () => { //** Estoes un objeto, asi que por eso lo pongo entre parentesis */
-    return {
-        fileUpload: () => {
-            return Promise.resolve(
-                'https://hola-mundo.com/cosa.jpg'
-            )
-        }
-    }
-})
+// jest.mock('../../helpers/fileUpload', () => { //** Estoes un objeto, asi que por eso lo pongo entre parentesis */
+//     return {
+//         fileUpload: () => {
+//             return Promise.resolve(
+//                 'https://hola-mundo.com/cosa.jpg'
+//             )
+//         }
+//     }
+// })
 
 const middlewares = [thunk] //** thunk es el middleware */
 const mockStore = configureStore(middlewares)
@@ -132,5 +132,4 @@ describe('Pruebas con las acciones de notes', () => {
         const docRef = await db.doc('/TESTING/journal/notes/R5HB60XwmTSJWe6Qro9h').get() //** Con get obtengo la referencia al documento */
         expect( docRef.data().url ).toBe('https://hola-mundo.com/cosa.jpg') //** Asi extraemos la data porque es una funcion */
     })
-    
 })
