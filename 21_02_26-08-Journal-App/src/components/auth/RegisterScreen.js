@@ -58,7 +58,7 @@ export const RegisterScreen = () => {
             {
                 msgError && //** Que solo se muestre si es diferente a null */
                 ( //** Esto es el bloque de la condicion */
-                    <div className="auth__alert-error"> {/* Que esto salga cuando hay un error en el formulario */}
+                    <div className="auth__alert-error"> {/* Que esto salga cuando hay un error en el formulario, que lo tengo en los "styles>components>_auth.scss" */}
                         { msgError }
                     </div>
                 )

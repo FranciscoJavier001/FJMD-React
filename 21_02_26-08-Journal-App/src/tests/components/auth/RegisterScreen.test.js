@@ -74,5 +74,33 @@ describe('Pruebas en el RegisterScreen', () => {
             payload: 'Email no valido' //** Este es el error que nos va a lanzar la accion, asi tal cual */
         })
     })
-    
+
+    //** Podemos inicializar el state con el error, para asegurarnos que todo funcione como queramos, sirve para simular informacion precargada en el componente/store */
+    test('debe de mostrar la caja de alerta con el error', () => {
+
+        //** Aqui estoy haciendo la simulacion de que el store tiene este estado inicial */
+        const initState = { //** Este contiene el estado del store en este momento, pero lo vamos a desestructurar */
+            auth: {}, //** Lo voy a tener como un objeto vacio */
+            ui: { //** Y este es como lo voy a tener en el estado inicial del test */
+                loading: false,
+                msgError: 'Email no es correcto!!!'
+            }
+        }
+        
+        /** Voy a crear un store que es un objeto */
+        const store = mockStore(initState) //** Generan variales de scope (osea solo aqui se alcanzan) */
+        
+        //** Cuando esto se construya ya tiene esto de inicio */
+        const wrapper = mount( //** Voy a ocupar renderizar mas cosas */
+            <Provider store={ store }> {/* Aqui voy a proveer el store que va a ser igual sl store del mockStore que se creo en la arriba en la linea 18 */}
+                <MemoryRouter>
+                    <RegisterScreen /> 
+                </MemoryRouter>
+            </Provider>
+        )
+
+        expect( wrapper.find('.auth__alert-error').exists() ).toBe(true) //** Aqui voy a checar que la caja de alerta existe, recuerda, cuando ponemos el punto evaluamos por clase y vemos si existe y si existe le ponemos que sea true.. "importante, el mensaje de error existe, porque lo estoy estableciendo arriba donde tengo escrito "msgError: 'Email no es correcto'""(linea 86) */
+        expect( wrapper.find('.auth__alert-error').text().trim() ).toBe( initState.ui.msgError ) //** Asi evaluo el error, osea que sea lo que espero, pero si le pongo el nombre del error puedo conformar tambien, y como lo vemos lo encuentro en "const initState = {", en la linea 82 */
+        // console.log(initState.ui.msgError);
+    })
 })
