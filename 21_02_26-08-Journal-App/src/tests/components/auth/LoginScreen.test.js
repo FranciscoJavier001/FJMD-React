@@ -32,7 +32,7 @@ const initState = { //** Este contiene el estado del store en este momento, pero
 
 //** Voy a crear un store que es un objeto */
 let store = mockStore(initState)
-store.dispatch = jest.fn //** Asi vamos a evaluar como son llamadas las funciones, osea vamos a reemplazar la funcion que tenga el store por una funcion jest la cual si voy a poder evaluar y voy a tener control absoluto sobre la funcion */
+store.dispatch = jest.fn() //** Asi vamos a evaluar como son llamadas las funciones, osea vamos a reemplazar la funcion que tenga el store por una funcion jest la cual si voy a poder evaluar y voy a tener control absoluto sobre la funcion */
 
 const wrapper = mount( //** Voy a ocupar renderizar mas cosas */
     <Provider store={ store }> {/* Aqui voy a proveer el store que va a ser igual sl store del mockStore que se creo en la arriba en la linea 18 */}

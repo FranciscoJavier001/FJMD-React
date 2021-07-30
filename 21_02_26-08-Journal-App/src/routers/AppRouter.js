@@ -28,7 +28,7 @@ export const AppRouter = () => {
 
     //** Este efecto lo vamos a utilizar, para que aunque el usuario salga de la pagina, su sesion se mantenga */
     useEffect(() => { //** Por el momento aqui no voy a tener ninguna dependencia */
-        //** Del archio de firebase hay un archivo importado de auth que lo vamos a utilizar */
+        //** Del archivo de firebase hay un archivo importado de auth que lo vamos a utilizar */
         firebase.auth().onAuthStateChanged( async(user) => {
 
             if (user?.uid) { //** Esto quiere decir que si estoy autentificado, el "?" evalua si el objeto user tiene algo */
