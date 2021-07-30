@@ -104,3 +104,5 @@ describe('Pruebas en el RegisterScreen', () => {
         // console.log(initState.ui.msgError);
     })
 })
+
+// Convulsion
