@@ -19,6 +19,7 @@ module.exports = {
   }
   //** Aqui terminamos la modificacion */
 
+  //** Este es un mock global del sweetalert2 */
 jest.mock('sweetalert2', () => ({
    fire: jest.fn(),
    close: jest.fn(),

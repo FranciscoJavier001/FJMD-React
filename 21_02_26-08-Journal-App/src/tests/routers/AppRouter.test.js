@@ -14,18 +14,10 @@ import { login } from '../../actions/auth'
 import { AppRouter } from '../../routers/AppRouter'
 import { act } from '@testing-library/react';
 
-import Swall from 'sweetalert2' //** Importo el sweetalet2 */
-
 //** Voy a aplicar un mock a la funcion para saber con que argumentos fue llamado */
 jest.mock('../../actions/auth', () => ({
     login: jest.fn(), //** Este login lo estamos falseando con el mock */
 }))
-
-//** Lo que me va a regresar es el Swall  */
-jest.mock('sweetalert2', () => ({
-    fire: jest.fn(), //** Este login lo estamos falseando con el mock */
-}))
-
 
 /** Crea los middleware, configura el mockStore */
 const middlewares = [thunk] //** thunk es el middleware */
