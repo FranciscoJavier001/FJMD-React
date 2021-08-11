@@ -7,7 +7,7 @@ import reportWebVitals from './reportWebVitals';
 ReactDOM.render(
   <React.StrictMode>
     <App />
-    {/* A la Playa!!! */}
+    
   </React.StrictMode>,
   document.getElementById('root')
 );
