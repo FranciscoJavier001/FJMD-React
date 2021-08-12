@@ -17,7 +17,6 @@ jest.mock('../../../actions/auth', () => ({
     startLoginEmailPassword: jest.fn() //** Que esto no es mas que un jest.fn() */
 }))
 
-
 /** Crea los middleware, configura el mockStore */
 const middlewares = [thunk] //** thunk es el middleware */
 const mockStore = configureStore(middlewares)
@@ -74,5 +73,4 @@ describe('Pruebas en LoginScreen />', () => {
         
         expect( startLoginEmailPassword ).toHaveBeenCalledWith('frank@email.com', '123456789')
     })
-    
 })
