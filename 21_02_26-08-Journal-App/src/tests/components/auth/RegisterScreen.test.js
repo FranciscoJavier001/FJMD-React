@@ -16,7 +16,6 @@ import { types } from '../../../types/types'
 //     startLoginEmailPassword: jest.fn() //** Que esto no es mas que un jest.fn() */
 // }))
 
-
 /** Crea los middleware, configura el mockStore */
 const middlewares = [thunk] //** thunk es el middleware */
 const mockStore = configureStore(middlewares)
@@ -104,5 +103,3 @@ describe('Pruebas en el RegisterScreen', () => {
         // console.log(initState.ui.msgError);
     })
 })
-
-// Convulsion
