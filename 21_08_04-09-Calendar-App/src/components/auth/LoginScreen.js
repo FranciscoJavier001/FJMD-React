@@ -25,7 +25,7 @@ export const LoginScreen = () => {
                         <div className="form-group">
                             <input 
                                 type="submit"
-                                className="btnSubmit"
+                                className="btnSubmit col-md-6"
                                 value="Login" 
                             />
                         </div>
