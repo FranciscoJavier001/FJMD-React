@@ -5,26 +5,42 @@
     border-radius: 5px; /* Que tan redondeados van los bordes */
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19); /* Es el efecto de sombreado superior, izquierdo e inferior */
     padding: 5%; /* Es el margen que tenemos a los lados izquierdo y derecho, asi lo hacemos mas grande o mas chico */
+    
 }
-.login-form-1 h3{
-    text-align: center;
-    color: #333;
+.login-form-1 h3{ /* Esto es el h3, osea donde dice ingreso, osea el blanco */
+    text-align: center; /* Asi lo aliniamos al centro, pero solo porque es texto */
+    color: #333; /* Este es el color negro */
+    margin-bottom: -7%; /* Subimos las cajas de texto */
+    
 }
-.login-form-2{
-    border-radius: 5px;
-    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
-    padding: 5%;
-    background: #0062cc;
+.login-form-2{ /* Este es el formulario del regitro, osea el azul, lo de afuera */
+    border-radius: 5px; /* Como estan redondeados los bordes, pero de la caja azul */
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19); /* Este es el sombreado */
+    padding: 5%; /* Es el margen que tiene lo que esta dentro de la caja, de las cajas de texto */
+    background: #0062cc; /* Este es el color del fondo de pantalla */
+    
 }
-.login-form-2 h3{
-    text-align: center;
-    color: #fff;
+.login-form-2 h3{ /* Este es donde dice registro */
+    text-align: center; /* Este es el acomodo al centro */
+    color: #fff; /* Este es el color blanco */
+    margin-bottom: -7%; /* Subimos las cajas de texto */
+    
 }
-.login-container form{
-    padding: 10%;
+.login-container form{ /* Este es de todo lo que esta dentro del formulario */
+    padding: 10%; /* Este es el margen que tiene el formulario, de ambos */
+    text-align: center; /* Este es el acomodo al centro */
 }
-.btnSubmit
+
+.form-group { /* Margen para las cajas de texto */
+    margin-top: 2%; /* El espacio que dejamos */
+}
+
+.form-control{ /* Lo que hay dentro de las cajas de texto */
+    text-align: center; /* Centramos el texto */
+}
+.btnSubmit /* Estos son los botones, aqui los controlamos */
 {
+    margin-top: 3%; /* Asi bajamos los botones */ 
     width: 50%;
     border-radius: 1rem;
     padding: 1.5%;
@@ -35,7 +51,6 @@
 .login-form-1 .btnSubmit{
     color: #fff;
     background-color: #0062cc;
-    
 }
 .login-form-2 .btnSubmit{
     background-color: #fff;
