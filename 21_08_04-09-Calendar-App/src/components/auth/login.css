@@ -41,27 +41,27 @@
 .btnSubmit /* Estos son los botones, aqui los controlamos */
 {
     margin-top: 3%; /* Asi bajamos los botones */ 
-    width: 50%;
-    border-radius: 1rem;
-    padding: 1.5%;
-    border: none;
-    cursor: pointer;
+    width: 50%; /* Tamaño de los botones */
+    border-radius: 1rem; /* Que tan redondeados son los bordes de los botones */
+    padding: 1.5%; /* Esta es la altura de la caja de los botones */
+    border: none; /* Esto es para que no tengan bordes */
+    cursor: pointer; /* Que cambie el cursor cuando le paso el cursor por ahi */
     
 }
-.login-form-1 .btnSubmit{
-    color: #fff;
-    background-color: #0062cc;
+.login-form-1 .btnSubmit{ /* Estilos dentro del boton */
+    color: #fff; /* Color del texto dentro del boton */
+    background-color: #0062cc; /* El fondo del boton */
 }
-.login-form-2 .btnSubmit{
-    background-color: #fff;
-    color: #0062cc;
+.login-form-2 .btnSubmit{ /* Estilos dentro del boton de crear cuenta */
+    background-color: #fff; /* Color del boton, de las letras */
+    color: #0062cc; /* Color del fondo del boton */
 }
-.login-form-2 .ForgetPwd{
+.login-form-2 .ForgetPwd{ /* Esto aun no lo creamos */
     color: #fff;
     font-weight: 600;
     text-decoration: none;
 }
-.login-form-1 .ForgetPwd{
+.login-form-1 .ForgetPwd{ /* Esto aun no lo creamos */
     color: #0062cc;
     font-weight: 600;
     text-decoration: none;
