@@ -11,14 +11,14 @@ export const LoginScreen = () => { //** Esto es porque lo exportamos al archivo 
                         <div className="form-group"> {/* Es un formulario en grupo, osea aqui el correo, pero solo va un espacio */}
                             <input //** Aqui va la info que va por el formulario y luego lo cerramos */
                                 type="text"
-                                className="form-control"
+                                className="form-control" //** Este es todo el espacio, es un formulario de control, donde va el texto */
                                 placeholder="Correo"
                             />
                         </div>
                         <div className="form-group"> {/* Creamos otro formulario pero con lo del password */}
                             <input
                                 type="password"
-                                className="form-control"
+                                className="form-control" //** Este es todo el espacio, es un formulario de control, donde va el texto */
                                 placeholder="Contraseña"
                             />
                         </div>
@@ -32,13 +32,13 @@ export const LoginScreen = () => { //** Esto es porque lo exportamos al archivo 
                     </form>
                 </div>
 
-                <div className="col-md-6 login-form-2">
+                <div className="col-md-6 login-form-2"> {/* Ya entendi que el col-md-x es la distancia que va a tener de las columnas en bootstrap, luego lo otro es la clase que va a manejar */}
                     <h3>Registro</h3>
                     <form>
-                        <div className="form-group">
+                        <div className="form-group"> {/* Entonces entendi que el form-group es donde va ordenado el formulario de control */}
                             <input
                                 type="text"
-                                className="form-control"
+                                className="form-control" //** Este es todo el espacio, es un formulario de control, donde va el texto */
                                 placeholder="Nombre"
                             />
                         </div>
