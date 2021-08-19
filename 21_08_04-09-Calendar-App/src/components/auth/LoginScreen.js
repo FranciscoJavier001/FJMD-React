@@ -38,37 +38,37 @@ export const LoginScreen = () => { //** Esto es porque lo exportamos al archivo 
                         <div className="form-group"> {/* Entonces entendi que el form-group es donde va ordenado el formulario de control */}
                             <input
                                 type="text"
-                                className="form-control" //** Este es todo el espacio, es un formulario de control, donde va el texto */
+                                className="form-control" //** Este es todo el espacio, es un formulario de control, donde va el texto, con esto le damos estilos */
                                 placeholder="Nombre"
                             />
                         </div>
-                        <div className="form-group">
+                        <div className="form-group"> {/* Entonces entendi que el form-group es donde va ordenado el formulario de control */}
                             <input
                                 type="email"
-                                className="form-control"
+                                className="form-control" //** Este es todo el espacio, es un formulario de control, donde va el texto, con esto le damos estilos */
                                 placeholder="Correo"
                             />
                         </div>
-                        <div className="form-group">
+                        <div className="form-group"> {/* Entonces entendi que el form-group es donde va ordenado el formulario de control */}
                             <input
                                 type="password"
-                                className="form-control"
+                                className="form-control" //** Este es todo el espacio, es un formulario de control, donde va el texto, con esto le damos estilos */
                                 placeholder="Contraseña" 
                             />
                         </div>
 
-                        <div className="form-group">
+                        <div className="form-group"> {/* Entonces entendi que el form-group es donde va ordenado el formulario de control */}
                             <input
                                 type="password"
-                                className="form-control"
+                                className="form-control" //** Este es todo el espacio, es un formulario de control, donde va el texto, con esto le damos estilos */
                                 placeholder="Repita la contraseña" 
                             />
                         </div>
 
-                        <div className="form-group">
+                        <div className="form-group"> {/* Entonces entendi que el form-group es donde va ordenado el formulario de control */}
                             <input 
                                 type="submit" 
-                                className="btnSubmit" 
+                                className="btnSubmit" //** Asi le dimos estilos a los botones */
                                 value="Crear cuenta" />
                         </div>
                     </form>
