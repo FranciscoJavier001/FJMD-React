@@ -1,0 +1,14 @@
+html, body { /* Que tenga todo el ancho de la pantalla, tanto de vh como del vw */
+    height: 100vh;
+    width: 100vw;
+}
+
+.calendar-screen {
+    display: flex; /* Que el display sea flexible */
+    flex-flow: column; /* Quiero que el acomodo sea en columnas */
+    height: 100vh; /* Que la altura sea del 100vh */
+}
+
+.rbc-calendar { /* Esto es para que se vea todo */
+    height: 100%;
+}
