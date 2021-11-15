@@ -28,7 +28,7 @@ const events = [{ //** Este va a ser un arreglo y dentro va a tener objetos */
 
 export const CalendarScreen = () => {
 
-    const [lastView, setLastView] = useState( localStorage.getItem('lastView') || 'mont' )//** Quiero que una variable almacene el espacio cuando actualizo las cosas, y con el getItem es para ver lo que tiene, y si no tiene valor entonces que se muestre la vista del mes */
+    const [lastView, setLastView] = useState( localStorage.getItem('lastView') || 'mont' ); //** Quiero que una variable almacene el espacio cuando actualizo las cosas, y con el getItem es para ver lo que tiene, y si no tiene valor entonces que se muestre la vista del mes */
 
     const onDoubleClick = (e) => { //** Esta es para mostrar los eventos al hacer dobleClick */
         console.log(e);
