@@ -9,7 +9,7 @@ const localizer = momentLocalizer(moment) //** Esto lo copie, y simplemente lo p
 
 //** Los eventos pueden lucir como nosotros queramos, pero debe tener ciertas caracteristicas, para que este big-calendar lo pueda interpretar */
 const events = { //** Este va a ser un arreglo y dentro va a tener objetos */
-    title: 'Cumpleaños del jeje', //** Esto va a ser el titulo que se va a mostrar */
+    title: 'Cumpleaños del jefe', //** Esto va a ser el titulo que se va a mostrar */
     start: moment().toDate(), //** Esto es cuando inicia, deberia hacerlo con moment, pero lo hace con librerias de JS, el new Data() es para saber el momento exacto, pero lo vamos a hacer con moment */
     end: moment().add( 2, 'hours' ).toDate(), //** Con esto lo finalizamos a las 2 horas despues y es algo de moment chido */
     bgcolor: '#fafafa' //** Esto solo es un background de la propiedad */
@@ -21,7 +21,7 @@ export const CalendarScreen = () => {
             <Navbar />
 
             <Calendar
-                localizer={ localizer }
+                localizer={ localizer } //** Esto lo copiamos de arriba */
                 events={[ events ]} //** Esos eventos son los que voy a mandar aqui, los que puse en la linea 10 */
                 startAccessor="start"
                 endAccessor="end"

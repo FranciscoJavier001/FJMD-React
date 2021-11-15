@@ -3,7 +3,7 @@ html, body { /* Que tenga todo el ancho de la pantalla, tanto de vh como del vw 
     width: 100vw;
 }
 
-.calendar-screen {
+.calendar-screen { /* Esta fue una nueva clase que agregue en el div del CalendarScreen */
     display: flex; /* Que el display sea flexible */
     flex-flow: column; /* Quiero que el acomodo sea en columnas */
     height: 100vh; /* Que la altura sea del 100vh */
