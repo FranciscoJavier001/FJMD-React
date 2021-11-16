@@ -5,6 +5,7 @@ import moment from 'moment'; //** De las que dije */
 import { Navbar } from '../ui/Navbar';
 import { messages } from '../../helpers/calendar-messages-es'; //** Voy a hacer la importacion de messages, donde esta la configuracion del español */
 import { CalendarEvent } from './CalendarEvent'; //** Este lo importamos por el componente en el event */
+import { CalendarModal } from './CalendarModal';
 
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import 'moment/locale/es';
@@ -77,6 +78,8 @@ export const CalendarScreen = () => {
                     event: CalendarEvent //** Va a usar el CalendarEvent, porque ese va a ser el componente, pero no lo vamos a renderizar, solamente lo vamos a mandar como referencia */
                 }}
             />
+
+            <CalendarModal /> {/* Este componente lo acabo de crear y lo importe */}
 
         </div>
     )
