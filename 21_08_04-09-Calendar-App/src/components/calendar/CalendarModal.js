@@ -3,6 +3,7 @@ import moment from 'moment'
 import Modal from 'react-modal'; //** Un modal es la ventana donde puedo poner acciones secundarias */
 import DateTimePicker from 'react-datetime-picker'; //** Esta es una importacion para el tiempo, para hacerlo mas facil */
 
+
 const customStyles = {
     content: {
       top: '50%',
@@ -21,7 +22,24 @@ const nowPlus1 = now.clone().add(1, 'hours'); //** Este va a ser una hora superi
 export const CalendarModal = () => {
 
     const [ dateStart, setDateStart ] = useState( now.toDate() ) //** Utilizamos este estado para que lo haga con la fecha actual */
-    const [ dateEnd, setDateEnd ] = useState( nowPlus1.toDate() ) 
+    const [ dateEnd, setDateEnd ] = useState( nowPlus1.toDate() )
+
+    const [formValues, setFormValues] = useState({ //** Este va a ser el estado inicial del formulario */
+        title: 'Evento',
+        notes: '',
+        start: now.toDate(),
+        end: now.toDate()
+    })
+
+    const { notes, title } = formValues; //** Voy a extraer las notes y title del formValues */
+
+    const handleInputChange = ({ target }) => { //** Aqui voy a recibir el evento, pero solo va a ser el target */
+
+        setFormValues({ //** Voy a establecer un nuevo objeto que va a tener todos los valores que tiene el formValues, pero voy a cambiar el que estoy rcibiendo en este evento */
+            ...formValues,
+            [target.name]: target.value //** Quiero computar el nombre de la propiedad luego viene el target.value como valor de esta propiedad */
+        })
+    }
 
     const closeModal = () => { //** Con este cerramos la ventana del modal */
     
@@ -29,13 +47,25 @@ export const CalendarModal = () => {
 
     const handleStartDateChange = ( e ) => { //** Aqui voy a recibir un evento y este sera la fecha */
         setDateStart( e );
-        console.log(e);
+        setFormValues({ //** Voy a hacer la desestructuracion del formValues, y el start va a ser el evento que recibe */
+            ...formValues,
+            start: e
+        })
     }
 
     const handleEndDateChange = ( e ) => { //** Aqui voy a recibir un evento y este sera la fecha */
         setDateEnd( e );
-        console.log(e);
+        setFormValues({ //** Voy a hacer la desestructuracion del formValues, y el start va a ser el evento que recibe */
+            ...formValues,
+            end: e
+        })
     }
+
+    const handleSubmitForm = (e) => { //** Aqui recibo el evento, y este es cuando le den al boton de guardar */
+        e.preventDefault(); //** Para evitar la propagacion del formulario */
+
+        console.log( formValues );
+    } 
 
     return (
             <Modal
@@ -48,7 +78,10 @@ export const CalendarModal = () => {
             >
                 <h1> Nuevo evento </h1>
                 <hr />
-                <form className="container">
+                <form 
+                    className="container"
+                    onSubmit={ handleSubmitForm }
+                >
 
                     <div className="form-group">
                         <label>Fecha y hora inicio</label>
@@ -78,6 +111,8 @@ export const CalendarModal = () => {
                             placeholder="Título del evento"
                             name="title"
                             autoComplete="off"
+                            value={ title } //** El valor en el titulo y notas va a ser el title que asignamos arriba en la variable del formValues */
+                            onChange={ handleInputChange }
                         />
                         <small id="emailHelp" className="form-text text-muted">Una descripción corta</small>
                     </div>
@@ -89,6 +124,8 @@ export const CalendarModal = () => {
                             placeholder="Notas"
                             rows="5"
                             name="notes"
+                            value={ notes } //** El valor en notas va a ser el que asignamos arriba en la variable del formValues */
+                            onChange={ handleInputChange }
                         ></textarea>
                         <small id="emailHelp" className="form-text text-muted">Información adicional</small>
                     </div>
