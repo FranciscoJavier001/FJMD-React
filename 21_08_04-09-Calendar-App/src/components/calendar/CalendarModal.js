@@ -1,30 +1,30 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
 import moment from 'moment'
 import Modal from 'react-modal'; //** Un modal es la ventana donde puedo poner acciones secundarias */
 import DateTimePicker from 'react-datetime-picker'; //** Esta es una importacion para el tiempo, para hacerlo mas facil */
-import Swal from 'sweetalert2' //** Para el sweet alert le hacemos "npm i sweetalert2" */
+import Swal from 'sweetalert2'; //** Para el sweet alert le hacemos "npm i sweetalert2" */
 
 const customStyles = {
-    content: {
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      marginRight: '-50%',
-      transform: 'translate(-50%, -50%)',
+    content : {
+      top                   : '50%',
+      left                  : '50%',
+      right                 : 'auto',
+      bottom                : 'auto',
+      marginRight           : '-50%',
+      transform             : 'translate(-50%, -50%)'
     }
 };
 Modal.setAppElement('#root');
 
-const now = moment().minutes(0).seconds(0).add(1, 'hours'); //** Este va a ser para definir el valor inicial con moment, sera este el momento actual, pero lo voy a asignar los seg y minutos en 0 */
+const now = moment().minutes(0).seconds(0).add(1,'hours'); //** Este va a ser para definir el valor inicial con moment, sera este el momento actual, pero lo voy a asignar los seg y minutos en 0 */
 const nowPlus1 = now.clone().add(1, 'hours'); //** Este va a ser una hora superior, para el campo del fin */
-const [titleValid, setTitleValid] = useState(true)
 
 export const CalendarModal = () => {
+    const [titleValid, setTitleValid] = useState(true)
 
-    const [ dateStart, setDateStart ] = useState( now.toDate() ) //** Utilizamos este estado para que lo haga con la fecha actual */
-    const [ dateEnd, setDateEnd ] = useState( nowPlus1.toDate() )
+    const [ dateStart, setDateStart ] = useState( now.toDate() ); //** Utilizamos este estado para que lo haga con la fecha actual */
+    const [ dateEnd, setDateEnd ] = useState( nowPlus1.toDate() );
 
     const [formValues, setFormValues] = useState({ //** Este va a ser el estado inicial del formulario */
         title: 'Evento',
@@ -40,7 +40,7 @@ export const CalendarModal = () => {
         setFormValues({ //** Voy a establecer un nuevo objeto que va a tener todos los valores que tiene el formValues, pero voy a cambiar el que estoy rcibiendo en este evento */
             ...formValues,
             [target.name]: target.value //** Quiero computar el nombre de la propiedad luego viene el target.value como valor de esta propiedad */
-        })
+        });
     }
 
     const closeModal = () => { //** Con este cerramos la ventana del modal */
@@ -70,7 +70,7 @@ export const CalendarModal = () => {
         const momentEnd = moment( end )
 
         if ( momentStart.isSameOrAfter( momentEnd ) ) { //** Si la fecha de inicio esta despues de la fecha de inicializacion no lo voy a dejar pasar */
-            return Swal.fire('Error ', 'La fecha fin debe ser mayor a la fecha de inicio', 'error') //** Osea que va a retornarme el mensaje de error */
+            return Swal.fire('Error','La fecha fin debe de ser mayor a la fecha de inicio', 'error'); //** Osea que va a retornarme el mensaje de error */
         }
 
         if (title.trim().length < 2 ) { //** Esto es para evitar que el titulo tenga menos de 2 letras */

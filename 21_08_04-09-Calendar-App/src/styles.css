@@ -60,5 +60,5 @@ html, body { /* Que tenga todo el ancho de la pantalla, tanto de vh como del vw 
 }
 
 .react-datetime-picker__wrapper {
-    boder: 0px solid gray !important
+    border: 0px solid gray !important;
 }

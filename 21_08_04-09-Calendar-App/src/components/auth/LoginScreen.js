@@ -23,9 +23,9 @@ export const LoginScreen = () => { //** Esto es porque lo exportamos al archivo 
                             />
                         </div>
                         <div className="form-group"> {/* Igual creamos otro formulario, osea hay que crear uno de cada uno independiente */}
-                            <input 
+                            <input
                                 type="submit"
-                                className="btnSubmit col-md-6" //** Lo primero es una clase de bootstrap, lo segundo es la distancia que manera en el form-roup */
+                                className="btnSubmit" //**--  col-md-6 -- Lo primero es una clase de bootstrap, lo segundo es la distancia que manera en el form-roup */
                                 value="Login" 
                             />
                         </div>
