@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import moment from 'moment'
 import Modal from 'react-modal'; //** Un modal es la ventana donde puedo poner acciones secundarias */
 import DateTimePicker from 'react-datetime-picker'; //** Esta es una importacion para el tiempo, para hacerlo mas facil */
+import Swal from 'sweetalert2' //** Para el sweet alert le hacemos "npm i sweetalert2" */
 
 
 const customStyles = {
@@ -18,6 +19,7 @@ Modal.setAppElement('#root');
 
 const now = moment().minutes(0).seconds(0).add(1, 'hours'); //** Este va a ser para definir el valor inicial con moment, sera este el momento actual, pero lo voy a asignar los seg y minutos en 0 */
 const nowPlus1 = now.clone().add(1, 'hours'); //** Este va a ser una hora superior, para el campo del fin */
+const [titleValid, setTitleValid] = useState(true)
 
 export const CalendarModal = () => {
 
@@ -31,7 +33,7 @@ export const CalendarModal = () => {
         end: now.toDate()
     })
 
-    const { notes, title } = formValues; //** Voy a extraer las notes y title del formValues */
+    const { notes, title, start, end } = formValues; //** Voy a extraer las notes y title del formValues, luego extraigo el start y el end */
 
     const handleInputChange = ({ target }) => { //** Aqui voy a recibir el evento, pero solo va a ser el target */
 
@@ -42,7 +44,7 @@ export const CalendarModal = () => {
     }
 
     const closeModal = () => { //** Con este cerramos la ventana del modal */
-    
+        // TODO: cerrar el modsl
     }
 
     const handleStartDateChange = ( e ) => { //** Aqui voy a recibir un evento y este sera la fecha */
@@ -64,7 +66,21 @@ export const CalendarModal = () => {
     const handleSubmitForm = (e) => { //** Aqui recibo el evento, y este es cuando le den al boton de guardar */
         e.preventDefault(); //** Para evitar la propagacion del formulario */
 
-        console.log( formValues );
+        const momentStart = moment( start )
+        const momentEnd = moment( end )
+
+        if ( momentStart.isSameOrAfter( momentEnd ) ) { //** Si la fecha de inicio esta despues de la fecha de inicializacion no lo voy a dejar pasar */
+            return Swal.fire('Error ', 'La fecha fin debe ser mayor a la fecha de inicio', 'error') //** Osea que va a retornarme el mensaje de error */
+        }
+
+        if (title.trim( ).length < 2 ) { //** Esto es para evitar que el titulo tenga menos de 2 letras */
+            return setTitleValid(false);
+        }
+
+        // TODO: realizar grabación
+
+        setTitleValid(true)
+        closeModal();
     } 
 
     return (
@@ -107,7 +123,7 @@ export const CalendarModal = () => {
                         <label>Titulo y notas</label>
                         <input 
                             type="text" 
-                            className="form-control"
+                            className={ `form-control ${ !titleValid && 'is-invalid'} `}
                             placeholder="Título del evento"
                             name="title"
                             autoComplete="off"
