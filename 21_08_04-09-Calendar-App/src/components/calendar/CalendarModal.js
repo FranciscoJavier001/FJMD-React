@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
+
 import moment from 'moment'
 import Modal from 'react-modal'; //** Un modal es la ventana donde puedo poner acciones secundarias */
 import DateTimePicker from 'react-datetime-picker'; //** Esta es una importacion para el tiempo, para hacerlo mas facil */
 import Swal from 'sweetalert2' //** Para el sweet alert le hacemos "npm i sweetalert2" */
-
 
 const customStyles = {
     content: {
@@ -13,7 +13,7 @@ const customStyles = {
       bottom: 'auto',
       marginRight: '-50%',
       transform: 'translate(-50%, -50%)',
-    },
+    }
 };
 Modal.setAppElement('#root');
 
@@ -30,7 +30,7 @@ export const CalendarModal = () => {
         title: 'Evento',
         notes: '',
         start: now.toDate(),
-        end: now.toDate()
+        end: nowPlus1.toDate() 
     })
 
     const { notes, title, start, end } = formValues; //** Voy a extraer las notes y title del formValues, luego extraigo el start y el end */
@@ -44,7 +44,7 @@ export const CalendarModal = () => {
     }
 
     const closeModal = () => { //** Con este cerramos la ventana del modal */
-        // TODO: cerrar el modsl
+        // TODO: cerrar el modal
     }
 
     const handleStartDateChange = ( e ) => { //** Aqui voy a recibir un evento y este sera la fecha */
@@ -73,7 +73,7 @@ export const CalendarModal = () => {
             return Swal.fire('Error ', 'La fecha fin debe ser mayor a la fecha de inicio', 'error') //** Osea que va a retornarme el mensaje de error */
         }
 
-        if (title.trim( ).length < 2 ) { //** Esto es para evitar que el titulo tenga menos de 2 letras */
+        if (title.trim().length < 2 ) { //** Esto es para evitar que el titulo tenga menos de 2 letras */
             return setTitleValid(false);
         }
 
@@ -123,7 +123,7 @@ export const CalendarModal = () => {
                         <label>Titulo y notas</label>
                         <input 
                             type="text" 
-                            className={ `form-control ${ !titleValid && 'is-invalid'} `}
+                            className={ `form-control ${ !titleValid && 'is-invalid' } `}
                             placeholder="Título del evento"
                             name="title"
                             autoComplete="off"
