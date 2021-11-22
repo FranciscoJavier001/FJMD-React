@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar'; //** Hice estas dos importaciones */
+import { useDispatch } from 'react-redux'
 import moment from 'moment'; //** De las que dije */
 
 import { Navbar } from '../ui/Navbar';
 import { messages } from '../../helpers/calendar-messages-es'; //** Voy a hacer la importacion de messages, donde esta la configuracion del español */
 import { CalendarEvent } from './CalendarEvent'; //** Este lo importamos por el componente en el event */
 import { CalendarModal } from './CalendarModal';
+
+import { uiOpenModal } from '../../actions/ui';
 
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import 'moment/locale/es';
@@ -29,10 +32,13 @@ const events = [{ //** Este va a ser un arreglo y dentro va a tener objetos */
 
 export const CalendarScreen = () => {
 
+    const dispatch = useDispatch();
+
     const [lastView, setLastView] = useState( localStorage.getItem('lastView') || 'mont' ); //** Quiero que una variable almacene el espacio cuando actualizo las cosas, y con el getItem es para ver lo que tiene, y si no tiene valor entonces que se muestre la vista del mes */
 
     const onDoubleClick = (e) => { //** Esta es para mostrar los eventos al hacer dobleClick */
-        console.log(e);
+        // console.log(e);
+        dispatch( uiOpenModal() ) //** No recibe ningun argumento */
     }
 
     const onSelectEvent = (e) => { //** Al hacer click se dispare el evento */
