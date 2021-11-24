@@ -1,7 +1,7 @@
 import moment from 'moment' //** Como uso moment, voy a tener que importarlo */
 
 const initialState = { //** Va a ser un objeto */
-    events: [{
+    events: [{ //** Comit que se elimina al inicial el initialState */
          //** Estos van a ser los eventos del calendario */
          //** Este va a ser un arreglo y dentro va a tener objetos */
         title: 'Cumpleaños del jefe', //** Esto va a ser el titulo que se va a mostrar */
