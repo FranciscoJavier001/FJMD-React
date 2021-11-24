@@ -7,6 +7,7 @@ import DateTimePicker from 'react-datetime-picker'; //** Esta es una importacion
 import Swal from 'sweetalert2'; //** Para el sweet alert le hacemos "npm i sweetalert2" */
 
 import { uiCloseModal } from '../../actions/ui';
+import { eventAddNew } from '../../actions/events';
 
 const customStyles = {
     content : {
@@ -86,6 +87,14 @@ export const CalendarModal = () => {
         }
 
         // TODO: realizar grabación
+        dispatch( eventAddNew({
+            ...formValues,
+            id: new Date().getTime(),
+            user: {
+                _id: '123',
+                name: 'Fernando'
+            }
+        }) );
 
         setTitleValid(true)
         closeModal();
