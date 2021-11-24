@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux';
+import { calendarReducer } from './calendarReducer';
 
 import { uiReducer } from './uiReducer';
 
 export const rootReducer = combineReducers({
     ui: uiReducer,
+    calendar: calendarReducer //** Con este tenemos nuestro nuevo state en el reducer */
     // TODO: AuthReducer
-    // TODO: CalendarReducer
 })

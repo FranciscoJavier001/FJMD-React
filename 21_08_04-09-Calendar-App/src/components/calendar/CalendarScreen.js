@@ -12,6 +12,8 @@ import { uiOpenModal } from '../../actions/ui';
 
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import 'moment/locale/es';
+import { eventSetActive } from '../../actions/events';
+import { AddNewFab } from '../ui/AddNewFab';
 
 moment.locale('es'); //** Esto es para cambiarle el texto al español */
 
@@ -32,7 +34,7 @@ const events = [{ //** Este va a ser un arreglo y dentro va a tener objetos */
 
 export const CalendarScreen = () => {
 
-    const dispatch = useDispatch();
+    const dispatch = useDispatch(); //** Con este dispatch no tengo que importar nada mas, solo resta hacer el dispatch de la respectiva accion */
 
     const [lastView, setLastView] = useState( localStorage.getItem('lastView') || 'mont' ); //** Quiero que una variable almacene el espacio cuando actualizo las cosas, y con el getItem es para ver lo que tiene, y si no tiene valor entonces que se muestre la vista del mes */
 
@@ -42,7 +44,8 @@ export const CalendarScreen = () => {
     }
 
     const onSelectEvent = (e) => { //** Al hacer click se dispare el evento */
-        console.log(e);
+        dispatch( eventSetActive( e ) ) //** Asi hacemos el dispatch de un evento, y el evento es e, pero fatta ponerle accion en el calendarReducer */
+        dispatch( uiOpenModal() ) //** Y el Dispatch solo va a ser el uiOpenModal */
     }
 
     const onViewChange = (e) => { //** Para que al hacer el cambio de la vista salga el tipo de formato que es, de dia, semana etc */
@@ -84,6 +87,8 @@ export const CalendarScreen = () => {
                     event: CalendarEvent //** Va a usar el CalendarEvent, porque ese va a ser el componente, pero no lo vamos a renderizar, solamente lo vamos a mandar como referencia */
                 }}
             />
+
+            <AddNewFab />
 
             <CalendarModal /> {/* Este componente lo acabo de crear y lo importe */}
 

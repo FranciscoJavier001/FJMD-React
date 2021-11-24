@@ -1,7 +1,9 @@
 import moment from 'moment' //** Como uso moment, voy a tener que importarlo */
 
+import { types } from '../types/types';
+
 const initialState = { //** Va a ser un objeto */
-    events: [{ //** Comit que se elimina al inicial el initialState */
+    events: [{
          //** Estos van a ser los eventos del calendario */
          //** Este va a ser un arreglo y dentro va a tener objetos */
         title: 'Cumpleaños del jefe', //** Esto va a ser el titulo que se va a mostrar */
@@ -14,13 +16,20 @@ const initialState = { //** Va a ser un objeto */
             name: 'Francisco'
         }
     }],
-    activeEvent: null //** Este va a ser un objeto, que va a tener todas las propiedades del evento y aqui va a venir un arreglo */
+    activeEvent: null //** Este va a ser un objeto, que va a tener todas las propiedades del evento */
 }
 
 export const calendarReducer = ( state = initialState, action ) => { //** Va a ser una funcion de flecha, y dentro tiene el state que va a ser igual al initialState y tendriamos nuestro action */
-    switch ( action.type ) {
+    switch ( action.type ) { //** Generalmente utilizamos un switch en el cual no vamos a inicializar nada */
+
+        //** Lo que quiero que haga la accion */
+        case types.eventSetActive: //** Osea cuando se reciba esta accion */
+        return { //** Regresame una copia del state y quiero modificar el evento activo, que seria activeEvent */
+            ...state,
+            activeEvent: action.payload //** Y el activeEvent va a ser igual al action.payload */
+        }
     
         default:
-            return state; //** Solo vamos a retornar el estado */
+            return state; //** Solo vamos a retornar el state */
     }
 }
