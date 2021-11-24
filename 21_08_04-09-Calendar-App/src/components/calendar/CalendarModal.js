@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux' //** Este lo importo para que este pendiente de algo */
 
 import moment from 'moment'
@@ -7,7 +7,7 @@ import DateTimePicker from 'react-datetime-picker'; //** Esta es una importacion
 import Swal from 'sweetalert2'; //** Para el sweet alert le hacemos "npm i sweetalert2" */
 
 import { uiCloseModal } from '../../actions/ui';
-import { eventAddNew } from '../../actions/events';
+import { eventAddNew, eventClearActiveEvent } from '../../actions/events';
 
 const customStyles = {
     content : {
@@ -24,27 +24,35 @@ Modal.setAppElement('#root');
 const now = moment().minutes(0).seconds(0).add(1,'hours'); //** Este va a ser para definir el valor inicial con moment, sera este el momento actual, pero lo voy a asignar los seg y minutos en 0 */
 const nowPlus1 = now.clone().add(1, 'hours'); //** Este va a ser una hora superior, para el campo del fin */
 
+const initEvent = { //** Este va a ser igual al objeto */
+
+    title: '',
+    notes: '',
+    start: now.toDate(),
+    end: nowPlus1.toDate() 
+}
+
 export const CalendarModal = () => {
 
     const { modalOpen } = useSelector( state => state.ui ); //** Para que este al pendiente y lo voy a desestructurar para que este en el isOpen del return */
+    const { activeEvent } = useSelector( state => state.calendar ); //** Para que este al pendiente del calendar, porque dentro tengo el activeEvent /*
     const dispatch = useDispatch();
 
     const [titleValid, setTitleValid] = useState(true)
-
     const [ dateStart, setDateStart ] = useState( now.toDate() ); //** Utilizamos este estado para que lo haga con la fecha actual */
     const [ dateEnd, setDateEnd ] = useState( nowPlus1.toDate() );
 
-    const [formValues, setFormValues] = useState({ //** Este va a ser el estado inicial del formulario */
-        title: 'Evento',
-        notes: '',
-        start: now.toDate(),
-        end: nowPlus1.toDate() 
-    })
+    const [formValues, setFormValues] = useState( initEvent ) //** Este va a ser el estado inicial del formulario */)
 
     const { notes, title, start, end } = formValues; //** Voy a extraer las notes y title del formValues, luego extraigo el start y el end */
 
-    const handleInputChange = ({ target }) => { //** Aqui voy a recibir el evento, pero solo va a ser el target */
+    useEffect(() => { //** Necesita estar pendiente del activeEvent */
+        if ( activeEvent ) { //** Si existe quiero llamar el setFormValues y mandarle el activeEvent */
+            setFormValues( activeEvent )
+        }
+    }, [activeEvent, setFormValues]) //** Como lo estoy utilizando va a ser una dependencia del useEffect, al igual que el setFormValues y si uno cambia va a volver a iniciar este codigo */
 
+    const handleInputChange = ({ target }) => { //** Aqui voy a recibir el evento, pero solo va a ser el target */
         setFormValues({ //** Voy a establecer un nuevo objeto que va a tener todos los valores que tiene el formValues, pero voy a cambiar el que estoy rcibiendo en este evento */
             ...formValues,
             [target.name]: target.value //** Quiero computar el nombre de la propiedad luego viene el target.value como valor de esta propiedad */
@@ -54,6 +62,8 @@ export const CalendarModal = () => {
     const closeModal = () => { //** Con este cerramos la ventana del modal */
         // TODO: cerrar el modal
         dispatch( uiCloseModal() )
+        dispatch( eventClearActiveEvent() )
+        setFormValues( initEvent )
     }
 
     const handleStartDateChange = ( e ) => { //** Aqui voy a recibir un evento y este sera la fecha */

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar'; //** Hice estas dos importaciones */
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import moment from 'moment'; //** De las que dije */
 
 import { Navbar } from '../ui/Navbar';
@@ -19,22 +19,10 @@ moment.locale('es'); //** Esto es para cambiarle el texto al español */
 
 const localizer = momentLocalizer(moment); //** Esto lo copie, y simplemente lo puse despues de las importaciones */
 
-//** Los eventos pueden lucir como nosotros queramos, pero debe tener ciertas caracteristicas, para que este big-calendar lo pueda interpretar */
-const events = [{ //** Este va a ser un arreglo y dentro va a tener objetos */
-    title: 'Cumpleaños del jefe', //** Esto va a ser el titulo que se va a mostrar */
-    start: moment().toDate(), //** Esto es cuando inicia, deberia hacerlo con moment, pero lo hace con librerias de JS, el new Data() es para saber el momento exacto, pero lo vamos a hacer con moment */
-    end: moment().add( 2, 'hours' ).toDate(), //** Con esto lo finalizamos a las 2 horas despues y es algo de moment chido */
-    bgcolor: '#fafafa', //** Esto solo es un background de la propiedad, el color azul */
-    notes: 'Comprar el pastel', //** Esta es una nueva propiedad de las notas */
-    user: { //** Voy a tener el user, para saber quien creo el evento */
-        _id: '123',
-        name: 'Francisco'
-    }
-}]
-
 export const CalendarScreen = () => {
 
     const dispatch = useDispatch(); //** Con este dispatch no tengo que importar nada mas, solo resta hacer el dispatch de la respectiva accion */
+    const { events } = useSelector( state => state.calendar ) //** Lo primero es lo que voy a extraer va a ser los events del state del calendario */
 
     const [lastView, setLastView] = useState( localStorage.getItem('lastView') || 'mont' ); //** Quiero que una variable almacene el espacio cuando actualizo las cosas, y con el getItem es para ver lo que tiene, y si no tiene valor entonces que se muestre la vista del mes */
 
@@ -45,7 +33,6 @@ export const CalendarScreen = () => {
 
     const onSelectEvent = (e) => { //** Al hacer click se dispare el evento */
         dispatch( eventSetActive( e ) ) //** Asi hacemos el dispatch de un evento, y el evento es e, pero fatta ponerle accion en el calendarReducer */
-        dispatch( uiOpenModal() ) //** Y el Dispatch solo va a ser el uiOpenModal */
     }
 
     const onViewChange = (e) => { //** Para que al hacer el cambio de la vista salga el tipo de formato que es, de dia, semana etc */
