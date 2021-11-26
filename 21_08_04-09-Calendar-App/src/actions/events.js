@@ -17,3 +17,5 @@ export const eventUpdated = ( event ) => ({ //** Aqui voy a recbir el evento que
     type: types.eventUpdated,
     payload: event //** El payload va a ser el event */
 });
+
+export const eventDeleted = () => ({ type: types.eventDeleted })

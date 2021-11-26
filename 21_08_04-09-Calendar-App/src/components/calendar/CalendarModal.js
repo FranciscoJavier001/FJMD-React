@@ -49,6 +49,8 @@ export const CalendarModal = () => {
     useEffect(() => { //** Necesita estar pendiente del activeEvent */
         if ( activeEvent ) { //** Si existe quiero llamar el setFormValues y mandarle el activeEvent */
             setFormValues( activeEvent )
+        } else {
+            setFormValues( initEvent )
         }
     }, [activeEvent, setFormValues]) //** Como lo estoy utilizando va a ser una dependencia del useEffect, al igual que el setFormValues y si uno cambia va a volver a iniciar este codigo */
 
@@ -122,7 +124,7 @@ export const CalendarModal = () => {
             className="modal"
             overlayClassName="modal-fondo"
             >
-                <h1> Nuevo evento </h1>
+                <h1> { (activeEvent)? 'Editar Evento': 'Nuevo Evento'} </h1>
                 <hr />
                 <form 
                     className="container"

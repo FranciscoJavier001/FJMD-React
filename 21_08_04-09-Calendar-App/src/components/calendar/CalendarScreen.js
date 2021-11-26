@@ -12,8 +12,9 @@ import { uiOpenModal } from '../../actions/ui';
 
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import 'moment/locale/es';
-import { eventSetActive } from '../../actions/events';
+import { eventClearActiveEvent, eventSetActive } from '../../actions/events';
 import { AddNewFab } from '../ui/AddNewFab';
+import { DeleteEventFab } from '../ui/DeleteEventFab';
 
 moment.locale('es'); //** Esto es para cambiarle el texto al español */
 
@@ -22,7 +23,7 @@ const localizer = momentLocalizer(moment); //** Esto lo copie, y simplemente lo 
 export const CalendarScreen = () => {
 
     const dispatch = useDispatch(); //** Con este dispatch no tengo que importar nada mas, solo resta hacer el dispatch de la respectiva accion */
-    const { events } = useSelector( state => state.calendar ) //** Lo primero es lo que voy a extraer va a ser los events del state del calendario */
+    const { events, activeEvent } = useSelector( state => state.calendar ) //** Lo primero es lo que voy a extraer va a ser los events del state del calendario */
 
     const [lastView, setLastView] = useState( localStorage.getItem('lastView') || 'mont' ); //** Quiero que una variable almacene el espacio cuando actualizo las cosas, y con el getItem es para ver lo que tiene, y si no tiene valor entonces que se muestre la vista del mes */
 
@@ -38,6 +39,11 @@ export const CalendarScreen = () => {
     const onViewChange = (e) => { //** Para que al hacer el cambio de la vista salga el tipo de formato que es, de dia, semana etc */
         setLastView(e); //** Es para que se quede en la ultima vista, aunque lo */
         localStorage.setItem('lastView', e); //** Esto es para ver el ultimo tipo de vista */
+    }
+
+    const onSelectSlot = (e) => {
+        // console.log(e);
+        dispatch( eventClearActiveEvent() )
     }
 
     const eventStyleGetter = ( event, start, end, isSelected ) => { //** Esta funcion se va a disparar con el event, start, end, isSelected */
@@ -69,6 +75,8 @@ export const CalendarScreen = () => {
                 onDoubleClickEvent={ onDoubleClick } //** Es para tener informacion al hacer dobleClick */
                 onSelectEvent={ onSelectEvent } //** Es para que al hacer click se dispare el evento */
                 onView={ onViewChange } //** Tipo de vista en la cual estamos viendolo */
+                onSelectSlot= { onSelectSlot }
+                selectable={ true }
                 view={ lastView || 'month' } //** Es la vista que va a tener */
                 components={{ //** Con esta propiedad puedo mostrar todo */
                     event: CalendarEvent //** Va a usar el CalendarEvent, porque ese va a ser el componente, pero no lo vamos a renderizar, solamente lo vamos a mandar como referencia */
@@ -76,6 +84,10 @@ export const CalendarScreen = () => {
             />
 
             <AddNewFab />
+
+            {
+                (activeEvent) && <DeleteEventFab />
+            }
 
             <CalendarModal /> {/* Este componente lo acabo de crear y lo importe */}
 

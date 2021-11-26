@@ -53,6 +53,16 @@ export const calendarReducer = ( state = initialState, action ) => { //** Va a s
                         )
                 }
 
+            case types.eventDeleted: //** Primero creo el tipo, luego creo el evento, y despues hago la accion */
+                return {
+                    ...state,
+                     events: state.events.filter( //** Con el filter quiero evitar regresar el que la persona esta borrando */
+                        e => ( e.id !== state.activeEvent.id ) //** El event.id debe ser diferente, pero como no tengo ningun action, tengo la informacion en el state (para saber cual es el id de la nota activa) entonces pregunto "si el id de la nota que estoy evaluando es diferente al id de la nota que quiero eliminar que eso esta en el state.activeEvent.id entonces si esto es asi se van a regresar" */
+                        ),
+                        //** Luego voy a quitar la nota activa */
+                        activeEvent: null
+                    }
+
         default:
             return state; //** Solo vamos a retornar el state */
     }
