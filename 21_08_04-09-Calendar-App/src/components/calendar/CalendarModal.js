@@ -7,7 +7,7 @@ import DateTimePicker from 'react-datetime-picker'; //** Esta es una importacion
 import Swal from 'sweetalert2'; //** Para el sweet alert le hacemos "npm i sweetalert2" */
 
 import { uiCloseModal } from '../../actions/ui';
-import { eventAddNew, eventClearActiveEvent } from '../../actions/events';
+import { eventAddNew, eventClearActiveEvent, eventUpdated } from '../../actions/events';
 
 const customStyles = {
     content : {
@@ -96,7 +96,9 @@ export const CalendarModal = () => {
             return setTitleValid(false);
         }
 
-        // TODO: realizar grabación
+        if ( activeEvent ) { //** Si existe ese evento, voy a hacer el disparo de eventUpdated y voy a mandar el nuevo evento, que va a ser lo que tengamos en nuestros formValues */
+            dispatch ( eventUpdated( formValues ) )
+        } else { //** En caso contrario disparamos la accion que ya teniamos antes */
         dispatch( eventAddNew({
             ...formValues,
             id: new Date().getTime(),
@@ -105,6 +107,7 @@ export const CalendarModal = () => {
                 name: 'Fernando'
             }
         }) );
+    }
 
         setTitleValid(true)
         closeModal();

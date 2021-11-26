@@ -11,3 +11,9 @@ export const eventSetActive = (event) => ({ //** Esto recibe el evento que quier
 });
 
 export const eventClearActiveEvent = () => ({ type: types.eventClearActiveEvent, })
+
+//** Ahora voy a crear la accion, que defini en types */
+export const eventUpdated = ( event ) => ({ //** Aqui voy a recbir el evento que quiero actualizar y voy a regresarlo de esa misma vez, osea voy a regresar un objeto */
+    type: types.eventUpdated,
+    payload: event //** El payload va a ser el event */
+});
