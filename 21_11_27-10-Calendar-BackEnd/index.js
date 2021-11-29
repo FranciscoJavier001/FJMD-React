@@ -10,12 +10,8 @@ const app = express();
 app.use( express.static('public') ) //** Asi le hicimos para mostrar la pagina en el localhost:4000 */
 
 // Rutas
-// app.get('/', (req, res) => {
-
-//     res.json({
-//         ok: true
-//     })
-// })
+app.use('/api/auth', require('./routes/auth') ) //** Todo lo que este archivo valla a exportar lo va a implementar en esta ruta */
+// TODO: CRUD: Eventos
 
 // Escuchar peticiones
 app.listen( process.env.PORT, () => {
