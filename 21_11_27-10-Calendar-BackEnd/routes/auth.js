@@ -31,4 +31,4 @@ router.post('/',
 
 router.get('/renew', revalidarToken)
 
-module.exports = router
+module.exports = router //** Con esto podemos exportarlo hacia la carpeta controller>auth, que es donde estan definidas todas y cada una de estas funciones */
