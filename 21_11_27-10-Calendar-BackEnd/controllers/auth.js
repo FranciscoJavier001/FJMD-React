@@ -2,10 +2,10 @@ const { response } = require('express')
 const bcrypt = require('bcryptjs') //** Asi importamos el que hace el hash en la contraseña */
 const Usuario = require('../models/Usuario')
 
-const crearUsuario = async(req, res = response ) => { 
+const crearUsuario = async(req, res = response ) => { //** Aqui voy a crear el Usuario */
 
     //** Aqui voy a desestructurar lo que es el body y voy a extraer las 3 cosas que ocuparia, esto es lo que viene el el body desestructurado */
-    const { email, password } = req.body;
+    const { email, password } = req.body; //** Esto es lo que va a necesitar el Campo, para crear el Usuario */
 
     try {
         let usuario = await Usuario.findOne({ email })
