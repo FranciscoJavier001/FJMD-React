@@ -4,15 +4,26 @@ const Usuario = require('../models/Usuario')
 const crearUsuario = async(req, res = response ) => { 
 
     //** Aqui voy a desestructurar lo que es el body y voy a extraer las 3 cosas que ocuparia, esto es lo que viene el el body desestructurado */
-    // const { name, email, password } = req.body;
+    const { email, password } = req.body;
+
     try {
-        const usuario = new Usuario( req.body )
+        let usuario = await Usuario.findOne({ email })
+        
+        if ( usuario ) {
+            return res.status(400).json({
+                ok: false,
+                msg: 'Un usuario existe con ese correo'
+            })
+        }
+
+        usuario = new Usuario( req.body ) //** A el segundo usuario le cabe lo de arriba de la instancia anterior */
 
         await usuario.save()
 
         res.status(201).json({
             ok: true,
-            msg: 'registro',
+            uid: usuario.id, //** Esto me lo esta regresando ahora de la postman, y son parametros ya establecidos */
+            name: usuario.name
         })
         
     } catch (error) {
