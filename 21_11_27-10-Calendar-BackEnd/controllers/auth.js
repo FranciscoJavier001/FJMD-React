@@ -1,6 +1,7 @@
 const { response } = require('express')
 const bcrypt = require('bcryptjs') //** Asi importamos el que hace el hash en la contraseña */
 const Usuario = require('../models/Usuario')
+const { generarJWT } = require('../helpers/jwt')
 
 const crearUsuario = async(req, res = response ) => { //** Aqui voy a crear el Usuario */
 
@@ -20,15 +21,18 @@ const crearUsuario = async(req, res = response ) => { //** Aqui voy a crear el U
 
         // Encriptar Contraseña
         const salt = bcrypt.genSaltSync() //** Este es un sincrono */
-        //** Asi le hacemos para encriptar la contraseña */
-        usuario.password = bcrypt.hashSync( password, salt )
+        usuario.password = bcrypt.hashSync( password, salt ) //** Asi le hacemos para encriptar la contraseña */
 
         await usuario.save()
+
+        // Generar JWT
+        const token = await generarJWT( usuario.id, usuario.name )
 
         res.status(201).json({
             ok: true,
             uid: usuario.id, //** Esto me lo esta regresando ahora de la postman, y son parametros ya establecidos */
-            name: usuario.name
+            name: usuario.name,
+            token
         })
         
     } catch (error) {
@@ -65,13 +69,15 @@ const loginUsuario = async(req, res = response ) => { //** Vamos a trabajar con 
             })
         }
 
-        // Generar nuestro JWT
+        // Generar JWT
+        const token = await generarJWT( usuario.id, usuario.name )
 
         res.json({ //** Si la validacion del email y pass es correcta entonces esto me retorna */
             ok: true, //** El estado es true */
             uid: usuario.id, //** Mandamos el uid:/id del usuario que son puros numeros */
             name: usuario.name, //** Mandamos el nombre del usuario */
             // password: usuario.password //** Hasta podriamos mandar la contraseña */
+            token
         })
 
         //** Este puede ser, por fallas mas alla, como por ejemplo que mandemos el ok con otra cosa que no sea un booleano */
