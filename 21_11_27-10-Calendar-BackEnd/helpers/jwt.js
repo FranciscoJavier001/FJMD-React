@@ -20,6 +20,6 @@ const generarJWT = ( uid, name ) => {
     })
 }
 
-module.exports = {
+module.exports = { //** Lo Exportamos */
     generarJWT
 }
