@@ -1,7 +1,7 @@
 const { response } = require('express')
 const bcrypt = require('bcryptjs') //** Asi importamos el que hace el hash en la contraseña */
 const Usuario = require('../models/Usuario')
-const { generarJWT } = require('../helpers/jwt')
+const { generarJWT } = require('../helpers/jwt') //** Importo lo que exporte en helpers>jsw */
 
 const crearUsuario = async(req, res = response ) => { //** Aqui voy a crear el Usuario */
 
@@ -26,13 +26,13 @@ const crearUsuario = async(req, res = response ) => { //** Aqui voy a crear el U
         await usuario.save()
 
         // Generar JWT
-        const token = await generarJWT( usuario.id, usuario.name )
+        const token = await generarJWT( usuario.id, usuario.name ) //** Funcion token, una promesa pero lo creamos en helpers, recibe el id y el name */
 
-        res.status(201).json({
-            ok: true,
-            uid: usuario.id, //** Esto me lo esta regresando ahora de la postman, y son parametros ya establecidos */
-            name: usuario.name,
-            token
+        res.status(201).json({ //** Si se resolvio de manera correcta */
+            ok: true, //** El estado cuando se pudo hcer bien */
+            uid: usuario.id, //** Me esta regresando el parametro, y aqui lo muestro extrayendo info del usuario */
+            name: usuario.name, //** Aqui lo muestro extrayendo informacion del usuario */
+            token //** Esto es el token que se genero, que va a ser igual al valor del token que esta en la linea 29 */
         })
         
     } catch (error) {
@@ -70,14 +70,14 @@ const loginUsuario = async(req, res = response ) => { //** Vamos a trabajar con 
         }
 
         // Generar JWT
-        const token = await generarJWT( usuario.id, usuario.name )
+        const token = await generarJWT( usuario.id, usuario.name ) //** Creo funcion token, es promesa, recibe el id y name, para mandarlo a funcion exportada */
 
         res.json({ //** Si la validacion del email y pass es correcta entonces esto me retorna */
             ok: true, //** El estado es true */
             uid: usuario.id, //** Mandamos el uid:/id del usuario que son puros numeros */
             name: usuario.name, //** Mandamos el nombre del usuario */
             // password: usuario.password //** Hasta podriamos mandar la contraseña */
-            token
+            token //** Es el token que se genero, que es igual al de la variable linea73 */
         })
 
         //** Este puede ser, por fallas mas alla, como por ejemplo que mandemos el ok con otra cosa que no sea un booleano */
