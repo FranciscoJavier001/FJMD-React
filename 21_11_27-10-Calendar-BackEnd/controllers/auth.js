@@ -70,7 +70,7 @@ const loginUsuario = async(req, res = response ) => { //** Vamos a trabajar con 
         }
 
         // Generar JWT
-        const token = await generarJWT( usuario.id, usuario.name ) //** Funcion token, es promesa, recibe el id y name, para mandarlo a funcion exportada */
+        const token = await generarJWT( usuario.id, usuario.name ) //** Funcion token, promesa recibe id/name, para mandarlo a funcion exportada */
 
         res.json({ //** Si la validacion del email y pass es correcta entonces esto me retorna */
             ok: true, //** El estado es true */
