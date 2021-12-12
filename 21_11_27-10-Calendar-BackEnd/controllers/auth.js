@@ -103,3 +103,4 @@ module.exports = { //** Estos los encontramos el routes>auth, son los que encont
     loginUsuario,
     revalidarToken
 }
+//** 21/12/12 : 3:24PM */

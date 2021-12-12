@@ -28,3 +28,4 @@ const generarJWT = ( uid, name ) => { //** Creare una funcion generarJWT, que re
 module.exports = { //** Lo Exportamos, es la funcion que defini en la linea 6 */
     generarJWT
 }
+//** 21/12/12 : 3:24PM */
