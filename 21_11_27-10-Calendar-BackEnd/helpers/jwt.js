@@ -11,7 +11,7 @@ const generarJWT = ( uid, name ) => { //** Creare una funcion generarJWT, que re
         const payload = { uid, name } //** Creare el payload sera un objeto que tiene uid y name, son las variables que recibe donde lo importemos */
 
         //** Voy a generar el toquen */
-        jwt.sign( payload, process.env.SECRET_JWT_SEED, {  //** Firmo token, primer argumento que recibe es payload (arriba) y palabra secreta en .env */
+        jwt.sign( payload, process.env.SECRET_JWT_SEED, {  //** Firmo token, primer argumento recibedo es payload (arriba) y palabra secreta en .env */
             expiresIn: '2h' //** El tiempo en el que expira */
         }, (err, token ) => { //** Esto es lo que me puede retornar, el err o el token, aqui los defino */
 

@@ -26,7 +26,7 @@ const crearUsuario = async(req, res = response ) => { //** Aqui voy a crear el U
         await usuario.save()
 
         // Generar JWT
-        const token = await generarJWT( usuario.id, usuario.name ) //** Funcion token, una promesa pero lo creamos en helpers, recibe el id y el name */
+        const token = await generarJWT( usuario.id, usuario.name ) //** Funcion token, promesa pero lo creamos en helpers, recibe el id y el name */
 
         res.status(201).json({ //** Si se resolvio de manera correcta */
             ok: true, //** El estado cuando se pudo hcer bien */
@@ -70,7 +70,7 @@ const loginUsuario = async(req, res = response ) => { //** Vamos a trabajar con 
         }
 
         // Generar JWT
-        const token = await generarJWT( usuario.id, usuario.name ) //** Creo funcion token, es promesa, recibe el id y name, para mandarlo a funcion exportada */
+        const token = await generarJWT( usuario.id, usuario.name ) //** Funcion token, es promesa, recibe el id y name, para mandarlo a funcion exportada */
 
         res.json({ //** Si la validacion del email y pass es correcta entonces esto me retorna */
             ok: true, //** El estado es true */
