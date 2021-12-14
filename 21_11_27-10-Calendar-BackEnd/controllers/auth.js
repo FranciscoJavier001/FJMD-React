@@ -5,7 +5,7 @@ const { generarJWT } = require('../helpers/jwt') //** Importo lo que exporte en 
 
 const crearUsuario = async(req, res = response ) => { //** Aqui voy a crear el Usuario */
 
-    const { email, password } = req.body; //** Esto es lo que va a necesitar el Campo, para crear el Usuario */
+    const { email, password } = req.body; //** Esto es lo que va a necesitar el Campo, para crear el Usuario "req.body-info que se posteo" */
 
     try {
         let usuario = await Usuario.findOne({ email }) //** Aqui voy a buscar un usuario mediante el email */
@@ -90,17 +90,23 @@ const loginUsuario = async(req, res = response ) => { //** Vamos a trabajar con 
     }
 }
 
-const revalidarToken = (req, res = response ) => {
+const revalidarToken = async(req, res = response ) => { //** Esta la importamos en routes>auth */
 
-    res.json({
-        ok: true,
-        msg: 'renew'
+    const { uid, name } = req //** Voy a revalidarToken utilizando la req, que viene linea 93 que tiene el uid y name */
+
+    // Generar un nuevo JWT
+    const token = await generarJWT( uid, name ) //** Estos parametros los tengo arriba, vienen desde helpers>jwt */
+
+    res.json({ //** Esto me retorna el arreglo al hacer la peticion en postman */
+        ok: true, //** El estado */
+        uid, //** Muestro el uid */
+        name, //** Muestro en nane */
+        token //** Asi regreso un nuevo token */
     })
 }
 
-module.exports = { //** Estos los encontramos el routes>auth, son los que encontramos en las rutas del navegador, que ya definimos */
+module.exports = { //** Estos los encontramos el routes>auth, los encontramos en las rutas del navegador, aqui definimos */
     crearUsuario,
     loginUsuario,
     revalidarToken
 }
-//** 21/12/12 : 3:24PM */
