@@ -21,7 +21,9 @@ app.use( express.json() ); //** Aqui voy a procesar las peticiones que vengan en
 
 // Rutas
 app.use('/api/auth', require('./routes/auth') ) //** Todo lo que este archivo valla a exportar lo va a implementar en esta ruta */
-// TODO: CRUD: Eventos
+
+// TODO: CRUD: Eventos -- Rutas
+app.use('/api/events', require('./routes/events') ) //** El Router que voy a exportar en los eventos, se van a tomar como rutas */
 
 // Escuchar peticiones
 app.listen( process.env.PORT, () => {
