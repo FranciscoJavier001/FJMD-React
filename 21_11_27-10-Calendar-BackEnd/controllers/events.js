@@ -1,82 +1,32 @@
+const { response } = require('express') //** Importamos la response, para usarla abajo */
 
-
-// {
-//     ok: true,
-//     msg: 'crearEventos'
-// }
-
-// {   /123454321
-//     ok: true,
-//     msg: 'actualizarEvento'
-// }
-
-// {   /123454321
-//     ok: true,
-//     msg: 'eliminarEvento'
-// }
-
-const getEventos = async(req, res = response ) => { //** Esta la importamos en routes>auth */
-
-    const { uid, name } = req //** Voy a revalidarToken utilizando la req, que viene linea 93 que tiene el uid y name */
-
-    // Generar un nuevo JWT
-    const token = await generarJWT( uid, name ) //** Estos parametros los tengo arriba, vienen desde helpers>jwt */
-
+//** Recuerda que van por los headers, para no olvidarlo en postman */
+const getEventos = (req, res = response ) => { //** Esta la importamos en routes>events */
     res.json({ //** Esto me retorna el arreglo al hacer la peticion en postman */
         ok: true, //** El estado */
-        msg: 'Obtener eventos',
-        uid, //** Muestro el uid */
-        name, //** Muestro en nane */
-        token //** Asi regreso un nuevo token */
+        msg: 'getEventos' //** Mensaje */
     })
 }
-const crearEvento = async(req, res = response ) => { //** Esta la importamos en routes>auth */
-
-    const { uid, name } = req //** Voy a revalidarToken utilizando la req, que viene linea 93 que tiene el uid y name */
-
-    // Generar un nuevo JWT
-    const token = await generarJWT( uid, name ) //** Estos parametros los tengo arriba, vienen desde helpers>jwt */
-
-    res.json({ //** Esto me retorna el arreglo al hacer la peticion en postman */
+const crearEvento = (req, res = response ) => { //** Esta la importamos en routes>events */
+   res.json({ //** Esto me retorna el arreglo al hacer la peticion en postman */
         ok: true, //** El estado */
-        msg: 'crearEventos',
-        uid, //** Muestro el uid */
-        name, //** Muestro en nane */
-        token //** Asi regreso un nuevo token */
+        msg: 'crearEventos' //** Mensaje */
     })
 }
-const actualizarEvento = async(req, res = response ) => { //** Esta la importamos en routes>auth */
-
-    const { uid, name } = req //** Voy a revalidarToken utilizando la req, que viene linea 93 que tiene el uid y name */
-
-    // Generar un nuevo JWT
-    const token = await generarJWT( uid, name ) //** Estos parametros los tengo arriba, vienen desde helpers>jwt */
-
+const actualizarEvento = (req, res = response ) => { //** Esta la importamos en routes>events */
     res.json({ //** Esto me retorna el arreglo al hacer la peticion en postman */
         ok: true, //** El estado */
-        msg: 'actualizarEvento',
-        uid, //** Muestro el uid */
-        name, //** Muestro en nane */
-        token //** Asi regreso un nuevo token */
+        msg: 'actualizarEvento'
     })
 }
-const eliminarEvento = async(req, res = response ) => { //** Esta la importamos en routes>auth */
-
-    const { uid, name } = req //** Voy a revalidarToken utilizando la req, que viene linea 93 que tiene el uid y name */
-
-    // Generar un nuevo JWT
-    const token = await generarJWT( uid, name ) //** Estos parametros los tengo arriba, vienen desde helpers>jwt */
-
+const eliminarEvento = (req, res = response ) => { //** Esta la importamos en routes>events */
     res.json({ //** Esto me retorna el arreglo al hacer la peticion en postman */
         ok: true, //** El estado */
-        msg: 'eliminarEvento',
-        uid, //** Muestro el uid */
-        name, //** Muestro en nane */
-        token //** Asi regreso un nuevo token */
+        msg: 'eliminarEvento'
     })
 }
 
-module.exports = { //** Estos los encontramos el routes>auth, los encontramos en las rutas del navegador, aqui definimos */
+module.exports = { //** Estos los encontramos el routes>events, los encontramos en las rutas del navegador, aqui definimos */
     getEventos,
     crearEvento,
     actualizarEvento,
