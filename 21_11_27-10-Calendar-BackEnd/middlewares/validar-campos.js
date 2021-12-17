@@ -1,7 +1,7 @@
 const { response } = require('express')
 const { validationResult } = require('express-validator')
 
-const validarCapos = (req, res = response, next) => { //** El next se llama en el auth.js(routes) y se va pasando, y al final se convierte en el controlador propiamente */
+const validarCapos = (req, res = response, next) => { //** Next se llama en auth.js(routes), va pasando y se convierte en el controlador */
 
     // Manejo de errores
     const errors = validationResult( req )

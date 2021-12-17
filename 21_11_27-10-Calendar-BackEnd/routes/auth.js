@@ -11,7 +11,6 @@ const { validarJWT } = require('../middlewares/validar-jwt') //** Este lo import
 
 const router = Router()
 
-
 router.post( //** Estos son los endpoints, si lo pongo entre llaves es una coleccion de middleware */
     '/new',
     [ //** Middlewares */
