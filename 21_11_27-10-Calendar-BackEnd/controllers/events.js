@@ -11,7 +11,7 @@ const crearEvento = (req, res = response ) => { //** Esta la importamos en route
     //** Postman>Even-CrearEvento (Actualiza Token en Auth-Login y pasalo por Header en CrearEvento) */
     console.log( req.body ); //** Con esto me aseguro que tengo el evento */
 
-   res.json({ //** Esto me retorna el arreglo al hacer la peticion en postman */
+   res.json({ //** Esto me retorna el arreglo al hacer la peticion en postman routes>events */
         ok: true, //** El estado */
         msg: 'crearEventos' //** Mensaje */
     })

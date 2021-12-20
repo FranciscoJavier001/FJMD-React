@@ -15,6 +15,6 @@ const validarCapos = (req, res = response, next) => { //** Next se llama en auth
     next() //** Si no hay errores se llama este */
 }
 
-module.exports = {
+module.exports = { //** Exporte esto en en routes>events */
     validarCapos
 }
