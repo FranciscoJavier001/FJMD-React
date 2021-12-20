@@ -24,5 +24,4 @@ router.put('/:id', actualizarEvento ) //** Llamo el controlador actualizarEvento
 // Borrar Evento
 router.delete('/:id', eliminarEvento ) //** Llamo el controlador eliminarEvento, debe retornarme controllers>events - "/1" */
 
-//** Exportado hacia controller>events, que es donde definimos las funciones */
-module.exports = router 
+module.exports = router //** Exportado hacia controller>events, que es donde definimos las funciones */
