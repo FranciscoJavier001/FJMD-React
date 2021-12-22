@@ -1,11 +1,16 @@
 const { response } = require('express') //** Importamos la response, para usarla abajo */
 const Evento = require('../models/Evento') //** La referencia al modelo para guardar evento models>Evento, tiene necesidades */
 
-//** Recuerda que van por los headers, para no olvidarlo en postman */
-const getEventos = (req, res = response ) => { //** Esta la importamos en routes>events */
+//** Recuerda que van por los headers, para no olvidarlo en postman, actualizar token y recibir getEventos */
+const getEventos = async (req, res = response ) => { //** Esta la importamos en routes>events, por await puse async */
+
+    //** Voy a retornar la lista de todos los eventos */
+    const eventos = await Evento.find() //** Asi traigo todos los eventos */
+                                .populate('user','name') //** Puedo traer lo que quiera, user tiene campos que me interesan */
+
     res.json({ //** Esto me retorna el arreglo al hacer la peticion en postman */
         ok: true, //** El estado */
-        msg: 'getEventos' //** Mensaje */
+        eventos //** Asi es como los traigo todos, defini linea 8 */
     })
 }
 const crearEvento = async (req, res = response ) => { //** Esta la importamos en routes>events, tarea asincrona */
