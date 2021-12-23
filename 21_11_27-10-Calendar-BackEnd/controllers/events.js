@@ -37,12 +37,52 @@ const crearEvento = async (req, res = response ) => { //** Esta la importamos en
         })
     }
 }
-const actualizarEvento = (req, res = response ) => { //** Esta la importamos en routes>events */
-    res.json({ //** Esto me retorna el arreglo al hacer la peticion en postman */
-        ok: true, //** El estado */
-        msg: 'actualizarEvento'
-    })
+const actualizarEvento = async(req, res = response ) => { //** Esta la importamos en routes>events */
+
+    //** Tomar el id que viene en postman (final) y lo mandamos por el URL, mandar parametros body y recibir true */
+    const eventoId = req.params.id //** Asi tomo el valor del ID que viene por el URL */
+    const uid = req.uid //** uid es igual al request  */
+
+    try {
+
+        const evento = await Evento.findById( eventoId ) //** Busco Evento por el ID, es promesa */
+
+        if ( !evento ) { //** Si el evento no existe, retorname que ese ID no tiene eventos */
+            res.status(404).json({ //** En caso que el codigo no existe es 404 */
+                ok: false,
+                msg: 'Evento no existe por ese id'
+            })
+        }
+
+        if ( evento.user.toString() !== uid ) { //** Evento es dieferente al usuario que lo creo no dejarlo, confirmamos strings */
+            return res.status(401).json({ //** 401 es cuando alguien no esta autorizado */
+                ok: false,
+                msg: 'No tiene privilegio de editar este evento'
+            })
+        }
+        
+        const nuevoEvento = { //** Si paso la validacion de arriba ya lo puede editar */
+            ...req.body, //** Mandamos lo que viene en el body (esta en postman>body) */
+            user: uid //** El usuario es el uid/id del usuario que lo creo, asi lo mostramos */
+        }
+
+        //** Voy a tener los eventos del usuario, el evento pasado y con el evento mas nuevo y el evento que actualizamos */
+        const eventoActualizado = await Evento.findByIdAndUpdate( eventoId, nuevoEvento, { new: true} )
+
+        res.json({
+            ok: true,
+            evento: eventoActualizado //** Aqui muestro los eventos del usuario */
+        })
+        
+    } catch (error) { //** En un caso que no pueda ver la base de datos, por diversos errores */
+        console.log(error);
+        res.status(500).json({
+            ok: false,
+            msg: 'Hable con el administrador'
+        })
+    }
 }
+
 const eliminarEvento = (req, res = response ) => { //** Esta la importamos en routes>events */
     res.json({ //** Esto me retorna el arreglo al hacer la peticion en postman */
         ok: true, //** El estado */

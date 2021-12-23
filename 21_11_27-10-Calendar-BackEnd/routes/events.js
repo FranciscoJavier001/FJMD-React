@@ -32,7 +32,16 @@ router.post( //** Llamo el controlador crearEvento, debe retornarme controllers>
 )
 
 // Actualizar Evento
-router.put('/:id', actualizarEvento ) //** Llamo el controlador actualizarEvento, debe retornarme controllers>events - "URL:/1" */
+router.put(
+    '/:id',
+    [ //** Al hacer esto se valida en Postman y ahi sale el error, esto es un arreglo */
+        check('title','El titulo es obligatorio').not().isEmpty(), //** Para pedir que siempre tenga informacion, vide de express-validator */
+        check('start','Fecha de inicio es obligatoria').custom( isDate ), //** Lo primero es lo que pedimos y lo segundo lo que sale */
+        check('end','Fecha de finalizacion es obligatoria').custom( isDate ), //** Custom lo definimos en helpers>isDate */
+        validarCapos //** Esto viene desde el middleware>validar-campos */
+    ],
+    actualizarEvento //** Llamo el controlador actualizarEvento, debe retornarme controllers>events - "URL:/1" */
+)
 
 // Borrar Evento
 router.delete('/:id', eliminarEvento ) //** Llamo el controlador eliminarEvento, debe retornarme controllers>events - "URL:/1" */
