@@ -48,7 +48,7 @@ const actualizarEvento = async(req, res = response ) => { //** Esta la importamo
         const evento = await Evento.findById( eventoId ) //** Busco Evento por el ID, es promesa */
 
         if ( !evento ) { //** Si el evento no existe, retorname que ese ID no tiene eventos */
-            res.status(404).json({ //** En caso que el codigo no existe es 404 */
+            return res.status(404).json({ //** En caso que el codigo no existe es 404 */
                 ok: false,
                 msg: 'Evento no existe por ese id'
             })
@@ -83,12 +83,7 @@ const actualizarEvento = async(req, res = response ) => { //** Esta la importamo
     }
 }
 
-// const eliminarEvento = (req, res = response ) => { //** Esta la importamos en routes>events */
-    // res.json({ //** Esto me retorna el arreglo al hacer la peticion en postman */
-    //     ok: true, //** El estado */
-    //     msg: 'eliminarEvento'
-    // })
-
+//** Recuerda Actualizar el Token en Postman, El ID ponerlo en el URL, y para confirmar el evento el log del eventoID */
 const eliminarEvento = async(req, res = response ) => { 
     const eventoId = req.params.id
     const uid = req.uid
@@ -98,7 +93,7 @@ const eliminarEvento = async(req, res = response ) => {
         const evento = await Evento.findById( eventoId )
 
         if ( !evento ) {
-            res.status(404).json({
+            return res.status(404).json({
                 ok: false,
                 msg: 'Evento no existe por ese id'
             })
@@ -111,11 +106,10 @@ const eliminarEvento = async(req, res = response ) => {
             })
         }
 
-        const eventoEliminado = await Evento.findByIdAndDelete( eventoId, { new: true })
+        await Evento.findByIdAndDelete( eventoId )
 
         res.json({
-            ok: true,
-            evento: eventoEliminado
+            ok: true
         })
 
     } catch (error) {
