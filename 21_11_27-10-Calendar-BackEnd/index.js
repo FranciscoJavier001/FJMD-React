@@ -26,6 +26,6 @@ app.use('/api/auth', require('./routes/auth') ) //** Todo lo que este archivo va
 app.use('/api/events', require('./routes/events') ) //** Paso 1 - Router que voy a exportar en los eventos, se toman como rutas */
 
 // Escuchar peticiones
-app.listen( process.env.PORT, () => {
+app.listen( process.env.PORT, () => { //** Configuracion del puerto y del .env */
     console.log(`Servidor corriendo en puerto ${ process.env.PORT }`);
 })
