@@ -84,35 +84,37 @@ const actualizarEvento = async(req, res = response ) => { //** Esta la importamo
 }
 
 //** Recuerda Actualizar el Token en Postman, El ID ponerlo en el URL, y para confirmar el evento el log del eventoID */
-const eliminarEvento = async(req, res = response ) => { 
-    const eventoId = req.params.id
-    const uid = req.uid
+const eliminarEvento = async(req, res = response ) => { //** Promesa Asincrona */
+    const eventoId = req.params.id //** ID del evento que viene por el URL */
+    const uid = req.uid //** uid que viene en el req.uid */
 
     try {
         
-        const evento = await Evento.findById( eventoId )
+        const evento = await Evento.findById( eventoId ) //** evento, va a ser buscado y va a regresar el eventoId */
 
-        if ( !evento ) {
+        if ( !evento ) { //** Si el evento no existe, mandame este error en postman */
             return res.status(404).json({
                 ok: false,
                 msg: 'Evento no existe por ese id'
             })
         }
 
-        if ( evento.user.toString() !== uid ) {
+        if ( evento.user.toString() !== uid ) { //** Si el eventoId no es el mismo que el uid no dejarlo editar postman */
             return res.status(401).json({
                 ok: false,
                 msg: 'No tiene privilegio para eliminar este evento'
             })
         }
 
-        await Evento.findByIdAndDelete( eventoId )
+        // const eventoEliminado = await Evento.findByIdAndDelete( eventoId ) //** Para mostrar evento eliminado */
+        await Evento.findByIdAndDelete( eventoId ) //** Pero si todo es correcto, dejalo eliminar el evento */
 
-        res.json({
-            ok: true
+        res.json({ //** Retorna esto en Postman */
+            ok: true,
+            // evento: eventoEliminado //** Asi muesreo el evento eliminado */
         })
 
-    } catch (error) {
+    } catch (error) { //** Si hay una falla diferente manda esto */
         console.log(error);
         res.status(500).json({
             ok: false,
