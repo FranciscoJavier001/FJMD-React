@@ -11,12 +11,14 @@ Anotaciones Independientes
 Subir todo a Git
 Entrar a Heroku
 Asegurarme que funciona el comando 
-    npm start 
+    npm start - index.js
 este comando lo va a buscar HEROKU
-Hacer Validacion del puerto PORT en index.js
+Hacer Validacion del puerto 
+PORT - index.js
 Heroku>new app> choosing name> create
 Heroku Git
 Instalacion Heroku
+heroku --version
     brew tap heroku/brew && brew install heroku
 Ahora Para empezar a usar Heroku
     git init
@@ -30,9 +32,12 @@ Cuando usaba el localhost
     localhost:4000/api/auth/ "new, renew"
     localhost:4000/api/events 
 
-    https://mern-calendar-frank.herokuapp.com "ya en linea esta es la URL"
+    https://mern-calendar-frank.herokuapp.com "ya en linea esta es la URL, postman"
 
 Mongo Web
 Network Access - Agregar 0.0.0.0/0 para usar postman y hacer los endpoints publicos
 
 Funciona Todo en Postman
+
+Para saber los logs
+heroku logs -n 1000 --tail
