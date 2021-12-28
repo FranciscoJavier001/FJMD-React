@@ -68,3 +68,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+21/12/28:
+Voy a crear las variables de entorno
+crear archivos en la raiz
+    .env.development (Cuando estoy en desarrollo quiero apuntar apuntar al URL local o del BackEnd)
+    .env.production (En produccion no quiero que apunte al localhost, hay que poner el URL de HEROKU)
