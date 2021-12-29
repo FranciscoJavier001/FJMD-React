@@ -1,52 +1,40 @@
-.login-container{ /* Espacio que tenemos arriba */
-    margin-top: 15%; 
+.login-container{ /* components>auth>LoginScreen */
+    margin-top: 15%; /* Margen Superior (Espacio) */
 }
-.login-form-1{ /* Esta es la caja color blanca donde tenemos el login */
-    border-radius: 5px; /* Que tan redondeados van los bordes */
-    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19); /* Es el efecto de sombreado superior, izquierdo e inferior */
-    padding: 5%; /* Es el margen que tenemos a los lados izquierdo y derecho, asi lo hacemos mas grande o mas chico */
-    
+.login-form-1{ /* La caja color blanca donde tenemos el loginScreen(login) */
+    border-radius: 5px; /* Que tan redondeados van los bordes caja blanca */
+    /* Es el efecto de sombreado superior, izquierdo, derecha e inferior */
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+    padding: 5%; /* Margen de lo que viene dentro de la caja */
 }
 .login-form-1 h3{ /* Esto es el h3, osea donde dice ingreso, osea el blanco */
     text-align: center; /* Asi lo aliniamos al centro, pero solo porque es texto */
     color: #333; /* Este es el color negro */
-    /* margin-bottom: -7%; Subimos las cajas de texto */
-    
 }
 .login-form-2{ /* Este es el formulario del regitro, osea el azul, lo de afuera */
     border-radius: 5px; /* Como estan redondeados los bordes, pero de la caja azul */
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19); /* Este es el sombreado */
     padding: 5%; /* Es el margen que tiene lo que esta dentro de la caja, de las cajas de texto */
     background: #0062cc; /* Este es el color del fondo de pantalla */
-    
 }
 .login-form-2 h3{ /* Este es donde dice registro */
     text-align: center; /* Este es el acomodo al centro */
     color: #fff; /* Este es el color blanco */
-    /* margin-bottom: -7%; Subimos las cajas de texto */
-    
 }
 .login-container form{ /* Este es de todo lo que esta dentro del formulario */
     padding: 10%; /* Este es el margen que tiene el formulario, de ambos */
-    /* text-align: center; Este es el acomodo al centro */
 }
-
-/* .form-group { Margen para las cajas de texto */
-    /* margin-top: 2%; El espacio que dejamos */
-/* } */
-
-/* .form-control{ Lo que hay dentro de las cajas de texto */
-    /* text-align: center; Centramos el texto */
-/* } */
+ .form-control{ 
+    text-align: center; /* Para centar el placeholder en las cajas de texto */
+}
 .btnSubmit /* Estos son los botones, aqui los controlamos */
 {
-    /* margin-top: 3%; Asi bajamos los botones  */
     width: 50%; /* Tamaño de los botones */
     border-radius: 1rem; /* Que tan redondeados son los bordes de los botones */
     padding: 1.5%; /* Esta es la altura de la caja de los botones */
     border: none; /* Esto es para que no tengan bordes */
     cursor: pointer; /* Que cambie el cursor cuando le paso el cursor por ahi */
-    
+    margin-left: 25%; /* Botones a la mitad, mio */
 }
 .login-form-1 .btnSubmit{ /* Estilos dentro del boton */
     color: #fff; /* Color del texto dentro del boton */
