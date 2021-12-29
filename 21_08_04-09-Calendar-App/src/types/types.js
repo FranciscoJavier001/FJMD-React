@@ -16,5 +16,5 @@ export const types = {
     authLogin:'[auth] Login', //** Logeado para establecer info del usuario */
     authStartRegister:'[auth] Start Register', //** Comienzo para Registro de nuevo usuario */
     authStartTokenRenew:'[auth] Start token renew', //** Nuevo Token */
-    authLogout:'[auth] Logout', //** Salida */
+    authLogout:'[auth] Logout', //** Salida Syncrona */
 }
