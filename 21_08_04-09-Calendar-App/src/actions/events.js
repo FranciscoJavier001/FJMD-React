@@ -1,15 +1,18 @@
 import { types } from "../types/types";
 
-export const eventAddNew = (event) => ({ //** Esto recibe el evento que quiero guardar, va a ser sincrono y el objeto que voy a retornar va a ser de types */
-    type: types.eventAddNew,
-    payload: event
+//** Exportamos el evento que agrega uno nuevo, este recibe el evento, esta definido en el types>types y el payload es el evento */
+export const eventAddNew = (event) => ({  //** eventAddNew recibe el evento */
+    type: types.eventAddNew, //** Este es el types, es lo que va a ser */
+    payload: event //** Payload es el evento que se recibio en la funcion */
 });
 
-export const eventSetActive = (event) => ({ //** Esto recibe el evento que quiero guardar, va a ser sincrono y el objeto que voy a retornar va a ser de types */
+//** Esto recibe el evento que quiero guardar, va a ser sincrono y el objeto que voy a retornar va a ser de types */
+export const eventSetActive = (event) => ({ 
     type: types.eventSetActive,
     payload: event
 });
 
+//** Lo encuentro en calendar>CalendarScreen */
 export const eventClearActiveEvent = () => ({ type: types.eventClearActiveEvent, })
 
 //** Ahora voy a crear la accion, que defini en types */

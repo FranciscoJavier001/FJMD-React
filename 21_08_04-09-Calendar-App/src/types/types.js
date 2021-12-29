@@ -3,11 +3,12 @@ export const types = {
     uiOpenModal: '[ui] Open modal',
     uiCloseModal: '[ui] Close modal',
 
-    eventSetActive: '[event] Set Active',
-    eventAddNew: '[event] Add new',
+    //** Estos types estan definidos en actions>events y de aqui los importamos */
+    eventSetActive: '[event] Set Active', 
+    eventAddNew: '[event] Add new', //** Crea un nuevo evento */
     eventClearActiveEvent: '[event] Clear active event',
     eventUpdated: '[event] Event updated', //** Accion en base de datos y si responde SI dispararo esta accion */
-    eventDeleted: '[event] Event deleted',
+    eventDeleted: '[event] Event deleted', //** Accion que elimina el evento de la BD */
 
     //** Voy a definir todos los types que voy a necesitar para la autentificacion */
     authChecking:'[auth] Checking login state', //** Ver estado del usuario */
