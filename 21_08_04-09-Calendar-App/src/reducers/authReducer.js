@@ -1,3 +1,5 @@
+import { types } from "../types/types";
+
 const initialState = { //** initialState es un objeto donde voy a definir un par de cosas */
     //** Esta define si el usuario esta autentificado, en false se va al login y en true se queda en la pagina del calendario */
     checking: true, //** Propiedad que en cuanto se cargue va a ser true Redux>State */
@@ -10,6 +12,14 @@ const initialState = { //** initialState es un objeto donde voy a definir un par
 export const authReducer = ( state = initialState, action ) => {
 
     switch ( action.type ) { //** Con el action.type ya tenemos listo el reducer */
+
+        //** Que queremos que haga cuando recibe una accion de authLogin */
+        case types.authLogin: //** En el caso que recibas en authLogin de types>types */
+            return { //** Regresame */
+                ...state, //** Un nuevo estado pero como esta */
+                checking: false, //** Cambia el checking a false, porque se que ya lo autentifique y lo inicializo en false */
+                ...action.payload //** Y el name y el uid */
+            }
             
         default:
             return state; //** Voy a mandar el state con los parametros que tenga */

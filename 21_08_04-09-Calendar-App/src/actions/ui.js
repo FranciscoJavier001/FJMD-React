@@ -1,3 +1,4 @@
+//** Estos son los endpoints */
 import { types } from "../types/types";
 
 //** Este esta en types>types */

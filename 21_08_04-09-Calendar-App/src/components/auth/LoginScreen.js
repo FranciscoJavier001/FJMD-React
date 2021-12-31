@@ -19,7 +19,7 @@ export const LoginScreen = () => { //** Esto es porque lo exportamos al archivo 
         e.preventDefault() //** Para que no recarge la pagina */
 
         // console.log(formLoginValues); //** Para ver lo que trae el formulario al hacer click en login */
-        dispatch( startLogin( lEmail, lPassword )  ) //** Aqui voy a disparar startLogin, recibe email y password */
+        dispatch( startLogin( lEmail, lPassword )  ) //** Aqui voy a disparar startLogin, recibe email y password de actions>auth */
     }
 
     return (
