@@ -1,5 +1,6 @@
 import { fetchSinToken } from "../helpers/fetch"
 import { types } from "../types/types"
+import Swal from 'sweetalert2'
 
 //** Funcion que comienza proceso de autentificacion */
 export const startLogin = ( email, password ) => { //** Exporto(mando) la funcion que va a ser asyncrona, recibe email, password */
@@ -13,14 +14,16 @@ export const startLogin = ( email, password ) => { //** Exporto(mando) la funcio
 
         // console.log(body);
 
-        if( body.ok ) { //** Si tenemos el ok */
+        if( body.ok ) { //** Si tenemos el ok, osea para saber si hizo la conexion00 */
             localStorage.setItem('token', body.token ) //** Voy a guardar en localStorage el token que lo tengo en el body */
             localStorage.setItem('token-init-date', new Date().getTime() ) //** token-init-date para saber la fecha de cuando se creo */
 
-            dispatch( login({ //** Hago el dispatch al store para guardar la info Consola>Redux>state>auth linea 29 */
+            dispatch( login({ //** Hago el dispatch de la info Consola>Redux>state>auth linea 29 */
                 uid: body.uid, //** Mando el login y recibo un objeto con el uid y el name que vienen en el body */
-                name: body.name
+                name: body.name //** Establece el uid y el name en el store */
             }) )
+        } else { //** Si escribe mal la contraseña o el usuario */
+            Swal.fire('Error', body.msg, 'error')
         }
     }
 }

@@ -54,7 +54,7 @@ const loginUsuario = async(req, res = response ) => { //** Vamos a trabajar con 
         
         if ( !usuario ) { //** Si el Usuario, no existe, mandar esto, osea asi lo retornamos */
             return res.status(400).json({ //** Si el error es 400, es porque el usuario ya existe */
-                ok: true, //** Este simplemente es porque asi lo mandamos, si dejo el cursor en el ok me sale el tipo de variable que recibe */
+                ok: false, //** Este simplemente es porque asi lo mandamos, si dejo el cursor en el ok me sale el tipo de variable que recibe */
                 msg: 'El usuario no existe con ese email' //** Este es el mensaje que mandamos */
             })
         }
