@@ -1,7 +1,8 @@
 import React from 'react';
 import { useDispatch } from 'react-redux'
-import { startLogin } from '../../actions/auth';
 import { useForm } from '../../hooks/useForm';
+import { startLogin, startRegister } from '../../actions/auth';
+import Swal from 'sweetalert2';
 
 import './login.css'; //** Esto es porque importamos info desde nuestro css */
 
@@ -15,11 +16,33 @@ export const LoginScreen = () => { //** Esto es porque lo exportamos al archivo 
     });
 
     const { lEmail, lPassword } = formLoginValues; //** Voy a extraer estas dos variables, vienen de formLoginValues */
+
     const handleLogin = ( e ) => { //** Linea 32, funcion que se hace al hacer click */
         e.preventDefault() //** Para que no recarge la pagina */
-
+        
         // console.log(formLoginValues); //** Para ver lo que trae el formulario al hacer click en login */
         dispatch( startLogin( lEmail, lPassword )  ) //** Aqui voy a disparar startLogin, recibe email y password de actions>auth */
+    }
+
+    //** Manejador de Registro, parecido al de login */
+    //** formRegisterValues son los campos del formulario de registro, handleRegisterInputChange los valores asignados ya en el formulario */
+    const [ formRegisterValues, handleRegisterInputChange ] = useForm({ //** Son los del formRegisterValues, handleRegisterInputChange del useForm */
+        rName: 'Frank', //** Estos son los campos */
+        rEmail: 'frank@mail.com', //** La "r", es porque viene del login */
+        rPassword1: '123456', //** Es un nuevo registro, bueno este es el password */
+        rPassword2: '123456' //** La confirmacion del password */
+    });
+
+    const { rName, rEmail, rPassword1, rPassword2 } = formRegisterValues //** Desestructuramos loa valores del fRV y esos campos tiene */
+
+    const handleRegister = ( e ) => { //** handleRegister es una funcion que recibe el evento, asignado en el onSubmit */
+        e.preventDefault() //** Para evitar que se recargue el navegador */
+
+        if ( rPassword1 !== rPassword2 ) { //** Si rP1 es Diferente a rP2 */
+            return Swal.fire('Error', 'Las Contraseñas deben de ser Iguales', 'error') //** Mandamos el error con Swal */
+        }
+        // console.log('Se Dispara'); //** Para saber si se esta disparando */
+        dispatch( startRegister( rEmail, rPassword1, rName ) ) //** Ok validacion, haz el dispatch, pide los 3 argumentos, viene de actions>auth */
     }
 
     return (
@@ -35,8 +58,8 @@ export const LoginScreen = () => { //** Esto es porque lo exportamos al archivo 
                                 type="text" //** Tipo de campo */
                                 className="form-control" //** Es el espacio, donde va el texto, (clase_Bootstrap) */
                                 placeholder="Correo" //** Lo que viene en gris dentro de la caja */
-                                name="lEmail" //** Necesito el email del campo que voy a recibir en el login, useForm */
-                                value={ lEmail } //** El valor va a ser el lEmail que recibi */
+                                name="lEmail" //** Es el nombre del Campo */
+                                value={ lEmail } //** El valor va a ser el lEmail que recibi, desestructurado y esta en useForm */
                                 onChange={ handleLoginInputChange } //** Esta es cuando se hacen los cambios */
                             />
                         </div>
@@ -46,8 +69,8 @@ export const LoginScreen = () => { //** Esto es porque lo exportamos al archivo 
                                 className="form-control"
                                 placeholder="Contraseña"
                                 name="lPassword" //** Aqui recibo el Password que recibe el useForm */
-                                value={ lPassword } //** Lo que viene en el lPassword */
-                                onChange={ handleLoginInputChange } //** Esta es cuando se hacen los cambios */
+                                value={ lPassword } //** Lo que viene en el lPassword, el que recibi y esta en useForm */
+                                onChange={ handleLoginInputChange } //** Esta es cuando se hacen los cambios, en useForm y ahi se guardan */
                             />
                         </div>
                         <div className="form-group">
@@ -62,12 +85,15 @@ export const LoginScreen = () => { //** Esto es porque lo exportamos al archivo 
 
                 <div className="col-md-6 login-form-2"> {/* col-md-x= ancho container bootstrap (max_12)-login-form-2(clase_auth>login) */}
                     <h3>Registro</h3>
-                    <form> {/* Es otro formulario */}
+                    <form onSubmit={ handleRegister }> {/* Formulario y el metodo handleRegister es lo que se manda cuando hacemos click */}
                         <div className="form-group"> {/* Son las cajitas de texto */}
                             <input
                                 type="text"
                                 className="form-control"
                                 placeholder="Nombre"
+                                name="rName" //** Nombre del campo */
+                                value={ rName } //** Este es el valor que va a tener ese campo, desestructurado */
+                                onChange={ handleRegisterInputChange } //** Es donde se va a quedar los cambios, ahi se quedan */
                             />
                         </div>
                         <div className="form-group">
@@ -75,6 +101,9 @@ export const LoginScreen = () => { //** Esto es porque lo exportamos al archivo 
                                 type="email"
                                 className="form-control"
                                 placeholder="Correo"
+                                name="rEmail"
+                                value={ rEmail }
+                                onChange={ handleRegisterInputChange }
                             />
                         </div>
                         <div className="form-group">
@@ -82,6 +111,9 @@ export const LoginScreen = () => { //** Esto es porque lo exportamos al archivo 
                                 type="password"
                                 className="form-control"
                                 placeholder="Contraseña"
+                                name="rPassword1"
+                                value={ rPassword1 }
+                                onChange={ handleRegisterInputChange }
                             />
                         </div>
 
@@ -90,6 +122,9 @@ export const LoginScreen = () => { //** Esto es porque lo exportamos al archivo 
                                 type="password"
                                 className="form-control"
                                 placeholder="Repita la contraseña"
+                                name="rPassword2"
+                                value={ rPassword2 }
+                                onChange={ handleRegisterInputChange }
                             />
                         </div>
 
