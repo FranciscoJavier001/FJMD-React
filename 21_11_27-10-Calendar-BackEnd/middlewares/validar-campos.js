@@ -1,7 +1,7 @@
 const { response } = require('express')
 const { validationResult } = require('express-validator')
 
-const validarCapos = (req, res = response, next) => { //** Next se llama en auth.js(routes), va pasando y se convierte en el controlador */
+const validarCampos = (req, res = response, next) => { //** Next se llama en auth.js(routes), va pasando y se convierte en el controlador */
 
     // Manejo de errores
     const errors = validationResult( req )
@@ -16,5 +16,5 @@ const validarCapos = (req, res = response, next) => { //** Next se llama en auth
 }
 
 module.exports = { //** Exporte esto en en routes>events */
-    validarCapos
+    validarCampos
 }

@@ -90,7 +90,7 @@ const loginUsuario = async(req, res = response ) => { //** Vamos a trabajar con 
     }
 }
 
-const revalidarToken = async(req, res = response ) => { //** Esta la importamos en routes>auth */
+const revalidarToken = async (req, res = response ) => { //** Esta la importamos en routes>auth */
 
     const { uid, name } = req //** Voy a revalidarToken utilizando la req, que viene linea 93 que tiene el uid y name */
 
@@ -99,8 +99,8 @@ const revalidarToken = async(req, res = response ) => { //** Esta la importamos 
 
     res.json({ //** Esto me retorna el arreglo al hacer la peticion en postman */
         ok: true, //** El estado */
-        uid, //** Muestro el uid */
-        name, //** Muestro en nane */
+        // uid, //** Muestro el uid */
+        // name, //** Muestro en nane */
         token //** Asi regreso un nuevo token */
     })
 }

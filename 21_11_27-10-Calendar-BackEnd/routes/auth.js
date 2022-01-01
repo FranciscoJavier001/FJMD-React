@@ -2,10 +2,9 @@
     Rutas de Usuarios / Auth
     host + /api/auth
 */
-
 const { Router } = require('express')
 const { check } = require('express-validator') //** Ayuda con validaciones, check-valida un campo en particular */
-const { validarCapos } = require('../middlewares/validar-campos')
+const { validarCampos } = require('../middlewares/validar-campos')
 const { crearUsuario, loginUsuario, revalidarToken } = require('../controllers/auth')
 const { validarJWT } = require('../middlewares/validar-jwt') //** Este lo importamos desde middlewares>validar-jwt */
 
@@ -17,15 +16,16 @@ router.post( //** Estos son los endpoints, si lo pongo entre llaves es una colec
         check('name', 'El nombre es obligatorio').not().isEmpty(), //** Validaciones */
         check('email', 'El E-Mail es obligatorio').isEmail(),
         check('password', 'El Password debe de ser de 6 caracteres').isLength({ min: 6 }),
-        validarCapos //** Asi podemos validar los campos, este lo pusimos para que actue el middleware */
+        validarCampos //** Asi podemos validar los campos, este lo pusimos para que actue el middleware */
     ],
-    crearUsuario ) //** En caso contrario de que no tenga problemas pasa a crear el usuario */
+    crearUsuario //** En caso contrario de que no tenga problemas pasa a crear el usuario */
+    )
 
 router.post('/', //** Son las validaciones */
     [ //** Middlewares */
         check('email', 'El E-Mail es obligatorio').isEmail(),
         check('password', 'El Password debe de ser de 6 caracteres').isLength({ min: 6 }),
-        validarCapos //** Tiene que pasar por esto para hacer el login */
+        validarCampos //** Tiene que pasar por esto para hacer el login */
     ],
     loginUsuario ) //** En caso que todo este bien */
 

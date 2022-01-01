@@ -7,7 +7,7 @@ const { Router } = require('express') //** Primero importamos esto, despues crea
 const { check } = require('express-validator') //** Necesito el Check para validar los campos */
 
 const { isDate } = require('../helpers/isDate') //** Aqui hicimos la vidacion de fechas, y es custom */
-const { validarCapos } = require('../middlewares/validar-campos') //** Asi impedimos que avance si algo no esta correcto */
+const { validarCampos } = require('../middlewares/validar-campos') //** Asi impedimos que avance si algo no esta correcto */
 const { validarJWT } = require("../middlewares/validar-jwt") //** Vamos a tener las validaciones del JWT */
 const { getEventos, crearEvento, actualizarEvento, eliminarEvento } = require('../controllers/events') //** Para exportarlas */
 
@@ -26,7 +26,7 @@ router.post( //** Llamo el controlador crearEvento, debe retornarme controllers>
         check('title','El titulo es obligatorio').not().isEmpty(), //** Para pedir que siempre tenga informacion, vide de express-validator */
         check('start','Fecha de inicio es obligatoria').custom( isDate ), //** Lo primero es lo que pedimos y lo segundo lo que sale */
         check('end','Fecha de finalizacion es obligatoria').custom( isDate ), //** Custom lo definimos en helpers>isDate */
-        validarCapos //** Esto viene desde el middleware>validar-campos */
+        validarCampos //** Esto viene desde el middleware>validar-campos */
     ],
     crearEvento //** Si todo sale bien se pasa aqui */
 )
@@ -38,7 +38,7 @@ router.put(
         check('title','El titulo es obligatorio').not().isEmpty(), //** Para pedir que siempre tenga informacion, vide de express-validator */
         check('start','Fecha de inicio es obligatoria').custom( isDate ), //** Lo primero es lo que pedimos y lo segundo lo que sale */
         check('end','Fecha de finalizacion es obligatoria').custom( isDate ), //** Custom lo definimos en helpers>isDate */
-        validarCapos //** Esto viene desde el middleware>validar-campos */
+        validarCampos //** Esto viene desde el middleware>validar-campos */
     ],
     actualizarEvento //** Llamo el controlador actualizarEvento, debe retornarme controllers>events - "URL:/1" */
 )
