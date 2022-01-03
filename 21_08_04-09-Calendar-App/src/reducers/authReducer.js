@@ -14,13 +14,19 @@ export const authReducer = ( state = initialState, action ) => {
     switch ( action.type ) { //** Con el action.type ya tenemos listo el reducer */
 
         //** Que queremos que haga cuando recibe una accion de authLogin */
-        case types.authLogin: //** En el caso que recibas en authLogin de types>types */
+        case types.authLogin: //** En el caso que recibas en authLogin de types>types, pongo checking en false */
             return { //** Regresame */
                 ...state, //** Un nuevo estado pero como esta */
-                checking: false, //** Cambia el checking a false, porque se que ya lo autentifique y lo inicializo en false */
-                ...action.payload //** Y el name y el uid */
+                ...action.payload, //** Y el name y el uid */
+                checking: false //** Cambia el checking a false, porque se que ya lo autentifique y lo inicializo en false */
             }
-            
+
+        case types.authCheckingFinish:
+            return {
+                ...state, //** Retorno el State como este */
+                checking: false //** Cambio el checking a false */
+            }
+
         default:
             return state; //** Voy a mandar el state con los parametros que tenga */
     }

@@ -11,8 +11,7 @@ export const types = {
     eventDeleted: '[event] Event deleted', //** Accion que elimina el evento de la BD */
 
     //** Voy a definir todos los types que voy a necesitar para la autentificacion */
-    authChecking:'[auth] Checking login state', //** Ver estado del usuario */
-    authCheckingFinish:'[auth] Finish checking login state', //** Finalizada la accion si esta autentificado */
+    authCheckingFinish:'[auth] Finish checking login state', //** Finalizada la accion confirmo si o no esta autentificado */
     authStartLogin:'[auth] Start login', //** Comienzo asyncrono para realizar el posteo */
     authLogin:'[auth] Login', //** Logeado para establecer info del usuario */
     authStartRegister:'[auth] Start Register', //** Comienzo para Registro de nuevo usuario */

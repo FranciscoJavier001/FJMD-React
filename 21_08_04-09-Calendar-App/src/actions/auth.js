@@ -1,4 +1,4 @@
-import { fetchSinToken } from "../helpers/fetch"
+import { fetchConToken, fetchSinToken } from "../helpers/fetch"
 import { types } from "../types/types"
 import Swal from 'sweetalert2' //** Para las alertas */
 
@@ -40,7 +40,7 @@ export const startRegister = ( email, password, name ) => { //** Esta funcion la
             localStorage.setItem( 'token-init-date', new Date().getTime() ) //** Guardamos el valor de creacion de a variable */
 
             dispatch( login({ //** Hacemos el dispatch del login */
-                uid: body.uid, //** Estos son los marametros del login */
+                uid: body.uid, //** Estos son los parametros del login */
                 name: body.name
             }) )
         } else { //** Sino tenemos el error */
@@ -48,6 +48,32 @@ export const startRegister = ( email, password, name ) => { //** Esta funcion la
         }
     }
 }
+
+
+export const startChecking = () => { //** No requiere argumentos */
+    return async( dispatch ) => { //** Retorno el dispatch y va a ser una tarea async */
+
+        const resp = await fetchConToken( 'auth/renew' ) //** endPoint, no necesita ningun argumento y es un GET */
+        const body = await resp.json() //** Respuesta se manda al body>raw,>JSON, porque en json tengo nuevo token */
+
+        console.log(body); //** Para ver la impresion en consola del body */
+
+        if( body.ok ) { //** Si el body tiene el ok entonces */
+            localStorage.setItem( 'token', body.token ) //** Guardamos lo que manda en el body.token, en localStorage variable body */
+            localStorage.setItem( 'token-init-date', new Date().getTime() ) //** Guardamos el valor de creacion de a variable (tiempo) */
+
+            dispatch( login({ //** Hacemos el dispatch del login */
+                uid: body.uid, //** Estos son los parametros del login, que establecen la informacion */
+                name: body.name
+            }) )
+        } else { //** Sino tenemos el error */
+            Swal.fire('Error', body.msg, 'error') //** Mandamos el error */
+            dispatch( checkingFinish() ) //** De types>types, accion para confirmar que se hizo la autentificacion si/no, de linea 76 */
+        }
+    }
+}
+
+const checkingFinish = () => ({ type: types.authCheckingFinish }) //** Constante que no recibe nada y retorna un objeto de types, la llamo linea 71 */
 
 //** Accion sincrona, y solo la voy a usar aqui */
 const login = ( user ) => ({ //** Recibo el user */
