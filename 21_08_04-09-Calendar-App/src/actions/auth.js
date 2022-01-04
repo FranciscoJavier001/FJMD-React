@@ -67,7 +67,7 @@ export const startChecking = () => { //** No requiere argumentos */
                 name: body.name
             }) )
         } else { //** Sino tenemos el error */
-            Swal.fire('Error', body.msg, 'error') //** Mandamos el error */
+            // Swal.fire('Error', body.msg, 'error') //** Mandamos el error, lo quitamos */
             dispatch( checkingFinish() ) //** De types>types, accion para confirmar que se hizo la autentificacion si/no, de linea 76 */
         }
     }

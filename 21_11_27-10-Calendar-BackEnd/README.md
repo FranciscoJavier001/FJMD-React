@@ -41,3 +41,17 @@ Funciona Todo en Postman
 
 Para saber los logs
 heroku logs -n 1000 --tail
+
+22/01/03
+Para ver los cambios en el archivo 
+    git status
+
+Para hacer el despliegue del cambio solo en heroku
+Respaldo
+    git add .
+Hago el commit
+    git commit -m ""
+(asi ya tengo los cambios locales)
+Para subirlo a Heroku
+    git push heroku master
+    

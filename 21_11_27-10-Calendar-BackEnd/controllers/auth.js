@@ -76,7 +76,7 @@ const loginUsuario = async(req, res = response ) => { //** Vamos a trabajar con 
             ok: true, //** El estado es true */
             uid: usuario.id, //** Mandamos el uid:/id del usuario que son puros numeros */
             name: usuario.name, //** Mandamos el nombre del usuario */
-            // password: usuario.password //** Hasta podriamos mandar la contraseña */
+            // password: usuario.password, //** Hasta podriamos mandar la contraseña */
             token //** Es el token que se genero, que es igual al de la variable linea73 */
         })
 
@@ -99,8 +99,8 @@ const revalidarToken = async (req, res = response ) => { //** Esta la importamos
 
     res.json({ //** Esto me retorna el arreglo al hacer la peticion en postman */
         ok: true, //** El estado */
-        // uid, //** Muestro el uid */
-        // name, //** Muestro en nane */
+        uid, //** Muestro el uid */
+        name, //** Muestro en name */
         token //** Asi regreso un nuevo token */
     })
 }
