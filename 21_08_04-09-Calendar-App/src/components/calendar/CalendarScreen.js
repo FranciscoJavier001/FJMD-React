@@ -1,4 +1,4 @@
-//** _________________________________________________________________________Margen_________________________________________________________________________ */
+//** ________________________________________________________________________________________________________________________________________________ */
 import React, { useState } from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar'; //** Hice estas dos importaciones */
 import { useDispatch, useSelector } from 'react-redux'
