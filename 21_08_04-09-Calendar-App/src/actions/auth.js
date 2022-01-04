@@ -1,3 +1,4 @@
+//** ________________________________________________________________________________________________________________________________________________ */
 import { fetchConToken, fetchSinToken } from "../helpers/fetch"
 import { types } from "../types/types"
 import Swal from 'sweetalert2' //** Para las alertas */
@@ -56,7 +57,7 @@ export const startChecking = () => { //** No requiere argumentos */
         const resp = await fetchConToken( 'auth/renew' ) //** endPoint, no necesita ningun argumento y es un GET */
         const body = await resp.json() //** Respuesta se manda al body>raw,>JSON, porque en json tengo nuevo token */
 
-        console.log(body); //** Para ver la impresion en consola del body */
+        // console.log(body); //** Para ver la impresion en consola del body, para ver si mandamos bien los parametros */
 
         if( body.ok ) { //** Si el body tiene el ok entonces */
             localStorage.setItem( 'token', body.token ) //** Guardamos lo que manda en el body.token, en localStorage variable body */
@@ -67,7 +68,6 @@ export const startChecking = () => { //** No requiere argumentos */
                 name: body.name
             }) )
         } else { //** Sino tenemos el error */
-            // Swal.fire('Error', body.msg, 'error') //** Mandamos el error, lo quitamos */
             dispatch( checkingFinish() ) //** De types>types, accion para confirmar que se hizo la autentificacion si/no, de linea 76 */
         }
     }
