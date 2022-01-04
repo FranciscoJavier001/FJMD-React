@@ -1,3 +1,4 @@
+//** _________________________________________________________________________Margen_________________________________________________________________________ */
 import { types } from "../types/types";
 
 const initialState = {
@@ -6,7 +7,7 @@ const initialState = {
 
 export const uiReducer = ( state = initialState, action ) => {
 
-    switch ( action.type ) {
+    switch ( action.type ) { //** Estos son los casos y va a ser lo que me regresa components>calendar>calendarScreen */
         case types.uiOpenModal:
             return {
                 ...state,

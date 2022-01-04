@@ -1,3 +1,4 @@
+//** _________________________________________________________________________Margen_________________________________________________________________________ */
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { uiOpenModal } from '../../actions/ui';
@@ -7,7 +8,7 @@ export const AddNewFab = () => {
     const dispatch = useDispatch();
 
     const handleClickNew = () => { //** No recibo ningun argumento */
-        dispatch( uiOpenModal() ) //** Y el Dispatch solo va a ser el uiOpenModal */
+        dispatch( uiOpenModal() ) //** Y el Dispatch solo va a ser el uiOpenModal reducers>uiReducer */
     }
 
     return (

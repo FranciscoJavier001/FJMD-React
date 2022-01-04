@@ -1,10 +1,11 @@
+//** _________________________________________________________________________Margen_________________________________________________________________________ */
 import React, { useState } from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar'; //** Hice estas dos importaciones */
 import { useDispatch, useSelector } from 'react-redux'
 import moment from 'moment'; //** De las que dije */
 
 import { Navbar } from '../ui/Navbar';
-import { messages } from '../../helpers/calendar-messages-es'; //** Voy a hacer la importacion de messages, donde esta la configuracion del español */
+import { messages } from '../../helpers/calendar-messages-es'; //** Importacion de messages, ahi esta la configuracion del español */
 import { CalendarEvent } from './CalendarEvent'; //** Este lo importamos por el componente en el event */
 import { CalendarModal } from './CalendarModal';
 
@@ -22,10 +23,11 @@ const localizer = momentLocalizer(moment); //** Esto lo copie, y simplemente lo 
 
 export const CalendarScreen = () => {
 
-    const dispatch = useDispatch(); //** Con este dispatch no tengo que importar nada mas, solo resta hacer el dispatch de la respectiva accion */
-    const { events, activeEvent } = useSelector( state => state.calendar ) //** Lo primero es lo que voy a extraer va a ser los events del state del calendario */
+    const dispatch = useDispatch(); //** Asi no tengo que importar nada mas, solo resta hacer el dispatch de la respectiva accion */
+    const { events, activeEvent } = useSelector( state => state.calendar ) //** Primero voy a extraer los events del state del calendario */
 
-    const [lastView, setLastView] = useState( localStorage.getItem('lastView') || 'mont' ); //** Quiero que una variable almacene el espacio cuando actualizo las cosas, y con el getItem es para ver lo que tiene, y si no tiene valor entonces que se muestre la vista del mes */
+    //** lastView almacena la ultima vista, el setLastView actualiza el estado del componente, useState le digo cual va a ser su estado inicial */
+    const [lastView, setLastView] = useState( localStorage.getItem('lastView') || 'month' ); //** getItem es para ver lo que tiene, ultima vista o mes */
 
     const onDoubleClick = (e) => { //** Esta es para mostrar los eventos al hacer dobleClick */
         // console.log(e);
@@ -33,11 +35,11 @@ export const CalendarScreen = () => {
     }
 
     const onSelectEvent = (e) => { //** Al hacer click se dispare el evento */
-        dispatch( eventSetActive( e ) ) //** Asi hacemos el dispatch de un evento, y el evento es e, pero fatta ponerle accion en el calendarReducer */
+        dispatch( eventSetActive( e ) ) //** Asi hacemos el dispatch de un evento, y el evento es e, pero falta ponerle accion en el calendarReducer */
     }
 
     const onViewChange = (e) => { //** Para que al hacer el cambio de la vista salga el tipo de formato que es, de dia, semana etc */
-        setLastView(e); //** Es para que se quede en la ultima vista, aunque lo */
+        setLastView(e); //** Es para que se quede en la ultima vista */
         localStorage.setItem('lastView', e); //** Esto es para ver el ultimo tipo de vista */
     }
 
@@ -75,11 +77,11 @@ export const CalendarScreen = () => {
                 onDoubleClickEvent={ onDoubleClick } //** Es para tener informacion al hacer dobleClick */
                 onSelectEvent={ onSelectEvent } //** Es para que al hacer click se dispare el evento */
                 onView={ onViewChange } //** Tipo de vista en la cual estamos viendolo */
-                onSelectSlot= { onSelectSlot }
+                onSelectSlot={ onSelectSlot }
                 selectable={ true }
                 view={ lastView || 'month' } //** Es la vista que va a tener */
                 components={{ //** Con esta propiedad puedo mostrar todo */
-                    event: CalendarEvent //** Va a usar el CalendarEvent, porque ese va a ser el componente, pero no lo vamos a renderizar, solamente lo vamos a mandar como referencia */
+                    event: CalendarEvent //** CalendarEvent es el componente, no se renderizar, solamente se manda como referencia */
                 }}
             />
 

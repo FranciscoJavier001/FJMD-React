@@ -1,5 +1,8 @@
+//** _________________________________________________________________________Margen_________________________________________________________________________ */
+//** Esto va a estar en los casos */
 export const types = {
 
+    //** reducers>uiReducer */
     uiOpenModal: '[ui] Open modal',
     uiCloseModal: '[ui] Close modal',
 
