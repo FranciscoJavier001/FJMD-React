@@ -1,4 +1,4 @@
-//**_________________________________________________________________________________________________________________________________________________*/
+//**_______________________________________________________________________________________________________________________________________________*/
 import { fetchConToken, fetchSinToken } from "../helpers/fetch"
 import { types } from "../types/types"
 import Swal from 'sweetalert2' //** Para las alertas */
@@ -50,7 +50,6 @@ export const startRegister = ( email, password, name ) => { //** Esta funcion la
     }
 }
 
-
 export const startChecking = () => { //** No requiere argumentos */
     return async( dispatch ) => { //** Retorno el dispatch y va a ser una tarea async */
 
@@ -73,10 +72,21 @@ export const startChecking = () => { //** No requiere argumentos */
     }
 }
 
-const checkingFinish = () => ({ type: types.authCheckingFinish }) //** Constante que no recibe nada y retorna un objeto de types, la llamo linea 71 */
+const checkingFinish = () => ({ type: types.authCheckingFinish }) //** Constante que no recibe nada, retorna un objeto de types, en linea 70 */
 
 //** Accion sincrona, y solo la voy a usar aqui */
 const login = ( user ) => ({ //** Recibo el user */
     type: types.authLogin, //** Viene de types>types que es para saber que ya se logeo el usuario */
     payload: user //** Payload es lo que se carga del usuario y si no hay nada puede omitirlo */  
 })
+
+//** Acciones para salir */
+export const startLogout = () => { //** Funcion, para salir, que la llamo desde el dispatch del components>ui>Navbar */
+    return( dispatch ) => { //** Va a tener una accion a disparar */
+
+        localStorage.clear() //** Hago limpieza en el LS y me saca */
+        dispatch( logout() ) //** Accion que se dispara, limpiar el state, dejando checking en false, eliminando uid y name, llama funcion logout() */
+    }
+}
+
+const logout = () => ({ type: types.authLogout }) //** Funcion logout que retorna un objeto que tiene el types y es el logout types>types */

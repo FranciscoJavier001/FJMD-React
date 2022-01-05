@@ -27,6 +27,11 @@ export const authReducer = ( state = initialState, action ) => {
                 checking: false //** Cambio el checking a false */
             }
 
+        case types.authLogout: //** Logout va a caer aqui en el reducer */
+            return { //** Regresa el checking en false */
+                checking: false //** Cambio el checking a false, para saber que el usuario no esta autentificado, borra todo */
+        }
+
         default:
             return state; //** Voy a mandar el state con los parametros que tenga */
     }
