@@ -38,7 +38,7 @@ export const AppRouter = () => {
     return (
         <Router>
             <div>
-                <Switch>
+                <Switch> {/* Cuando cambia el UID todo esto se vuelve a mandar y cambia todo */}
                     <PublicRoute /* Ruta publica con el componente que quiero mostrar */
                     exact path="/login"
                     component={ LoginScreen }
