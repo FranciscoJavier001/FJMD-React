@@ -1,4 +1,4 @@
-//** ________________________________________________________________________________________________________________________________________________ */
+//**_______________________________________________________________________________________________________________________________________________*/
 //** Esto va a estar en los casos */
 export const types = {
 
@@ -8,7 +8,7 @@ export const types = {
 
     //** Estos types estan definidos en actions>events y de aqui los importamos */
     eventSetActive: '[event] Set Active', 
-    eventAddNew: '[event] Add new', //** Crea un nuevo evento */
+    eventStartAddNew: '[event] Start add new', //** Agregar un evento nuevo */
     eventClearActiveEvent: '[event] Clear active event',
     eventUpdated: '[event] Event updated', //** Accion en base de datos y si responde SI dispararo esta accion */
     eventDeleted: '[event] Event deleted', //** Accion que elimina el evento de la BD */

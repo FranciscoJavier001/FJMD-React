@@ -1,3 +1,4 @@
+//**_______________________________________________________________________________________________________________________________________________*/
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux' //** Este lo importo para que este pendiente de algo */
 
@@ -7,7 +8,7 @@ import DateTimePicker from 'react-datetime-picker'; //** Esta es una importacion
 import Swal from 'sweetalert2'; //** Para el sweet alert le hacemos "npm i sweetalert2" */
 
 import { uiCloseModal } from '../../actions/ui';
-import { eventAddNew, eventClearActiveEvent, eventUpdated } from '../../actions/events';
+import { eventClearActiveEvent, eventStartAddNew, eventUpdated } from '../../actions/events';
 
 const customStyles = {
     content : {
@@ -21,7 +22,7 @@ const customStyles = {
 };
 Modal.setAppElement('#root');
 
-const now = moment().minutes(0).seconds(0).add(1,'hours'); //** Este va a ser para definir el valor inicial con moment, sera este el momento actual, pero lo voy a asignar los seg y minutos en 0 */
+const now = moment().minutes(0).seconds(0).add(1,'hours'); //** Definir valor inicial en moment, momento actual, seg/min en 0 */
 const nowPlus1 = now.clone().add(1, 'hours'); //** Este va a ser una hora superior, para el campo del fin */
 
 const initEvent = { //** Este va a ser igual al objeto */
@@ -34,8 +35,9 @@ const initEvent = { //** Este va a ser igual al objeto */
 
 export const CalendarModal = () => {
 
-    const { modalOpen } = useSelector( state => state.ui ); //** Para que este al pendiente y lo voy a desestructurar para que este en el isOpen del return */
-    const { activeEvent } = useSelector( state => state.calendar ); //** Para que este al pendiente del calendar, porque dentro tengo el activeEvent /*
+    //** Para estar al pendiente, lo voy a desestructurar para que este en el isOpen del return */
+    const { modalOpen } = useSelector( state => state.ui );
+    const { activeEvent } = useSelector( state => state.calendar ); //** Para estar al pendiente del calendar, dentro tengo el activeEvent /*
     const dispatch = useDispatch();
 
     const [titleValid, setTitleValid] = useState(true)
@@ -44,7 +46,7 @@ export const CalendarModal = () => {
 
     const [formValues, setFormValues] = useState( initEvent ) //** Este va a ser el estado inicial del formulario */)
 
-    const { notes, title, start, end } = formValues; //** Voy a extraer las notes y title del formValues, luego extraigo el start y el end */
+    const { notes, title, start, end } = formValues; //** Extraigo las notes y title del formValues, luego extraigo el start y el end */
 
     useEffect(() => { //** Necesita estar pendiente del activeEvent */
         if ( activeEvent ) { //** Si existe quiero llamar el setFormValues y mandarle el activeEvent */
@@ -52,12 +54,13 @@ export const CalendarModal = () => {
         } else {
             setFormValues( initEvent )
         }
-    }, [activeEvent, setFormValues]) //** Como lo estoy utilizando va a ser una dependencia del useEffect, al igual que el setFormValues y si uno cambia va a volver a iniciar este codigo */
+        //** Es una dependencia del useEffect, al igual que el setFormValues y si uno cambia va a volver a iniciar este codigo */
+    }, [activeEvent, setFormValues])
 
     const handleInputChange = ({ target }) => { //** Aqui voy a recibir el evento, pero solo va a ser el target */
-        setFormValues({ //** Voy a establecer un nuevo objeto que va a tener todos los valores que tiene el formValues, pero voy a cambiar el que estoy rcibiendo en este evento */
+        setFormValues({ //** Nuevo objeto que tiene los valores del formValues, se va a cambiar el se esta recibiendo en este evento */
             ...formValues,
-            [target.name]: target.value //** Quiero computar el nombre de la propiedad luego viene el target.value como valor de esta propiedad */
+            [target.name]: target.value //** Voy a computar el nombre de la propiedad luego viene el target.value como valor de esta propiedad */
         });
     }
 
@@ -90,26 +93,20 @@ export const CalendarModal = () => {
         const momentStart = moment( start )
         const momentEnd = moment( end )
 
-        if ( momentStart.isSameOrAfter( momentEnd ) ) { //** Si la fecha de inicio esta despues de la fecha de inicializacion no lo voy a dejar pasar */
-            return Swal.fire('Error','La fecha fin debe de ser mayor a la fecha de inicio', 'error'); //** Osea que va a retornarme el mensaje de error */
+        if ( momentStart.isSameOrAfter( momentEnd ) ) { //** Fecha de inicio despues de la fecha de inicializacion no lo voy a dejar pasar */
+            return Swal.fire('Error','La fecha fin debe de ser mayor a la fecha de inicio', 'error'); //** Mensaje error */
         }
 
         if (title.trim().length < 2 ) { //** Esto es para evitar que el titulo tenga menos de 2 letras */
             return setTitleValid(false);
         }
 
-        if ( activeEvent ) { //** Si existe ese evento, voy a hacer el disparo de eventUpdated y voy a mandar el nuevo evento, que va a ser lo que tengamos en nuestros formValues */
+        //** Si existe el evento, se dispara el eventUpdated, se manda en el nuevo evento, que es lo que tengamos en nuestros formValues */
+        if ( activeEvent ) { 
             dispatch ( eventUpdated( formValues ) )
         } else { //** En caso contrario disparamos la accion que ya teniamos antes */
-        dispatch( eventAddNew({
-            ...formValues,
-            id: new Date().getTime(),
-            user: {
-                _id: '123',
-                name: 'Fernando'
-            }
-        }) );
-    }
+        dispatch( eventStartAddNew( formValues, ) ) //** El evento disparado esta en events>events, recibo el formulario */
+        }
 
         setTitleValid(true)
         closeModal();
@@ -159,7 +156,7 @@ export const CalendarModal = () => {
                             placeholder="Título del evento"
                             name="title"
                             autoComplete="off"
-                            value={ title } //** El valor en el titulo y notas va a ser el title que asignamos arriba en la variable del formValues */
+                            value={ title } //** El valor del titulo y notas es el title que asignamos arriba en la variable del formValues */
                             onChange={ handleInputChange }
                         />
                         <small id="emailHelp" className="form-text text-muted">Una descripción corta</small>
