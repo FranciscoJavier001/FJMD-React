@@ -4,7 +4,7 @@ import { types } from "../types/types";
 
 //** Accion que debe de llamar para inicializar el proceso de grabacion */
 export const eventStartAddNew = ( event ) => { //** Recibo el evento que viene del formulario */
-    return async( dispatch, getState ) => { //** Asyncrona=Disparo mediante el Tong y recibo el dispatch, getState es para conseguir info de Redux */
+    return async( dispatch, getState ) => { //** Asyncrona=Disparo mediante Tong y recibo el dispatch, getState es para conseguir info de Redux */
         
         // console.log(event); //** Para ver lo que tiene el event */
         
@@ -12,7 +12,7 @@ export const eventStartAddNew = ( event ) => { //** Recibo el evento que viene d
         
         try {
             //** resp viene de la configuracion de helpers>fetch, es una peticion y espero a que me sea resuelta */
-            const resp = await fetchConToken('events', event, 'POST') //** 1.-Endpoint "url", 2.-Payload a guardar body_abajo, 3.-Tipo de Peticion */
+            const resp = await fetchConToken('events', event, 'POST') //** 1-Endpoint "url", 2-Payload a guardar body_abajo, 3-Tipo de Peticion */
             const body = await resp.json() //** Body va a ser extraido de resp en formato json, osea String */
     
             // console.log(body); //** Si lo guarda en la base de datos y el body tiene todo */
@@ -50,9 +50,40 @@ export const eventSetActive = (event) => ({
 export const eventClearActiveEvent = () => ({ type: types.eventClearActiveEvent, })
 
 //** Ahora voy a crear la accion, que defini en types */
-export const eventUpdated = ( event ) => ({ //** Aqui voy a recbir el evento que quiero actualizar y voy a regresarlo de esa misma vez, osea voy a regresar un objeto */
+export const eventUpdated = ( event ) => ({ //** Recibo el evento a actualizar y voy a regresarlo ahi, osea voy a regresar un objeto */
     type: types.eventUpdated,
     payload: event //** El payload va a ser el event */
 });
 
 export const eventDeleted = () => ({ type: types.eventDeleted })
+
+//** Cuando se cargan los eventos del calendario */
+export const eventStartLoading = () => { //** Va a obtener todos los eventos utilizando el endpoint */
+    return async( dispatch ) => { //** Funcion asyncrona */
+
+        // console.log("...");
+        //** Voy a hacer la peticion de los getEvents */
+        try {
+            
+            const resp = await fetchConToken( 'events' ) //** eP son los events, por ser peticion GET no manda nada mas */
+            const body = await resp.json() //** Cuerpo va a ser en formato JSON */
+
+            const events = body.eventos //** Creo una constante llamada events que va a ser lo que viene en el body.events */
+            
+            // console.log(body); //** Asi muestro los eventos en consola */
+            console.log(events); //** Para ver que si tengo los eventos en consola */
+            
+            dispatch( eventLoaded( events ) )//** Llamo el dispatch de los eL mandando los eventos */
+
+        } catch (error) {
+            console.log(error);
+            
+        }
+    }
+}
+
+//** Accion que voy a disparar al reducer, solo trabajara aqui, al hacerla la configuro en el reducer */
+const eventLoaded = ( event ) => ({ //** Recibo los eventos, va a retornar un objeto y payload son los eventos */
+    type: types.eventLoaded,
+    payload: event
+}) 

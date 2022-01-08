@@ -13,9 +13,10 @@ import { uiOpenModal } from '../../actions/ui';
 
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import 'moment/locale/es';
-import { eventClearActiveEvent, eventSetActive } from '../../actions/events';
+import { eventClearActiveEvent, eventSetActive, eventStartLoading } from '../../actions/events';
 import { AddNewFab } from '../ui/AddNewFab';
 import { DeleteEventFab } from '../ui/DeleteEventFab';
+import { useEffect } from 'react';
 
 moment.locale('es'); //** Esto es para cambiarle el texto al español */
 
@@ -27,7 +28,12 @@ export const CalendarScreen = () => {
     const { events, activeEvent } = useSelector( state => state.calendar ) //** Primero voy a extraer los events del state del calendario */
 
     //** lastView almacena la ultima vista, el setLastView actualiza el estado del componente, useState le digo cual va a ser su estado inicial */
-    const [lastView, setLastView] = useState( localStorage.getItem('lastView') || 'month' ); //** getItem es para ver lo que tiene, ultima vista o mes */
+    const [lastView, setLastView] = useState( localStorage.getItem('lastView') || 'month' ); //** gI es para ver lo que tiene, ultima vista o mes */
+
+    useEffect(() => { //** Lo voy a ejecutar 1 vez */
+
+        dispatch( eventStartLoading() ) //** Disparo eSL, no necesita argumento porque solo ocupa el token */
+    }, [ dispatch ]) //** Unica dependencia que tiene es el dispatch, aunque nunca va a cambiar */
 
     const onDoubleClick = (e) => { //** Esta es para mostrar los eventos al hacer dobleClick */
         // console.log(e);
@@ -35,7 +41,7 @@ export const CalendarScreen = () => {
     }
 
     const onSelectEvent = (e) => { //** Al hacer click se dispare el evento */
-        dispatch( eventSetActive( e ) ) //** Asi hacemos el dispatch de un evento, y el evento es e, pero falta ponerle accion en el calendarReducer */
+        dispatch( eventSetActive( e ) ) //** Hacemos el dispatch de un evento, y el evento es e, pero falta ponerle accion en el calendarReducer */
     }
 
     const onViewChange = (e) => { //** Para que al hacer el cambio de la vista salga el tipo de formato que es, de dia, semana etc */

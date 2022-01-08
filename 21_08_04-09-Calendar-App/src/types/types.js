@@ -12,6 +12,7 @@ export const types = {
     eventClearActiveEvent: '[event] Clear active event',
     eventUpdated: '[event] Event updated', //** Accion en base de datos y si responde SI dispararo esta accion */
     eventDeleted: '[event] Event deleted', //** Accion que elimina el evento de la BD */
+    eventLoaded: '[event] Events loaded',//** Cuando se cargan los eventos */
 
     //** Voy a definir todos los types que voy a necesitar para la autentificacion */
     authCheckingFinish:'[auth] Finish checking login state', //** Finalizada la accion confirmo si o no esta autentificado */
