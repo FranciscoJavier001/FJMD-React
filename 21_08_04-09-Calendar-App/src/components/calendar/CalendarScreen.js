@@ -26,6 +26,7 @@ export const CalendarScreen = () => {
 
     const dispatch = useDispatch(); //** Asi no tengo que importar nada mas, solo resta hacer el dispatch de la respectiva accion */
     const { events, activeEvent } = useSelector( state => state.calendar ) //** Primero voy a extraer los events del state del calendario */
+    const { uid } = useSelector( state => state.auth ) //** Leo el uid del state.auth */
 
     //** lastView almacena la ultima vista, el setLastView actualiza el estado del componente, useState le digo cual va a ser su estado inicial */
     const [lastView, setLastView] = useState( localStorage.getItem('lastView') || 'month' ); //** gI es para ver lo que tiene, ultima vista o mes */
@@ -56,8 +57,12 @@ export const CalendarScreen = () => {
 
     const eventStyleGetter = ( event, start, end, isSelected ) => { //** Esta funcion se va a disparar con el event, start, end, isSelected */
         
+        console.log(event); //** Mostramos el evento */
+
         const style = { //** Este va a ser un objeto que va a tener las propiedades de aqui abajo */
-            backgroundColor: '#367CF7',
+            //** Voy a preguntar mediante un ternario para que el background cambie de color */
+            //** Si el uid es exactamente igual al event.user.id voy a colocar el color azul, pero en caso contarrio pongo el gris */
+            backgroundColor: ( uid === event.user._id ) ? '#367CF7' : '#465660',
             borderRadius: '0px',
             opacity: 0.8,
             display: 'block',

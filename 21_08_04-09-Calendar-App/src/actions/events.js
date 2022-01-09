@@ -1,5 +1,6 @@
 //**_______________________________________________________________________________________________________________________________________________*/
 import { fetchConToken } from "../helpers/fetch";
+import { prepareEvents } from "../helpers/prepareEvents";
 import { types } from "../types/types";
 
 //** Accion que debe de llamar para inicializar el proceso de grabacion */
@@ -68,12 +69,13 @@ export const eventStartLoading = () => { //** Va a obtener todos los eventos uti
             const resp = await fetchConToken( 'events' ) //** eP son los events, por ser peticion GET no manda nada mas */
             const body = await resp.json() //** Cuerpo va a ser en formato JSON */
 
-            const events = body.eventos //** Creo una constante llamada events que va a ser lo que viene en el body.events */
+            //** Constante events, igaual a pE que va a ser lo que viene en el body.events helpers>prepareEvents */
+            const events = prepareEvents( body.eventos )
             
             // console.log(body); //** Asi muestro los eventos en consola */
-            console.log(events); //** Para ver que si tengo los eventos en consola */
+            // console.log(events); //** Para ver que si tengo los eventos en consola */
             
-            dispatch( eventLoaded( events ) )//** Llamo el dispatch de los eL mandando los eventos */
+            dispatch( eventLoaded( events ) )//** Llamo el dispatch de los eL mandando los eventos, para que los tenga en el store */
 
         } catch (error) {
             console.log(error);
