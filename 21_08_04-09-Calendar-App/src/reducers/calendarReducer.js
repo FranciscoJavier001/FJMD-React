@@ -73,6 +73,11 @@ export const calendarReducer = ( state = initialState, action ) => { //** Funcio
                     events: [ ...action.payload ] //** Voy a exparcir todos lo que venga en action.payload donde vienen los nuevos eventos */
                 }
 
+                case types.eventLogout: //** Evento para purgar el state */
+                    return {
+                        ...initialState //** Lo ponemos como en el estado inicial de la linea 18, desestructurcion para no mutarlo */
+                    }
+
         default:
             return state; //** Solo vamos a retornar el state */
     }

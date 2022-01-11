@@ -8,6 +8,8 @@ export const types = {
 
     //** Estos types estan definidos en actions>events y de aqui los importamos */
     eventSetActive: '[event] Set Active', 
+    eventLogout: '[event] Logout event', //** Salgo y purgo el initialState */
+
     eventStartAddNew: '[event] Start add new', //** Agregar un evento nuevo */
     eventClearActiveEvent: '[event] Clear active event',
     eventUpdated: '[event] Event updated', //** Accion en base de datos y si responde SI dispararo esta accion */

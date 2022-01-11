@@ -2,6 +2,7 @@
 import { fetchConToken, fetchSinToken } from "../helpers/fetch"
 import { types } from "../types/types"
 import Swal from 'sweetalert2' //** Para las alertas */
+import { eventLogout } from "./events"
 
 //** Funcion que comienza proceso de autentificacion */
 export const startLogin = ( email, password ) => { //** Exporto(mando) la funcion que va a ser asyncrona, recibe email, password */
@@ -82,11 +83,12 @@ const login = ( user ) => ({ //** Recibo el user */
 
 //** Acciones para salir */
 export const startLogout = () => { //** Funcion, para salir, que la llamo desde el dispatch del components>ui>Navbar */
-    return( dispatch ) => { //** Va a tener una accion a disparar */
+    return( dispatch, initialState ) => { //** Va a tener una accion a disparar */
 
         localStorage.clear() //** Hago limpieza en el LS y me saca */
-        dispatch( logout() ) //** Accion que se dispara, limpiar el state, dejando checking en false, eliminando uid y name, llama funcion logout() */
+        dispatch( eventLogout ()) //** Aqui disparo llamar la ultima funcion creada para purgar */
+        dispatch( logout() ) //** Accion se dispara, limpiar el state, dejando checking en false, eliminando uid y name, llama funcion logout() */
     }
 }
 
-const logout = () => ({ type: types.authLogout }) //** Funcion logout que retorna un objeto que tiene el types y es el logout types>types */
+const logout = () => ({ type: types.authLogout }) //** Funcion logout que retorna un objeto que tiene el types y limpia el store */

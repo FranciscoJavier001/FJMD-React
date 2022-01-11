@@ -77,7 +77,30 @@ const eventUpdated = ( event ) => ({ //** Recibo el evento a actualizar y voy a 
     payload: event //** El payload va a ser el event */
 });
 
-export const eventDeleted = () => ({ type: types.eventDeleted })
+export const eventStartDelete = ( event ) => { //** Necesito saber cual es el evento a borrar, lo extraigo abajo con el getState */
+    return async( dispatch, getState ) => { //** Aqui lo extrai */
+
+        const { id } = getState().calendar.activeEvent //** Desestructiro algo que viene del getState, calendar.activeEvent, de ahi saco el id */
+
+        console.log(id);
+
+        try {
+            const resp = await fetchConToken(`events/${ id }`, {}, 'DELETE') //** 1.eP, 2.lo del body, no mando nada, 3.Tipo Peticion */
+            const body = await resp.json()
+
+            if ( body.ok ) {
+                dispatch( eventDeleted() )
+            } else {
+                Swal.fire('Error', body.msg, 'error')
+            }
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}
+
+const eventDeleted = () => ({ type: types.eventDeleted })
 
 //** Cuando se cargan los eventos del calendario */
 export const eventStartLoading = () => { //** Va a obtener todos los eventos utilizando el endpoint */
@@ -111,4 +134,6 @@ const eventLoaded = ( event ) => ({ //** Recibo los eventos, va a retornar un ob
     payload: event
 }) 
 
-//** Necesito 2 acciones */
+export const eventLogout = () => ({ //** retorno un objeto que va a ser type: types.eventLogout */
+    type: types.eventLogout
+}) 
