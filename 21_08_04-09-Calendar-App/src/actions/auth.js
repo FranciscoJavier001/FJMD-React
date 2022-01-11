@@ -83,10 +83,10 @@ const login = ( user ) => ({ //** Recibo el user */
 
 //** Acciones para salir */
 export const startLogout = () => { //** Funcion, para salir, que la llamo desde el dispatch del components>ui>Navbar */
-    return( dispatch, initialState ) => { //** Va a tener una accion a disparar */
+    return( dispatch ) => { //** Va a tener una accion a disparar */
 
         localStorage.clear() //** Hago limpieza en el LS y me saca */
-        dispatch( eventLogout ()) //** Aqui disparo llamar la ultima funcion creada para purgar */
+        dispatch( eventLogout() ) //** Aqui disparo llamar la ultima funcion creada para purgar */
         dispatch( logout() ) //** Accion se dispara, limpiar el state, dejando checking en false, eliminando uid y name, llama funcion logout() */
     }
 }

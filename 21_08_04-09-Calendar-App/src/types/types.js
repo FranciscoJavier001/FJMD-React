@@ -11,6 +11,7 @@ export const types = {
     eventLogout: '[event] Logout event', //** Salgo y purgo el initialState */
 
     eventStartAddNew: '[event] Start add new', //** Agregar un evento nuevo */
+    eventAddNew: '[event] Add new',
     eventClearActiveEvent: '[event] Clear active event',
     eventUpdated: '[event] Event updated', //** Accion en base de datos y si responde SI dispararo esta accion */
     eventDeleted: '[event] Event deleted', //** Accion que elimina el evento de la BD */

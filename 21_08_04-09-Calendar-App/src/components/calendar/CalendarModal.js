@@ -105,7 +105,7 @@ export const CalendarModal = () => {
         if ( activeEvent ) { 
             dispatch ( eventStartUpdate( formValues ) )
         } else { //** En caso contrario disparamos la accion que ya teniamos antes */
-        dispatch( eventStartAddNew( formValues, ) ) //** El evento disparado esta en events>events, recibo el formulario */
+        dispatch( eventStartAddNew( formValues ) ) //** El evento disparado esta en events>events, recibo el formulario */
         }
 
         setTitleValid(true)

@@ -49,7 +49,7 @@ export const eventSetActive = (event) => ({
 });
 
 //** Lo encuentro en calendar>CalendarScreen */
-export const eventClearActiveEvent = () => ({ type: types.eventClearActiveEvent, })
+export const eventClearActiveEvent = () => ({ type: types.eventClearActiveEvent })
 
 export const eventStartUpdate = ( event ) => { //** Debo recibir el event */
     return async( dispatch ) => { //** Async, necesito esperar unas tareas asyncronas, la disparo en components>calendar>CalendarModal */
