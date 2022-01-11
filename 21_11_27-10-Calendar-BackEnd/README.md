@@ -1,3 +1,4 @@
+//**_______________________________________________________________________________________________________________________________________________*/
 Mis Anotaciones
 
 Para correr este servidor lo primero que necesito es ejecutar el comando "npm run dev"
@@ -54,4 +55,17 @@ Hago el commit
 (asi ya tengo los cambios locales)
 Para subirlo a Heroku
     git push heroku master
-    
+
+22/01/11
+09 = Calendar-App
+Terminal
+    "npm run build"
+Copiamos el contenido del "build" a la carpeta "public" eliminando lo que hay ahi en la carpeta public
+
+Terminal del 10 = Calendar-Backend
+    git add .
+    git commit -m "v1 Calendar App"
+
+Desplegarlo a Heroku
+    git push heroku master
+
