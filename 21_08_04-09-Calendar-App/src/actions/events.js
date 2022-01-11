@@ -1,4 +1,5 @@
 //**_______________________________________________________________________________________________________________________________________________*/
+import Swal from "sweetalert2";
 import { fetchConToken } from "../helpers/fetch";
 import { prepareEvents } from "../helpers/prepareEvents";
 import { types } from "../types/types";
@@ -50,8 +51,28 @@ export const eventSetActive = (event) => ({
 //** Lo encuentro en calendar>CalendarScreen */
 export const eventClearActiveEvent = () => ({ type: types.eventClearActiveEvent, })
 
+export const eventStartUpdate = ( event ) => { //** Debo recibir el event */
+    return async( dispatch ) => { //** Async, necesito esperar unas tareas asyncronas, la disparo en components>calendar>CalendarModal */
+
+        try {
+            // console.log(event);
+            const resp = await fetchConToken(`events/${ event.id }`, event, 'PUT' ) //** eP a llamar, evento que voy a guardar y tipo de peticion */
+            const body = await resp.json() //** Extraigo el body */
+
+            if ( body.ok ) { //** Si tengo el body */
+                dispatch( eventUpdated( event ) ) //** Disparo evento que esta en la linea 72 y el argumento a mandar es el event de la linea 53 */
+            } else {
+                Swal.fire('Error', body.msg, 'error')
+            }
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}
+
 //** Ahora voy a crear la accion, que defini en types */
-export const eventUpdated = ( event ) => ({ //** Recibo el evento a actualizar y voy a regresarlo ahi, osea voy a regresar un objeto */
+const eventUpdated = ( event ) => ({ //** Recibo el evento a actualizar y voy a regresarlo ahi, osea voy a regresar un objeto */
     type: types.eventUpdated,
     payload: event //** El payload va a ser el event */
 });
@@ -89,3 +110,5 @@ const eventLoaded = ( event ) => ({ //** Recibo los eventos, va a retornar un ob
     type: types.eventLoaded,
     payload: event
 }) 
+
+//** Necesito 2 acciones */

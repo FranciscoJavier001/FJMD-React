@@ -57,7 +57,7 @@ export const CalendarScreen = () => {
 
     const eventStyleGetter = ( event, start, end, isSelected ) => { //** Esta funcion se va a disparar con el event, start, end, isSelected */
         
-        console.log(event); //** Mostramos el evento */
+        // console.log(event); //** Mostramos el evento */
 
         const style = { //** Este va a ser un objeto que va a tener las propiedades de aqui abajo */
             //** Voy a preguntar mediante un ternario para que el background cambie de color */

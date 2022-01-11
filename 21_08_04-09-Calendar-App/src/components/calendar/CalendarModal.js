@@ -8,7 +8,7 @@ import DateTimePicker from 'react-datetime-picker'; //** Esta es una importacion
 import Swal from 'sweetalert2'; //** Para el sweet alert le hacemos "npm i sweetalert2" */
 
 import { uiCloseModal } from '../../actions/ui';
-import { eventClearActiveEvent, eventStartAddNew, eventUpdated } from '../../actions/events';
+import { eventClearActiveEvent, eventStartAddNew, eventStartUpdate } from '../../actions/events';
 
 const customStyles = {
     content : {
@@ -101,9 +101,9 @@ export const CalendarModal = () => {
             return setTitleValid(false);
         }
 
-        //** Si existe el evento, se dispara el eventUpdated, se manda en el nuevo evento, que es lo que tengamos en nuestros formValues */
+        //** Si existe el evento, se dispara el eventStartUpdate, se manda en el nuevo evento, que es lo que tengamos en nuestros formValues */
         if ( activeEvent ) { 
-            dispatch ( eventUpdated( formValues ) )
+            dispatch ( eventStartUpdate( formValues ) )
         } else { //** En caso contrario disparamos la accion que ya teniamos antes */
         dispatch( eventStartAddNew( formValues, ) ) //** El evento disparado esta en events>events, recibo el formulario */
         }
