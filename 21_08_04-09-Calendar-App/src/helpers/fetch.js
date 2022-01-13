@@ -8,6 +8,8 @@ const fetchSinToken = ( endpoint, data, method = 'GET' ) => {
 
     const url = `${ baseUrl }/${ endpoint }` //url=localhost:4000/api/ endpoint=auth/events
 
+    // console.log(url); //** Sale undefine por eso son importantes las .env "development, production, test" */
+    
     if ( method === 'GET' ) { //** Si el metodo es exactamente igual a GET entonces */
         return fetch( url ) //** Hago el return de la peticion fetch, mandando el url, sin mas argumentos */
     } else { //** Sino */
