@@ -30,7 +30,7 @@ describe('Pruebas en el helper Fetch', () => {
         const resp = await fetchConToken('events/61c77cf504ec5b67bbcdc7e0', {}, 'DELETE') //** Mando eP, body como un objeto vacio y metodo "/" */
         const body = await resp.json() //** Constante que va a ser la respuesta en formato json */
 
-        console.log(body); //** Para ver lo que viene en el body */
+        // console.log(body); //** Para ver lo que viene en el body */
 
         expect( body.msg ).toBe( 'Evento no existe por ese id' )
     })
