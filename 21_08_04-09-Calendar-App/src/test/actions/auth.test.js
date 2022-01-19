@@ -5,8 +5,9 @@ import Swal from 'sweetalert2' //** La importo porque de aqui voy a sacar el err
 
 import '@testing-library/jest-dom' //** Ayuda del tipado */
 
-import { startLogin } from '../../actions/auth'
+import { startLogin, startRegister } from '../../actions/auth'
 import { types } from '../../types/types'
+import * as fetchModule from '../../helpers/fetch' //** Esta es nueva y es para hacer el mock de las acciones del fetch, ambas */
 
 jest.mock( 'sweetalert2', () => ({ //** Mock de sa2, el mock es para decirle "cuando se llame", parentesis es para decirle que regresa un objeto */
     fire: jest.fn() //** Que funcion estoy esperando que se llame en este caso el fire, que debe ser un jest.fn() */
@@ -70,5 +71,39 @@ describe('Pruebas en las acciones Auth', () => {
 
         //** Se llamo y es con el email incorrecto */
         expect( Swal.fire ).toHaveBeenCalledWith( "Error", "El usuario no existe con ese email", "error" ) 
-    })  
+    })
+
+    test('startRegister correcto', async() => {
+
+        fetchModule.fetchSinToken = jest.fn(() => ({ //** Importacion linea 10, voy a utilizar el fST y va a ser igual a una funcion jest */
+            json() {  //** Voy a regresar un nuevo objeto, que tiene un metodo llamado json que va a llamar */
+                return { //** Definimos lo que va  hacer, ya se disparo la accion del login y el payload son los argumentos */
+                    ok: true,
+                    uid: '123',
+                    name: 'Carlos',
+                    token: 'ABC123ABC123'
+                } 
+            }
+        })) 
+        
+        await store.dispatch( startRegister('test2@mail.com', '123456', 'Test') ) //** Dispara en store startRegister pide email, password y name */
+
+        const actions = store.getActions() //** Guarda las acciones del store en la variable actions */
+
+        // console.log(actions); //** Si el usuario es nuevo, salen cosas, sino se manda arreglo vacio */
+
+        expect( actions[0] ).toEqual({ //** Espero que los actions en la primera posicion sean igual a un objeto */
+             type: types.authLogin, //** Que va a tener su type, de authLogin, su payload con los argumentos que pusumos en la linea 78 */
+             payload: {
+                 uid: '123',
+                 name: 'Carlos'
+             }
+        })
+
+        //** Espero que lS tambien se haya llamado, para ver si funciono el test */
+        expect( localStorage.setItem ).toHaveBeenCalledWith( 'token', 'ABC123ABC123' ) //** El lS se haya llamado con token definido aqui, mock */
+        expect( localStorage.setItem ).toHaveBeenCalledWith( 'token-init-date', expect.any(Number) ) //** El lS se haya llamado con t-i-d(Number) */
+
+    })
+    
 })
