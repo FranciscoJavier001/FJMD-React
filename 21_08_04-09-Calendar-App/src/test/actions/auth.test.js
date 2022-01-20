@@ -103,7 +103,6 @@ describe('Pruebas en las acciones Auth', () => {
         //** Espero que lS tambien se haya llamado, para ver si funciono el test */
         expect( localStorage.setItem ).toHaveBeenCalledWith( 'token', 'ABC123ABC123' ) //** El lS se haya llamado con token definido aqui, mock */
         expect( localStorage.setItem ).toHaveBeenCalledWith( 'token-init-date', expect.any(Number) ) //** El lS se haya llamado con t-i-d(Number) */
-
     })
     
 })
