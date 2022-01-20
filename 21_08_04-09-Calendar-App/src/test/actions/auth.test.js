@@ -5,7 +5,7 @@ import Swal from 'sweetalert2' //** La importo porque de aqui voy a sacar el err
 
 import '@testing-library/jest-dom' //** Ayuda del tipado */
 
-import { startLogin, startRegister } from '../../actions/auth'
+import { startChecking, startLogin, startLogout, startRegister } from '../../actions/auth'
 import { types } from '../../types/types'
 import * as fetchModule from '../../helpers/fetch' //** Esta es nueva y es para hacer el mock de las acciones del fetch, ambas */
 
@@ -19,8 +19,11 @@ const mockStore = configureStore( middlewares )
 const initState = {} //** Configuro el iS, que asi quiero cuando inicie las pruebas */
 let store = mockStore( initState ) //** Este va con el berofeEach para inicializar todas las acciones que este store haya ejecutado */
 
-Storage.prototype.setItem = jest.fn() //** Mock del lS, y el jest es para probar funciones */
+//** Este se pasa por referencia, osea que se modifican en todos los lugares. lo copie en linea 37(desactivado) */
+Storage.prototype.setItem = jest.fn() //** Mock del lS, del sI (establece los items), y el jest es para probar funciones */
 // localStorage.setItem //** Esta es la funcion que defini en la linea pasada 16 */
+
+let token = ''
 
 describe('Pruebas en las acciones Auth', () => {
 
@@ -30,6 +33,8 @@ describe('Pruebas en las acciones Auth', () => {
     })
 
     test('startLogin correcto', async() => { //** Esta es ua funcion que regresa una funcion, osea el thunk */
+
+        // Storage.prototype.setItem = jest.fn() //** Mock del lS, del sI (establece los items), y el jest es para probar funciones */
         
         await store.dispatch( startLogin( 'francisco@mail.com', '123456' ) ) //** dispatch de la accion startLogin, requiere email y password */
 
@@ -47,7 +52,7 @@ describe('Pruebas en las acciones Auth', () => {
         expect( localStorage.setItem ).toHaveBeenCalledWith( 'token', expect.any(String) ) //** El lS se haya llamado con token(String) */
         expect( localStorage.setItem ).toHaveBeenCalledWith( 'token-init-date', expect.any(Number) ) //** El lS se haya llamado con t-i-d(Number) */
 
-        // token = localStorage.setItem.mock.calls[0][1] //** Asi tengo el token */
+        token = localStorage.setItem.mock.calls[0][1] //** Asi tengo el token */
         // console.log(localStorage.setItem.mock.calls[0][1]); //** Para saber que trae cuando es llamado que es token y t-i-d como arreglo */
     })
 
@@ -104,5 +109,55 @@ describe('Pruebas en las acciones Auth', () => {
         expect( localStorage.setItem ).toHaveBeenCalledWith( 'token', 'ABC123ABC123' ) //** El lS se haya llamado con token definido aqui, mock */
         expect( localStorage.setItem ).toHaveBeenCalledWith( 'token-init-date', expect.any(Number) ) //** El lS se haya llamado con t-i-d(Number) */
     })
-    
+
+    test('startChecking correcto', async() => {
+
+        //** Para resolver el problema que brinca a lo ultimo voy a hacer el mock completo */
+        fetchModule.fetchConToken = jest.fn(() => ({ //** Importacion linea 10, voy a utilizar el fST y va a ser igual a una funcion jest */
+            json() {  //** Voy a regresar un nuevo objeto, que tiene un metodo llamado json que va a llamar */
+                return { //** Definimos lo que va  hacer, ya se disparo la accion del login y el payload son los argumentos */
+                    ok: true,
+                    uid: '123',
+                    name: 'Carlos',
+                    token: 'ABC123ABC123'
+                } 
+            }
+        })) 
+        
+        await store.dispatch( startChecking() ) //** Disparamos startChecking, no recibe ningun argumento */
+
+        const actions = store.getActions() //** Decimos dame las acciones del store */
+
+        // console.log(token); //** Lo pude sacar por las lineas 25 y 52 */
+        // console.log(actions); //** Solo se disparo el checkingFinish, osea solo salio, tiene problemas, paso por linea 115 a 125 */
+
+        expect( actions[0] ).toEqual({ //** Las acciones en la posicion 0 debieron ser iguales a */
+            type: types.authLogin, //** Las acciones disparadas son estas */
+            payload: { //** Lo que se recibio */
+                uid: '123',
+                name: 'Carlos'
+            }
+        })
+
+        expect( localStorage.setItem ).toHaveBeenCalledWith( 'token', 'ABC123ABC123')
+    })
+
+    test('logout correcto', async() => {
+        
+        await store.dispatch( startLogout() )
+
+        //** Simulacion lS.clear, funcion como la del setItem y que se disparen las 2 acciones */
+        
+        const actions = store.getActions() //** Las acciones del store */
+        
+        // console.log(actions);
+
+        expect( actions[0] ).toEqual({ //** En la Primera se lanza esta */
+            type: types.eventLogout
+        })
+
+        expect( actions[1] ).toEqual({ //** En la segunda se lanza esta */
+            type: types.authLogout
+        })
+    })
 })
