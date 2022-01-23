@@ -1,3 +1,4 @@
+//**_______________________________________________________________________________________________________________________________________________*/
 import { types } from "../types/types";
 
 const initialState = { //** initialState es un objeto donde voy a definir un par de cosas */
