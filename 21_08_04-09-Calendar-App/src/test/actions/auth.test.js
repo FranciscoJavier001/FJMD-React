@@ -1,5 +1,5 @@
 //**_______________________________________________________________________________________________________________________________________________*/
-import configureStore from 'redux-mock-store'
+import configureStore from 'redux-mock-store' //** Para configurar el store */
 import thunk from 'redux-thunk' //** La de arriba ocupa esta porque las acciones retornan una funcion */
 import Swal from 'sweetalert2' //** La importo porque de aqui voy a sacar el error */
 
