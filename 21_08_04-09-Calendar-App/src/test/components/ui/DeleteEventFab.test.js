@@ -13,6 +13,13 @@ import thunk from 'redux-thunk' //** La de arriba ocupa esta porque las acciones
 
 import '@testing-library/jest-dom' //** Ayuda con el tipado */
 import { DeleteEventFab } from '../../../components/ui/DeleteEventFab'
+import { eventStartDelete } from '../../../actions/events'; //** Lo importamos para la prueba de hacer clcik */
+
+//** Aplique un mock a la funcion, primero al path, cuando se llame voy a retornar un objeto y va a tener dentro el eventStartDelete funcion jest */
+jest.mock('../../../actions/events', () => ({ 
+    eventStartDelete: jest.fn()
+}))
+
 
 const middlewares = [ thunk ] //** Funcion que se invoca despues de que se envia una accion, puede modificarla, esperar que termine o cancelarla */
 const mockStore = configureStore( middlewares ) //** MockStore es un objero que simula ser otro y el store configura funciones de los moddleware */
@@ -34,8 +41,11 @@ describe('Pruebas en <DeleteEventFab />', () => {
         expect( wrapper ).toMatchSnapshot() //** Para que haga match con el snapshot */
     })
 
-    describe('Pruebas en eventStartDelete', () => {
-        
-    })
-    
+    test('debe de llamar el eventStartDelete al hacer click', () => {
+
+        wrapper.find('button').prop('onClick')() //** La accion que voy a disparar y la propiedad al hacer click */
+
+        //** Como la accion, llama a otra accion, es necesario hacerle un mock */
+        expect( eventStartDelete ).toHaveBeenCalled() //** Exporto el evento a disparar dentro del dispatch */
+    })  
 })

@@ -8,6 +8,7 @@ export const DeleteEventFab = () => {
     const dispatch = useDispatch();
 
     const handleDelete = () => {
+        // console.log('click'); //** Hacer esto para confirmar que se llame haciendo click en los test */
         dispatch( eventStartDelete() ) //** Esta la hicimos en los events y borramos la pasada, que la dejamos local */
     }
 
