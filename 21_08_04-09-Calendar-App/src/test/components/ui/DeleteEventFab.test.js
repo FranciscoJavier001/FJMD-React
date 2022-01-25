@@ -33,4 +33,9 @@ describe('Pruebas en <DeleteEventFab />', () => {
         
         expect( wrapper ).toMatchSnapshot() //** Para que haga match con el snapshot */
     })
+
+    describe('Pruebas en eventStartDelete', () => {
+        
+    })
+    
 })
