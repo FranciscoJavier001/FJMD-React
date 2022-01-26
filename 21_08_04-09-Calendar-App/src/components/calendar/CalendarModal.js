@@ -20,7 +20,12 @@ const customStyles = {
       transform             : 'translate(-50%, -50%)'
     }
 };
+
+//** Me dio la falla react-modal: No elements were found for selector #root. - Modal.setAppElement('#root'); */
+//** Voy a hacer que se ejecute de manera condicional */
+if ( process.env.NODE_ENV !== 'test' ) { //** Si estoy en las pruebas, si es diferete de test o si no estamos en test no va a funcionar */
 Modal.setAppElement('#root');
+}
 
 const now = moment().minutes(0).seconds(0).add(1,'hours'); //** Definir valor inicial en moment, momento actual, seg/min en 0 */
 const nowPlus1 = now.clone().add(1, 'hours'); //** Este va a ser una hora superior, para el campo del fin */
