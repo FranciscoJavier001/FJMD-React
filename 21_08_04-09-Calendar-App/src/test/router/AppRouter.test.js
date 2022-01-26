@@ -22,7 +22,7 @@ const mockStore = configureStore( middlewares ) //** MockStore es un objero que 
 
 describe('Pruebas en <AppRouter />', () => {
     
-    test('debe de mosrar el espere...', () => {
+    test('debe de mostrar el espere...', () => {
 
         const initState = { //** Configuro el iS, que asi quiero cuando inicie las pruebas */
             auth: { //** Falla, no puede desestructirar el checking */
@@ -40,6 +40,55 @@ describe('Pruebas en <AppRouter />', () => {
 
         // expect( wrapper ).toMatchSnapshot()
         expect( wrapper.find('h5').exists() ).toBe(true) //** Busca un h5 y si existe pasa la prueba */
+    })
+
+    test('debe de mostrar la ruta publica', () => {
+
+        const initState = { //** Configuro el iS, que asi quiero cuando inicie las pruebas */
+            auth: { //** Falla, no puede desestructirar el checking */
+                checking: false, //** Lo pongo en false, porque ya paso el espere */
+                uid: null //** Porque el usuario no esta autentificado */
+            }
+        }
+
+        const store = mockStore( initState ) //** Este va con el berofeEach para inicializar todas las acciones que este store haya ejecutado */
+        
+        const wrapper = mount( //** Dentro necesito el componente llamado Provider */
+            <Provider store={ store }> {/* Esto me va a proveer el store, pero debo de crearlo, dentro mando el store creado anteriormente */}
+                <AppRouter /> {/* Dentro de este HOC voy a colocar el evento a analizar */}
+            </Provider>
+        )
+
+        expect( wrapper ).toMatchSnapshot() //** Voy a esperar que haga match con el snapshot */
+        expect( wrapper.find('.login-container').exists() ).toBe(true) //** Busca un login-container(LoginScreen) y si existe pasa la prueba */
+    })
+
+    test('debe de mostrar la ruta privada', () => {
+
+        const initState = { //** Configuro el iS, que asi quiero cuando inicie las pruebas */
+            calendar: { //** No podia desestructurar las propiedades de los events, asi que lo proveo aqui como un arreglo vacio*/
+                events: []
+            },
+            ui: {//** Proveer el modalOpen, lo pongo en falso, porque aqui ya entro */
+                modalOpen: false 
+            },
+            auth: { //** Falla, no puede desestructirar el checking */
+                checking: false, //** Lo pongo en false, porque ya paso el espere */
+                uid: '123', //** Existe porque el usuario esta autentificado */
+                name: 'Juan Carlos' //** Porque debe de venir el nombre */
+            }
+        }
+
+        const store = mockStore( initState ) //** Este va con el berofeEach para inicializar todas las acciones que este store haya ejecutado */
+        
+        const wrapper = mount( //** Dentro necesito el componente llamado Provider */
+            <Provider store={ store }> {/* Esto me va a proveer el store, pero debo de crearlo, dentro mando el store creado anteriormente */}
+                <AppRouter /> {/* Dentro de este HOC voy a colocar el evento a analizar */}
+            </Provider>
+        )
+
+        expect( wrapper ).toMatchSnapshot() //** Voy a esperar que haga match con el snapshot */
+        expect( wrapper.find('.calendar-screen').exists() ).toBe(true) //** Busca un calendar-screen(CalendarScreen) y si existe pasa la prueba */
     })
     
 })
