@@ -11,15 +11,15 @@ export const LoginScreen = () => { //** Esto es porque lo exportamos al archivo 
     const dispatch = useDispatch() //** Hay que hacer el dispatch para la funcion startLogin de actions>auth */
 
     const [ formLoginValues, handleLoginInputChange ] = useForm({ //** Es de hooks>useForm, cambiamos nombres, porque tendre 2 forms */
-        lEmail: 'francisco@mail.com', //** La "l", es porque viene del login */
-        lPassword: '123456' //** Es un usuario real de Postman */
+        lEmail: '', //** La "l", es porque viene del login - Quite el autocompletado */
+        lPassword: '' //** Es un usuario real de Postman - Quite el autocompletado */
     });
 
     const { lEmail, lPassword } = formLoginValues; //** Voy a extraer estas dos variables, vienen de formLoginValues */
 
     const handleLogin = ( e ) => { //** Linea 32, funcion que se hace al hacer click */
         e.preventDefault() //** Para que no recarge la pagina */
-        
+        // console.log( lEmail, lPassword); //** Lo confirme en los test */
         // console.log(formLoginValues); //** Para ver lo que trae el formulario al hacer click en login */
         dispatch( startLogin( lEmail, lPassword )  ) //** Aqui voy a disparar startLogin, recibe email y password de actions>auth */
     }

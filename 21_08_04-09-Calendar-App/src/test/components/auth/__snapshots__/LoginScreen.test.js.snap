@@ -31,7 +31,7 @@ Array [
               onChange={[Function]}
               placeholder="Correo"
               type="text"
-              value="francisco@mail.com"
+              value=""
             />
           </div>
           <div
@@ -44,7 +44,7 @@ Array [
               onChange={[Function]}
               placeholder="Contraseña"
               type="password"
-              value="123456"
+              value=""
             />
           </div>
           <div

@@ -20,7 +20,6 @@ jest.mock('../../../actions/events', () => ({
     eventStartDelete: jest.fn()
 }))
 
-
 const middlewares = [ thunk ] //** Funcion que se invoca despues de que se envia una accion, puede modificarla, esperar que termine o cancelarla */
 const mockStore = configureStore( middlewares ) //** MockStore es un objero que simula ser otro y el store configura funciones de los moddleware */
 
