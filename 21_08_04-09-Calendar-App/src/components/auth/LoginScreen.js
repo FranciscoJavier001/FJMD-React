@@ -1,3 +1,4 @@
+//**_______________________________________________________________________________________________________________________________________________*/
 import React from 'react';
 import { useDispatch } from 'react-redux'
 import { useForm } from '../../hooks/useForm';
@@ -37,6 +38,8 @@ export const LoginScreen = () => { //** Esto es porque lo exportamos al archivo 
 
     const handleRegister = ( e ) => { //** handleRegister es una funcion que recibe el evento, asignado en el onSubmit */
         e.preventDefault() //** Para evitar que se recargue el navegador */
+
+        // console.log( rPassword1, rPassword2 ); //** Confirmar lo que recibo en el test */
 
         if ( rPassword1 !== rPassword2 ) { //** Si rP1 es Diferente a rP2 */
             return Swal.fire('Error', 'Las Contraseñas deben de ser Iguales', 'error') //** Mandamos el error con Swal */

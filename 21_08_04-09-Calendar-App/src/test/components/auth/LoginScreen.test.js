@@ -12,15 +12,21 @@ import { Provider } from 'react-redux' //** Para utilizar el mount necesito un c
 
 import configureStore from 'redux-mock-store' //** Para configurar el store */
 import thunk from 'redux-thunk' //** La de arriba ocupa esta porque las acciones retornan una funcion */
+import Swal from 'sweetalert2';
 
 import '@testing-library/jest-dom' //** Ayuda con el tipado */
 import { LoginScreen } from '../../../components/auth/LoginScreen';
-import { startLogin } from '../../../actions/auth';
+import { startLogin, startRegister } from '../../../actions/auth';
 
 //** Aplique un mock a la funcion, primero el path, cuando se llame voy a retornar un objeto y va a tener dentro el startLogin funcion jest */
 jest.mock('../../../actions/auth', () => ({ 
-    startLogin: jest.fn()
+    startLogin: jest.fn(),
+    startRegister: jest.fn(), //** Aqui puedo agregar otros Mocks */
 }))
+
+jest.mock( 'sweetalert2', () => ({ //** Mock de sa2, el mock es para decirle "cuando se llame", parentesis es para decirle que regresa un objeto */
+    fire: jest.fn() //** Que funcion estoy esperando que se llame en este caso el fire, que debe ser un jest.fn() */
+})) 
 
 const middlewares = [ thunk ] //** Funcion que se invoca despues de que se envia una accion, puede modificarla, esperar que termine o cancelarla */
 const mockStore = configureStore( middlewares ) //** MockStore es un objero que simula ser otro y el store configura funciones de los moddleware */
@@ -66,5 +72,27 @@ describe('Pruebas en <LoginScreen />', () => {
         //** Voy a esperar que startLogin haya sido llamado con usuario y password */
         expect( startLogin ).toHaveBeenCalledWith('juan@mail.com', '123456') 
     })
+
+    test('No hay registro si las contraseñas son diferentes', () => {
+        
+        wrapper.find('input[name="rPassword1"]','input[name="rPassword2"]').simulate('change', { //** Busco los imputs y les aplico un cambio */
+            target: { //** Esta es la info que va a tener cada uno de los cambios */
+                name: 'rPassword1',
+                value: '123456',
+                name: 'rPassword2',
+                value: '1234567'
+            }
+        })
+
+        // //** Simulacion del formulario */
+        wrapper.find('form').at(1).prop('onSubmit')({ //** Busco el segundo formulario y la propiedad onSubmit */
+            preventDefault(){} //** Llamo funcion mandando el evento que tiene el preventDefault de esa forma */    
+        })
+
+        expect( startRegister ).not.toHaveBeenCalled() //** Para asegurarnos qu eno haya sido llamado */
+        
+        expect( Swal.fire ).toHaveBeenCalledWith( 'Error', 'Las Contraseñas deben de ser Iguales', 'error' ) //** Llamada sA2 con el error */
+    })
+
     
 })
