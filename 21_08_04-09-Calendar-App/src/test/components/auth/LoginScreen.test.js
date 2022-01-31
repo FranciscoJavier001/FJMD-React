@@ -21,7 +21,7 @@ import { startLogin, startRegister } from '../../../actions/auth';
 //** Aplique un mock a la funcion, primero el path, cuando se llame voy a retornar un objeto y va a tener dentro el startLogin funcion jest */
 jest.mock('../../../actions/auth', () => ({ 
     startLogin: jest.fn(),
-    startRegister: jest.fn(), //** Aqui puedo agregar otros Mocks */
+    startRegister: jest.fn() //** Aqui puedo agregar otros Mocks */
 }))
 
 jest.mock( 'sweetalert2', () => ({ //** Mock de sa2, el mock es para decirle "cuando se llame", parentesis es para decirle que regresa un objeto */
@@ -42,6 +42,10 @@ const wrapper = mount( //** Dentro necesito el componente llamado Provider */
 )
 
 describe('Pruebas en <LoginScreen />', () => {
+
+    beforeEach(() => { //** Siempre hay que limpiar los Mocks */
+        jest.clearAllMocks()
+    })
     
     test('debe mostrarse correctamente', () => {
         
@@ -94,5 +98,25 @@ describe('Pruebas en <LoginScreen />', () => {
         expect( Swal.fire ).toHaveBeenCalledWith( 'Error', 'Las Contraseñas deben de ser Iguales', 'error' ) //** Llamada sA2 con el error */
     })
 
+    test('Registro con contraseñas iguales', () => {
+
+        wrapper.find('input[name="rPassword1"]','input[name="rPassword2"]').simulate('change', { //** Busco los imputs y les aplico un cambio */
+            target: { //** Esta es la info que va a tener cada uno de los cambios */
+                name: 'rPassword1',
+                value: '123456',
+                name: 'rPassword2',
+                value: '123456'
+            }
+        })
+
+        // //** Simulacion del formulario */
+        wrapper.find('form').at(1).prop('onSubmit')({ //** Busco el segundo formulario y la propiedad onSubmit */
+            preventDefault(){} //** Llamo funcion mandando el evento que tiene el preventDefault de esa forma */    
+        })
+
+        expect( Swal.fire ).not.toHaveBeenCalled() //** Para asegurarnos que no haya sido llamado, el sA2 y no mande erroe */
+        
+        expect( startRegister ).toHaveBeenCalledWith( "frank@mail.com", "123456", "Frank" ) //** Que haya sido llamado con esos argumentos */
+    })
     
 })
