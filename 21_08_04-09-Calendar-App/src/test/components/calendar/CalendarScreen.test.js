@@ -12,14 +12,20 @@ import { Provider } from 'react-redux' //** Para utilizar el mount necesito un c
 
 import configureStore from 'redux-mock-store' //** Para configurar el store */
 import thunk from 'redux-thunk' //** La de arriba ocupa esta porque las acciones retornan una funcion */
+import { act } from '@testing-library/react'
 
 import '@testing-library/jest-dom' //** Ayuda con el tipado */
 
 import { CalendarScreen } from '../../../components/calendar/CalendarScreen';
+import { messages } from '../../../helpers/calendar-messages-es' //** Debia extraer los messages, vienen en un objeto */
+import { types } from '../../../types/types';
+import { eventSetActive } from '../../../actions/events';
 
-//** Aplique un mock a la funcion, primero el path, cuando se llame voy a retornar un objeto y va a tener dentro el startLogin funcion jest */
-// jest.mock('../../../', () => ({ 
-// }))
+jest.mock('../../../actions/events', () => ({ //** Mock de la funcion eventSetActive */
+    eventSetActive: jest.fn(),
+    eventStartLoading: jest.fn() //** ypeError: (0 , _events.eventStartLoading) is not a function - Asi evito esta falla */
+}))
+Storage.prototype.setItem = jest.fn() //** Esto es el mock para el expect de la linea 79 */
 
 const middlewares = [ thunk ] //** Funcion que se invoca despues de que se envia una accion, puede modificarla, esperar que termine o cancelarla */
 const mockStore = configureStore( middlewares ) //** MockStore es un objero que simula ser otro y el store configura funciones de los moddleware */
@@ -29,7 +35,6 @@ const initState = { //** Configuro el iS, que asi quiero cuando inicie las prueb
         events: []
     },
     auth: {
-        checking: false,
         uid: '123',
         name: 'Francisco'
     },
@@ -53,5 +58,27 @@ describe('Pruebas en <CalendarScreen />', () => {
         
         expect ( wrapper ).toMatchSnapshot()
     })
-    
+
+    test('pruebas con las interacciones del calendario', () => {
+        
+        const calendar = wrapper.find('Calendar') //** Es la referencia al calendario */
+        // console.log(calendar.exists()); //** Asi veo que existe porque me mando true */
+        
+        const calendarMessages = calendar.prop('messages') //** Quiero asegurarme que tenga los mensajes, (son la traduccion) */
+        // console.log(calendarMessages);
+        expect( calendarMessages ).toEqual( messages ) 
+
+        calendar.prop('onDoubleClickEvent')() //** La propiedad que quiero tomar y el evento que se va a disparar, calendar es por la linea 60 */
+        //** Pregunto que se disparo en el store, que sea llamado con la info que dispara hasta que el final que esta en types */
+        expect( store.dispatch ).toHaveBeenCalledWith({ type: types.uiOpenModal })
+
+        calendar.prop('onSelectEvent')({ start: 'Hola' }) //** Propiedad a evaluar, y el evento que recibe */
+        expect( eventSetActive ).toHaveBeenCalledWith({ start: 'Hola' }) //** Que recibio y con que fue llamado el dispatch */
+
+        act(() => { //** act hace una modifiacion en el setState */
+        calendar.prop('onView')('week') //** La disparo mandando la vista de week */
+        //** Que haya sido grabado en el lS, ocupo hacer el mock, y que el lastView sea llamado con la week(semana - es el e) */
+        expect( localStorage.setItem ).toHaveBeenCalledWith('lastView', 'week') 
+        })
+    })
 })

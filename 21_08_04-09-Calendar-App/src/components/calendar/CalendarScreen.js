@@ -38,7 +38,7 @@ export const CalendarScreen = () => {
 
     const onDoubleClick = (e) => { //** Esta es para mostrar los eventos al hacer dobleClick */
         // console.log(e);
-        dispatch( uiOpenModal() ) //** No recibe ningun argumento */
+        dispatch( uiOpenModal() ) //** No recibe ningun argumento, pero este se dispara */
     }
 
     const onSelectEvent = (e) => { //** Al hacer click se dispare el evento */
@@ -78,7 +78,7 @@ export const CalendarScreen = () => {
         <div className="calendar-screen"> {/* Aqui le voy a poner un nuevo estilo por eso hago una nueva clase */}
             <Navbar />
 
-            <Calendar
+            <Calendar //** En las pruebas esto es un componente */
                 localizer={ localizer } //** Esto lo copiamos de arriba */
                 events={ events } //** Esos eventos son los que voy a mandar aqui, los que puse en la linea 10 */
                 startAccessor="start"
