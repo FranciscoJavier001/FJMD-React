@@ -100,6 +100,8 @@ export const CalendarModal = () => {
         const momentStart = moment( start )
         const momentEnd = moment( end )
 
+        // console.log(end); //** Para ver la fecha de finalizacion para pruebas */
+
         if ( momentStart.isSameOrAfter( momentEnd ) ) { //** Fecha de inicio despues de la fecha de inicializacion no lo voy a dejar pasar */
             return Swal.fire('Error','La fecha fin debe de ser mayor a la fecha de inicio', 'error'); //** Mensaje error */
         }

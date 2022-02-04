@@ -18,11 +18,19 @@ import 'jest-canvas-mock'; //** Lo importe para evitar la falla */
 import '@testing-library/jest-dom' //** Ayuda con el tipado */
 
 import { CalendarModal } from '../../../components/calendar/CalendarModal';
-import { eventStartUpdate, eventClearActiveEvent } from '../../../actions/events'
+import { eventStartUpdate, eventClearActiveEvent, eventStartAddNew } from '../../../actions/events'
+import { act } from '@testing-library/react'
+import Swal from 'sweetalert2';
+
 
 jest.mock('../../../actions/events', () => ({ //** Mock de la funcion eventStartUpdate */
     eventStartUpdate: jest.fn(),
-    eventClearActiveEvent: jest.fn()
+    eventClearActiveEvent: jest.fn(),
+    eventStartAddNew: jest.fn()
+}))
+
+jest.mock('sweetalert2', () => ({ //** Mock de la funcion fire de SA2 */
+    fire: jest.fn(),
 }))
 
 const middlewares = [ thunk ] //** Funcion que se invoca despues de que se envia una accion, puede modificarla, esperar que termine o cancelarla */
@@ -92,5 +100,76 @@ describe('Pruebas en <CalendarModal />', () => {
         //** Busco el input con el nombre title y este tiene que tener la clase de is-invalid */
         expect( wrapper.find('input[name="title"]').hasClass('is-invalid') ).toBe(true)
     })
-    
+
+    test('debe de crear un nuevo evento', () => {
+        
+        const initState = { //** Configuro el iS, que asi quiero cuando inicie las pruebas */
+            calendar: { //** De donde vengan las fallas fijate en Redux>State y del componente principal las vas poniendo, del useSelector */
+                events: [],
+                activeEvent: null //** Lo inicializo en null */
+            },
+            auth: {
+                uid: '123',
+                name: 'Francisco'
+            },
+            ui: {
+                modalOpen: true
+            }
+        }
+        
+        const store = mockStore( initState ) //** Este va con el berofeEach para inicializar todas las acciones que este store haya ejecutado */
+        store.dispatch = jest.fn() //** Puedo saber con que argumento se utilizo para llamar el dispatch, por eso lo manejo con un mock */
+        
+        const wrapper = mount( //** Dentro necesito el componente llamado Provider */
+            <Provider store={ store }> {/* Esto me va a proveer el store, pero debo de crearlo, dentro mando el store creado anteriormente */}
+                <CalendarModal />{/* Dentro de este HOC voy a colocar el evento a analizar */}
+            </Provider>
+        )
+
+        wrapper.find('input[name="title"]').simulate('change', { //** Esto va a disparar la modificacion del input */
+            target: { //** El name es el campo, y el value es el valor que le voy a asignar ahora */
+                name: 'title',
+                value: 'Hola pruebas'
+            }
+        })
+
+        wrapper.find('form').simulate('submit', { //** Buscamos el form y le aplicamos el submit, esperando que se dispare eventStartAddNew */
+            preventDefault(){} //** Para evitar que se recarge el navegador */
+        })
+
+        expect( eventStartAddNew ).toHaveBeenCalledWith({ //** Esperamos que haya sido llamado con estos argumentos */
+            end: expect.anything(),
+            start: expect.anything(),
+            title: "Hola pruebas",
+            notes: ''
+        })
+
+        //** Como se actualizo el modal, debio tambien de llamar esta funcion eventClearActiveEvent */
+        expect( eventClearActiveEvent ).toHaveBeenCalled()
+    })
+
+    test('debe de validar las fechas', () => {
+        
+        wrapper.find('input[name="title"]').simulate('change', { //** Esto va a disparar la modificacion del input */
+            target: { //** El name es el campo, y el value es el valor que le voy a asignar ahora */
+                name: 'title',
+                value: 'Hola pruebas'
+            }
+        })
+
+        const hoy = new Date() //** Creo una nueva instancia del tiempo */
+
+        //** La fecha de finalizacion debe de ser mayor que la fecha de inicio */
+        //** Busco el DateTimePicker de finalizacion, osea el 2, busco propiedad de onchange y dispara hoy */
+        act (() => {
+            wrapper.find('DateTimePicker').at(1).prop('onChange')(hoy)
+        })
+
+        wrapper.find('form').simulate('submit', { //** Buscamos el form y le aplicamos el submit, esperando que se dispare eventStartAddNew */
+            preventDefault(){} //** Para evitar que se recarge el navegador */
+        })
+
+        //** Espero que Swal haya sido llamado porque las fechas no son iguales */
+        expect( Swal.fire ).toHaveBeenCalledWith( "Error", "La fecha fin debe de ser mayor a la fecha de inicio", "error" )
+    })  
 })
