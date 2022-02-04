@@ -18,11 +18,12 @@ import 'jest-canvas-mock'; //** Lo importe para evitar la falla */
 import '@testing-library/jest-dom' //** Ayuda con el tipado */
 
 import { CalendarModal } from '../../../components/calendar/CalendarModal';
+import { eventStartUpdate, eventClearActiveEvent } from '../../../actions/events'
 
-// jest.mock('../../../actions/events', () => ({ //** Mock de la funcion eventSetActive */
-//     eventSetActive: jest.fn(),
-//     eventStartLoading: jest.fn() //** ypeError: (0 , _events.eventStartLoading) is not a function - Asi evito esta falla */
-// }))
+jest.mock('../../../actions/events', () => ({ //** Mock de la funcion eventStartUpdate */
+    eventStartUpdate: jest.fn(),
+    eventClearActiveEvent: jest.fn()
+}))
 
 const middlewares = [ thunk ] //** Funcion que se invoca despues de que se envia una accion, puede modificarla, esperar que termine o cancelarla */
 const mockStore = configureStore( middlewares ) //** MockStore es un objero que simula ser otro y el store configura funciones de los moddleware */
@@ -59,10 +60,37 @@ const wrapper = mount( //** Dentro necesito el componente llamado Provider */
 )
 
 describe('Pruebas en <CalendarModal />', () => {
+
+    beforeEach(() => {
+        jest.clearAllMocks() 
+    })
     
     test('debe de mostrar el modal', () => {
         
         // expect( wrapper.find('.modal').exists() ).toBe(true) //** Asi confirmo que el modal exosta */
         expect( wrapper.find('Modal').prop('isOpen') ).toBe(true) //** Busca el Modal, con la propiedad isOpen en true */
-    })  
+    })
+
+    test('debe de llamar la accion de actualizar y cerrar modal', () => { //** Se hace sabiendo que accion hace el boton de handleSubmitForm */
+        
+        wrapper.find('form').simulate('submit', { //** Buscamos el form y le aplicamos el submit */
+            preventDefault(){} //** Para evitar que se recarge el navegador */
+        })
+
+        //** Si el eventStartUpdate fue llamado entonces espero el initState.calendar.activeEvent, porque eso lo tengo en linea 34 */
+        expect( eventStartUpdate ).toHaveBeenCalledWith( initState.calendar.activeEvent )
+        
+        expect( eventClearActiveEvent ).toHaveBeenCalled() //** Que haya sido llamado, y si lo vemos en CalendarModal no recibe nada */
+    })
+
+    test('debe de mostrar error si falta el titulo', () => {
+        
+        wrapper.find('form').simulate('submit', { //** Buscamos el form y le aplicamos el submit */
+            preventDefault(){} //** Para evitar que se recarge el navegador */
+        })
+
+        //** Busco el input con el nombre title y este tiene que tener la clase de is-invalid */
+        expect( wrapper.find('input[name="title"]').hasClass('is-invalid') ).toBe(true)
+    })
+    
 })

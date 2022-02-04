@@ -95,6 +95,8 @@ export const CalendarModal = () => {
     const handleSubmitForm = (e) => { //** Aqui recibo el evento, y este es cuando le den al boton de guardar */
         e.preventDefault(); //** Para evitar la propagacion del formulario */
 
+        // console.log(momentEnd); //** Lo llame para checar el CalendarModal.test.js */
+
         const momentStart = moment( start )
         const momentEnd = moment( end )
 
