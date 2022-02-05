@@ -1,3 +1,5 @@
+//**_______________________________________________________________________________________________________________________________________________*/
+//** Esta es la App que estoy renderizando en el index.js */
 import React, { useEffect, useReducer } from 'react'
 import { AuthContext } from './auth/AuthContext'
 import { authReducer } from './auth/authReducer';
