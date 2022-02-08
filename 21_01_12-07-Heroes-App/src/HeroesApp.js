@@ -1,5 +1,6 @@
 //**_______________________________________________________________________________________________________________________________________________*/
 //** Esta es la App que estoy renderizando en el index.js */
+//** Instalar react-router-dom "npm install react-router-dom" (Es para las routes/rutas)  */
 import React, { useEffect, useReducer } from 'react'
 import { AuthContext } from './auth/AuthContext'
 import { authReducer } from './auth/authReducer';
@@ -27,7 +28,7 @@ export const HeroesApp = () => {
         //** Aqui lo voy a poner con el Provider y este lo que va a distribuir a lo largo de la aplicacion va a ser un objeto donde va a venir un reducer y el que va a ser sera el authREducer (asegurandonos que lo importe), el initialState va a ser un objeto vacio y el init va a leer el localStorage */
         // El user y el dispatch va a ser lo que voy a distribuir con el AuthContext, ahora yo puedo obtener el user en cualquier parte de la aplicacion, porque estoy en el nivel mas alto de la app (auque menos que el index)
         <AuthContext.Provider value={{ user, dispatch }}>
-            <AppRouter />
+            <AppRouter /> {/* Es el componente que voy a mostrar/renderizar */}
         </AuthContext.Provider>
     
     )

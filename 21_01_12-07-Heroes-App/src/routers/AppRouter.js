@@ -1,3 +1,4 @@
+//**_______________________________________________________________________________________________________________________________________________*/
 //** Este sistema de rutas principal solo es que este tiene el router, es la unica diferencia */
 import React, { useContext } from 'react'
 import {
@@ -24,9 +25,9 @@ export const AppRouter = () => { //** Esto es un FuntionalComponent comun y corr
                     {/* Aqui vamos a renderizar un componente, las rutas hijas */}
                     {/* El loginScreen no tiene ningun Navbar porque no tiene ningun estilo */}
                     <PublicRoute 
-                    exact 
-                    path="/login" 
-                    component={ LoginScreen }
+                    exact //** Para que la Ruta sea Exacta */
+                    path="/login" //** Cual va a ser la direccion */
+                    component={ LoginScreen } //** Al componente donde voy a redirigir */
                     isAutenticated={ user.logged }
                     />
                     {/* Esta es una ruta que no esta definida, vamos a renderizar el DashboardRoutes cuando estamos en el path="/", ahora aqui ya vemos el NavBar */}

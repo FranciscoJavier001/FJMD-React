@@ -1,3 +1,5 @@
+//**_______________________________________________________________________________________________________________________________________________*/
+//** Esto se va a mostrar en el Router - Esto es un Functional Component "rafc" */
 import React from 'react'
 import { HeroList } from '../heroes/HeroList'
 
