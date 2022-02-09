@@ -1,4 +1,5 @@
-//** Este es otro funtional component, pero con un switch */
+//**_______________________________________________________________________________________________________________________________________________*/
+//** FC con Switch */
 import React from 'react'
 import { Navbar } from '../components/ui/Navbar'
 import { Redirect, Route, Switch } from 'react-router-dom'
@@ -8,32 +9,24 @@ import { HeroScreen } from '../components/heroes/HeroScreen'
 import { DcScreen } from '../components/dc/DcScreen'
 import { SearchScreen } from '../components/search/SearchScreen'
 
-export const DashboardRoutes = () => { //** Vamos a imprimir las props, para ver la ruta, entonces aqui extraemos el history  */
+export const DashboardRoutes = () => { //** Exportamos este FC que son las rutas de la App */
 
     // console.log(props);
     
     return (
-        <>
-        {/* El Navbar es un simple componente que esta ahi, no tiene acceso a las props o en este caso al history, porque no es una ruta, es simplemente un componente que es utilizado dentro de una ruta, por consecuencia aqui no tengo acceso al history, entonces el history que lo extraimos arriba se lo vamos a mandar al Navbar */}
-            <Navbar />
+        <> {/* Es un fragment, sirve para colocar mas cosas */}
+            <Navbar /> {/* Para mostrar en Navbar al acceder al hacer login */}
 
             {/* El container es una division de un contenedor */}
-            <div className="container mt-2"> 
-                <Switch>
-                    {/* Aqui tenemos cual queremos renderizar segun la condicion y si no tiene pues nos manda al redirect */}
-                    {/* Ahora vamos a definir las rutas en el DashboardRoutes */}
-                    {/* En esta ruta el componente que voy a mostrar va a ser el MarvelScreen */}
-                    <Route exact path="/marvel" component={ MarvelScreen } />
-                    {/* Este componente va a recibir algo por el url y asi se especifica */}
+            <div className="container mt-2"> {/* container=Que este todo en un contenedor centrado - mt-2=Margen superior */}
+                <Switch> {/* Va a cambiar segun el caso */}
+                    <Route exact path="/marvel" component={ MarvelScreen } /> {/* Ruta exacta y el componente a renderizar */}
+                    {/* Seleccionando a un heroe, sale una pantalla individual, cambia el URL y se renderiza HeroScreen, "nombre del heroe" */}
                     <Route exact path="/hero/:heroeId" component={ HeroScreen } />
-                    {/* Este es el de DC y no recibe ningun argumento */}
-                    <Route exact path="/dc" component={ DcScreen } />
-                    {/* Esta es la ruta de busquedas */}
-                    <Route exact path="/search" component={ SearchScreen } />
+                    <Route exact path="/dc" component={ DcScreen } /> {/* Ruta exacta y el componente a renderizar */}
+                    <Route exact path="/search" component={ SearchScreen } /> {/* Ruta de busqueda y lo que renderizamos */}
 
-
-                    {/* Si no viene nada, entonces va a redirecionar automaticamente a marvel */}
-                    <Redirect to="/marvel" />
+                    <Redirect to="/marvel" /> {/* Por default nos manda a marvel */}
                 </Switch>
             </div>
         </>
