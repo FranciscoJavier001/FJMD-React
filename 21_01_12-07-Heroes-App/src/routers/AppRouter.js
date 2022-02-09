@@ -1,44 +1,37 @@
 //**_______________________________________________________________________________________________________________________________________________*/
 //** Este sistema de rutas principal solo es que este tiene el router, es la unica diferencia */
-import React, { useContext } from 'react'
+import React, { useContext } from 'react' //** useContext nos permite acceder a datos globales desde cualquier componente */
 import {
-    BrowserRouter as Router,
+    BrowserRouter as Router, //** Le cambiamos el nombre a Router */
     Switch
   } from "react-router-dom";
 
-  import { AuthContext } from '../auth/AuthContext';
+  import { AuthContext } from '../auth/AuthContext'; //** Ahi creamos el createContext */
   import { PrivateRoute } from './PrivateRoute';
   import { PublicRoute } from './PublicRoute';
 
 import { LoginScreen } from '../components/login/LoginScreen';
 import { DashboardRoutes } from './DashboardRoutes';
 
-export const AppRouter = () => { //** Esto es un FuntionalComponent comun y corriente */
+export const AppRouter = () => { //** exporto este FC a HeroesApp */
 
-    // Para leer si esta autentificado
-    const { user } = useContext( AuthContext ) //** Primero voy a utilizar el user y en el segundo va a ser el AuthContext */
+    const { user } = useContext( AuthContext ) //** Accedemos al user que viene de src/auth/AuthContext, donde se creo "createContext" */
 
     return (
         <Router>
             <div>
                 <Switch>
-                    {/* Aqui vamos a renderizar un componente, las rutas hijas */}
-                    {/* El loginScreen no tiene ningun Navbar porque no tiene ningun estilo */}
-                    <PublicRoute 
+                    <PublicRoute //** La Definimos en src/>routers/PublicRoute, esta pagina va a ser la primera */
                     exact //** Para que la Ruta sea Exacta */
                     path="/login" //** Cual va a ser la direccion */
                     component={ LoginScreen } //** Al componente donde voy a redirigir */
-                    isAutenticated={ user.logged }
+                    isAutenticated={ user.logged } //** Asi confirmamos si no esta autentificado isAutenticated */
                     />
-                    {/* Esta es una ruta que no esta definida, vamos a renderizar el DashboardRoutes cuando estamos en el path="/", ahora aqui ya vemos el NavBar */}
-                    {/* Este componente lo vamos a validar, para que el usuario este loggeado para ingresar a la app, y a continuacion vamos a proteger la ruta, entonces vamos a renderizar el componente de manera condicional */}
 
-                    {/* Esta la voy a proteger para proteger toda la App, cambio el Route que estaba al principio por el PrivateRoute */}
-                    <PrivateRoute 
-                    path="/" 
-                    component={ DashboardRoutes }
-                    //** Asi lo vamos a proteger con el isAutenticated */
-                    isAutenticated={ user.logged }
+                    <PrivateRoute //** La Definimos en src/>routers/PrivateRoute, se accede a esta pagina al logearse */
+                    path="/"
+                    component={ DashboardRoutes } //** Aqui se Redirige el componente */
+                    isAutenticated={ user.logged } //** Asi confirmamos si esta autentificado isAutenticated */
                     />
                 </Switch>
             </div>
