@@ -6,9 +6,8 @@ import { AuthContext } from './auth/AuthContext'
 import { authReducer } from './auth/authReducer';
 import { AppRouter } from './routers/AppRouter'
 
-//** Esta va a ser una funcion de fleca que no recibe ningun argumento y lo que va a retornar va a ser revisar el localStorage para ver el objeto que tenemos, donde va a buscar el user (que va a ser un objeto) en lo cual va a ser un JSON.parse (para evaluar el localStorage) y si existe va a retornar un objeto que tenga en logged en false, que se esta estableciendo como el estado inicial */
-//** Esto se va a ejecutar en el init que va a pasar al initialState y asi voy a tener el estado inicial de la applicacion */
-const init = () => {
+//** Ejecuta el init que va a pasar al iS y asi voy a tener el estado inicial de la applicacion */
+const init = () => { //** Evalua la informacion con JSON.parse recibida del user en el lS, si es SI establece el usuario y si NO se pone en falso */
     return JSON.parse(localStorage.getItem('user')) || { logged: false };
 }
 
