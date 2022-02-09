@@ -5,50 +5,51 @@ import { Link, NavLink, useHistory } from 'react-router-dom'
 import { AuthContext } from '../../auth/AuthContext'
 import { types } from '../../types/types';
 
-// export const Navbar = ({ history }) => { //** Aqui pegamos el history, como en la pagina de LoginScreen, pero es importante no compartir mucha informaciona traves de las propertyes y que los componentes sean mas sencillos y limpios */
+//  export const Navbar = ({ history }) => { //** Aqui en pego el history, no compartir mucha informacion por los props */
 
-export const Navbar = () => { //** Esta es la que estaba en la linea 6, pero ahora la vamos a remplazar de otra manera */
+export const Navbar = () => { //** Es la linea 8, pero remplazo la sintaxis */
 
-    //** 1. Para esta tarea voy a necesitar acceso al context, en el contextValue voy a ponerle el AuthContext y en el context voy a extraer el user, y en el user voy a extraer el name del objeto */
-    //** Para la tarea del logout hay que hacer el dispatch y purgar la informacion que tenemos en el reducer */
+    //** Necesito acceso a AuthContext-dentro de useContext, del user-voy a extraer el name, y el dispatch hace el logout y purgo el reducer */
     const { user:{ name }, dispatch } = useContext( AuthContext );
-    //** react-router-dom nos ofrece un useHistory */
-    const history = useHistory(); //** Este me regresa un history y asi de sencillo soluciono el problema de compartir la info a traves de las props */
+    //** react-router-dom nos ofrece un useHistory, y soluciono el problema de compartir info a traves de las props */
+    const history = useHistory(); //**  */
 
     // console.log(history);
     // console.log(name);
 
-    const handleLogout = () => { //** Esta es la funcion que le vamos a dar al boton */
-        //** Llamamos el dispatch, mandamos una accion que tiene el type y ese types viene del .logout, esto es la primera parte de la tarea, asi se borra todo y el logged en false */
-        //** Con esto hacemos que primero navege, despues purge, atencion el as seguientes lineas */
-        //** Llamamos el history.replace, para que ya no mantenga esta pagina (es decir para que cambie la navegcion y que se lanze al login), entonces el NavBar ya esta recibiendo el history y por consecuencia aqui ya puedo poner el replace para que funcione */
+    const handleLogout = () => { //** Funcion al acer click en el boton */
 
-        // console.log('Click!'); //** Este se va a hacer cuando se de un click, osea en la prueba si se simula el click de esa funcion */
+        // console.log('Click!'); //** Simulo el click de la funcion handleLogout */
 
+        //** Cambie la pagina al login */
         history.replace('/login');
 
-        dispatch({
+        dispatch({ //** Mando la accion de logout de types, borro todo y pongo el logged en false */
             type: types.logout
         });
     }
 
     return (
+        //** navbar= Para que todo este junto y no haya espacios */
+        //** navbar-expand-sm=para poner el navbar en fila y separados */
+        //** navbar-dark=letras en color gris */
+        //** bg-dark=fondo en negro */
         <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
             
             <Link 
-                className="navbar-brand" 
-                to="/"
+                className="navbar-brand" //** Es para que salga al inicio y mas grande */
+                to="/" //** Donde me lleva cuando hago click */
             >
-                Asociaciones
+                Asociaciones {/* Texto */}
             </Link>
 
-            <div className="navbar-collapse">
-                <div className="navbar-nav">
+            <div className="navbar-collapse"> {/* Hacer mas chico la anchura */}
+                <div className="navbar-nav">{/* Para que todas esten en hileras */}
 
                     <NavLink 
-                        activeClassName="active"
-                        className="nav-item nav-link" 
-                        exact
+                        activeClassName="active" //** Dond este seleccionado se quede en color blanco */
+                        className="nav-item nav-link" //** nav-link= es para que todos se vean a la altura */
+                        exact //** Es la direccion a la que lleva */
                         to="/marvel"
                     >
                         Marvel
@@ -71,23 +72,19 @@ export const Navbar = () => { //** Esta es la que estaba en la linea 6, pero aho
                     >
                         Search
                     </NavLink>
-
                 </div>
             </div>
 
-            <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
-                <ul className="navbar-nav ml-auto">
+            <div className="navbar-collapse collapse w-100 order-3 dual-collapse2"> {/* navbar-collapse=salen las letras */}
+                <ul className="navbar-nav ml-auto"> {/* navbar-nav=En fila - ml-auto=que salga hasta la derecha */}
                     
-                    {/* Aqui voy a crear un parrafo que me diga un nombre */}
-                    {/* Otra tarea, que extraigamos el context con el nombre y lo mostremos aqui, esto lo vamos a tener que reemplazar */}
-                    <span className="nav-item nav-link text-info">
-                        { name }
+                    <span className="nav-item nav-link text-info"> {/* nav-link=Alineado - text-info=Color del nombre */}
+                        { name } {/* Coloco el nombre del Usuario a la derecha */}
                     </span>
 
-                    {/* Que cuando toquemos el boton nos saque con el { handleLogout }, pero lo declaramos, que sea una funcion de flecha que no recibe ningun parametro y lo que hace es el dispatch de la accion respectiva que es el logout usando los types y asegurarnos que en el estado de la aplicacion no tengamos el nombre, es decir que se haya borrado y que tenga el logged en false, echo eso significa que paso por el reducer, que quitamos la identificacion del usuario, que se guardo en el localStorage porque se disparo el efecto, en cuestion es solo disparar la accion y que navegemos a la pagina del login */}
                     <button 
-                        className="nav-item nav-link btn"
-                        onClick={ handleLogout }
+                        className="nav-item nav-link btn" //** nav-link=Color del campo de navegacion - btn=formato boton */
+                        onClick={ handleLogout } //** Se dispara al hacer click */
                     >
                         Logout
                     </button>
