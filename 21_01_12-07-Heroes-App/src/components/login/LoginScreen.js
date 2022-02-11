@@ -3,42 +3,36 @@ import React, { useContext } from 'react'
 import { AuthContext } from '../../auth/AuthContext';
 import { types } from '../../types/types';
 
-export const LoginScreen = ({ history }) => { //** Vamos a usar la desestructuracion y ahi vamos a tener el history */
+export const LoginScreen = ({ history }) => { //** El LS recibe el history(este vide de Navegador/Components/props) */
 
-    //** 1. Para la tarea lo primero que debo hacer es extraer el context, de aqui lo que me interesa es extraer el dispatch y en el useContext el AuthContext */
-    const { dispatch } = useContext( AuthContext );
+    
+    const { dispatch } = useContext( AuthContext ); //** Tambien esta en src/HeroesApp y en el dispatch vienen parametros que mandamos/recibimos */
 
-    const handleLogin = () => { //** Esta es una funcion de flecha, que no recibe nada */
-        // history.push('/'); //** Asi le ponemos que va a hacer cuando toque el boton */
-        // history.replace('/'); //** Investigar */
+    const handleLogin = () => { //** Funcion que no recibe nada */
+        // history.push('/'); //** Ruta a la que voy a navegar con click en el login */
+        // history.replace('/'); //** Asi no hay history, y solo me lleva directamente al "/" y no puedo regresar al login manualmente */
 
-        const lastPath = localStorage.getItem('lastPath') || '/'; //** Voy a crear una variable llamada lastPath que va a ser el lastPath que pusimos en la Ruta Privada y por si paso cualquier cosa es la primera vez que entra, porque purgo o algo asi que lo redireccione al replace */
-
-        //** Tarea.. Del ontext extraer el dispatch y ese dispatch tiene que mandar un action que tenga el tipo del case types.login y case types logout, el objeto que vamos a mandar en el payload de la accion va a ser algo sencillo como name: 'Francisco', es todo lo que necesito en el dispatch, esto deberia de establecerselo al reducer para ver en components en los hooks el logged en true y lo que colocamos en el name, y se va a mantener porque vamos a tomar todo lo que venga en el payload de la accion y tambien la propiedad logged que ya se autentifico */
-
-        //** 2. Ahora voy a disparar esa accion, voy a ser el dispatch de un objeto que tiene un type y el types viene de types.login y luego viene el payload: { (y va a ser un objeto que tiene el name y mi nombre)}, y abajo pongo el replace de la ruta (pero ya tengo mi login en un nivel alto de la app) */
+        //** La ultimaRuta, la sacamos del lS, que nos manda a la ultima pagina visitada o si no al "/", autentificado a marvel y si no al login*/
+        const lastPath = localStorage.getItem('lastPath') || '/'; 
         
-        //** Cambiamos el lugar donde estaba el replace */
-        // history.replace('/'); //** Este me hace que cuando le pongo el login, en automatico me meta a la aplicacion */
-        dispatch({
-            type: types.login,
+        dispatch({ //** Disparo la accion, que defini en los types, y ahi tengo contexto, paso estas variables aqui definidas con auth */
+            type: types.login, //** Al hacer el login va a poner el name como Francisco con los types, que lo defini l.82 components/ui/Navbar */
             payload: {
                 name: 'Francisco'
             }
         });
 
-        history.replace( lastPath ); //** Este me hace que cuando le pongo el login, en automatico me meta a la aplicacion, esto se modifico en otro video, en el cual va a tener siempre guardada la ultima ruta que se visito */
+        history.replace( lastPath ); //** Al entrar se remplaza todo, para ya no poder acceder de nuevo al login, hasta hacer el logout */
     }
 
     return (
-        // Container es un contenedor, que se pone donde le digamos, si le aignamos un margen de arriba, osea es una linea que se queda solo en lo que vamos a poner
-        <div className="container mt-5">
+        <div className="container mt-5"> {/* Container, lo pone medio centrado y el mt-5 es el espacio que tiene hacia arriba */}
             <h1>Login</h1>
             <hr/>
 
             <button
-                className="btn btn-primary"
-                onClick={ handleLogin } //** Este metodo hay que declararlo arriba, para que no nos de ninguna falla */
+                className="btn btn-primary" //** btn=Boton, b-p=Color azul */
+                onClick={ handleLogin } //** Metodo que se dispara*/
             >
                 Login
             </button>
