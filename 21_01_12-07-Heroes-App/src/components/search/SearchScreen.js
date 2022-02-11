@@ -1,3 +1,4 @@
+//**_______________________________________________________________________________________________________________________________________________*/
 //** Este lo hacemos un FC */
 import React, { useMemo } from 'react';
 import queryString from 'query-string'; //** Aqui voy a buscar el queryString */
