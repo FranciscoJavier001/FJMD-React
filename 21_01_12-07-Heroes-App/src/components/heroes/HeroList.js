@@ -1,14 +1,14 @@
-//** Iniciamos con rafc porque es un functional component */
+//**_______________________________________________________________________________________________________________________________________________*/
 import React, { useMemo } from 'react'
 import { getHeroesByPublisher } from '../../selectors/getHeroesByPublisher'
 import { HeroCard } from './HeroCard';
 
-export const HeroList = ({ publisher }) => { //** Vamos a recibir el publisher en la funcion de flecha, este lo recibimos de data/heroes.js y publisher es quien publica la historieta, puede ser dc o marvel */
 
-    //** Aqui utilizamos nuestro selector y como no pensamos en mutarlo podemos crear la contante heroes y que sea getHeroesByPublisher y mandamos el publisher y ya tengo la data */
+export const HeroList = ({ publisher }) => { //** Recibimos publisher de src/data/heroes (es un atributo), de quien lo publico */
     
     //** El useMemo es para que no este haciendo los cambios, porque ya memorizo el cache de la pagina, borramos esta linea que estaba abajo "const heroes = getHeroesByPublisher( publisher );", osea que no cambien las dependencias si no hay ningun cambio */
-    const heroes = useMemo(() => getHeroesByPublisher( publisher ), [publisher])
+    //** Creo una const, que como no va a estar mutando la info recibe la funcion gHBP, recibiendo el publisher */
+    const heroes = useMemo(() => getHeroesByPublisher( publisher ), [publisher]) //**  */
 
     return (
         //** Voy a barrer cada uno de los elementos y mostrarlos en pantalla a ver si funciona, voy a cambiar esto por un div, para barrer los heroes.map y parentesis para retornar un objeto y luego voy a colocar un HeroCard y el key eria igual al heroe.id y dentro del li voy a colocar solo el nombre del heroe.superheroe */

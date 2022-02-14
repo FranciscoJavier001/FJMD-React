@@ -1,17 +1,17 @@
-import { heroes } from '../data/heroes';
+//**_______________________________________________________________________________________________________________________________________________*/
+//** Asi es como nos vamos a ayudar para filtrar la informacion */
+import { heroes } from '../data/heroes'; //** Necesito la referencia a los heroes */
 
-export const getHeroesByPublisher = ( publisher ) => { //** Aqui exportamos la funcion de este arcivo y vamos a recibir el publisher */
+export const getHeroesByPublisher = ( publisher ) => { //** Exportamos la funcion de este arcivo y vamos a recibir el publisher */
 
     //** Aqui hacemos un arreglo en caso que la persona mande un publisher que no exista, para esto voy a hacer un arreglo */
-
     const validPublishers = ['DC Comics', 'Marvel Comics']; //** Cualquier cosa que no esta dentro de este arreglo va a lanzar un error */
 
     //** Para esto voy a barrer un arreglo con lo que debe estar incluido en el publisher */
-    if ( !validPublishers.includes( publisher )) { 
-        //** Esto se dispara si no lo encuentra */
-        throw new Error(`Publisher "${ publisher }" no es correcto`); //** Con esto lanzamos un error diciendo que no lo encontro */
+    if ( !validPublishers.includes( publisher )) { //** Ejecuta lo que esta en parentesis, si no estan los vP incluidos en publisher */
+        throw new Error(`Publisher "${ publisher }" no es correcto`); //** Se dispara diciendo que no lo encontro */
     }
 
-    //** Aqui voy a filtrar el arreglo y adentro tengo un heroe con la funcion de flecha y voy a retornar todos los hero solo si es igual al publisher que sea igual al que me esta mandando como argumento */
-    return heroes.filter( hero => hero.publisher === publisher );
+    //** En caso contrario filtramos el arreglo, adentro tengo un heroe y retornarno todos los heroes que tengan el mismo publisher */
+    return heroes.filter( hero => hero.publisher === publisher ); 
 } 
