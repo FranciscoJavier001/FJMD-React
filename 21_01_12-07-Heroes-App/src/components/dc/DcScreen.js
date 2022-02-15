@@ -1,16 +1,16 @@
 //**_______________________________________________________________________________________________________________________________________________*/
 //** Esto se va a mostrar en el Router - Esto es un Functional Component "rafc" */
 import React from 'react'
-import { HeroList } from '../heroes/HeroList'
+import { HeroList } from '../heroes/HeroList' //** Lo importo para usarlo */
 
 export const DcScreen = () => {
     return (
         <div>
             <h1>DC Screen</h1>
             <hr />
-            {/* Solamente teniamos que mandar un HeroList mandando un publisher correcto, de los dos elementos que teniamos, y este recibe un publisher y lo puedo mandar en duro porque no voy a cambiar este argumento y sera DC Comics, si no le ponemos la expresion de JS lo va a mandar como un String */}
 
-            <HeroList publisher="DC Comics" />
+            {/* Implemento el HL components/hero/HeroList, dentro de esta pagina mandando el publisher DC para retornar los Heroes de aqui */}
+            <HeroList publisher="DC Comics" /> {/* Esto estaba en la l6 de components/hero/HeroList aqui pongo que quiero mostrar */}
         </div>
     )
 }
