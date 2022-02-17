@@ -1,0 +1,87 @@
+
+.btn { //** Todos los botones van a heredar esta clase */
+    background-color: transparent; //** El Boton lo hicimos transparente */
+    border: none; //** Le quitamos los borders */
+    color: white; //** Las letras las transparentamos con el fondo blanco */
+    cursor: pointer; //** Cuando le pasamos el mouse solo sale la manita */
+    font-size: 12px; //** Le cambiamos el tamaño a la letra */
+    padding: 7px 10px 7px 10px; //** El Primero es hacia arriba, el segundo es (no se), el tercero es hacia abajo, el cuarto es hacia la derecha */
+
+    transition: color .3s ease;
+
+    &:focus { //** Que cuando tenga el focus no salga como un foco verde */
+        outline: none; //** Si le doy click no aparece el borde espantoso */
+    }
+
+    &:hover {
+        color: darken($color: white, $amount: 10);
+    }
+}
+
+.btn-primary {
+    background-color: $primary; //** Ya le dimos color al boton */
+    border-radius: 2px; //** Redondiamos los borders */
+    
+    &:disabled { //** Esto se va a agregar cuando el boton lo desabilitemos */
+        background-color: lighten($color: ($primary), $amount: 15); //** Ya tiene una pìnta de boton desabilitado */
+    }
+    &:hover { //** Cuando el cursor este sobre el */
+        background-color: darken($color: $primary, $amount: 15); //** Que se ponga mas oscuro el background del color */
+    }
+}
+
+.btn-danger{
+    background-color: red;
+
+    transition: background-color .3s ease;
+
+    &:hover {
+        background-color: darken($color: red, $amount: 10);
+    }
+}
+
+.btn-block { //** Este es para hacer el boton del tamaño de la caja */
+    width: 100%;
+}
+
+.google-btn {
+    cursor: pointer;
+    margin-top: 5px;
+    width: 100%;
+    height: 42px;
+    background-color: $google-blue;
+    border-radius: 2px;
+    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
+
+    transition: box-shadow .3s ease;
+
+    .google-icon-wrapper {
+        position: absolute;
+        margin-top: 1px;
+        margin-left: 1px;
+        width: 40px;
+        height: 40px;
+        border-radius: 2px;
+        background-color: $white;
+    }
+    .google-icon {
+        position: absolute;
+        margin-top: 11px;
+        margin-left: 11px;
+        width: 18px;
+        height: 18px;
+    }
+    .btn-text {
+        float: right;
+        margin: 11px 40px 0 0;
+        color: $white;
+        font-size: 14px;
+        letter-spacing: 0.2px;
+    }
+    &:hover {
+        box-shadow: 0 0 6px $google-blue;
+    }
+    &:active {
+        background: $button-active-blue;
+    }
+}

@@ -1,0 +1,43 @@
+/* La fuente de la App */
+*{ 
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+/* Vamos a dejar el CSS Semicentrado */
+body{
+  padding: 60px;
+}
+
+/* Los input de donde escribimos */
+input{ 
+  color: gray;
+  font-size: 1.2rem;
+  width: 100%;
+}
+
+/* Esta es para cada una de las tarjetas */
+.card-grid{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+/* Este es donde se queda guardada nuestra busqueda y los gifs */
+.card{
+  align-content: center;
+  border: 1px solid blue;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  overflow: hidden;
+}
+
+/* Esto es la anotacion del texto de cada tarjeta */
+.card p {
+  padding: 5px;
+  text-align: center;
+}
+
+.card img{
+  max-height: 170px;
+}
