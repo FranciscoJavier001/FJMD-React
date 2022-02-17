@@ -1,9 +1,10 @@
 //**_______________________________________________________________________________________________________________________________________________*/
+//** Solucion */
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 //** Esta es la informacion que esperamos recibir */
-export const HeroCard = ({
+export const HeroCard = ({ //** Funcion */
   id,
   superhero,
   alter_ego,
