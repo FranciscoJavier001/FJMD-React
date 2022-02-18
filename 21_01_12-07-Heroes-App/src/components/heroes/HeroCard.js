@@ -35,9 +35,7 @@ export const HeroCard = ({ //** Esta es la informacion que esperamos recibir y l
             <Link to={ `./hero/${ id }`}> {/* Si le ponen en mas te lleva a un enlace del Heroe con su informacion components/heroes/HeroScreen*/}
                 Más...
             </Link>
-
           </div>
-
         </div>
       </div>
     </div>
