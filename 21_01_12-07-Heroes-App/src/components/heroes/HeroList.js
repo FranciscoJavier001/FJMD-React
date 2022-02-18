@@ -22,7 +22,7 @@ export const HeroList = ({ publisher }) => { //** Recibimos publisher de src/dat
         <div className="card-columns animate__animated animate__fadeIn"> 
              { //** Esta es la expresion para barrer osea usar el map */
                 heroes.map( hero => ( //** Barro el arreglo de los heroes con una funcion hero que retorna un objeto en el HC l25 */
-                    <HeroCard
+                    <HeroCard //** Importado desde components/>heroes/HeroCard, y es para poder renderizar la tareta de los heroes */
                     key={ hero.id } //** Key es para acceder a un atributo de HC "id" de la constante exportada en l5 components/heroes/HeroCard */
                     { ...hero } //** Operador spred para mostrar la info de las propiedades de cada heroe */
                     />
