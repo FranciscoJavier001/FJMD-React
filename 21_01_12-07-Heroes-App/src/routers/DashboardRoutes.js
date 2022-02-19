@@ -13,6 +13,7 @@ export const DashboardRoutes = () => { //** Exportamos este FC que son las rutas
 
     // console.log(props);
     
+    //** Esto lo mostramos cuando el usuario ya esta autentificado */
     return (
         <> {/* Es un fragment, sirve para colocar mas cosas */}
             <Navbar /> {/* Para mostrar en Navbar al acceder al hacer login */}
@@ -22,7 +23,7 @@ export const DashboardRoutes = () => { //** Exportamos este FC que son las rutas
                 <Switch> {/* Va a cambiar segun el caso */}
                     <Route exact path="/marvel" component={ MarvelScreen } /> {/* Ruta exacta y el componente a renderizar */}
                     {/* Seleccionando a un heroe, sale una pantalla individual, cambia el URL y se renderiza HeroScreen, "nombre del heroe" */}
-                    <Route exact path="/hero/:heroeId" component={ HeroScreen } />
+                    <Route exact path="/hero/:heroeId" component={ HeroScreen } /> {/* Ruta del info del Heroe, components/heroes/HeroCard l35 */}
                     <Route exact path="/dc" component={ DcScreen } /> {/* Ruta exacta y el componente a renderizar */}
                     <Route exact path="/search" component={ SearchScreen } /> {/* Ruta de busqueda y lo que renderizamos */}
 
