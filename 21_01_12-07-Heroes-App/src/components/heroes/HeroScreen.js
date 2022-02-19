@@ -3,7 +3,7 @@ import React, { useMemo } from 'react'
 import { useParams, Redirect } from 'react-router-dom'
 import { getHeroById } from '../../selectors/getHeroById';
 
-export const HeroScreen = ({ history }) => {
+export const HeroScreen = ({ history }) => { //** Necesito el history para poder modificar el boton (Puedo ver las props en console_compoents) */
 
     const { heroeId } = useParams(); //** useParams=Extrae parametros del url, lo obtenemos como params que desestructuramos con heroeId */
     // console.log(params); //** l8 tenia params, pero lo desestructuramos, hacemos esto viendo lo que trae en consola y lo puedo traer */
@@ -57,7 +57,7 @@ export const HeroScreen = ({ history }) => {
                 <h3>{ superhero }</h3> {/* Nombre de superheroe como encabezado */}
                 <ul className="list-group list-group-flush"> {/* ui=Lista - list-group=En lista con margen - list-group-flush=Quitar ls tablas */}
                     <li className="list-group-item"> <b> Alter Ego: </b> { alter_ego } </li> {/* list-group-item=Quitar el simbolo de lista */}
-                    <li className="list-group-item"> <b> Publisher: </b> { publisher } </li>
+                    <li className="list-group-item"> <b> Publisher: </b> { publisher } </li> {/* b=Negritas */}
                     <li className="list-group-item"> <b> First Appearance: </b> { first_appearance } </li>
                 </ul>
 
