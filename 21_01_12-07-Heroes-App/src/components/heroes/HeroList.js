@@ -8,7 +8,7 @@ export const HeroList = ({ publisher }) => { //** Recibimos publisher de src/dat
     //** Creo una const, que como no va a estar mutando la info la recibe de la funcion gHBP, recibiendo el publisher, asi tengo la data */
     //** const heroes = getHeroesByPublisher( publisher ); */
 
-    //** useMemo, memoriza valores, recibe una funcion que retorna el valora a memorizar, segundo parametro un array de dependencias */
+    //** useMemo, memoriza valores, recibe una funcion que retorna el valora a memorizar, segundo es lo que se dispara si hay cambios */
     const heroes = useMemo(() => getHeroesByPublisher( publisher ), [publisher])
 
     return (

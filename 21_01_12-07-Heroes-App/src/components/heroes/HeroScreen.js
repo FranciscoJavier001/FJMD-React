@@ -11,11 +11,11 @@ export const HeroScreen = ({ history }) => { //** Necesito el history para poder
     // const hero = getHeroById( heroeId ); //** Funcion de getHeroById que manda el heroId de params"este manda, funcion de flecha recibe" */
     // console.log(hero); //** Vemos que tenemos toda la info del heroe */
 
-    //** useMemo, memoriza para que no haya cambios en el componente */
+    //** useMemo, memoriza para que no haya cambios en el componente, hasta que haya cambio en la dependencia lo segundo */
     //** En la funcion de flecha que se ejecuta, lo primero es la funcion a llamar l8, y lo segundo lo que se dispara si el heroe es diferente */
     const hero = useMemo(() => getHeroById( heroeId ), [ heroeId ]);
     
-    console.log('Hero:', hero, 'HeroId:' , heroeId,); //** Viene info del hero, y lo segundo es heroeId, que viene en data/heroes */
+    // console.log('Hero:', hero, 'HeroId:' , heroeId,); //** Viene info del hero, y lo segundo es heroeId, que viene en data/heroes */
     
     if ( !hero ) { //** Si el heroe no existe voy a mandar el Redirect que viene de react-router-dom y lo redirecciono a la pagina de marvel*/
         return <Redirect to="/" />
