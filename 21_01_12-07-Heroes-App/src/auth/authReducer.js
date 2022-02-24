@@ -1,29 +1,27 @@
 //**_______________________________________________________________________________________________________________________________________________*/
-//** Esto es una simple funcion pura */
-
 import { types } from "../types/types";
 
-// const state = { //** Voy a tener una estado que sea parecido a este que tenga el name del usuario y el logged en true, esto va a ser mi estado si el usuario esta autentificado, y si no esta autentificado va a tener el logged en falso */
+//** Este va a ser el estado si el usuario esta autentificado, y en caso contrario el logged en false */
+// const state = { 
 //     name: 'Francisco',
 //     logged: true
 // }
 
-export const authReducer = ( state = {}, action ) => { //** Esta funcion recibe el state que va a ser un objeto y recibe el action que va a ser lo que quiero hacer y esta es una funcion de flecha y la vamos a exportar para utilizar en otro lugar y dentro voy a tener un switch que vamos avaluar el action.type */
+export const authReducer = ( state = {}, action ) => { //** Reducer que recibe el state como un arreglo vacio, que va a ejecutar una accion */
 
-    switch ( action.type ) {
-        case types.login: //** Aqui ingresamos las aciones, uno es cuando esta en el login y en el logout, importamos el types y escribimos la accion que yo quiero despues del punto */
-            return { //** Para el return voy a retornar todo lo que contenga el action.payload */
+    switch ( action.type ) { //** Switch=Son los casos a evaluar - Las Acciones vienen de src/types/types */
+        case types.login: //** Esta va a ser la accion del login de types/types y de ahi lo importamos a src/components/loginScreen */
+            return { //** Para el return voy a retornar todo lo que contenga el action.payload que viene mi nombre src/components/loginScreen l21 */
                 ...action.payload,
-                //** Voy a poner otra propiedad interesante que va a ser la autentificacion del usuario que va a ser logged */
-                logged: true //** Va a ser true si pasa la autentifficacion */
+                logged: true //** Otra propiedad que pongo que va a ser true si pasa la autentificacion*/
             }
 
             case types.logout:
-                return { //** Voy a hacer el return del objeto donde no me interese nada lo que tenga en el payload, simplemente que tenga el logged en false */
+                return { //** Aqui no tengo el payload, osea simplemente el estado de logged en false */
                     logged: false
                 }
     
-        default: //** El default va a ser el state asi como se encuentre */
+        default: //** El estdo por default va a ser como lo encuntre en el state */
             return state;
     }
 }
