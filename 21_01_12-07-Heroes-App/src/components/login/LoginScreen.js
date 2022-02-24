@@ -5,8 +5,8 @@ import { types } from '../../types/types';
 
 export const LoginScreen = ({ history }) => { //** El LS recibe el history(este vide de Navegador/Components/props) */
 
-    
-    const { dispatch } = useContext( AuthContext ); //** Tambien esta en src/HeroesApp y en el dispatch vienen parametros que mandamos/recibimos */
+    //** Este context esta en "Aqui - src/HeroesApp", lo defini en src/auth/AuthContext */
+    const { dispatch } = useContext( AuthContext ); //** Esta en src/HeroesApp y en el dispatch vienen parametros que mandamos/recibimos */
 
     const handleLogin = () => { //** Funcion que no recibe nada */
         // history.push('/'); //** Ruta a la que voy a navegar con click en el login */
