@@ -17,7 +17,7 @@ export const Navbar = () => { //** Es la linea 8, pero remplazo la sintaxis */
     // console.log(history);
     // console.log(name);
 
-    const handleLogout = () => { //** Funcion al acer click en el boton */
+    const handleLogout = () => { //** Funcion al hacer click en el boton */
 
         // console.log('Click!'); //** Simulo el click de la funcion handleLogout */
 
@@ -48,7 +48,7 @@ export const Navbar = () => { //** Es la linea 8, pero remplazo la sintaxis */
 
                     <NavLink 
                         activeClassName="active" //** Dond este seleccionado se quede en color blanco */
-                        className="nav-item nav-link" //** nav-link= es para que todos se vean a la altura */
+                        className="nav-item nav-link" //** nav-item=Item de navegacion - nav-link= es para que todos se vean a la altura */
                         exact //** Es la direccion a la que lleva */
                         to="/marvel"
                     >
@@ -64,9 +64,9 @@ export const Navbar = () => { //** Es la linea 8, pero remplazo la sintaxis */
                         DC
                     </NavLink>
 
-                    <NavLink 
-                        activeClassName="active"
-                        className="nav-item nav-link" 
+                    <NavLink //** Ruta que me lleva al Search en el NavBar */
+                        activeClassName="active" //** Para que se quede blanco cuando este ahi */
+                        className="nav-item nav-link"
                         exact
                         to="/search"
                     >
