@@ -30,11 +30,11 @@ export const Navbar = () => { //** Es la linea 8, pero remplazo la sintaxis */
     }
 
     return (
-        //** navbar= Para que todo este junto y no haya espacios */
+        //** navbar=Para que todo este junto y no haya espacios */
         //** navbar-expand-sm=para poner el navbar en fila y separados */
         //** navbar-dark=letras en color gris */
         //** bg-dark=fondo en negro */
-        <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             
             <Link 
                 className="navbar-brand" //** Es para que salga al inicio y mas grande */
@@ -43,7 +43,7 @@ export const Navbar = () => { //** Es la linea 8, pero remplazo la sintaxis */
                 Asociaciones {/* Texto */}
             </Link>
 
-            <div className="navbar-collapse"> {/* Hacer mas chico la anchura */}
+            <div className="navbar-collapse col-1"> {/* Hacer mas chico la anchura */}
                 <div className="navbar-nav">{/* Para que todas esten en hileras */}
 
                     <NavLink 
@@ -75,7 +75,7 @@ export const Navbar = () => { //** Es la linea 8, pero remplazo la sintaxis */
                 </div>
             </div>
 
-            <div className="navbar-collapse collapse w-100 order-3 dual-collapse2"> {/* navbar-collapse=salen las letras */}
+            <div className="navbar-collapse collapse w-100 order-3 dual-collapse2"> {/* navbar-collapse=salen las letras (name-Logout) */}
                 <ul className="navbar-nav ml-auto"> {/* navbar-nav=En fila - ml-auto=que salga hasta la derecha */}
                     
                     <span className="nav-item nav-link text-info"> {/* nav-link=Alineado - text-info=Color del nombre */}
