@@ -29,7 +29,7 @@ export const AppRouter = () => { //** exporto este FC a HeroesApp */
                     />
 
                     <PrivateRoute //** La Definimos en src/>routers/PrivateRoute, se accede a esta pagina al logearse, auqui hay mas componentes */
-                    path="/"
+                    path="/" //** Esta es la ruta padre y pueda distribuirla a los hijos */
                     component={ DashboardRoutes } //** Aqui se Redirige el componente, aqui hay muchas rutas */
                     isAutenticated={ user.logged } //** Asi confirmamos si esta autentificado isAutenticated */
                     />

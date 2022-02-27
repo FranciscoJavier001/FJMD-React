@@ -6,13 +6,12 @@ import { AuthContext } from '../../auth/AuthContext'
 import { types } from '../../types/types';
 
 //  export const Navbar = ({ history }) => { //** Aqui en pego el history, no compartir mucha informacion por los props */
-
 export const Navbar = () => { //** Es la linea 8, pero remplazo la sintaxis */
 
     //** Necesito acceso a AuthContext-dentro de useContext, del user-voy a extraer el name, y el dispatch hace el logout y purgo el reducer */
-    const { user:{ name }, dispatch } = useContext( AuthContext );
+    const { user:{ name }, dispatch } = useContext( AuthContext ); //** uC=Facilita informacion en el arbol de componentes */
     //** react-router-dom nos ofrece un useHistory, y soluciono el problema de compartir info a traves de las props */
-    const history = useHistory(); //**  */
+    const history = useHistory(); //** Para usar uH y el replace l24, este me regresa un history porque esta dentro del Provider HeroesApp */
 
     // console.log(history);
     // console.log(name);
@@ -21,10 +20,10 @@ export const Navbar = () => { //** Es la linea 8, pero remplazo la sintaxis */
 
         // console.log('Click!'); //** Simulo el click de la funcion handleLogout */
 
-        //** Cambie la pagina al login */
+        //** Cambie la pagina al login, pero sin poder ir para atras */
         history.replace('/login');
 
-        dispatch({ //** Mando la accion de logout de types, borro todo y pongo el logged en false */
+        dispatch({ //** Mando la accion de logout de types, borro todo y pongo el logged en false types/types */
             type: types.logout
         });
     }
