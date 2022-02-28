@@ -1,10 +1,10 @@
+//**_______________________________________________________________________________________________________________________________________________*/
 import React from 'react'
 import { mount } from 'enzyme'
 import { MemoryRouter, Route } from 'react-router-dom'
 import { SearchScreen } from '../../../components/search/SearchScreen'
 
-describe('Pruebas en <SearchScreen />', () => {
-    
+describe('Pruebas en <SearchScreen />', () => {    
 
     test('Debe de mostrarse correctamente con valores por defecto', () => {
         
@@ -17,7 +17,7 @@ describe('Pruebas en <SearchScreen />', () => {
         )
 
         expect( wrapper ).toMatchSnapshot()
-        expect( wrapper.find('.alert-info').text().trim() ).toBe('Search a Hero') //** Aqui voy a buscar un elemento por la clase y esperaria que ese texto sea Search a hero */
+        expect( wrapper.find('.alert-info').text().trim() ).toBe('Resultado del SuperHeroe') //** Aqui voy a buscar un elemento por la clase y esperaria que ese texto sea Search a hero */
     })
     
     //** Que pasa si mando info por el URL y asegurarme que la caja de texto tenga ese valor */
@@ -45,7 +45,7 @@ describe('Pruebas en <SearchScreen />', () => {
             </MemoryRouter>
         )
 
-        expect( wrapper.find('.alert-danger').text().trim() ).toBe(`There is not a hero with "batman123"`);
+        expect( wrapper.find('.alert-danger').text().trim() ).toBe(`No Existe un SuperHeroe con el Nombre "batman123"`);
         expect( wrapper ).toMatchSnapshot()
     })
     

@@ -68,3 +68,15 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+---Anotaciones para TEST---
+Instalar Enzyme
+npm i --save-dev enzyme enzyme-adapter-react-16
+
+Instalar enzyme-to-json
+npm install --save-dev enzyme-to-json
+
+Dentro de src crear el archivo llamado
+setupTest.js - Dentro del archivo ya tengo la informacion del archivo
+
+Terminal>npm run test

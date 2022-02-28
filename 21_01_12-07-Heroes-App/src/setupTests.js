@@ -1,5 +1,5 @@
-//** Hay que hacer la configuracion de enzyme y enzyme-to-json */
-
+//**_______________________________________________________________________________________________________________________________________________*/
+//** Configuracion Enzyme, Adapter, createSerializer */
 import Enzyme from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 import { createSerializer } from 'enzyme-to-json';

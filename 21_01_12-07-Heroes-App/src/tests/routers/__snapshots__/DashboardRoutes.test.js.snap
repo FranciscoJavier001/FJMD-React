@@ -2,19 +2,21 @@
 
 exports[`Pruebas en <DashboardRoutes /> Debe mostrarse correctamente 1`] = `
 Array [
+  " ",
   <nav
-    className="navbar navbar-expand-sm navbar-dark bg-dark"
+    className="navbar navbar-expand-lg navbar-dark bg-dark"
   >
     <a
       className="navbar-brand"
       href="/"
       onClick={[Function]}
     >
-      Asociaciones
+      Asociaciones 
     </a>
     <div
-      className="navbar-collapse"
+      className="navbar-collapse col-1"
     >
+       
       <div
         className="navbar-nav"
       >
@@ -48,13 +50,17 @@ Array [
     <div
       className="navbar-collapse collapse w-100 order-3 dual-collapse2"
     >
+       
       <ul
         className="navbar-nav ml-auto"
       >
+         
         <span
           className="nav-item nav-link text-info"
         >
+           
           Pedro
+           
         </span>
         <button
           className="nav-item nav-link btn"
@@ -65,9 +71,11 @@ Array [
       </ul>
     </div>
   </nav>,
+  " ",
   <div
     className="container mt-2"
   >
+     
     <div>
       <h1>
         Marvel Screen
@@ -84,12 +92,15 @@ Array [
             }
           }
         >
+           
           <div
             className="row no-gutters"
           >
+             
             <div
               className="col-md-4"
             >
+               
               <img
                 alt="Spider Man"
                 className="card-img"
@@ -99,6 +110,7 @@ Array [
             <div
               className="col-md-8"
             >
+               
               <div
                 className="card-body"
               >
@@ -107,14 +119,17 @@ Array [
                 >
                   Spider Man
                 </h5>
+                 
                 <p
                   className="card-text"
                 >
                   Peter Parker
                 </p>
+                 
                 <p
                   className="card-text"
                 >
+                   
                   <small
                     className="text-muted"
                   >
@@ -122,12 +137,14 @@ Array [
                     Amazing Fantasy #15
                      
                   </small>
+                   
                 </p>
                 <a
                   href="/hero/marvel-spider"
                   onClick={[Function]}
                 >
-                  Mas...
+                   
+                  Más...
                 </a>
               </div>
             </div>
@@ -141,12 +158,15 @@ Array [
             }
           }
         >
+           
           <div
             className="row no-gutters"
           >
+             
             <div
               className="col-md-4"
             >
+               
               <img
                 alt="Captain America"
                 className="card-img"
@@ -156,6 +176,7 @@ Array [
             <div
               className="col-md-8"
             >
+               
               <div
                 className="card-body"
               >
@@ -164,14 +185,17 @@ Array [
                 >
                   Captain America
                 </h5>
+                 
                 <p
                   className="card-text"
                 >
                   Steve Rogers
                 </p>
+                 
                 <p
                   className="card-text"
                 >
+                   
                   <small
                     className="text-muted"
                   >
@@ -179,12 +203,14 @@ Array [
                     Captain America Comics #1
                      
                   </small>
+                   
                 </p>
                 <a
                   href="/hero/marvel-captain"
                   onClick={[Function]}
                 >
-                  Mas...
+                   
+                  Más...
                 </a>
               </div>
             </div>
@@ -198,12 +224,15 @@ Array [
             }
           }
         >
+           
           <div
             className="row no-gutters"
           >
+             
             <div
               className="col-md-4"
             >
+               
               <img
                 alt="Iron Man"
                 className="card-img"
@@ -213,6 +242,7 @@ Array [
             <div
               className="col-md-8"
             >
+               
               <div
                 className="card-body"
               >
@@ -221,14 +251,17 @@ Array [
                 >
                   Iron Man
                 </h5>
+                 
                 <p
                   className="card-text"
                 >
                   Tony Stark
                 </p>
+                 
                 <p
                   className="card-text"
                 >
+                   
                   <small
                     className="text-muted"
                   >
@@ -236,12 +269,14 @@ Array [
                     Tales of Suspense #39
                      
                   </small>
+                   
                 </p>
                 <a
                   href="/hero/marvel-iron"
                   onClick={[Function]}
                 >
-                  Mas...
+                   
+                  Más...
                 </a>
               </div>
             </div>
@@ -255,12 +290,15 @@ Array [
             }
           }
         >
+           
           <div
             className="row no-gutters"
           >
+             
             <div
               className="col-md-4"
             >
+               
               <img
                 alt="Thor"
                 className="card-img"
@@ -270,6 +308,7 @@ Array [
             <div
               className="col-md-8"
             >
+               
               <div
                 className="card-body"
               >
@@ -278,14 +317,17 @@ Array [
                 >
                   Thor
                 </h5>
+                 
                 <p
                   className="card-text"
                 >
                   Thor Odinson
                 </p>
+                 
                 <p
                   className="card-text"
                 >
+                   
                   <small
                     className="text-muted"
                   >
@@ -293,12 +335,14 @@ Array [
                     Journey into Myster #83
                      
                   </small>
+                   
                 </p>
                 <a
                   href="/hero/marvel-thor"
                   onClick={[Function]}
                 >
-                  Mas...
+                   
+                  Más...
                 </a>
               </div>
             </div>
@@ -312,12 +356,15 @@ Array [
             }
           }
         >
+           
           <div
             className="row no-gutters"
           >
+             
             <div
               className="col-md-4"
             >
+               
               <img
                 alt="Hulk"
                 className="card-img"
@@ -327,6 +374,7 @@ Array [
             <div
               className="col-md-8"
             >
+               
               <div
                 className="card-body"
               >
@@ -335,14 +383,17 @@ Array [
                 >
                   Hulk
                 </h5>
+                 
                 <p
                   className="card-text"
                 >
                   Bruce Banner
                 </p>
+                 
                 <p
                   className="card-text"
                 >
+                   
                   <small
                     className="text-muted"
                   >
@@ -350,12 +401,14 @@ Array [
                     The Incredible Hulk #1
                      
                   </small>
+                   
                 </p>
                 <a
                   href="/hero/marvel-hulk"
                   onClick={[Function]}
                 >
-                  Mas...
+                   
+                  Más...
                 </a>
               </div>
             </div>
@@ -369,12 +422,15 @@ Array [
             }
           }
         >
+           
           <div
             className="row no-gutters"
           >
+             
             <div
               className="col-md-4"
             >
+               
               <img
                 alt="Wolverine"
                 className="card-img"
@@ -384,6 +440,7 @@ Array [
             <div
               className="col-md-8"
             >
+               
               <div
                 className="card-body"
               >
@@ -392,14 +449,17 @@ Array [
                 >
                   Wolverine
                 </h5>
+                 
                 <p
                   className="card-text"
                 >
                   James Howlett
                 </p>
+                 
                 <p
                   className="card-text"
                 >
+                   
                   <small
                     className="text-muted"
                   >
@@ -407,12 +467,14 @@ Array [
                     The Incredible Hulk #180
                      
                   </small>
+                   
                 </p>
                 <a
                   href="/hero/marvel-wolverine"
                   onClick={[Function]}
                 >
-                  Mas...
+                   
+                  Más...
                 </a>
               </div>
             </div>
@@ -426,12 +488,15 @@ Array [
             }
           }
         >
+           
           <div
             className="row no-gutters"
           >
+             
             <div
               className="col-md-4"
             >
+               
               <img
                 alt="Daredevil"
                 className="card-img"
@@ -441,6 +506,7 @@ Array [
             <div
               className="col-md-8"
             >
+               
               <div
                 className="card-body"
               >
@@ -449,14 +515,17 @@ Array [
                 >
                   Daredevil
                 </h5>
+                 
                 <p
                   className="card-text"
                 >
                   Matthew Michael Murdock
                 </p>
+                 
                 <p
                   className="card-text"
                 >
+                   
                   <small
                     className="text-muted"
                   >
@@ -464,12 +533,14 @@ Array [
                     Daredevil #1
                      
                   </small>
+                   
                 </p>
                 <a
                   href="/hero/marvel-daredevil"
                   onClick={[Function]}
                 >
-                  Mas...
+                   
+                  Más...
                 </a>
               </div>
             </div>
@@ -483,12 +554,15 @@ Array [
             }
           }
         >
+           
           <div
             className="row no-gutters"
           >
+             
             <div
               className="col-md-4"
             >
+               
               <img
                 alt="Hawkeye"
                 className="card-img"
@@ -498,6 +572,7 @@ Array [
             <div
               className="col-md-8"
             >
+               
               <div
                 className="card-body"
               >
@@ -506,14 +581,17 @@ Array [
                 >
                   Hawkeye
                 </h5>
+                 
                 <p
                   className="card-text"
                 >
                   Clinton Francis Barton
                 </p>
+                 
                 <p
                   className="card-text"
                 >
+                   
                   <small
                     className="text-muted"
                   >
@@ -521,12 +599,14 @@ Array [
                     Tales of Suspense #57
                      
                   </small>
+                   
                 </p>
                 <a
                   href="/hero/marvel-hawkeye"
                   onClick={[Function]}
                 >
-                  Mas...
+                   
+                  Más...
                 </a>
               </div>
             </div>
@@ -540,12 +620,15 @@ Array [
             }
           }
         >
+           
           <div
             className="row no-gutters"
           >
+             
             <div
               className="col-md-4"
             >
+               
               <img
                 alt="Cyclops"
                 className="card-img"
@@ -555,6 +638,7 @@ Array [
             <div
               className="col-md-8"
             >
+               
               <div
                 className="card-body"
               >
@@ -563,14 +647,17 @@ Array [
                 >
                   Cyclops
                 </h5>
+                 
                 <p
                   className="card-text"
                 >
                   Scott Summers
                 </p>
+                 
                 <p
                   className="card-text"
                 >
+                   
                   <small
                     className="text-muted"
                   >
@@ -578,12 +665,14 @@ Array [
                     X-Men #1
                      
                   </small>
+                   
                 </p>
                 <a
                   href="/hero/marvel-cyclops"
                   onClick={[Function]}
                 >
-                  Mas...
+                   
+                  Más...
                 </a>
               </div>
             </div>
@@ -597,12 +686,15 @@ Array [
             }
           }
         >
+           
           <div
             className="row no-gutters"
           >
+             
             <div
               className="col-md-4"
             >
+               
               <img
                 alt="Silver Surfer"
                 className="card-img"
@@ -612,6 +704,7 @@ Array [
             <div
               className="col-md-8"
             >
+               
               <div
                 className="card-body"
               >
@@ -620,14 +713,17 @@ Array [
                 >
                   Silver Surfer
                 </h5>
+                 
                 <p
                   className="card-text"
                 >
                   Norrin Radd
                 </p>
+                 
                 <p
                   className="card-text"
                 >
+                   
                   <small
                     className="text-muted"
                   >
@@ -635,18 +731,21 @@ Array [
                     The Fantastic Four #48
                      
                   </small>
+                   
                 </p>
                 <a
                   href="/hero/marvel-silver"
                   onClick={[Function]}
                 >
-                  Mas...
+                   
+                  Más...
                 </a>
               </div>
             </div>
           </div>
         </div>
       </div>
+       
     </div>
   </div>,
 ]

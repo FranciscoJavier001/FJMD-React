@@ -2,17 +2,18 @@
 
 exports[`Pruebas en <Navbar /> Debe de mostrarse correctamente 1`] = `
 <nav
-  className="navbar navbar-expand-sm navbar-dark bg-dark"
+  className="navbar navbar-expand-lg navbar-dark bg-dark"
 >
   <a
     className="navbar-brand"
     onClick={[Function]}
   >
-    Asociaciones
+    Asociaciones 
   </a>
   <div
-    className="navbar-collapse"
+    className="navbar-collapse col-1"
   >
+     
     <div
       className="navbar-nav"
     >
@@ -42,13 +43,17 @@ exports[`Pruebas en <Navbar /> Debe de mostrarse correctamente 1`] = `
   <div
     className="navbar-collapse collapse w-100 order-3 dual-collapse2"
   >
+     
     <ul
       className="navbar-nav ml-auto"
     >
+       
       <span
         className="nav-item nav-link text-info"
       >
+         
         Carlos
+         
       </span>
       <button
         className="nav-item nav-link btn"
