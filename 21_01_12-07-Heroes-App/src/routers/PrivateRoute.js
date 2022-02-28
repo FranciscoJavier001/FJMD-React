@@ -27,6 +27,6 @@ export const PrivateRoute = ({ //** Aqui voy a recibir varios elementos en los p
 }
 
 PrivateRoute.propTypes = { // Utilizo PrivateRoute y lo implemento en AppRouter para proteger el { DashboardRoutes }
-    isAutenticated: PropTypes.bool.isRequired, //** Asi le decimos que es booleano */
-    component: PropTypes.func.isRequired //** Va a ser una funcion */
+    isAutenticated: PropTypes.bool.isRequired, //** Asi le decimos que es booleano, y definimos que es requerida */
+    component: PropTypes.func.isRequired //** Va a ser una funcion y definimos que es requerida */
 }

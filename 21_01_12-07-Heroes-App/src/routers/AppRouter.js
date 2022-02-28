@@ -25,8 +25,8 @@ export const AppRouter = () => { //** exporto este FC a HeroesApp */
                     <PublicRoute //** La Definimos en src/>routers/PublicRoute, esta pagina va a ser la primera */
                     exact //** Para que la Ruta sea Exacta */
                     path="/login" //** Cual va a ser la direccion */
-                    component={ LoginScreen } //** Al componente donde voy a redirigir */
-                    isAutenticated={ user.logged } //** Asi confirmamos si no esta autentificado isAutenticated */
+                    component={ LoginScreen } //** Al componente donde voy a renderizar */
+                    isAutenticated={ user.logged } //** Asi confirmamos si no esta autentificado isAutenticated, estado actual del usuario */
                     />
 
                     <PrivateRoute //** La Definimos en src/>routers/PrivateRoute, se accede a esta pagina al logearse, auqui hay mas componentes */
