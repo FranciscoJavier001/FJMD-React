@@ -22,7 +22,7 @@ export const LoginScreen = ({ history }) => { //** El LS recibe el history(este 
             }
         });
 
-        history.replace( lastPath ); //** Al entrar se remplaza todo, para ya no poder acceder de nuevo al login, hasta hacer el logout */
+        history.replace( lastPath ); //** Al entrar/salir se remplaza todo, para exigir el login, al entrar manda a la ultima pagina visitada */
     }
 
     return (

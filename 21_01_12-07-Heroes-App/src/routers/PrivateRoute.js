@@ -11,6 +11,8 @@ export const PrivateRoute = ({ //** Aqui voy a recibir varios elementos en los p
     ...rest //** Voy a almacenar los argumentos aqui, asi se lo mando al componente del Route l19 (Aqui cae el path) */
 }) => {
 
+    // console.log(rest); //** Contiene todos los argumentos de la ruta path/location */
+
     // console.log(rest.location.pathname); //** Ruta en la que estamos actualmente, se guarda en lS */
     localStorage.setItem('lastPath', rest.location.pathname) //** Creo lP es ultima ruta visitada, la obtengo de las prop rest, se guarda en lS */
 
