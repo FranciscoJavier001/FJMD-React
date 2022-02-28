@@ -16,6 +16,7 @@ import { DashboardRoutes } from './DashboardRoutes';
 export const AppRouter = () => { //** exporto este FC a HeroesApp */
 
     const { user } = useContext( AuthContext ) //** Accedemos al user que viene de src/auth/AuthContext, donde se creo "createContext" */
+    // console.log(user); //** Asi vemos si el logged esta en false/true */
 
     return (
         <Router>
@@ -30,8 +31,8 @@ export const AppRouter = () => { //** exporto este FC a HeroesApp */
 
                     <PrivateRoute //** La Definimos en src/>routers/PrivateRoute, se accede a esta pagina al logearse, auqui hay mas componentes */
                     path="/" //** Esta es la ruta padre y pueda distribuirla a los hijos */
-                    component={ DashboardRoutes } //** Aqui se Redirige el componente, aqui hay muchas rutas */
-                    isAutenticated={ user.logged } //** Asi confirmamos si esta autentificado isAutenticated */
+                    component={ DashboardRoutes } //** Aqui se Redirige el componente, aqui hay muchas rutas y se renderiza */
+                    isAutenticated={ user.logged } //** Asi confirmamos si esta autentificado isAutenticated, porque ya tenemos context l18 */
                     />
                 </Switch>
             </div>
