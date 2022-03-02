@@ -1,13 +1,13 @@
+//**_______________________________________________________________________________________________________________________________________________*/
 import { authReducer } from "../../auth/authReducer"
 import { types } from "../../types/types";
 
 describe('Pruebas en authReducer', () => {
 
-    test('Debe de retornar el estado por defecto', () => {
-        //** Recuerda, un reducer es una simple funcion, por eso voy a poner una constante y este reducer regresa siempre un state, asi que lo importamos y el state lo hace mas sencillo y el estado inicial hace el logged en false y para la accion voy a mandarle un objeto vacio para que use el valor por defecto, y esperaria que el state fuera igual al estado inicial del logged en false (198-2:36) */
+    test('Debe de retornar el estado por defecto', () => { //** Reducer es una funcion que regresa siempre un state y este debe ser false(inicio) */
 
-        const state = authReducer({ logged: false }, {});
-        expect(state).toEqual({ logged: false });
+        const state = authReducer({ logged: false }, {}); //** El state en el aT debe ser el logged en false y le mandamos una accion objero vacio */
+        expect(state).toEqual({ logged: false }); //** Lo que esperamos que retorne */
     })
 
     test('Debe de autenticar y colocar el name del usuario', () => {
