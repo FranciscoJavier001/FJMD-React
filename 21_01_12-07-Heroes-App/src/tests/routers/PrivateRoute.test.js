@@ -20,9 +20,9 @@ describe('Pruebas en <PrivateRoute />', () => { //** </>=Para decir que es la pr
         const wrapper = mount( //** Debo de usar mount, porque shallow solo renderiza el componente */
              <MemoryRouter> {/* Error con las rutas, asi que asi las puedo falsear */}
                 <PrivateRoute //** Quiero renderizar este componente, tiene unos propstype, que son requeridos, y aqui se los voy a mandar */
-                    isAutenticated={ true } //** Este lo marcamos como true, para ver el span */
+                    isAutenticated={ true } //** Requerido - Este lo marcamos como true, para ver el span */
                     //** <span>"Es un contenedor de texto en linea"</span> */
-                    component={ () => <span>Listo!</span> } //** Este me pide que sea una funcion, asi que mando un span como una funcion */
+                    component={ () => <span>Listo!</span> } //** Req - Este me pide que sea una funcion, asi que mando un span como una funcion */
                     { ...props } //** Marca falla por falta de pathname - las defino y se las mando con el operador spred l9 */
                 />
             </MemoryRouter>
@@ -37,19 +37,21 @@ describe('Pruebas en <PrivateRoute />', () => { //** </>=Para decir que es la pr
     })
 
     test('Debe de bloquear el cmponente si no eta autenticado', () => {
-        const wrapper = mount(
-            <MemoryRouter> 
-                <PrivateRoute 
-                    isAutenticated={ false } 
-                    component={ () => <span>Listo!</span> } 
-                    { ...props } 
+        
+        const wrapper = mount( //** Mount para montar el componente */
+            <MemoryRouter> {/* Para falsear las rutas */}
+                <PrivateRoute //** Componente a evaluar */
+                    isAutenticated={ false } //** Requerido - Autentificacion falsa para que no muestre nada */
+                    component={ () => <span>Listo!</span> } //** Requerido - Lo que viene dentro del componente, es una funcion(contenedor texto) */
+                    { ...props } //** Mando las props para la falla de la ruta */
                 />
             </MemoryRouter>
         );
         
-        // console.log( wrapper.html() );
-        expect( wrapper.find('span').exists() ).toBe(false); 
+        // console.log( wrapper.html() ); //** No muestra nada en esta ruta */
 
-        expect( localStorage.setItem ).toHaveBeenCalledWith('lastPath', '/marvel') 
+        expect( wrapper.find('span').exists() ).toBe(false); //** No debe estar, porque es falso */
+
+        expect( localStorage.setItem ).toHaveBeenCalledWith('lastPath', '/marvel') //** Argumentos con los que fue llamado el ls.sI */
     })
 })
