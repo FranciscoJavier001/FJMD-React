@@ -14,12 +14,12 @@ describe('Pruebas en authReducer', () => {
 
         const action = { //** Accion que va a ser igual a un objeto */
             type: types.login, //** Dentro tiene el type de types/types(importado) con el login para ingresar */
-            payload: { //** En el Payload vamos a tener un nombre que va a ser pedro */
+            payload: { //** El Payload es un objeto que va a tener dentro el name de Pedro */
                 name: 'Pedro'
             }
         }
 
-        const state = authReducer({ logged: false }, action); //** El state que tendra el aR del estado inicial y este va a recibir un action l15 */
+        const state = authReducer({ logged: false }, action); //** El state que tendra el aR del estado inicial y le mandamos el action l15 */
 
         expect( state ).toEqual({ //** El state debe ser igual a este objeto */
             logged: true, //** El action debio de cambiar el logged a true */
@@ -27,14 +27,14 @@ describe('Pruebas en authReducer', () => {
         });
     })
 
-    test('Debe de borrar el nae del usuario y logged en false', () => {
-        //** La accion aqui va a ser logout, el payload no va a llevar naday el estado va a ser true y el name en Juan y al mandar esa accion el state sea false, para que no tenga el usuario (198-4:16) */
+    test('Debe de borrar el name del usuario y logged en false', () => { //** Debemos pasar el logged a false, porque salio el usuario */
 
-        const action = {
+        const action = { //** Definimos la accion que va a recibir el state, que es la salida del usuario */
             type: types.logout
         }
 
-        const state = authReducer({ logged: true, name: 'Juan' }, action);
-        expect( state ).toEqual({ logged: false });
+        const state = authReducer({ logged: true, name: 'Juan' }, action); //** Estado del aR es logged=true, y tiene un nombre definido */
+
+        expect( state ).toEqual({ logged: false }); //** El estado debe ser logged=false, porque saco al usuario, sin name */
     })
 })
