@@ -1,14 +1,16 @@
+//**_______________________________________________________________________________________________________________________________________________*/
+//** Se actualizo Enzyme */
 import React from 'react';
 // import { shallow} from 'enzyme'
 import { mount } from 'enzyme';
 import { PrivateRoute } from '../../routers/PrivateRoute';
 import { MemoryRouter } from 'react-router-dom';
 
-describe('Pruebas en <PrivateRoute />', () => {
+describe('Pruebas en <PrivateRoute />', () => { //** </>=Para decir que es la prueba en un componente */
 
-    const props = { //** Voy a crearme otra propiedad que puede ser que la necesite, puede ser argumento o propertyes, que va a ser un nuevo argumento al PrivateRoute que esta abajo, porque el objeto del rest.location.pathname viene en el rest, de igual manera, estas props tambien se las voy a mandar al PrivateRoute con el operador spreed */
-        location: { 
-            pathname: '/marvel' //** Voy a inventarme el location, luego viene el pathname y el path que quiero navegar tiene que ser cualquiera que tenga definido */
+    const props = { //** props=Objeto, que va a tener estas propiedades/propertyes */
+        location: { //** El las props, viene location, que tiene una propiedad de pathname */
+            pathname: '/marvel' //** Como ya ingresamos, podemos ver que ya estamos en marvel */
         }
     }
 
@@ -16,41 +18,40 @@ describe('Pruebas en <PrivateRoute />', () => {
 
     test('Debe de mostrar el componente si esta autenticado y guardar localStorage', () => {
         
-        //** Quiero probar un componente */
-        const wrapper = mount(
-            //** Este es otro HightOrderComponent para que podamos hacer pruebas de Router con ciertas rutas, osea el MemoryRouter va a falserar las diferentes rutas para que las pueda evaluar */
-            <MemoryRouter> 
-                <PrivateRoute //** Como quiero renderizar este componente tengo los propsTypes que me estan obligando porque los marque requeridos 199-3:37 */
-                    isAutenticated={ true } //** Este es un booleano que voy a evaluar, si estoy autenticado voy a ponerlo como true */
-                    component={ () => <span>Listo!</span> } //** Voy a mandar un componente, que me lo voy a inventar que va a ser un span que diga cualquier cosa, pero me dijo que hay que mandarlo como una funcion asi que lo hago una funcion de flecha y ya con eso lo hago funcion */
-                    { ...props } //** Estan con el operador spred las props que defini en la linea de 7 de la creacion de una constante */
+        const wrapper = mount( //** Debo de usar mount, porque shallow solo renderiza el componente */
+             <MemoryRouter>{/* Error con las rutas, asi que asi las puedo falsear */}
+                <PrivateRoute //** Quiero renderizar este componente, tiene unos propstype, que son requeridos, y aqui se los voy a mandar */
+                    isAutenticated={ true } //** Este lo marcamos como true */
+                    //** <span>"Es un contenedor de texto en linea"</span> */
+                    component={ () => <span>Listo!</span> } //** Este me pide que sea una funcion, asi que mando un span como una funcion */
+                    { ...props }  //** Marca falla por falta de pathname - las defino y se las mando con el operador spred l9 */
                 />
             </MemoryRouter>
         );
         
-        // console.log( wrapper.html() );
-        //** Esta prueba fallo, porque como esta la prueba, en el HighOtderComponent, no podemos usar el shallow, porque este solo va a renderizar el componente, en este caso el HighOrderComponent, pero no va a renderizar lo de adentro, pero el shallow no me va a funcionar como por ejemplo con el HOC del MemoryRouter, pero para esto voy a utilizar el mount */
-        expect( wrapper.find('span').exists() ).toBe(true); //** Aqui me interesa ver el span exista y que este el valor en true */
-        expect( localStorage.setItem ).toHaveBeenCalledWith('lastPath', '/marvel') //** Recordemos que ahora es una funcion jest, no debo mandarlo vacio, porque me va a dar un error, y debe haber sido llamado con el lastPath y el otro debe ser el pathname (que seria /marvel) */
+        // console.log( wrapper.html() ); //** Asi vemos lo que renderizo el componente "PrivateRoute" (el span) */
+        
+        expect( wrapper.find('span').exists() ).toBe(true); 
+
+        expect( localStorage.setItem ).toHaveBeenCalledWith('lastPath', '/marvel') 
     })
 
     test('Debe de bloquear el cmponente si no eta autenticado', () => {
         const wrapper = mount(
-            //** Este es otro HightOrderComponent para que podamos hacer pruebas de Router con ciertas rutas, osea el MemoryRouter va a falserar las diferentes rutas para que las pueda evaluar */
             <MemoryRouter> 
-                <PrivateRoute //** Como quiero renderizar este componente tengo los propsTypes que me estan obligando porque los marque requeridos 199-3:37 */
-                    isAutenticated={ false } //** Este es un booleano que voy a evaluar, si estoy autenticado voy a ponerlo como true */
-                    component={ () => <span>Listo!</span> } //** Voy a mandar un componente, que me lo voy a inventar que va a ser un span que diga cualquier cosa, pero me dijo que hay que mandarlo como una funcion asi que lo hago una funcion de flecha y ya con eso lo hago funcion */
-                    { ...props } //** Estan con el operador spred las props que defini en la linea de 7 de la creacion de una constante */
+                <PrivateRoute 
+                    isAutenticated={ false } 
+                    component={ () => <span>Listo!</span> } 
+
+                    { ...props } 
                 />
             </MemoryRouter>
         );
         
         // console.log( wrapper.html() );
-        //** Esta prueba fallo, porque como esta la prueba, en el HighOtderComponent, no podemos usar el shallow, porque este solo va a renderizar el componente, en este caso el HighOrderComponent, pero no va a renderizar lo de adentro, pero el shallow no me va a funcionar como por ejemplo con el HOC del MemoryRouter, pero para esto voy a utilizar el mount */
-        expect( wrapper.find('span').exists() ).toBe(false); //** Aqui me interesa ver el span exista y que este el valor en true */
-        expect( localStorage.setItem ).toHaveBeenCalledWith('lastPath', '/marvel') //** Recordemos que ahora es una funcion jest, no debo mandarlo vacio, porque me va a dar un error, y debe haber sido llamado con el lastPath y el otro debe ser el pathname (que seria /marvel) */
+
+        expect( wrapper.find('span').exists() ).toBe(false); 
+
+        expect( localStorage.setItem ).toHaveBeenCalledWith('lastPath', '/marvel') 
     })
 })
-
-//** Actualizamos la version de Enzyme, la documentacion la encontramos en github */

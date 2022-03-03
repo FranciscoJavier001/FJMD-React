@@ -8,7 +8,7 @@ export const PrivateRoute = ({ //** Aqui voy a recibir varios elementos en los p
     isAutenticated,
     component:Component, //** componente que la persona va a renderizar, pero para que no sea elemento HTML lo renombro con : */
     //** Aqui en los argumentos los "..." es el rest */
-    ...rest //** Voy a almacenar los argumentos aqui, asi se lo mando al componente del Route l19 (Aqui cae el path) */
+    ...rest //** Voy a almacenar los argumentos aqui, asi se lo mando al componente del Route l20 (Aqui cae el path) */
 }) => {
 
     // console.log(rest); //** Contiene todos los argumentos de la ruta path/location */
