@@ -11,19 +11,19 @@ describe('Pruebas en authReducer', () => {
     })
 
     test('Debe de autenticar y colocar el name del usuario', () => {
-        //** Debo de crear la accion que va a ser igual a un objeto que va a tener el type y vamos a importar nuestros "tyes", el type que vamos a mandar va a ser un login, luego viene el payload que tiene que ser un objeto que va a tener solamente el name y ponemos cualquier nombre, esa es la accion y vamos a mandarlo al reducer, entonces vamos a esperar que el logged este en true y que el nombre sea el mismo que colocamos arriba (198-3:12) */
 
-        const action = {
-            type: types.login,
-            payload: {
+        const action = { //** Accion que va a ser igual a un objeto */
+            type: types.login, //** Dentro tiene el type de types/types(importado) con el login para ingresar */
+            payload: { //** En el Payload vamos a tener un nombre que va a ser pedro */
                 name: 'Pedro'
             }
         }
 
-        const state = authReducer({ logged: false }, action);
-        expect( state ).toEqual({
-            logged: true,
-            name: 'Pedro'
+        const state = authReducer({ logged: false }, action); //** El state que tendra el aR del estado inicial y este va a recibir un action l15 */
+
+        expect( state ).toEqual({ //** El state debe ser igual a este objeto */
+            logged: true, //** El action debio de cambiar el logged a true */
+            name: 'Pedro' //** Debio asignar este nombre l18 */
         });
     })
 
