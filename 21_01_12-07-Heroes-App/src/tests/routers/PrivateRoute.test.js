@@ -36,7 +36,7 @@ describe('Pruebas en <PrivateRoute />', () => { //** </>=Para decir que es la pr
         expect( localStorage.setItem ).toHaveBeenCalledWith('lastPath', '/marvel') //** sI=funcion jest que pruebo, que haya sido llamada con lp/m */
     })
 
-    test('Debe de bloquear el cmponente si no eta autenticado', () => {
+    test('Debe de bloquear el componente si no eta autenticado', () => {
         
         const wrapper = mount( //** Mount para montar el componente */
             <MemoryRouter> {/* Para falsear las rutas */}

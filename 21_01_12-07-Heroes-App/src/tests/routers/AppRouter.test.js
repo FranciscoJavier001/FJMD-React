@@ -1,56 +1,50 @@
+//**_______________________________________________________________________________________________________________________________________________*/
 import React from 'react'
 import { mount, shallow } from 'enzyme'
 import { AppRouter } from '../../routers/AppRouter'
-import { AuthContext } from '../../auth/AuthContext'
+import { AuthContext } from '../../auth/AuthContext' //** Lo importamos, para dar contesto y es un HOC */
 
 describe('Pruebas en <AppRouter/>', () => {
     
     test('Debe de mostrar login si no está autenticado', () => {
 
-        // Aqui hay que Proveer lo que tenia el Context, que es el user y el dispatch
-        const contextValue = { //** Este va a ser la simulacion del objeto que definimos abajo, en el provider */
-            dispatch: jest.fn(), //** Cuando queremos provar funciones lo mejor que podemos hacer es usar jest.fn() */
-            user: {
-                logged: false //** Va a tener el logged en false por defecto, osea el estado inicial de la ruta */
+        //** Esto solo es el Contexto de los parametros que recibe el AC.P - Lo encuentro en HeroesApp l25 */
+        const contextValue = { //** {user} viene de uC(AC) - Uso cV, que es un objeto que voy a proveer igual dispatch, user y logged */
+            dispatch: jest.fn(), //** Dispatch es una funcion que recibe argumentos, asi que lo pruebo con jest */
+            user: { //** Necesito el user que tiene parametros como el logged */
+                logged: false //** Solo muestro la pantalla de login, porque no esta autentificado */
             }
         }
         
-        const wrapper = mount( //** Asi renderizamos componentes, y hay que vereficar si recibe algun argumento */
-            // Hay que importar el AuthContext.Provider para que se pueda hacer la desestructuracion de user y no nos maque error
-            // Otra cosa, el Context es un HighOrderComponent, osea que ya tenemos una estructura que se parece muchisimo a las pruebas que ya hemos echo antes en el PrivateRoute, asi que no me va a servir con el shallow, voy a tener que usar el mount
-            // El contextValue lo voy a mandar al Provider
-            <AuthContext.Provider value={ contextValue }>
-                <AppRouter />
+        const wrapper = mount( //** Uso Mount, para poder montar el componente, y verificar los argumentos que recibe */
+            <AuthContext.Provider value={ contextValue }> {/* AC.P necesita los valores de user, dispatch, definidos l12 en HeroesApp_l25  */}
+                <AppRouter /> {/* Componente que se va a mostrar/renderizar */}
             </AuthContext.Provider>
         );
 
-        expect( wrapper ).toMatchSnapshot();
+        expect( wrapper ).toMatchSnapshot(); //** Creamos el Snapshot, de que el usuario no esta autentificado */
 
-        // console.log( wrapper.html());
+        // console.log( wrapper.html() ); //** Marca error, porque el usuario esta en la pantalla de login */
     });
 
     test('Debe de mostrar el componente de Marvel si esta autenticado', () => {
-        
-        //** Voy a copiar y pegar la linea de arriba */
 
+        //** Igual, le damos contexto al test, pero con lo que necesita si esta autentificado */
         const contextValue = {
-            dispatch: jest.fn(),
-            user: { //** Con esto vemos que ya este autentificado */
+            dispatch: jest.fn(), //** Para probar la funcion del dispatch */
+            user: { //** Estos parametros se necesitan al estar autentificados */
                 logged: true,
                 name: 'Antonio'
             }
         }
 
-        const wrapper = mount(
-            <AuthContext.Provider value={ contextValue }>
+        const wrapper = mount( //** Ahora vamos a montar el componente */
+            <AuthContext.Provider value={ contextValue }> {/* Los ocupo en HeroesApp_l25 */}
                 <AppRouter />
             </AuthContext.Provider>
         );
 
-        expect( wrapper.find('.navbar').exists() ).toBe(true); //** Aqui esperamos que una clase este en true, ya que si no esta autentificado solo se muestra el loggin */
-        // console.log(wrapper.html() );
-
-    })
-    
-    
+        expect( wrapper.find('.navbar').exists() ).toBe(true); //** Debemos de mostrar la barra del Navbar, porque ya esta montada */
+        // console.log(wrapper.html() ); //** Ya muestra como esta diseñada la Navbar */
+    })  
 })
