@@ -26,6 +26,6 @@ describe('Pruebas en <DashboardRoutes />', () => {
         )
 
         expect( wrapper ).toMatchSnapshot() //** Que haga match con el Snapshot */
-        expect( wrapper.find('.text-info').text().trim() ).toBe('Pedro') //** Que lo busque en el snapchot y lo encontro */
+        expect( wrapper.find('.text-info').text().trim() ).toBe('Pedro') //** Que lo busque en el snapshot y lo encontro en l62,l68 "Pedro" */
     })  
 })
