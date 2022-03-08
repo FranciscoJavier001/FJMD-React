@@ -15,7 +15,7 @@ Array [
           href="/"
           onClick={[Function]}
         >
-          Asociaciones 
+          HeroesApp 
         </a>
         <div
           className="navbar-collapse col-1"

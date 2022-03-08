@@ -18,7 +18,7 @@ export const Navbar = () => { //** Es la linea 8, pero remplazo la sintaxis */
 
     const handleLogout = () => { //** Funcion al hacer click en el boton */
 
-        // console.log('Click!'); //** Simulo el click de la funcion handleLogout */
+        // console.log('Click!'); //** Simulo el click de la funcion handleLogout para la prueba NT=l51 */
 
         //** Cambie la pagina al login, pero sin poder ir para atras */
         history.replace('/login');
@@ -39,7 +39,7 @@ export const Navbar = () => { //** Es la linea 8, pero remplazo la sintaxis */
                 className="navbar-brand" //** Es para que salga al inicio y mas grande */
                 to="/" //** Donde me lleva cuando hago click */
             >
-                Asociaciones {/* Texto */}
+                HeroesApp {/* Texto */}
             </Link>
 
             <div className="navbar-collapse col-1"> {/* Hacer mas chico la anchura */}

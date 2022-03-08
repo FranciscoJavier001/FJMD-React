@@ -22,6 +22,7 @@ export const HeroesApp = () => { //** FC=rafc */
     return (
 
         //** Pongo Provider en nivel alto para distribuirlo en la App, los Valores del AC es el user-dispatch=(Acciones a disparar - types, login) */
+        //** Le pongo {{}}, porque con 1 sale error y con los 2 significa que cada vez que el provider se vuelva a renderizar se crea nuevo objeto */
         <AuthContext.Provider value={{ user, dispatch }}> {/* Aqui pongo el HOC - los valores son lo que se van a distribuir en la App */}
             <AppRouter /> {/* Es el componente que voy a mostrar/renderizar */}
         </AuthContext.Provider>
