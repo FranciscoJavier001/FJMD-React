@@ -1,3 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Pruebas en <HeroScreen /> Debe de mostrar el componente redirect si no hay argumentos en el URL 1`] = `""`;
+exports[`Pruebas en <HeroScreen /> Debe de mostrar el componente redirect si no hay argumentos en el URL 1`] = `
+Array [
+  " ",
+  "",
+  " ",
+]
+`;

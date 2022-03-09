@@ -1,33 +1,33 @@
 //**_______________________________________________________________________________________________________________________________________________*/
 import React from 'react'
-import { shallow, mount } from 'enzyme'
+import { mount } from 'enzyme'
 import { HeroScreen } from '../../../components/heroes/HeroScreen';
 import { MemoryRouter, Route } from 'react-router-dom';
 
 describe('Pruebas en <HeroScreen />', () => {
     
-    const history = { 
-        length: 10, 
-        push: jest.fn(), 
-        goBack: jest.fn(), 
+    const history = { //** Como HeroScreen recibe history, voy a crear esta dependencia para mandar, para falsear el mook components/heroes/HS l6 */
+        length: 10, //** Tengo definido que el length debe ser mayor a 2, para usar el push, osea regresarme a marvel */
+        push: jest.fn(), //** push, osea que me lleve al inicio */
+        goBack: jest.fn(), //** Para irme una pagina atras */
     }
 
-    const wrapper = mount( 
-        <MemoryRouter initialEntries={['/hero']}>
-            <HeroScreen history={ history } />
+    const wrapper = mount( //** Hago un Mount, porque voy  recibir un argumento */
+        <MemoryRouter initialEntries={['/hero']}> {/* Tengo un string vacio, necesito iE con URL y argumentos que debo enviar, y mando el '/hero' */}
+            <HeroScreen history={ history } /> {/* HeroScreen necesita el history, mando el que esta l9 */}
         </MemoryRouter>
     );
 
     test('Debe de mostrar el componente redirect si no hay argumentos en el URL', () => {
 
-        const wrapper = mount(
-            <MemoryRouter initialEntries={['/hero']}>
-            <HeroScreen history={ history } />
-            </MemoryRouter>
-        );
+        // const wrapper = mount(
+        //     <MemoryRouter initialEntries={['/hero']}>
+        //         <HeroScreen history={ history } />
+        //     </MemoryRouter>
+        // );
         
         expect( wrapper ).toMatchSnapshot()
-        expect( wrapper.find('Redirect').exists() ).toBe(true);
+        expect( wrapper.find('Redirect').exists() ).toBe(true); //** Debo de ver que el componente Redirect exista */
     })
 
     test('Debe de mostrar un heroe si el parametro existe y se encuentra', () => {
