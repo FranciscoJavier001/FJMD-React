@@ -54,15 +54,16 @@ export const HeroScreen = ({ history }) => { //** Necesito el history para poder
 
             {/* col-8=Espacio donde viene la info - animate__animated=activarlo - animate__fadeIn=Efecto aparicion como desvanecido */}
             <div className="col-8 animate__animated animate__fadeIn">
-                <h3>{ superhero }</h3> {/* Nombre de superheroe como encabezado */}
+                <h3 className='text-center'><u>Superhero: { superhero } -  Characters: { characters } </u></h3> {/* Encabezado, u=subrayado */}
                 <ul className="list-group list-group-flush"> {/* ui=Lista - list-group=En lista con margen - list-group-flush=Quitar ls tablas */}
                     <li className="list-group-item"> <b> Alter Ego: </b> { alter_ego } </li> {/* list-group-item=Quitar el simbolo de lista */}
                     <li className="list-group-item"> <b> Publisher: </b> { publisher } </li> {/* b=Negritas */}
                     <li className="list-group-item"> <b> First Appearance: </b> { first_appearance } </li>
                 </ul>
 
-                <h5> Characters </h5> {/* Encabezado */}
-                <p> { characters } </p> {/*  */}
+                {/* <h5> Characters </h5> <p> { characters }</p> Encabezado */}
+                {/* <p> { characters } </p> Se muestra abajo */}
+
 
                 <button //** Que esto va a ser un boton */
                 className="btn btn-outline-info" //** btn=Boton bootstrap - btn-outline-info=Boton transparente, con margen y azul */
