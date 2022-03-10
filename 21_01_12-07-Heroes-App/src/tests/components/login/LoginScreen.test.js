@@ -1,3 +1,4 @@
+//**_______________________________________________________________________________________________________________________________________________*/
 import React from 'react'
 import { mount } from 'enzyme'
 import { LoginScreen } from '../../../components/login/LoginScreen'
@@ -6,75 +7,58 @@ import { types } from '../../../types/types'
 
 describe('Pruebas en <LoginScreen />', () => {
 
-    //** Voy a crear tambien el objeto history que es lo que necesito enviarle y lo unico que necesito es la funcion del replace, osea que uso el jest.fn() */
-    const history = {
-        replace: jest.fn()
+    const history = { //** LoginScreen, recibe el history, debo de mandarlo y aqui lo defino src/components/login/LoginScreen L6 */
+        replace: jest.fn() //** Esta funcion la pide en src/components/login/LoginScreen L25 */
     }
 
-    //** Necesito tabien el dispatch */
-    const contextValue = {
-        dispatch: jest.fn(),
-        user: {
-            logged: false
-        }
+    const contextValue = { //** Me pide el {d}=uC(AC), asi que voy a darle el contexto */
+        dispatch: jest.fn(), //** Dispatch, es una funcion, asi que la falseo */
     }
 
-    //** Que es lo que voy a renderizar */
-    const wrapper = mount(
-        //** Aqui necesito el LoginScreen */
-        //** En el Provider voy a necesitar el valor del objeto y mando el contextValue */
-        <AuthContext.Provider value={ contextValue }>
-            {/* El LoginScreen recibe el history y se lo mando entre llaves */}
-            <LoginScreen history={ history } />
+    const wrapper = mount( //** Al pasarle contexto, uso el mount */
+        <AuthContext.Provider value={ contextValue }> {/* AC.P v={cV} - Le paso el contexto que cree arriba */}
+            <LoginScreen history={ history } /> {/* Renderizo src/components/login/LoginScreen L6 pide history y mandamos el history de aqui L10 */}
         </AuthContext.Provider>
     )
 
-    test('Debe de mostrarse correctamente', () => {
+    test('Debe de mostrarse correctamente', () => { //** Solo hago el match con el snapshot */
         
-
         expect( wrapper ).toMatchSnapshot()
     })
 
     test('Debe de realizar el dispatch y la navegacion', () => {
         
-        //** Debo de simula las funciones del boton */
-        //** Asi es como mando llamar al boton */
-        wrapper.find('button').prop('onClick')()
+        wrapper.find('button').prop('onClick')() //** Voy a buscar el boton con la propiedad onClick */
 
-        //** Ahora esperare que el contextValue = dispatch se haya llamado, y adentro ponemos con los objetos que fue llamado */
-        expect( contextValue.dispatch ).toHaveBeenCalledWith({
-            type: types.login,
-            //** El payload va a ser un objeto que debe tener el name que es Francisco */
-            payload: {
+        expect( contextValue.dispatch ).toHaveBeenCalledWith({ //** Hago la llamada con el context.dispatch(LoginScreen)L18 para saber su llamada */
+            type: types.login, //** Le paso este estado del types, para autentificarme, asi me lo pide */
+            payload: { //** La info que viene dentro que solicita */
                 name: 'Francisco'
             }
         })
 
-        //** Tambien esperare que el replace haya sido llamado */
-
-        expect( history.replace ).toHaveBeenCalled()
+        expect( history.replace ).toHaveBeenCalled() //** Esperamos que haya sido llamado el replace que defini aqui L10 */
     })
     
-    //** Debo de llamar al localStorage */
     test('Llamada al localStorage', () => {
 
-        const handleClick = wrapper.find('button').prop('onClick')
+        const handleClick = wrapper.find('button').prop('onClick') //** Hago el llamado a la funcion y busco la propiedad oC del Boton */
 
-        handleClick()
+        handleClick() //** Hago la llamada a la funcion, la defini arriba L45 */
 
-        expect( contextValue.dispatch ).toHaveBeenCalledWith({
+        expect( contextValue.dispatch ).toHaveBeenCalledWith({ //** Lo pide el LS, con estos argumentos */
             type: types.login,
             payload: {
                 name: 'Francisco'
             }
         })
 
-        expect( history.replace ).toHaveBeenCalledWith('/')
+        expect( history.replace ).toHaveBeenCalledWith('/') //** Esperamos que el replace haya sido llamado con ese argumento */
 
-        //** Aqui grabe el localStorage */
-        localStorage.setItem('lastPath', '/dc')
-        handleClick()
-        //** Esperare que esto haya sido llamado con /dc */
-        expect( history.replace ).toHaveBeenCalledWith('/dc')
+        localStorage.setItem('lastPath', '/dc') //** Asi grabo algo en el lS */
+
+        handleClick() //** Hacemos una llamada a la funcion */
+
+        expect( history.replace ).toHaveBeenCalledWith('/dc') //** Ahora le decimos al lS que haya sido llamado con dc con argumentos L58 */
     })
 })

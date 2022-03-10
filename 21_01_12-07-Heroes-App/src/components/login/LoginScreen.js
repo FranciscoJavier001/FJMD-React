@@ -3,7 +3,7 @@ import React, { useContext } from 'react'
 import { AuthContext } from '../../auth/AuthContext';
 import { types } from '../../types/types';
 
-export const LoginScreen = ({ history }) => { //** El LS recibe el history(este vide de Navegador/Components/props) */
+export const LoginScreen = ({ history }) => { //** El LS recibe el history(este viene de Navegador/Components/props) */
 
     //** Este context esta en "Aqui - src/HeroesApp", lo defini en src/auth/AuthContext */
     const { dispatch } = useContext( AuthContext ); //** Esta en src/HeroesApp y en el dispatch vienen parametros que vamos a recibir */
