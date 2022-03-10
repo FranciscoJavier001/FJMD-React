@@ -12,60 +12,63 @@ describe('Pruebas en <HeroScreen />', () => {
         goBack: jest.fn(), //** Para irme una pagina atras */
     }
 
-    const wrapper = mount( //** Hago un Mount, porque voy  recibir un argumento */
+    // const wrapper = mount( //** Hago un Mount, porque voy recibir un argumento */
+    //     <MemoryRouter initialEntries={['/hero']}> {/* Tengo un string vacio, necesito iE con URL y argumentos que debo enviar, y mando el '/hero' */}
+    //         <HeroScreen history={ history } /> {/* HeroScreen necesita el history, mando el que esta l9 */}
+    //     </MemoryRouter>
+    // );
+
+    test('Debe de mostrar el componente redirect si no hay argumentos en el URL', () => {
+
+        const wrapper = mount( //** Hago un Mount, porque voy recibir un argumento */
         <MemoryRouter initialEntries={['/hero']}> {/* Tengo un string vacio, necesito iE con URL y argumentos que debo enviar, y mando el '/hero' */}
             <HeroScreen history={ history } /> {/* HeroScreen necesita el history, mando el que esta l9 */}
         </MemoryRouter>
     );
-
-    test('Debe de mostrar el componente redirect si no hay argumentos en el URL', () => {
-
-        // const wrapper = mount(
-        //     <MemoryRouter initialEntries={['/hero']}>
-        //         <HeroScreen history={ history } />
-        //     </MemoryRouter>
-        // );
         
-        expect( wrapper ).toMatchSnapshot()
+        expect( wrapper ).toMatchSnapshot() //** Para crear el snapshot */
         expect( wrapper.find('Redirect').exists() ).toBe(true); //** Debo de ver que el componente Redirect exista */
     })
 
     test('Debe de mostrar un heroe si el parametro existe y se encuentra', () => {
         
-        const wrapper = mount(
-            <MemoryRouter initialEntries={['/hero/marvel-spider']}>
-                <Route path="/hero/:heroeId" component={ HeroScreen } />
+        const wrapper = mount( //** Como tiene dependencias, es decir recibe argumentos */
+            <MemoryRouter initialEntries={['/hero/marvel-spider']}>  {/* iE necesita una URL y le mando este link */}
+                {/* Debo de especificar la ruta, porque trabajo con uP en HS l8 - Necesita la ruta de DashboarRoutes para mostrar HeroScreen */}
+                <Route path="/hero/:heroeId" component={ HeroScreen } /> {/* Por eso puse ese path y esta linea igual */}
             </MemoryRouter>
         )
 
-        expect( wrapper.find('.row').exists() ).toBe(true)
+        expect( wrapper.find('.row').exists() ).toBe(true) //** Si sale row(fila) entonces si existe y esta bien la pantalla de HS */
     })
 
     test('Debe de regresar a la pantalla anterior con PUSH', () => {
         
         const history = { 
-        length: 1,
+        length: 1, //** Para usar el push, debe ser menor a 2 */
         push: jest.fn(),
         goBack: jest.fn(),
     }
     
     const wrapper = mount(
-        <MemoryRouter initialEntries={['/hero/marvel-spider']}>
+        <MemoryRouter initialEntries={['/hero/marvel-spider']}> {/* iE me pide un URL valido */}
             <Route
                 path="/hero/:heroeId" 
-                component={ () => <HeroScreen history={ history } /> } 
+                //** Ruta del DR, pero renderizo como si fuera una funcion que recibe los props que manda el route del componente */
+                component={ () => <HeroScreen history={ history } /> } //** Renderizo HS y el que me intersa es history y mando el history l47 */
             />
         </MemoryRouter>
         )
 
-        wrapper.find('button').prop('onClick')()
+        wrapper.find('button').prop('onClick')() //** Busco la propiedad onClick del boton */
 
-        expect( history.push ).toHaveBeenCalledWith('/')
-        expect( history.goBack ).not.toHaveBeenCalled()
+        expect( history.push ).toHaveBeenCalledWith('/') //** Asi funciona el push, asi que mando el argumento con que fue llamado */
+        expect( history.goBack ).not.toHaveBeenCalled() //** Asegurarme que esta no haya sido llamada */
     })
 
     test('Debe de regresar a la pantalla anterior GOBACK', () => {
         
+        //** Es la funcion definida arriba */
         const wrapper = mount(
             <MemoryRouter initialEntries={['/hero/marvel-spider']}>
                 <Route
@@ -77,22 +80,24 @@ describe('Pruebas en <HeroScreen />', () => {
     
             wrapper.find('button').prop('onClick')()
     
-            expect( history.push ).toHaveBeenCalledTimes(0) //** Que haya sido llamado 0 veces */
-            expect( history.goBack ).toHaveBeenCalled() //** Que haya sido llamado */
+            expect( history.push ).toHaveBeenCalledTimes(0) //** Que haya sido llamado 0 veces o nunca */
+            expect( history.goBack ).toHaveBeenCalled() //** Que haya sido llamado, ya que push no lo fue */
     })
 
     test('debe de llamar el redirect si el heroe no existe', () => {
         
-
+        //** Misma funcion de arriba */
         const wrapper = mount(
-            <MemoryRouter initialEntries={['/hero/marvel-spider0']}>
+            <MemoryRouter initialEntries={['/hero/marvel-spider0']}> {/* Pero mando un URL que no existe */}
                 <Route
                     path="/hero/:heroeId" 
                     component={ () => <HeroScreen history={ history } /> } 
                 />
             </MemoryRouter>
             )
+
+            // console.log( wrapper.html() ); //** Se ve como un string vacio */
     
-            expect( wrapper.text() ).toBe('');
+            expect( wrapper.text() ).toBe(' '); //** Debo de ponerle espacio, por los comentarios */
     })
 })
