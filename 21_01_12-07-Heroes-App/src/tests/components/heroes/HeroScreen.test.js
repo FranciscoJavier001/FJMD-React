@@ -13,7 +13,7 @@ describe('Pruebas en <HeroScreen />', () => {
     }
 
     // const wrapper = mount( //** Hago un Mount, porque voy recibir un argumento */
-    //     <MemoryRouter initialEntries={['/hero']}> {/* Tengo un string vacio, necesito iE con URL y argumentos que debo enviar, y mando el '/hero' */}
+    //     <MemoryRouter initialEntries={['/hero']}> {/* Tengo un string vacio, necesito iE con URL y argumentos que debo enviar mando el '/hero' */}
     //         <HeroScreen history={ history } /> {/* HeroScreen necesita el history, mando el que esta l9 */}
     //     </MemoryRouter>
     // );
