@@ -32,42 +32,42 @@ describe('Pruebas en <SearchScreen />', () => {
     
     test('Debe de mostrar un error si no se encuentra el Hero', () => {
         
-        const wrapper = mount( 
-            <MemoryRouter initialEntries={['/search?q=batman123']}>
-                <Route path="/search" component={ SearchScreen } />
+        const wrapper = mount( //** Lo tengo definido arriba L23 */
+            <MemoryRouter initialEntries={['/search?q=batman123']}> {/* Pero aqui busco un URL que no exista por el URL */}
+                <Route path="/search" component={ SearchScreen } /> {/* El path y el component a renderizar */}
             </MemoryRouter>
         )
 
-        expect( wrapper.find('.alert-danger').text().trim() ).toBe(`No Existe un SuperHeroe con el Nombre "batman123"`);
+        expect( wrapper.find('.alert-danger').text().trim() ).toBe(`No Existe un SuperHeroe con el Nombre "batman123"`); //** Busco clase-mensaje */
         expect( wrapper ).toMatchSnapshot()
     })
     
     test('Debe de llamar el push del history', () => {
         
-        const history = {
+        const history = { //** s/c/s/SS-L10-Recibe el history y el push es una funcion que actualiza el path */
             push: jest.fn()
         }
 
         const wrapper = mount( 
             <MemoryRouter initialEntries={['/search?q=batman123']}>
                 <Route
-                    path="/search"
-                    component={ () => <SearchScreen history={ history } /> } 
+                    path="/search" //** Abajo recibo los props(no los mando), y renderizo el SS, mando el history, y tambien el que yo cree */
+                    component={ () => <SearchScreen history={ history } /> }
                 />
             </MemoryRouter>
         )
 
-        wrapper.find('input').simulate('change', {
-            target: {
-                name: 'searchText',
-                value: 'batman'
+        wrapper.find('input').simulate('change', { //** Esta en s/c/s/SS-L29-32 */ -- //** Hago una simulacion en la caja de texto */
+            target: { //** El evento que recibo debe tener el target y dentro el name y el value */
+                name: 'searchText', //** Nombre de la caja de texto */
+                value: 'batman' //** Lo que le voy a mandar */
             }
         })
 
-        wrapper.find('form').prop('onSubmit')({
-            preventDefault(){}
+        wrapper.find('form').prop('onSubmit')({ //** Esta en s/c/s/SS-L29-32 */ -- //** Hago el submit del formulario y necesito mandar el evento */
+            preventDefault(){} //** Este es el evento que se manda */
         })
 
-        expect( history.push ).toHaveBeenCalledWith(`?q=batman`)
+        expect( history.push ).toHaveBeenCalledWith(`?q=batman`) //** Esperaria que el (URL)=push haya sido llamado con batman, asi fue L52 */
     })  
 })

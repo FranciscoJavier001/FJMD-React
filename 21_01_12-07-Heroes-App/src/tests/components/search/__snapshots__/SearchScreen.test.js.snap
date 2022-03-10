@@ -136,78 +136,82 @@ Array [
 `;
 
 exports[`Pruebas en <SearchScreen /> Debe de mostrar un error si no se encuentra el Hero 1`] = `
-<div>
-  <h1
-    className="text-center"
-  >
-    Search Screen
-  </h1>
-   
-  <hr />
-   
-  <div
-    className="row"
-  >
+Array [
+  " ",
+  <div>
+    <h1
+      className="text-center"
+    >
+      Search Screen
+    </h1>
+     
+    <hr />
      
     <div
-      className="col-5 text-center"
+      className="row"
     >
-       
-      <h4>
-         Formulario de Busqueda 
-      </h4>
-       
-      <hr />
-       
-      <form
-        onSubmit={[Function]}
-      >
-         
-        <input
-          autoComplete="off"
-          className="form-control text-center"
-          name="searchText"
-          onChange={[Function]}
-          placeholder="Escribe un SuperHeroe"
-          type="text"
-          value="batman123"
-        />
-        <button
-          className="btn mt-1 btn-block btn-outline-primary"
-          type="submit"
-        >
-          Buscar... 
-        </button>
-      </form>
-    </div>
-    <div
-      className="col-1"
-    />
-    <div
-      className="col-6"
-    >
-       
-      <h4
-        className="text-center"
-      >
-         Resultado 
-      </h4>
-       
-      <hr />
        
       <div
-        className="alert alert-danger text-center"
+        className="col-5 text-center"
       >
          
-        No Existe un SuperHeroe con el Nombre 
-        <br />
-        "
-        batman123
-        " 
+        <h4>
+           Formulario de Busqueda 
+        </h4>
+         
+        <hr />
+         
+        <form
+          onSubmit={[Function]}
+        >
+           
+          <input
+            autoComplete="off"
+            className="form-control text-center"
+            name="searchText"
+            onChange={[Function]}
+            placeholder="Escribe un SuperHeroe"
+            type="text"
+            value="batman123"
+          />
+          <button
+            className="btn mt-1 btn-block btn-outline-primary"
+            type="submit"
+          >
+            Buscar... 
+          </button>
+        </form>
+      </div>
+      <div
+        className="col-1"
+      />
+      <div
+        className="col-6"
+      >
+         
+        <h4
+          className="text-center"
+        >
+           Resultado 
+        </h4>
+         
+        <hr />
+         
+        <div
+          className="alert alert-danger text-center"
+        >
+           
+          No Existe un SuperHeroe con el Nombre 
+          <br />
+          "
+          batman123
+          " 
+        </div>
       </div>
     </div>
-  </div>
-</div>
+  </div>,
+  " ",
+]
 `;
 
 exports[`Pruebas en <SearchScreen /> Debe de mostrarse correctamente con valores por defecto 1`] = `

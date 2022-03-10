@@ -29,7 +29,7 @@ export const SearchScreen = ({ history }) => { //** Recibe el history, l31, se m
     const handleSearch = (e) => { //** Funcion que recibe el evento */
         e.preventDefault(); //** Para que no se recarge el formulario, osea que no se elimina la busqueda */
         // console.log(searchText); //** Veo lo que el usuario busco */
-        history.push(`?q=${ searchText }`); //** Se modifica la URL para mostrar el Hero que voy a buscar */
+        history.push(`?q=${ searchText }`); //** Se modifica la URL para mostrar el Hero que voy a buscar - push da nueva path */
     }
 
     return (
