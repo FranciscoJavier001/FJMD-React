@@ -9,7 +9,7 @@ function App() {
       <div className="container">
         <div className="row">
           <div className="col">
-            <h1>Pokedex</h1>
+            <h1>PokeApp</h1>
             <Search />
           </div>
         </div>

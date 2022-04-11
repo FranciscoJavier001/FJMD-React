@@ -6,13 +6,13 @@ function Pokedex(props){
         props.pokedex.length > 0) ? (
         
         <div className="pokedex container">
-            {props.pokedex.map(p =>(
+            {props.pokedex.map(pokemon =>(
                 
                 <div className='col'>
-                     <div key={p.id}>
-                        <h2>Pokemon: {p.name}</h2>
-                         <img  alt={p.name}src={p.sprites.front_default}/>
-                        <p> #: {p.id}</p>
+                     <div key={pokemon.id}>
+                        <h2>Pokemon: {pokemon.name}</h2>
+                         <img  alt={pokemon.name}src={pokemon.sprites.front_default}/>
+                        <p> #: {pokemon.id}</p>
                      </div>
                 </div>
             ))}
