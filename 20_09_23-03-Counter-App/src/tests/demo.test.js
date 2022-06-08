@@ -1,3 +1,5 @@
+//**_______________________________________________________________________________________________________________________________________________*/
+//** En caso que no pueda entrar, siempre recuerda, "npm start" */
 describe('Pruebas en el archivo demo.test.js', () => {  //** Simplemente aqui describo el titulo de la prueba */
     
     test('deben de ser iguales los string ', () => { //** Debe de decir lo que estoy probando, tiene un callback */

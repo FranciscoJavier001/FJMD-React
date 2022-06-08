@@ -1,5 +1,6 @@
 //**_______________________________________________________________________________________________________________________________________________*/
 const baseUrl = process.env.REACT_APP_API_URL //** http://localhost:4000/api*/
+// const baseUrl = "http://localhost:4000/api"
 
 //** fetch sin token, osea va a ser un helper */
 
@@ -26,6 +27,7 @@ const fetchSinToken = ( endpoint, data, method = 'GET' ) => {
 const fetchConToken = ( endpoint, data, method = 'GET' ) => { //** Lo que recibe y su metodo GET */
 
     const url = `${ baseUrl }/${ endpoint }` //url=localhost:4000/api/ endpoint=auth/events
+    console.log(url);
     const token = localStorage.getItem('token') || '' //** El token lo tengo en el localStorage, y de ahi lo le la linea 32 */
 
     if ( method === 'GET' ) { //** Si el metodo es exactamente igual a GET entonces */
