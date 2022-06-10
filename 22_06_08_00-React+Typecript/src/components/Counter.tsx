@@ -1,5 +1,5 @@
 //**____________________________________________________________________________________________________________________________________________________________*/
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 export const Counter = () => { //** FC que se llama asi y se llama en el App.tsx */
 
@@ -20,13 +20,13 @@ export const Counter = () => { //** FC que se llama asi y se llama en el App.tsx
           +1
         </button>
         <button
-        onClick={ () => incrementar(2) } //** En TS como me pide definir las variables, si lo dejaba son la funcion anonima de flecha, no iba a ejecutar nada */
-        className='btn btn-outline-primary mt-2'> {/* Cuando se toque este boton, va a volver a aumentar en 1 */}
+        onClick={ () => incrementar(2) } /* Cuando se toque este boton, va a volver a aumentar en 2 */
+        className='btn btn-outline-primary mt-2'> 
           +2
         </button>
         <button
-        onClick={ () => setCounter(0) } //** En TS como me pide definir las variables, si lo dejaba son la funcion anonima de flecha, no iba a ejecutar nada */
-        className='btn btn-outline-danger mt-2'> {/* Cuando se toque este boton, va a volver a aumentar en 1 */}
+        onClick={ () => setCounter(0) } //** Aqui le decimos que deje el contador en 0 */
+        className='btn btn-outline-danger mt-2'>
           Reset
         </button>
     </div>
