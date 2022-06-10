@@ -10,8 +10,8 @@ export const Counter = () => { //** FC que se llama asi y se llama en el App.tsx
   }
 
   return (
-    <div className='mt-5'> {/* Le metimos clases a este div */}
-        <h3>Counter: useState</h3>
+    <div className="mt-1"> {/* Le metimos clases a este div */}
+        <h3>Counter</h3>
         <span>Valor: { counter }</span>
         <br />
         <button

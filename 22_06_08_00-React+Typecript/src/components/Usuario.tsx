@@ -21,7 +21,7 @@ export const Usuario = () => { //** FC, que la vamos a meter en el App.tsx */
     
     return (
         <div className="mt-5"> {/* Margen superior */}
-            <h3>Usuario: useState</h3>
+            <h3>Usuario</h3>
 
             <button //** Boton que va a tener acciones */
             onClick={ login } //** Al hacer click, se va a llamar la funcion de login */
