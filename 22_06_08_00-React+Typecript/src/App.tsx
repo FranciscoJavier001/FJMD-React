@@ -2,6 +2,7 @@
 import { Counter } from './components/Counter';
 import { Usuario } from './components/Usuario';
 import { TimerPadre } from './components/TimerPadre'; //** Importe este componente para renderizarlo en el DOM */
+import { ContadorRed } from './components/ContadorRed';
 
 function App() {
   return (
@@ -17,6 +18,10 @@ function App() {
 
       <h2 className='text-center'>useEffect - useRef</h2>
       <TimerPadre /> {/* Simplemente mando llamar el componente */}
+      <hr />
+
+      <h2 className='text-center'>useReducer</h2>
+      <ContadorRed />
 
     </>
   );

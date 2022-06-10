@@ -1,3 +1,4 @@
+//** Este es el componente que voy a renderizar */
 import { Timer } from './Timer'; //** Importo el Timer */
 import { useState } from 'react';
 
@@ -26,3 +27,4 @@ export const TimerPadre = () => {
     </>
   )
 }
+
