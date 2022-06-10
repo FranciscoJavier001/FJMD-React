@@ -3,6 +3,7 @@ import { Counter } from './components/Counter';
 import { Usuario } from './components/Usuario';
 import { TimerPadre } from './components/TimerPadre'; //** Importe este componente para renderizarlo en el DOM */
 import { ContadorRed } from './components/ContadorRed';
+import { Formulario } from './components/Formulario';
 
 function App() {
   return (
@@ -22,7 +23,10 @@ function App() {
 
       <h2 className='text-center'>useReducer</h2>
       <ContadorRed />
+      <hr />
 
+      <h2 className='text-center'>customHooks</h2>
+      <Formulario />
     </>
   );
 }
