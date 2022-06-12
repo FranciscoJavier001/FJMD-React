@@ -4,7 +4,7 @@ import { Counter } from './bases/Counter';
 function App() {
   return (
     <>
-      <Counter />
+      <Counter initialValue={0} />
     </>
   );
 }

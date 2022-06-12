@@ -1,12 +1,12 @@
 import React from 'react'
 import { useState } from 'react';
 
-export const Counter = () => { //** Lo hago con rafc */
+export const Counter = ( {initialValue = 0} ) => { //** Lo hago con rafc -- Para pasarle un valor aqui voy a desestructurar esa variable y asigno valor numero */
 
-const [counter, setCounter] = useState(0) //** Primero el estado actual y el useState */
+const [counter, setCounter] = useState(initialValue) //** Primero el estado actual, segundo el que modifica el estado, tercero valor inicial */
 
-const handleClick = (numero: number = 1) => { //** Funcion que se hace al apretar un boton */
-    setCounter(counter + numero) //** La accion que se hace al hacer click */
+const handleClick = () => { //** Funcion que se hace al apretar un boton */
+    setCounter( valIni => valIni + 1) //** La accion que se hace al hacer click */
     // console.log('click'); //** Muestro en Consola cuando haga click */
 }
 
