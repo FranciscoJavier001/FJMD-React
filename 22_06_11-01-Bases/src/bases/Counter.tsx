@@ -1,7 +1,12 @@
 import React from 'react'
 import { useState } from 'react';
 
-export const Counter = ( {initialValue = 0} ) => { //** Lo hago con rafc -- Para pasarle un valor aqui voy a desestructurar esa variable y asigno valor numero */
+interface CounterProps { //** Propiedades que le vamos a pasar al Counter */
+    initialValue?: number; //** Simpemente le asignamos el tipo number y por default es 0, con el ? le decimos que es opcional */
+}
+
+//** Lo hago con rafc -- Para pasarle un valor aqui voy a desestructurar esa variable y asigno valor numero */
+export const Counter = ( {initialValue = 0 }: CounterProps ) => { 
 
 const [counter, setCounter] = useState(initialValue) //** Primero el estado actual, segundo el que modifica el estado, tercero valor inicial */
 
