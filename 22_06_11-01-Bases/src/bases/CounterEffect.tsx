@@ -1,26 +1,21 @@
 import React from 'react'
 import { useState, useEffect } from 'react'; //** Hooks */
 
+const MAXIMIN_COUNT = 10 //** Asignamos un valor maximo numerico para una validacion */
+
 //** rafc */
 export const CounterEffect = () => { 
 
   const [counter, setCounter] = useState(5) //** 1=Estado Actual, 2=Modificacion estado, 3=Valor inicial del Hook */
-
+  
   const handleClick = () => { //** Funciones del Boton */
-    setCounter( valIni => valIni + 1) //** Valores que recibe el sC, dentro instrucciones de la funcion */
+    //** Valores que recibe el sC, dentro definimos la funcion del valor inicial aumente en 1 y que no pase del M_C */
+    setCounter( valIni => Math.min( valIni + 1, MAXIMIN_COUNT ) ) //** Asi ya no puede subir mas */
   }
 
-  // useEffect(() => { //** uE dispara una funcion, siempre minimo 1 vez se dispara */
-  //   first
-  //   return () => { //** Funcion que se ejecuta cuando el componente va a ser destruido, conocido como funcion de limpieza */
-  //     second
-  //   }
-  // }, [third]) //** Ultimo=Arreglo de dependencias, se ejecuta cuando cambie */
-
   useEffect(() => {
-    if ( counter <= 10 ) return //** Cuando el contador llegue a 10 se manda el mensaje en consola */
+    if ( counter < 10 ) return //** Cuando el contador llegue a 10 se manda el mensaje en consola */
     console.log('%cEl contador es mayor de 10', 'color: red; background-color: black');
-    
 }, [counter]) //** Cada vez que el counter cambia que se dispare */
 
   return ( //** Renderizamos en el DOM */
