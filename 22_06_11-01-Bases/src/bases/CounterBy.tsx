@@ -1,43 +1,43 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState } from 'react'; //** Hook que vamos a usar */
 
-interface CounterProps { //** Propiedades que le vamos a pasar al Counter */
-    initialValue?: number; //** Simpemente le asignamos el tipo number y por default es 0, con el ? le decimos que es opcional */
+interface CounterProps { //** Propiedades que le vamos a pasar al CP, le definimos los tipos de variables */
+    initialValue ? : number; //** iV es opcional que sea un numero, asi no tengo falla en el App */
 }
 
-//** Lo hago con rafc -- Para pasarle un valor aqui voy a desestructurar esa variable y asigno valor numero */
-export const CounterBy = ( {initialValue = 0 }: CounterProps ) => { 
+interface CounterState {
+  counter: number
+  clicks: number
+}
 
-  //** Primero el estado actual, segundo el que modifica el estado, tercero valor inicial */
-  const [counterState, setCounterState] = useState({ //** Lo ultimo va a tener el valor del initialValue */
-    counter: initialValue, //** Asi inicializamos el valor del contador, con el valor inicial del initialValue */
-    clicks: 0, //** Asi voy a saber cuantas veces he aumentado ese contador */
-  })
+  //** Viene de rafc, el iV lo inicializo en 0 por ser number y le pasamos sus variables desde el CP */
+  export const CounterBy = ( {initialValue = 0 }: CounterProps ) => {
 
-  //** Voy a desestructurar un objeto, para no tener error en el counter ni clicks */
-  const { counter, clicks } = counterState;
+    //** Desestructuramos lo que viene del estado CS, luego ponemos el sCS, es = al uS que tiene esas variables */
+    const [ { counter, clicks }, setCounterState ] = useState<CounterState>({
+      counter: initialValue, //** Asi les ponemos valores iniciales */
+      clicks: 0,
+    })
 
-  const handleClick = ( value: number) => { //** Funcion que se hace al apretar un boton, recibo un valor del tipo numero */
-    setCounterState( valIni => ({ //** La accion que se hace al hacer click, voy a retornar directamete un objeto */
-        //** Dentro del objeto va a venir un counter en el valor anterior valIni.counter y le sumo el value que recibo arriba */
-        counter: valIni.counter + value,
-        clicks: valIni.clicks + 1, //** Como es typeScript debo definir todas las variables y lo que hacens */
-      })) 
-      // console.log('click'); //** Muestro en Consola cuando haga click */
-  }
+  const handleClick = ( value: number) => { //** Funcion de apretar un boton que recibe un valor numerico */
+      setCounterState( () => ({ //** Le vamos a dar instrucciones al sCS, instrucciones a ejecutar */
+        counter: counter + value, //** El estado, se modifica con el contador, mas el valor asignado en la funcion */
+        clicks: clicks + 1, //** Este solo aumenta 1 al dar click */
+      }))
+    }
 
-  return ( //** Muestro en el DOM */
-    <> {/* Es un div que esta vacio */}
-    <h1>Counter: { counter }</h1> {/* Muestro en el DOM el contador */}
-    <h1>Clicks: { clicks }</h1> {/* Tambien quiero mostrar los clicks */}
+  return ( //** Lo que renderiza el DOM */
+    <> {/* Fragment=Porque no quiero tener nada adentro */}
+    <h1>Counter: { counter }</h1> {/* Muestro el Contador */}
+    <h1>Clicks: { clicks }</h1> {/* Muestro los clicks */}
 
     <button //** Boton */
-    onClick={ () => handleClick(1) }> {/* Cuando haga click */}
+    onClick={ () => handleClick(1) }> {/* Que el contador suba lo que le asigno en los parentesis */}
         +1
     </button>
 
-    <button //** Boton */
-    onClick={ () => handleClick(5) }> {/* Cuando haga click */}
+    <button
+    onClick={ () => handleClick(5) }>
         +5
     </button>
     </>
