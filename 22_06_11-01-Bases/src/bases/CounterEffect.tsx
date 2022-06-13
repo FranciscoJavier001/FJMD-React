@@ -10,12 +10,17 @@ export const CounterEffect = () => {
     setCounter( valIni => valIni + 1) //** Valores que recibe el sC, dentro instrucciones de la funcion */
   }
 
-  useEffect(() => { //** uE dispara una funcion, siempre minimo 1 vez se dispara */
-    first
-    return () => { //** Funcion que se ejecuta cuando el componente va a ser destruido, conocido como funcion de limpieza */
-      second
-    }
-  }, [third]) //** Ultimo=Arreglo de dependencias, se ejecuta cuando cambie */
+  // useEffect(() => { //** uE dispara una funcion, siempre minimo 1 vez se dispara */
+  //   first
+  //   return () => { //** Funcion que se ejecuta cuando el componente va a ser destruido, conocido como funcion de limpieza */
+  //     second
+  //   }
+  // }, [third]) //** Ultimo=Arreglo de dependencias, se ejecuta cuando cambie */
+
+  useEffect(() => {
+    if ( counter <= 10 ) {
+    console.log('useEffect'); //** Se disparo el useEffect, osea es como un DoWhile */
+}}, [counter]) //** Cada vez que el counter cambia que se dispare */
 
   return ( //** Renderizamos en el DOM */
     <> {/* Fragment=No contiene nada dentro */}
