@@ -1,5 +1,5 @@
 import React from 'react';
-import { Counter } from './bases/Counter';
+// import { Counter } from './bases/Counter';
 import { CounterBy } from './bases/CounterBy';
 
 function App() {
