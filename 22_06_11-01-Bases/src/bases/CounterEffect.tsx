@@ -18,9 +18,10 @@ export const CounterEffect = () => {
   // }, [third]) //** Ultimo=Arreglo de dependencias, se ejecuta cuando cambie */
 
   useEffect(() => {
-    if ( counter <= 10 ) {
-    console.log('useEffect'); //** Se disparo el useEffect, osea es como un DoWhile */
-}}, [counter]) //** Cada vez que el counter cambia que se dispare */
+    if ( counter <= 10 ) return //** Cuando el contador llegue a 10 se manda el mensaje en consola */
+    console.log('%cEl contador es mayor de 10', 'color: red; background-color: black');
+    
+}, [counter]) //** Cada vez que el counter cambia que se dispare */
 
   return ( //** Renderizamos en el DOM */
     <> {/* Fragment=No contiene nada dentro */}
