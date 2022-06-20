@@ -35,44 +35,31 @@ const counterReducer = ( state:CounterState, action:CounterAction ): CounterStat
       changes: 0,
       previous: 0
     }
-
-    case 'increaseBy':
-      return {
-        counter: state.counter + action.payload.value, //** Aqui se va a sumar el valor de la accion */
-        changes: state.changes + 1, //** Aqui se va a sumar 1 al contador de cambios */
-        previous: state.counter //** Aqui se va a guardar el valor actual */
-      }
   
     default:
-      return state; //** Por si se recibe una accion que no sea de los tipos definidos y regreso el state como estaba anteriormente */
+      return state; //** Si recibo una accion que no este definida, regreso el state como estaba anteriormente */
   }
 }
 
 //** rafc */
 export const CounterReducerComponent = () => { 
 
-  //** 1.Estado al iniciar el hook, 2.La accion que dispara */
-  //** 3.Recibe un par de argumentos y regresa un estado 4.Estado inicial del uR */
   //** Desestructuro el state y mando el counter, porque se que viene desde cS */
-  const [{ counter }, dispatch] = useReducer(counterReducer, INITIAL_STATE) //** Argumentos del cR */ //** State como se encuentra en este estado */
+  //** 1.Estado al iniciar el hook, 2.La accion que dispara */
+  //** 3.Recibe un par de argumentos y regresa un estado del cR 4.Estado actual del uR */
+  const [{ counter }, dispatch] = useReducer(counterReducer, INITIAL_STATE)
 
 const handleClick = () => { //** Funciones del Boton */
-    dispatch({ type: 'reset' }) //** Aqui mando el dispatch, lo que recibe tiene que ser un valor del tipo CA */ //** Si abro llaves me salen los tipos */
-    dispatch({ type: 'increaseBy', payload: { value: 10 } }) //** Aqui mando el dispatch, lo que recibe tiene que ser un valor del tipo CA */ //** Si abro llaves me salen los tipos */
+    dispatch({ type: 'reset' }) //** Mando dispatch, con el tipo de accion y con lo que retorna */
 }
 
   return ( //** Renderizamos en el DOM */
     <> {/* Fragment=No contiene nada dentro */}
-    <h1>Counter Reducer: { counter }</h1> {/* Muestro el estado del Counter(texto y numeros actuales) */} {/* Aqui estoy colocando el counter */}
+    <h1>Counter Reducer: { counter }</h1> {/* Muestro el estado del Counter(texto y numeros actuales) */}
 
     <button //** Boton */
-    onClick={ () => dispatch({type: 'reset'}) }> {/* Al hacer click mando llamar la funcion */}
+    onClick={ () => handleClick() }> {/* Al hacer click mando llamar la funcion */}
         Reset
-    </button>
-
-    <button
-    onClick={ () => dispatch({type: 'increaseBy'}) }>
-        +5
     </button>
     </>
   )
