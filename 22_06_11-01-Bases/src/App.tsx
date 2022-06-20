@@ -10,6 +10,7 @@ function App() {
       {/* <Counter /> {/* Sino pongo el valor se queda en 0 */}
       {/* <CounterBy /> {/* Lo que renderizo, ya viene los valores desde el Componente */}
       < CounterEffect />
+      < CounterEffect />
     </>
   );
 }
