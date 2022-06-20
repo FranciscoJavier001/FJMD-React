@@ -16,30 +16,27 @@ export const CounterEffect = () => {
     setCounter( valIni => Math.min( valIni + 1, MAXIMIN_COUNT ) ) //** Asi ya no puede subir mas */
   }
 
-  useEffect(() => {
+  useEffect(() => { //** Que se haga este efecto cuando llegue a 10 */
     if ( counter < 10 ) return //** Cuando el contador llegue a 10 se manda el mensaje en consola */
     console.log('%cEl contador es mayor de 10', 'color: red; background-color: black'); //** Estilos para consola */
 
-    //** to=De la posicion que se encuentra actualmente hasta */
-    //** 1=Selector, 2=Objeto en la cual voy a configurarlo */
-    //** Voy a apuntarle al h1, que en eje y baje +10, que suba -, duracion, ease=Como quiero empiece, cE.c, me deja seleccionar el objeto actual */
-    gsap.to( counterElement.current, { y: -10, duration: 0-2, ease: 'ease.out' }).then( () => { 
-      //** Con then le decimos como queremos que continue, osea llegando a 10 lo que va a seguir osea bajarlo */
-      gsap.to( counterElement.current, { y: 0, duration: 1, ease: 'bounce.out' })
-    })
-    //** Que ahora llegue a 0 y que rebote a la salida */
+    const tl = gsap.timeline() //** Voy a crear un timelime */
+    
+    //** Recuerda.. tenemos el to y el from */
+    tl.to( counterElement.current, { y: -10, duration: 0.2, ease: 'ease.out' } ) //** Efecto de entrada */
+    tl.to( counterElement.current, { y: 0, duration: 1, ease: 'bounce.out' } ) //** Efecto de salida */
 
 }, [counter]) //** Cada vez que el counter cambia que se dispare */
 
   return ( //** Renderizamos en el DOM */
     <> {/* Fragment=No contiene nada dentro */}
-    <h1>CounterEffect:</h1>
-    <h2 ref={ counterElement }>{ counter }</h2> {/* Le voy a asignar una referencia que defini arriba */}
+      <h1>CounterEffect:</h1>
+      <h2 ref={ counterElement }>{ counter }</h2> {/* Le voy a asignar una referencia que defini arriba */}
 
-    <button //** Boton */
-    onClick={ () => handleClick() }> {/* Al hacer click mando llamar la funcion */}
-        +1
-    </button>
+      <button //** Boton */
+      onClick={ () => handleClick() }> {/* Al hacer click mando llamar la funcion */}
+          +1
+      </button>
     </>
   )
 }
