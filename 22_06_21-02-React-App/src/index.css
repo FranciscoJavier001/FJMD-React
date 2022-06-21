@@ -42,12 +42,12 @@ nav li { /* Para las listas, del lado izquierdo */
 }
 
 nav li a { /* Para darle un formto como tamaño y color */
-  color: white; /* Para cada elemento color blanco */
+  color: grey; /* Para cada elemento color gris si no esta seleccionado */
   font-size: 1.2rem; /* Tamaño del texto */
   text-decoration: none; /* Que no tenga ninguna decoracion, como por ejemplo el subrayado */
 }
 
 .nav-active { /* Para cuando lo hayas seleccionado */
-  color: grey; /* Que cuando este activo, este color gris */
+  color: white; /* Que cuando este activo, este color blanco */
   transition: all .3s ease-out; /* El efecto de cuando selecciono otro elemento */
 }
