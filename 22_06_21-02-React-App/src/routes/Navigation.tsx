@@ -3,6 +3,8 @@ import { Routes, Route, NavLink } from "react-router-dom"; //** Documentacion de
 
 import logo from "../logo.svg"; //** Importamos el Logo de este proyecto de React */
 
+import { LazyPage1, LazyPage2, LazyPage3} from '../01-lazyload/pages/'; //** Creo un archivo con las importaciones y solo importo carpeta */
+
 export const Navigation = () => { //** Para poderla usar en el App.tsx */
   return ( //** Lo que vamos a retornar */
     <BrowserRouter> {/* Documentacion del RRD */}
@@ -12,23 +14,23 @@ export const Navigation = () => { //** Para poderla usar en el App.tsx */
           <ul> {/* Una lista desordenada */}
             <li> {/* Elementos de lista */}
             {/* Elemento del RRD, path, estilos, isActive(valor booleano), si esta en true regresala o si no nada */}
-              <NavLink to="/home" className={ ({ isActive }) => isActive ? 'nav-active' : ''}>Home</NavLink>
+              <NavLink to="/lazy1" className={ ({ isActive }) => isActive ? 'nav-active' : ''}>Lazy 1</NavLink>
             </li>
             <li>
-              <NavLink to="/about" className={ ({ isActive }) => isActive ? 'nav-active' : ''}>About</NavLink>
+              <NavLink to="/lazy2" className={ ({ isActive }) => isActive ? 'nav-active' : ''}>Lazy 2</NavLink>
             </li>
             <li>
-              <NavLink to="/users" className={ ({ isActive }) => isActive ? 'nav-active' : ''}>Users</NavLink>
+              <NavLink to="/lazy3" className={ ({ isActive }) => isActive ? 'nav-active' : ''}>Lazy 3</NavLink>
             </li>
           </ul>
         </nav>
 
         <Routes> {/* Rutas de RRD */}
-          <Route path="about" element={ <h1>About Page</h1> } /> {/* Rutass con path y elemento a renderizar */}
-          <Route path="users" element={ <h1>Users Page</h1> } />
-          <Route path="home" element={ <h1>Home Page</h1> } />
+          <Route path="lazy1" element={ <LazyPage1 /> } /> {/* Rutass con path y elemento a renderizar */}
+          <Route path="lazy2" element={ <LazyPage2 /> } />
+          <Route path="lazy3" element={ <LazyPage3 /> } />
 
-          <Route path="/*" element={ <Navigate to="/home" replace /> } /> {/* Comodin para todo */}
+          <Route path="/*" element={ <Navigate to="/lazy1" replace /> } /> {/* Comodin para todo */}
         </Routes>
       </div>
     </BrowserRouter>
