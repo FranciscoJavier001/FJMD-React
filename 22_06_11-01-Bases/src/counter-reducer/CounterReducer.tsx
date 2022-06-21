@@ -1,6 +1,7 @@
 import { useReducer } from 'react'; //** Hook de React uS */
 import { CounterState } from './interfaces/interfaces';
 import { counterReducer } from './state/counterReducer';
+import { doReset, doIncreaseBy, doDecreaseBy,  } from './actions/actions';
 
 //** Si dejo seleccionado y selecciono cmd+. me da la opcion de importar prederterminada */
 const INITIAL_STATE : CounterState = { //** I_S va a ser del tipo CS - (Tecnica que se usa para mantener estado inicial) */
@@ -17,16 +18,15 @@ export const CounterReducerComponent = () => {
   const [ counterState , dispatch] = useReducer(counterReducer, INITIAL_STATE)
 
 const handleReset = () => { //** Funciones del Boton, nombre diferente para diferenciar sus acciones */
-    dispatch({ type: 'reset' }) //** Mando dispatch, con el tipo de accion y con lo que retorna */
+    dispatch( doReset() ) //** Se hizo un refactoring y ahora el dispatch llama el doReset(recuerda importarlo) */
 }
 
 const increaseBy = ( value:number ) => { //** En esta funcion el value es de tipo number */
-  //** Mando dispatch, con el tipo de accion y con lo que retorna y el payload me pide un valor(a modificar) */
-  dispatch({ type: 'increaseBy', payload: { value } })
+  dispatch( doIncreaseBy(value) ) //** Refactoring en counter-reducer/actions/actions.ts */
 }
 
 const decreaseBy = ( value:number ) => {
-  dispatch({ type: 'decreaseBy', payload: { value } })
+  dispatch( doDecreaseBy(value) ) //** Para importar recuerda seleccionar el elemento y luego con cmd+. en importar */
 }
 
   return ( //** Renderizamos en el DOM */
