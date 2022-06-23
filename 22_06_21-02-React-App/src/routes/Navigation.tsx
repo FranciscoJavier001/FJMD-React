@@ -1,53 +1,36 @@
-import { Suspense } from "react"; //** Exportamos el suspense para poder utilizarlo */
-import { BrowserRouter } from "react-router-dom"; //** Para poder usar  */
-import { Routes, Route, NavLink, Navigate } from "react-router-dom"; //** Documentacion de RRD */
-import { routes } from "./routes"; //** Aqui tengo definido los LazyPage's */
+import { BrowserRouter, Navigate } from "react-router-dom"; //** Para poder usar  */
+import { Routes, Route, NavLink } from "react-router-dom"; //** Documentacion de RRD */
 
 import logo from "../logo.svg"; //** Importamos el Logo de este proyecto de React */
 
 export const Navigation = () => { //** Para poderla usar en el App.tsx */
   return ( //** Lo que vamos a retornar */
-
-  //** Suspense-Mostramos un componente de pantalla para decirle que espere */
-  <Suspense fallback={ <span>Loading</span> }> {/* Necesario en suspense-(Recuerda como cerar) */}
-
     <BrowserRouter> {/* Documentacion del RRD */}
-
       <div className="main-layout"> {/* Esta clase ya la tenemos definida en el index.css */}
         <nav> {/* La barra de navegacion de lado izquierdo */}
-          <img src={logo} alt="React Logo" /> {/* Imagen que tebemos arriba lado izquierdo */}
+          <img src={logo} alt="React Logo" /> {/* Importo la imagen del logo */}
           <ul> {/* Una lista desordenada */}
-            {
-            routes.map(({ to, name }) => ( //** Voy a mapear las rutas que ya tengo definidas, desestructuro las que necesito */
-              <li key={to}> {/* Elementos de lista, la llave es el parametro to, debe ser unica */}
-
-                <NavLink /* Elemento del RRD, path, estilos, isActive(valor booleano), si esta en true regresala o si no nada */
-                  to={to}
-                  className={({ isActive }) => (isActive ? "nav-active" : "")}
-                >
-                  {name} {/* Necesitaba el name, que desestructure arriba, lo tego como name en routes.ts */}
-                </NavLink>
-
-              </li>
-            ))}
+            <li> {/* Elementos de lista */}
+            {/* Elemento del RRD, path, estilos, isActive(valor booleano), si esta en true regresala o si no nada */}
+              <NavLink to="/home" className={ ({ isActive }) => isActive ? 'nav-active' : ''}>Home</NavLink>
+            </li>
+            <li>
+              <NavLink to="/about" className={ ({ isActive }) => isActive ? 'nav-active' : ''}>About</NavLink>
+            </li>
+            <li>
+              <NavLink to="/users" className={ ({ isActive }) => isActive ? 'nav-active' : ''}>Users</NavLink>
+            </li>
           </ul>
         </nav>
 
         <Routes> {/* Rutas de RRD */}
-          {
-          routes.map( ({ path, Component }) => ( //** Rutas mapeadas, con desestructuracion de sus elementos */
-            <Route //** Pantalla con informacion de cada elemento */
-              key={ path } //** Su llave unica */
-              path={ path } //** Su ruta */
-              element={< Component />} //** Componente que renderizo */
-            /> 
-          ))
-          }
+          <Route path="about" element={ <h1>About Page</h1> } /> {/* Rutass con path y elemento a renderizar */}
+          <Route path="users" element={ <h1>Users Page</h1> } />
+          <Route path="home" element={ <h1>Home Page</h1> } />
 
-          <Route path="/*" element={<Navigate to={ routes[0].to } replace />} /> {/* Comodin para todo, es la ruta en posicion 0 y no retroceder*/}
+          <Route path="/*" element={ <Navigate to="/home" replace /> } /> {/* Comodin para todo */}
         </Routes>
       </div>
     </BrowserRouter>
-    </Suspense>
   );
 };

@@ -3,14 +3,14 @@ html,body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', /* Estilos de la letra */
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-  background-color: #282c34; /* Color del body */
-  color: white; /* El color de la letra */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', /* Estilo de letra */
+    background-color: #282c34; /* Color del body */
+    color: white; /* El color de la letra */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', /* Estilo de letra */
     monospace;
 }
 
@@ -50,4 +50,4 @@ nav li a { /* Para darle un formto como tamaño y color */
 .nav-active { /* Para cuando lo hayas seleccionado */
   color: white; /* Que cuando este activo, este color blanco */
   transition: all .3s ease-out; /* El efecto de cuando selecciono otro elemento */
-}
+} 
