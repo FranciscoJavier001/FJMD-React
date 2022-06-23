@@ -1,60 +1,62 @@
 .productCard {
-    background-color: white;
-    border-radius: 15px;
-    color: black;
-    padding-bottom: 5px;
-    width: 250px;
-    margin-right: 5px;
-    margin-top: 5px;
+    background-color: whitesmoke; /* El Fondo */
+    border-radius: 15px; /* Rendondeams la tarjeta */
+    color: black; /* Color de la letra */
+    padding-bottom: 5px; /* Distancia hacia abajo */
+    width: 250px; /* Tamaño de la tarjeta */
+    margin-right: 1px; /* Tamaño de la linea superior(5) */
+    margin-top: 10px; /* Margen de la tarjeta hacia la linea(5) */
 }
 
 .productImg {
-    border-radius: 15px 15px 0px 0px;
-    width: 100%;
+    border-radius: 15px 15px 0px 0px; /* Es el borde de la tarjeta, el superior */
+    width: 100%; /* Esto es el ancho de la pantalla */
 }
 
 .productDescription {
-    margin: 10px;
+    margin: 10px; /* Margen inferior de la descripcion del producto */
+    /*margin-left: 33%; /* Donde se llama el producto, es el margen que tiene */
 }
 
 .buttonsContainer {
-    margin: 10px;
-    display: flex;
-    flex-direction: row;
+    margin: 10px; /* El Margen donde esta el contador */
+    display: flex; /* Para poderlo tener 1 al lado del otro */
+    flex-direction: row; /* Para que la direccion sea de fila */
+    /*margin-left: 32%; /* Los botones localizacion(No Existia) */
 }
 
 .buttonMinus {
-    cursor: pointer;
-    background-color: transparent;
-    border: 1px solid black;
-    border-radius: 5px 0px 0px 5px;
-    font-size: 20px;
-    width: 30px;
+    cursor: pointer; /* Boton de menos, tener la manita */
+    background-color: transparent; /* Que el color de fondo sea transparente */
+    border: 1px solid black; /* Los bordes del boton */
+    border-radius: 5px 0px 0px 5px; /* Para que esten redondeados */
+    font-size: 20px; /* Tamaño del Texto */
+    width: 30px; /* Anchura del boton */
 }
 
 .buttonMinus:hover {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.1); /* Para que al pasarle por encima se ponga un poco mas gris */
 }
 
 .countLabel {
-    border-bottom: 1px solid black;
-    border-top: 1px solid black;
-    font-size: 16px;
-    height: 25px;
-    padding-top: 5px;
-    text-align: center;
-    width: 30px;
+    border-bottom: 1px solid black; /* Borde inferior del contador*/
+    border-top: 1px solid black; /* Borde superior del contador */
+    font-size: 16px; /* Tamaño de la letra */
+    height: 25px; /* Anchura del recuadro */
+    padding-top: 5px; /* La anchura hacia abajo */
+    text-align: center; /* Que el texto este centrado */
+    width: 30px; /* Que la anchura del contador sea poquita */
 }
 
 .buttonAdd {
-    cursor: pointer;
-    background-color: transparent;
-    border: 1px solid black;
-    border-radius: 0px 5px 5px 0px;
-    font-size: 20px;
-    width: 30px;
+    cursor: pointer; /* Que salga la manita donde agregas */
+    background-color: transparent; /* Que el fondo sea transparente */
+    border: 1px solid black; /* Los bordes */
+    border-radius: 0px 5px 5px 0px; /* Que los bordes esten redondeados */
+    font-size: 20px; /* Tamaño del texto */
+    width: 30px; /* El reacuadro */
 }
 
 .buttonAdd:hover {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.1); /* Que se ponga mas gris cuando hago el hover */
 }
