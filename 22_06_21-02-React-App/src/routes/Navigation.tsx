@@ -24,7 +24,7 @@ export const Navigation = () => { //** Para poderla usar en el App.tsx */
         </nav>
 
         <Routes> {/* Rutas de RRD */}
-          <Route path="about" element={ <h1>About Page</h1> } /> {/* Rutass con path y elemento a renderizar */}
+          <Route path="about" element={ <h1>About Page</h1> } /> {/* Rutas con path y elemento a renderizar */}
           <Route path="users" element={ <h1>Users Page</h1> } />
           <Route path="home" element={ <h1>Home Page</h1> } />
 
