@@ -44,3 +44,22 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+
+
+Del ProductCard
+    En el Return
+
+        return ( //** Renderizar */
+        <div className={ styles.productCard }> {/* Definir la clase de la tarjeta */}
+
+            <ProductImage img={ product.img } /> {/* Renderizamos la imagen y mando el product.img */}
+
+            <ProductTittle title={ product.title } />
+
+            <ProductButtons //** Componente a Renderizar que necesito proveer los requerimientos que necesito */
+                increaseBy={ increaseBy } //** 1. La Funcion que se va a llamar y la que se va a retornar */
+                counter={ counter } //** 2. El Counter que se va a llamar y que se va a retornar */
+            /> 
+        </div>

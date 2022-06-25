@@ -1,4 +1,4 @@
-import { ProductCard } from "../components/ProductCard"
+import { ProductButtons, ProductCard, ProductImage, ProductTitle } from "../components/ProductCard" //** Los importo */
 
 const product = { //** Esto va a ser un objeto, defino la interface en PC, va a tener variables necesarias-En Duro */
   id: "1",
@@ -18,7 +18,15 @@ export const ShoppingPage = () => { //** rafc */
           flexWrap: "wrap", //** Para que todos sigan la linea y si no caben, que vallan para abajo */
         }}>
 
-          <ProductCard product={ product } /> {/* Le mando el producto que tengo aqui y le mando el mismo */}
+          {/* Le mando el producto que tengo aqui y le mando el mismo, lo voy a convertir en un HOC */}
+          <ProductCard product={ product } >
+            {/* Necesito un Children y estos de abajo cumplen esta funcion el ProductImage */}
+            <ProductImage />
+            {/* Pide el title por eso lo mando vacio */}
+            <ProductTitle title={ '' } />
+            {/* <ProductButtons /> */}
+          </ProductCard>
+      
         </div>
     </div>
   )
