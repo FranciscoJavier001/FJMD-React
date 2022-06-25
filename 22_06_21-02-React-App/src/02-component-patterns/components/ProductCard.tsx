@@ -63,3 +63,7 @@ export const ProductCard = ({ children, product }: Props) => {
     </div>
   )
 }
+
+ProductCard.Title = ProductTitle; //** Este va a apuntar al componente que exportamos */
+ProductCard.Image = ProductImage; //** Este va a apuntar al componente que exportamos */
+ProductCard.Buttons = ProductButtons; //** Este va a apuntar al componente que exportamos */

@@ -1,4 +1,4 @@
-import { ProductButtons, ProductCard, ProductImage, ProductTitle } from "../components/ProductCard" //** Los importo */
+import { ProductButtons, ProductCard, ProductImage, ProductTitle } from '../components/ProductCard';//** Los importo */
 
 const product = { //** Esto va a ser un objeto, defino la interface en PC, va a tener variables necesarias-En Duro */
   id: "1",
@@ -21,10 +21,25 @@ export const ShoppingPage = () => { //** rafc */
           {/* Le mando el producto que tengo aqui y le mando el mismo, lo voy a convertir en un HOC */}
           <ProductCard product={ product } >
             {/* Necesito un Children y estos de abajo cumplen esta funcion el ProductImage */}
+            <ProductCard.Image />
+            {/* Pide el title por eso lo mando vacio */}
+            <ProductCard.Title title={ '' } />
+            <ProductButtons increaseBy={function (value: number): void{
+              throw new Error('Function not implemented.');
+            }}
+            counter={0} />
+          </ProductCard>
+
+          {/* Le mando el producto que tengo aqui y le mando el mismo, lo voy a convertir en un HOC */}
+          <ProductCard product={ product } >
+            {/* Necesito un Children y estos de abajo cumplen esta funcion el ProductImage */}
             <ProductImage />
             {/* Pide el title por eso lo mando vacio */}
             <ProductTitle title={ '' } />
-            {/* <ProductButtons /> */}
+            <ProductButtons increaseBy={function (value: number): void{
+              throw new Error('Function not implemented.');
+            }}
+            counter={0} />
           </ProductCard>
       
         </div>
