@@ -22,7 +22,7 @@ export const ShoppingPage = () => { //** rafc */
           <ProductCard product={ product } >
             {/* Necesito un Children y estos de abajo cumplen esta funcion el ProductImage */}
             <ProductCard.Image />
-            {/* Pide el title por eso lo mando vacio */}
+            {/* Pide el title por eso lo mando con algo enbruto */}
             <ProductCard.Title title={ 'xxx' } />
             {/* Tengo exmportado este componente desde ProductCard */}
             <ProductCard.Buttons />
@@ -32,7 +32,7 @@ export const ShoppingPage = () => { //** rafc */
           <ProductCard product={ product } >
             {/* Necesito un Children y estos de abajo cumplen esta funcion el ProductImage */}
             <ProductImage />
-            {/* Pide el title por eso lo mando vacio */}
+            {/* Pide el title por eso lo mando vacio y ya no da falla porque lo mande opcional */}
             <ProductTitle />
             {/* Exporto este componente */}
             <ProductButtons/>
