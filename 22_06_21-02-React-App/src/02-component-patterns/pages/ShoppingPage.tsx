@@ -23,11 +23,9 @@ export const ShoppingPage = () => { //** rafc */
             {/* Necesito un Children y estos de abajo cumplen esta funcion el ProductImage */}
             <ProductCard.Image />
             {/* Pide el title por eso lo mando vacio */}
-            <ProductCard.Title title={ '' } />
-            <ProductButtons increaseBy={function (value: number): void{
-              throw new Error('Function not implemented.');
-            }}
-            counter={0} />
+            <ProductCard.Title title={ 'xxx' } />
+            {/* Tengo exmportado este componente desde ProductCard */}
+            <ProductCard.Buttons />
           </ProductCard>
 
           {/* Le mando el producto que tengo aqui y le mando el mismo, lo voy a convertir en un HOC */}
@@ -35,11 +33,9 @@ export const ShoppingPage = () => { //** rafc */
             {/* Necesito un Children y estos de abajo cumplen esta funcion el ProductImage */}
             <ProductImage />
             {/* Pide el title por eso lo mando vacio */}
-            <ProductTitle title={ '' } />
-            <ProductButtons increaseBy={function (value: number): void{
-              throw new Error('Function not implemented.');
-            }}
-            counter={0} />
+            <ProductTitle />
+            {/* Exporto este componente */}
+            <ProductButtons/>
           </ProductCard>
       
         </div>
