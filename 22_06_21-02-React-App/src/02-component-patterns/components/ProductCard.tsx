@@ -23,7 +23,6 @@ export const ProductCard = ({ children, product }: ProductCardProps) => { //** T
       increaseBy,
       product
     }}>
-
     
     <div className={ styles.productCard }> {/* Definir la clase de la tarjeta */}
 

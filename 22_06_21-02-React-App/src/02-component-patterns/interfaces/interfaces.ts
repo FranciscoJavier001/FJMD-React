@@ -19,3 +19,10 @@ export interface ProductContextProps {
     increaseBy: ( value: number ) => void; //** Funcion de tipo numero que no regresa nada */
     product : Product; //** product, recibe un Product */
 }
+
+export interface ProductCardHOCProps { //** Voy a definirme la misma interface del index.ts */
+    ({ children, product }: ProductCardProps ): JSX.Element //** Viene del export default, para indicar el retorno son : */
+    Title: ({ title }: { title?: string }) => JSX.Element //** Deje cursor sobre title, quito undefine */
+    Image: ({ img }: { img?: string }) => JSX.Element
+    Buttons: () => JSX.Element
+}
