@@ -1,12 +1,7 @@
 //** Refactoring de ProductCard a Interfaces, recuerda exportarlas todas, exportar lo que me de falla */
 import { ReactElement } from "react";
+import { Props as ProductCardProps } from "../components/ProductCard"; //** Modifico el nombre, asi las renombro aqui */
 
-export interface ProductCardProps { //** Aqui voy a definir las properties, le cambie el nombre */
-    product: Product //** Voy a recibir una property que va a ser product de tipo Product(Definido abajo) */
-    //** Debo definirme el children, ? opcional sera ReactElement viene como arreglo para mas de 1 debo importar, es interface */ 
-    children?: ReactElement | ReactElement[]
-}
-  
 export interface Product { //** Voy a definir las caracteristicas del Objeto */
     id: string;
     title: string;
@@ -21,7 +16,8 @@ export interface ProductContextProps {
 }
 
 export interface ProductCardHOCProps { //** Voy a definirme la misma interface del index.ts */
-    ({ children, product }: ProductCardProps ): JSX.Element //** Viene del export default, para indicar el retorno son : */
+    //** Desestructuro children y product usarlos, son Props(cambie nombre) y vinenen de ProductCard y retornan el tipo JSX... */
+    ({ children, product }: ProductCardProps ): JSX.Element //** Indica el retorno son : */
     Title: ({ title }: { title?: string }) => JSX.Element //** Deje cursor sobre title, quito undefine */
     Image: ({ img }: { img?: string }) => JSX.Element
     Buttons: () => JSX.Element
