@@ -11,3 +11,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.nav-active { /* Para cuando lo hayas seleccionado */
+  color: white; /* Que cuando este activo, este color blanco */
+  transition: all .3s ease-out; /* El efecto de cuando selecciono otro elemento */
+} 
