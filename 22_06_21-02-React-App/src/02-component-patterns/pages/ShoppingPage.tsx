@@ -1,4 +1,5 @@
 import { ProductButtons, ProductCard, ProductImage, ProductTitle } from "../components"
+import '../styles/custom-styles.css' //** Importo esto de CSS para poder colocar las clases */
 
 const product = { //** Esto va a ser un objeto, defino la interface en PC, va a tener variables necesarias-En Duro */
   id: "1",
@@ -29,7 +30,10 @@ export const ShoppingPage = () => { //** rafc */
           </ProductCard>
 
           {/* Le mando el producto que tengo aqui y le mando el mismo, lo voy a convertir en un HOC */}
-          <ProductCard product={ product } >
+          <ProductCard 
+            product={ product }
+            // className="product-card"
+            >
             {/* Necesito un Children y estos de abajo cumplen esta funcion el ProductImage */}
             <ProductImage />
             {/* Pide el title por eso lo mando vacio y ya no da falla porque lo mande opcional */}
