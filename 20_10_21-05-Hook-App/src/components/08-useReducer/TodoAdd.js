@@ -32,7 +32,7 @@ export const TodoAdd = ({ handleAddTodo }) => {
         // fragment
         <> 
         {/* Titulo */}
-            <h4>Agregar Tarea</h4> 
+            <h4 className='text-center'>Agregar Tarea</h4> 
             {/* linea */}
             <hr /> 
 
