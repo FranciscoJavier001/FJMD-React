@@ -1,4 +1,6 @@
 import React from 'react'
+import { Routes, Route, Navigate } from 'react-router-dom'
+
 import { LoginPage, RegisterPage } from '../pages'
 
 export const AuthRoutes = () => {
