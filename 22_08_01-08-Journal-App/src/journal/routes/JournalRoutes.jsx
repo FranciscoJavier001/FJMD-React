@@ -5,10 +5,10 @@ import { JournalPage } from '../pages/JournalPage'
 
 export const JournalRoutes = () => {
   return (
-    <Routes>
-        <Route path="/" element={ <JournalPage />} />
+    <Routes> {/* Rutas */}
+        <Route path="/" element={ <JournalPage />} /> {/* Ruta que vamos a renderizar */}
 
-        <Route path="/*" element={ <Navigate to="/" />} />
+        <Route path="/*" element={ <Navigate to="/" />} /> {/* Si viene algo que no esta definido renderizamos el / */}
     </Routes>
   )
 }

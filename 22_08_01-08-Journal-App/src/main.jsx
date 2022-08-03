@@ -7,8 +7,8 @@ import './styles.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <JournalApp />
+    <BrowserRouter> {/* Para usar el BR */}
+      <JournalApp /> {/* App que vamos a renderizar de las Rutas */}
     </BrowserRouter>
   </React.StrictMode>
 )
