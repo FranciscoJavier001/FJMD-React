@@ -1,6 +1,6 @@
 //** No es jsx porque no voy a regresar un FC, sino un objeto de JS */
-import { createTheme } from "@mui/material" //** Quiero crearme un theme de material */
-import { red } from "@material-ui/core/colors" //** Para mostrar errores en pantalla */
+import { createTheme } from "@mui/material/styles" //** Quiero crearme un theme de material */
+import { red } from "@mui/material/colors" //** Para mostrar errores en pantalla */
 
 export const purpleTheme = createTheme({ //** Es un tema por defecto, pero nosotros lo sobreescribimos */
     palette: { //** Paleta de colores */
