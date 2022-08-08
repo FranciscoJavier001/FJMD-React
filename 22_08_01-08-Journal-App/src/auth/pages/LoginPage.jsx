@@ -37,12 +37,9 @@ export const LoginPage = () => {
                     fullWidth //** Ancho completo */
                     />
                 </Grid>
-
                 
               </Grid>
             </form>
-
-
         </Grid>
     </Grid>
   )
