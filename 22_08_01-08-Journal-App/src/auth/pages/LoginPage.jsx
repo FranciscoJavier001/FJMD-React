@@ -40,22 +40,23 @@ export const LoginPage = () => {
                     />
                 </Grid>
 
-                <Grid container spacing={ 2 } sx={{ mb:2, mt:1 }}>
-                  <Grid item xs={ 12 } sm={ 6 }>
-                    <Button variant="contained" fullWidth>
-                      Login
+                <Grid container spacing={ 2 } sx={{ mb:2, mt:1 }}> {/* Contenedor de elementos, con espacio arriba y abajo */}
+                  <Grid item xs={ 12 } sm={ 6 }> {/* Tamaño ocupado de cada boton, diferentes display */}
+                    <Button variant="contained" fullWidth> {/* Boton como contenedor y ocupe todo espacio asignado */}
+                      Login {/* Lo que dice el boton */}
                     </Button>
                   </Grid>
+
                   <Grid item xs={ 12 } sm={ 6 }>
                     <Button variant="contained" fullWidth>
                       <Google />
-                        <Typography sx={{ ml: 1}}>Google</Typography>
+                        <Typography sx={{ ml: 1}}>Google</Typography> {/* El Texto y un margen hacia la izquierda */}
                     </Button>
                   </Grid>
                 </Grid>
                 
-                <Grid container direction="row" justifyContent="end">
-                  <Link component={ RouterLink } color="inherit" to="/auth/register">
+                <Grid container direction="row" justifyContent="end"> {/* Contenedor, fila y mostrar al final */}
+                  <Link component={ RouterLink } color="inherit" to="/auth/register"> {/* Asigno una ruta */}
                     Create Accound
                   </Link>
                 </Grid>
