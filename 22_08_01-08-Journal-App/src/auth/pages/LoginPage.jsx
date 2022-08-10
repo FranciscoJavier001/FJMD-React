@@ -14,7 +14,7 @@ export const LoginPage = () => {
             <TextField /* Campo de texto */
               label="Email" //** Mensaje que se muestra en el campo */
               type="email" //** Tipo que es */
-              placeholder='correo@email.com' //** Mensaje que sale al darle click */
+              placeholder='email@email.com' //** Mensaje que sale al darle click */
               fullWidth //** Ancho completo */
               />
           </Grid>
@@ -23,7 +23,7 @@ export const LoginPage = () => {
             <TextField /* Campo de texto */
               label="Password" //** Mensaje que se muestra en el campo */
               type="password" //** Tipo que es */
-              placeholder='Contraseña' //** Mensaje que sale al darle click */
+              placeholder='Password' //** Mensaje que sale al darle click */
               fullWidth //** Ancho completo */
               />
           </Grid>
