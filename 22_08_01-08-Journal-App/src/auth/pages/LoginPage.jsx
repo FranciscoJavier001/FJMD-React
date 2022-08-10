@@ -21,7 +21,7 @@ export const LoginPage = () => {
 
           <Grid item xs={ 12 } sx={{ mt: 2 }}> {/* Item, tamaño en pantalla chica y estilos extras */}
             <TextField /* Campo de texto */
-              label="Contraseña" //** Mensaje que se muestra en el campo */
+              label="Password" //** Mensaje que se muestra en el campo */
               type="password" //** Tipo que es */
               placeholder='Contraseña' //** Mensaje que sale al darle click */
               fullWidth //** Ancho completo */
