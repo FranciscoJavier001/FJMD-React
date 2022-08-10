@@ -17,13 +17,14 @@ export const AuthLayout = ({ children, title="" }) => { //** Desestructuro lo qu
           className="box-shadow" //** Defino clase en styes.css, es una sobra */
           xs={ 3 } //** Tamaño pantalla pequeña *
           sx={{ //** Estilos adicionales */
+            width: { sm: '45%' }, //** Tamaño Estandar de la pantalla */
             backgroundColor: 'white', //** Fondo */
             padding: 3, //** Espacio de adentro hacia afuera de la caja blanca */
             borderRadius: 2 //** La caja blanca queda redondeada */
             }}>
             
             {/* Variables asignables, encabezado, alineacion, margen (se refleja arriba), mensaje superior */}
-            <Typography variant="h5" align='center' sx={{ mb:1 }}>{ title }</Typography>
+            <Typography variant="h4" align='center' sx={{ mb:1, fontWeight: 'bold' }}>{ title }</Typography>
 
         { children } {/* Lo que voy a renderizar, lo recibo porque ya lo desestructure */}
 
