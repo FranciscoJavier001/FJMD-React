@@ -1,9 +1,16 @@
 import React from 'react' //** FC */
 import { Typography } from "@mui/material"
+import { JournalLayout } from '../layout/JournalLayout'
 
 export const JournalPage = () => {
   return (
-    <Typography variant="h1">JournalPage</Typography> //** Debemos de usar el Typography ejemplo tipo h1 */
-    
+    <JournalLayout> {/* Renderizo el JournalLayout */}
+      <Typography> {/* Solo texto */}
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+        Iusto dignissimos eveniet rerum similique. 
+        Ipsam, impedit odit reprehenderit id totam aut quibusdam. 
+        Quae amet nesciunt hic iste. Ipsa dolores error asperiores.
+        </Typography>
+    </JournalLayout>
   )
 }
