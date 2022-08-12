@@ -21,7 +21,6 @@ export const JournalLayout = ({ children }) => { //** Componente que recibe el c
           {children} {/* Renderizo el children de JournalPage, que retorna JournalLayout con sus componentes dentro */}
 
       </Box>
-
     </Box>
   )
 }
