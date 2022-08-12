@@ -13,6 +13,7 @@ export const JournalPage = () => {
 
         {/* NothingSelected */}
         {/* NoteView */}
+        
         </Typography>
     </JournalLayout>
   )
