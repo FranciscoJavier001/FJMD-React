@@ -7,8 +7,8 @@ export const Navbar = ({ drawerWidth = 240 }) => { //** Recibo el ancho que va a
     <AppBar //** Barra que se expande hasta el final, tipo navbar, la puse de azul oscura */
         position='fixed' //** Posicion Fija de la barra de arriba */
         sx={{ //** Asi defino en que casos entran, en que pantallas pequeñas con { sm } */
-            width: { sm: `calc(100% - ${ drawerWidth }px)` }, //** Pantallas pequeñas, 100% - ancho, para que desaparezca */
-            ml: { sm: `${ drawerWidth }px` }, //** Margen izquierdo del toggle, de la barra en pantallas pequeñas */
+            width: { xs: `calc(100% - ${ drawerWidth }px)` }, //** Pantallas pequeñas, 100% - ancho, para que desaparezca */
+            ml: { xs: `${ drawerWidth }px` }, //** Margen izquierdo del toggle, de la barra en pantallas pequeñas */
          }}
     >
 
@@ -17,7 +17,7 @@ export const Navbar = ({ drawerWidth = 240 }) => { //** Recibo el ancho que va a
             <IconButton /* Es para iniciar el toggle */
                 color='inherit' //** Color asignado donde se despliega el menu */
                 edge='start' //** Posicion donde se despliega funcion de boton del togle */
-                sx={{ mr: 2, display: {sm: 'none' } }} //** Margen derecho 2, alejo letras, solo muestro boton toggle en pantallas pequeñas */
+                sx={{ mr: 2, display: {xs: 'none' } }} //** Margen derecho 2, alejo letras, solo muestro boton toggle en pantallas pequeñas */
             >
 
                 <MenuOutlined /> {/* Es lo que aparece en el pantallas sm, es el recuadro con tablas */}
