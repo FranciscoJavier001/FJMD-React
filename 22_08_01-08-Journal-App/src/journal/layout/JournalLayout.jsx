@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box } from '@mui/system/';
-import { Navbar } from '../components';
+import { Navbar, SideBar } from '../components';
 
 const drawerWidth = 240; //** Variable especial de asignacion espacio inicial en blanco (Solo funciona en este componente) */
 
@@ -10,7 +10,7 @@ export const JournalLayout = ({ children }) => { //** Componente que recibe el c
 
       <Navbar drawerWidth={ drawerWidth }/> {/* Importo Navbar, le asigno un tamaño del espacio inicial en blanco L5 */}
 
-      {/* Sidebar drawerWidth */}
+      <SideBar drawerWidth={ drawerWidth }/> {/* Como lo importe, debo definirlo, atencion arriba */}
 
       <Box 
         component='main' //** Nombre del componente principal, como si fuera un div */
