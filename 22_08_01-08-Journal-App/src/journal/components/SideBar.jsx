@@ -31,7 +31,7 @@ export const SideBar = ({ drawerWidth= 240 }) => { //** Recibo ese componente, p
             {
                 //** Un array con meses, map para mapearlo, y su nombre text es una funcion */
                 ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September'].map( text => (
-                    <ListItem key={ text } disablePadding> {/* Vamos a listar los items, y sin padding */}
+                    <ListItem key={ text } disablePadding> {/* Voy a regresar este elemento y voy a listar los items, sin padding */}
                         <ListItemButton> {/* Para darle un click y hagan un efecto de transicion de click */}
                             <ListItemIcon> {/* Para que tengan su espacio y no esten hasta la izquierda amontonados  */}
                                 <TurnedInNot /> {/* Como la banderita */}

@@ -2,7 +2,7 @@ import React from 'react'
 import { Box } from '@mui/system/';
 import { Navbar, SideBar } from '../components';
 
-const drawerWidth = 240; //** Variable especial de asignacion espacio inicial en blanco (Solo funciona en este componente) */
+const drawerWidth = 240; //** Variable especial de asignacion espacio inicial en blanco (Solo funciona en ecomponente importados aqui) */
 
 export const JournalLayout = ({ children }) => { //** Componente que recibe el children, renderizado en JournalPage */
   return (
