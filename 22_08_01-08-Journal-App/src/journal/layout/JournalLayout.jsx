@@ -1,6 +1,7 @@
 import React from 'react'
 import { Box } from '@mui/system/';
 import { Navbar, SideBar } from '../components';
+import { Toolbar } from '@mui/material';
 
 const drawerWidth = 240; //** Variable especial de asignacion espacio inicial en blanco (Solo funciona en ecomponente importados aqui) */
 
@@ -14,9 +15,9 @@ export const JournalLayout = ({ children }) => { //** Componente que recibe el c
 
       <Box 
         component='main' //** Nombre del componente principal, como si fuera un div */
-        sx={{ flexGrow: 1, p: 3 }} //** flexGrow=Elemento que domina en anchura, p=padding 3, anchura del texto hacia afuera */
+        sx={{ flexGrow: 1, p: 3 }} //** flexGrow=Elemento que domina en anchura, p=padding 3, anchura del texto hacia afuera de enmedio */
         >
-          {/* Toolbar */}
+          <Toolbar /> {/* Asigna el espacio de la caja azul hacia abajo el componente de NothingSelectedView */}
 
           {children} {/* Renderizo el children de JournalPage, que retorna JournalLayout con sus componentes dentro */}
 
