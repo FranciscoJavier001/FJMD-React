@@ -20,9 +20,21 @@ const noteDate = moment( date ) //** Esto es para mostrar la fecha exacta, lo us
         <Grid item> {/* Este item es del boton */}
             <Button color="primary" sx={{ padding: 2 }}> {/* Color del boton y el pading del boton, de adentro hacia afuera */}
                 <SaveOutlined sx={{ fontSize: 30, mr: 1 }}/> {/* Icono del boon, tamaño del icono y margen hacia la derecha hacia letras */}
-                Save {/* Lo que dice */}
+                Guardar {/* Lo que dice */}
             </Button>
         </Grid>
+
+        <Grid container> {/* Contenedor full abajo fecha */}
+            <TextField //** Campo de texto */
+            type="text" //** Tipo de elemento que va aqui */
+            variant="filled" //** Es el color de fondo gris */
+            fullWidth //** Todo el ancho de la pantalla */
+            placeholder="Entry a Title" //** Se muestra cuando voy a escribir ahi */
+            label="Title" //** Mensaje que se muestra aunque no este posicionado ahi */
+            sx={{ border: 'none', mb: 1}} //** Estilos Extra, sin border y con margen hacia abajo */
+            />
+        </Grid>
+        
     </Grid>
   )
 }
