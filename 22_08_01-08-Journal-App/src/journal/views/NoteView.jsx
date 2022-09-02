@@ -4,7 +4,7 @@ import React from 'react'
 import { ImageGallery } from '../components'
 import moment from 'moment' //** Para instalar yarn add moment */
 
-export const NoteView = (date) => { //** Va a recibir la date(fecha) */
+export const NoteView = ( date ) => { //** Va a recibir la date(fecha) que es una prop */
 
 const noteDate = moment( date ) //** Esto es para mostrar la fecha exacta, lo uso en Typography */
     
@@ -20,7 +20,7 @@ const noteDate = moment( date ) //** Esto es para mostrar la fecha exacta, lo us
         <Grid item> {/* Este item es del boton */}
             <Button color="primary" sx={{ padding: 2 }}> {/* Color del boton y el pading del boton, de adentro hacia afuera */}
                 <SaveOutlined sx={{ fontSize: 30, mr: 1 }}/> {/* Icono del boon, tamaño del icono y margen hacia la derecha hacia letras */}
-                Guardar {/* Lo que dice */}
+                Save {/* Lo que dice, isea Save del lado derecho */}
             </Button>
         </Grid>
 
