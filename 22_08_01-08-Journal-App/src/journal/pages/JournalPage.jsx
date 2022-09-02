@@ -1,13 +1,16 @@
 import React from 'react' //** FC */
 import { JournalLayout } from '../layout/JournalLayout'
-import { NothingSelectedView } from '../views/'
+import { NoteView, NothingSelectedView } from '../views/'
 
 
 export const JournalPage = () => {
   return (
     <JournalLayout> {/* Renderizo el JournalLayout */}
-    
-        <NothingSelectedView /> {/* Importo este FC que es todo el contenido abajo del Navbar y alado del SideBar */}
+
+      {/* Oculto este Componente */}
+      {/* <NothingSelectedView /> {/* Importo este FC que es todo el contenido abajo del Navbar y alado del SideBar */}
+
+        <NoteView /> {/* Muestro este Componente */}
         
     </JournalLayout>
   )
