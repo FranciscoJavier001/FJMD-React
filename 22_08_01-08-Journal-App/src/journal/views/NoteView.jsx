@@ -33,8 +33,17 @@ const noteDate = moment( date ) //** Esto es para mostrar la fecha exacta, lo us
             label="Title" //** Mensaje que se muestra aunque no este posicionado ahi, si esta definido se esconde el placeholder */
             sx={{ border: 'none', mb: 1}} //** Estilos Extra, sin border y con margen hacia abajo */
             />
+
+            <TextField
+            type="text"
+            variant="filled"
+            fullWidth
+            multiline //** Contenedor multilinea */
+            placeholder="Whats Up Today?" //** Se muestra este mensaje porque no hay label */
+            minRows={ 5 } //** Tamaño del contenedor hacia abajo */
+            />
         </Grid>
-        
+
     </Grid>
   )
 }
