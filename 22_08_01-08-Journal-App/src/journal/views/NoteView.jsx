@@ -44,6 +44,8 @@ const noteDate = moment( date ) //** Esto es para mostrar la fecha exacta, lo us
             />
         </Grid>
 
+        {/* Image Gallery */}
+        <ImageGallery />
     </Grid>
   )
 }
