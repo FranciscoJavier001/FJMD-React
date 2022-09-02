@@ -1,6 +1,6 @@
 import { ImageList, ImageListItem } from "@mui/material"; //** Se utilizan en el Codigo */
 
-export const ImageGallery = () => { //** FC */
+export const ImageGallery = () => { //** FunctionalComponent */
   return (
     <ImageList sx={{ width: '100%', height: 500 }} cols={4} rowHeight={200}> {/* Componente, tamaño del 100% largo de 500, 4 filas, y largoFila */}
       {itemData.map((item) => ( //** Mapeamos, itemData, es el arreglo de abajo y su nombre es item */
