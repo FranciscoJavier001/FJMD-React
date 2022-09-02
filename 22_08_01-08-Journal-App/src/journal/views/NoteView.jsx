@@ -30,7 +30,7 @@ const noteDate = moment( date ) //** Esto es para mostrar la fecha exacta, lo us
             variant="filled" //** Es el color de fondo gris */
             fullWidth //** Todo el ancho de la pantalla */
             placeholder="Entry a Title" //** Se muestra cuando voy a escribir ahi */
-            label="Title" //** Mensaje que se muestra aunque no este posicionado ahi */
+            label="Title" //** Mensaje que se muestra aunque no este posicionado ahi, si esta definido se esconde el placeholder */
             sx={{ border: 'none', mb: 1}} //** Estilos Extra, sin border y con margen hacia abajo */
             />
         </Grid>
