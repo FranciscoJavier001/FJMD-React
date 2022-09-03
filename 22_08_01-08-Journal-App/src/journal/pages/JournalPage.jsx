@@ -4,7 +4,6 @@ import React from 'react' //** FC */
 import { JournalLayout } from '../layout/JournalLayout'
 import { NoteView, NothingSelectedView } from '../views/'
 
-
 export const JournalPage = () => {
   return (
     <JournalLayout> {/* Renderizo el JournalLayout */}
