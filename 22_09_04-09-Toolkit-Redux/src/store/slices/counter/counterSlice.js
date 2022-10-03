@@ -2,10 +2,10 @@
 //** Documentacion Oficial https://redux-toolkit.js.org/api/createSlice */
 import { createSlice } from '@reduxjs/toolkit'
 
-export const counterSlice = createSlice({ //** Esto es un objeto */
+export const counterSlice = createSlice({ //** Esto es un objeto, hay que investigar Slice react */
   name: 'counter', //** Variables del objeto, solo su nombre */
   initialState: { //** Su estado inicial */
-    counter: 10
+    counter: 10 //** Solicite este en el App.jsx con useSelector */
   },
   reducers: {
     increment(state) { //** El state lo recibo como argumento, lo que va en parentesis */
