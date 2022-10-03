@@ -3,7 +3,7 @@ import moment from 'moment'
 
 export const prepareEvents = ( events = [] ) => { //** Funcion que modifica los eventos, los recibe pero los igualamos a un objeto vacio */
     
-    // console.log(events);
+    console.log(events);
     
     return events.map( //** Regreso los eventos y recibo un array con los resultados */
         (e) => ({ //** Recibo evento y regreso el nuevo objeto que forma parte del arreglo */

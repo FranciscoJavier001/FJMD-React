@@ -1,0 +1,5 @@
+/* Esto no es un modulo, pero este me permite definir las clases propiamente */
+
+.bg-dark{ /* Es un estilo al fondo de pantalla de los productos, color gris oscuro */
+    background-color: rgb(56,56,56);
+}
