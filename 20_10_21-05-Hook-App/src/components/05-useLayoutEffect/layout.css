@@ -1,9 +1,0 @@
-/* Es el padding es como el relleno desde dentro, osea todo se mete mas al cuadro */
-body {
-    padding: 70px;
-}
-
-/* Esto es para que la frase se quede arriba, en el margin 0 del padding */
-.blockquote {
-    display: flex;
-}
