@@ -1,0 +1,49 @@
+.notes__main-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.notes__appbar {
+    align-items: center;
+    background-color: $primary;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px 10px 20px; //** Arriba , derecha, abajo y izquierda */
+}
+
+.notes__content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 20px;
+}
+
+.notes__title-input, .notes__textarea {
+    border: none;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.notes__title-input {
+    color: $dark-grey;
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.notes__textarea {
+    border: none; //** Agregamos una caja a donde dice el What Happend, pero lo quitamos y se ve chido */
+    color: $dark-grey; //** Con esto le ponemos que el texto este como cafe muy oscuro */
+    font-size: 20px; //** El tamaño del texto */
+    flex: 1 1 auto; //** Se hizo la caja de tamaño completo y muy larga */
+    resize: none;
+}
+
+.notes__image img { //** Asi le dimos estilos a la imagen */
+    box-shadow: 5px 5px $dark-grey;
+    height: 150px;
+}

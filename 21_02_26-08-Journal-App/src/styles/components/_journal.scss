@@ -1,0 +1,84 @@
+
+.journal__main-content {
+    display: flex;
+}
+
+.journal__sidebar { //** Esto es la barra lateral hacia la izquierda */
+    background-color: $dark-grey; //** Para que el fondo quede oscuro */
+    color: white; //** Para que la letra quede blanca */
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 450px;
+}
+
+.journal__sidebar-navbar {
+    display: flex; //** Con Display Flex tenemos la libertad de poner las cosas donde deban de estar */
+    justify-content: space-around; //** Con esto se queda en los bordes */
+}
+
+.journal__sidebar-navbar h3 {
+    font-weight: lighter; //** ESto es el nombre, asi lo hicimos mas delgado */
+}
+
+.journal__new-entry { //** Esto es lo que dice New Entry */
+    align-items: center; //** Asi alineamos la new entry al centro, de arriba hacia abajo */
+    cursor: pointer; //** Para que salga la manita */
+    display: flex; //** Para que todo se peda mover */
+    flex-direction: column; //** Para que cada cosa este una abajo de la otra */
+    justify-content: center; //** Para que todo se quede en el centro */
+    margin-top: 30px; //** Asi lo hicimos mas para abajo */
+    width: 100%; //** Para que trabaje en toda la anchura */
+
+    transition: color .3s ease;
+
+    &:hover {
+        color: darken($color: white, $amount: 20); //** Cambia el icono a un gris */
+    }
+}
+
+.journal__entries {
+    flex: 1 1 auto; //** El auto es para que use todo el espacio restante */
+    margin-top: 30px;
+    overflow-y: scroll;
+}
+
+.journal__entry {
+    background-color: white;
+    border-radius: 4px;
+    color: $dark-grey;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.journal__entry-picture {
+    height: 75px;
+    width: 75px;
+}
+
+.journal__entry-body {
+    padding: 10px; //** Para que no se queden pegados a los bordes */
+}
+.journal__entry-title {
+    font-size: 14px; //** Tamaño del titulo */
+    font-weight: bold; //** Que este en negritas */
+}
+.journal__entry-content {
+    font-size: 10px
+}
+
+.journal__entry-date-box {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    pad: 5px;
+}
+
+.journal__entry-date-box span{
+    font-size: 12px;
+}

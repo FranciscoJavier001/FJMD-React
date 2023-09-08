@@ -1,32 +1,12 @@
 //**_______________________________________________________________________________________________________________________________________________*/
 //** Esto es un Navbar - Lo copie del Git */
-import React, { useContext } from 'react'
-import { Link, NavLink, useHistory } from 'react-router-dom'
-import { AuthContext } from '../../auth/AuthContext'
-import { types } from '../../types/types';
+import React from 'react'
+import { Link, NavLink } from 'react-router-dom'
+
 
 //  export const Navbar = ({ history }) => { //** Aqui en pego el history, no compartir mucha informacion por los props */
 export const Navbar = () => { //** Es la linea 8, pero remplazo la sintaxis */
 
-    //** Necesito acceso a AuthContext-dentro de useContext, del user-voy a extraer el name, y el dispatch hace el logout y purgo el reducer */
-    const { user:{ name }, dispatch } = useContext( AuthContext ); //** uC=Facilita informacion en el arbol de componentes */
-    //** react-router-dom nos ofrece un useHistory, y soluciono el problema de compartir info a traves de las props */
-    const history = useHistory(); //** Para usar uH y el replace l24, este me regresa un history porque esta dentro del Provider HeroesApp */
-
-    // console.log(history);
-    // console.log(name);
-
-    const handleLogout = () => { //** Funcion al hacer click en el boton */
-
-        // console.log('Click!'); //** Simulo el click de la funcion handleLogout para la prueba NT=l51 */
-
-        //** Cambie la pagina al login, pero sin poder ir para atras */
-        history.replace('/login');
-
-        dispatch({ //** Mando la accion de logout de types, borro todo y pongo el logged en false types/types */
-            type: types.logout
-        });
-    }
 
     return (
         //** navbar=Para que todo este junto y no haya espacios */
@@ -74,21 +54,7 @@ export const Navbar = () => { //** Es la linea 8, pero remplazo la sintaxis */
                 </div>
             </div>
 
-            <div className="navbar-collapse collapse w-100 order-3 dual-collapse2"> {/* navbar-collapse=salen las letras (name-Logout) */}
-                <ul className="navbar-nav ml-auto"> {/* navbar-nav=En fila - ml-auto=que salga hasta la derecha */}
-                    
-                    <span className="nav-item nav-link text-info"> {/* nav-link=Alineado - text-info=Color del nombre */}
-                        { name } {/* Coloco el nombre del Usuario a la derecha */}
-                    </span>
-
-                    <button 
-                        className="nav-item nav-link btn" //** nav-link=Color del campo de navegacion - btn=formato boton */
-                        onClick={ handleLogout } //** Se dispara al hacer click */
-                    >
-                        Logout
-                    </button>
-                </ul>
-            </div>
+          
         </nav>
     )
 }
