@@ -6,7 +6,8 @@ import App from "./App.jsx";
 // import "./bases/02-template-string.js"; //* Ejecute este Script */
 // import "./bases/03-objeto-literal.js"; //* Ejecute este Script */
 // import "./bases/04-arreglos.js"; //* Ejecuto este Script */
-import "./bases/05-funciones.js"; //* Ejecuto este Script */
+// import "./bases/05-funciones.js"; //* Ejecuto este Script */
+import "./bases/06-deses-obj.js"; //* Ejecuto este Script */
 // import "./bases"; //* Evito Escribir */
 
 ReactDOM.createRoot(document.getElementById("root")).render(
